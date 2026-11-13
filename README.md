@@ -25,6 +25,7 @@ the firmware's internal CPU.
 (walkthroughs of external artifacts), `250-re` (reverse-engineered facts:
 formats, signing, boot chain, iRISC), `550-poc` (tool specs),
 `750-exp` (experiment records), `850-howto` (verified recipes).
+Updates land via reviewed snapshot PRs onto the `public` branch.
 
 ## Reproducible checkout
 
