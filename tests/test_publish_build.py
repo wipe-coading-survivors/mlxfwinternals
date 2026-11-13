@@ -110,9 +110,13 @@ def test_parse_allowlist_rules(tmp_path):
     ]
 
 
+REAL_ALLOWLIST = REPO / "scripts" / "publish" / "allowlist.txt"
+
+
+@pytest.mark.skipif(not REAL_ALLOWLIST.exists(),
+                    reason="no publication allowlist (public clone)")
 def test_real_allowlist_rules():
-    includes, excludes = build_public.parse_allowlist(
-        REPO / "scripts" / "publish" / "allowlist.txt")
+    includes, excludes = build_public.parse_allowlist(REAL_ALLOWLIST)
     assert "docs/" in includes
     assert "skills/irisc-asm" in includes
     assert "skills/" not in includes
@@ -122,16 +126,29 @@ def test_real_allowlist_rules():
     assert "docs/superpowers/" in excludes
     assert "docs/050-hardware/100-inventory*" in excludes
     assert "Problem statement on mellanox FW.md" in excludes
+    assert "scripts/publish/allowlist.txt" in excludes
 
 
+@pytest.mark.skipif(not REAL_ALLOWLIST.exists(),
+                    reason="no publication allowlist (public clone)")
 def test_real_allowlist_public_ci_rides_private_workflows_dont(
         repo, tmp_path):
-    out, copied = _build(
-        repo, tmp_path, REPO / "scripts" / "publish" / "allowlist.txt")
+    out, copied = _build(repo, tmp_path, REAL_ALLOWLIST)
     rels = _relset(out, copied)
     assert ".github/workflows/public-ci.yml" in rels
     assert not (out / ".github/workflows/master-guard.yml").exists()
     assert not (out / ".github/workflows/publish-automation.yml").exists()
+
+
+@pytest.mark.skipif(not REAL_ALLOWLIST.exists(),
+                    reason="no publication allowlist (public clone)")
+def test_real_allowlist_excludes_itself_from_snapshot(repo, tmp_path):
+    allowlist_in_repo = repo / "scripts" / "publish" / "allowlist.txt"
+    allowlist_in_repo.parent.mkdir(parents=True, exist_ok=True)
+    allowlist_in_repo.write_text("README.md\n", encoding="utf-8")
+    out, copied = _build(repo, tmp_path, REAL_ALLOWLIST)
+    assert "scripts/publish/allowlist.txt" not in _relset(out, copied)
+    assert not (out / "scripts" / "publish" / "allowlist.txt").exists()
 
 
 def test_tracked_allowed_rides_exact_set(repo, tmp_path, allowlist):
