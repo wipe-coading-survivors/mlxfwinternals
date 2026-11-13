@@ -14,7 +14,7 @@ the firmware's internal CPU.
 | `mlxfwutil.py` | Python toolkit: inspect, diff, patch, re-sign and verify FS3/FS4 firmware images, incl. baked-in port configurations and personalities |
 | `crates/mlxdirect` | Rust library: driverless PCIe (VFIO) access to the adapter — CR-space registers, firmware command queues (CMDQ), identity-mapped DMA window, icmd/mailbox transport |
 | `crates/mlxscope` | Rust CLI on top of `mlxdirect`: hardware trace-buffer control (arm/drain), CR-reserve dump cycles, flow-table command sequences, on-device fuzz-vector batteries |
-| `scripts/` | Experiment and probe builders used to produce the research recorded in `docs/` |
+| `scripts/` | Experiment and probe builders used to produce the research recorded in `docs/`, plus the snapshot publication tooling (`scripts/publish/`) |
 | `.github/` | CI for the published repository: cargo workspace tests plus a bare pytest run on every change to the `public` branch |
 | `skills/` | Agent workflow skill (opencode) used in our research process |
 
@@ -35,6 +35,13 @@ patch `scripts/irisc/iRISC.slaspec.patch` to the pinned upstream file,
 verifying sha256 of both) and the local hardware registry
 (`hardware.local.md`, schema documented in `hardware.local.md.example`).
 Tests that depend on them are skipped, not failed, when they are absent.
+
+## Requirements
+
+Python 3.12+ (stdlib only) for the tooling and test suite; a Rust
+toolchain for the `crates/` workspace. Hardware-registry-dependent
+features read `hardware.local.md` (see Reproducible checkout) and skip
+when it is absent.
 
 ## Warning
 
