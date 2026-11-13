@@ -25,7 +25,8 @@ the firmware's internal CPU.
 (walkthroughs of external artifacts), `250-re` (reverse-engineered facts:
 formats, signing, boot chain, iRISC), `550-poc` (tool specs),
 `750-exp` (experiment records), `850-howto` (verified recipes).
-Updates land via reviewed snapshot PRs onto the `public` branch.
+Updates land as reviewed snapshot PRs onto the `public` branch, one per
+merged change in the source repository.
 
 ## Reproducible checkout
 
@@ -39,7 +40,8 @@ Tests that depend on them are skipped, not failed, when they are absent.
 ## Requirements
 
 Python 3.12+ (stdlib only) for the tooling and test suite; a Rust
-toolchain for the `crates/` workspace. Hardware-registry-dependent
+toolchain for the `crates/` workspace. The suite runs through `pytest`.
+Hardware-registry-dependent
 features read `hardware.local.md` (see Reproducible checkout) and skip
 when it is absent.
 
