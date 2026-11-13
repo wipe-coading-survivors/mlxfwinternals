@@ -1,0 +1,6921 @@
+[
+ {
+  "id": "V-F4-MARKER",
+  "group": "marker",
+  "words": [
+   "2403f00d",
+   "2063f00d",
+   "6e401812",
+   "00042320",
+   "6c801802",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-marker": {
+    "0x8c8": "0xf00df00d",
+    "echo": "0xf00df00d"
+   }
+  },
+  "notes": "execution marker 0xF00DF00D to echo [r18+0x10] and CR rt 0x2320; CR word must be exactly 0xF00DF00D; echo upper 32 bits unspecified (set2/set3 load, low32 check); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-F5R-EQ",
+  "group": "fuzz4rem",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060005",
+   "e0a03002",
+   "d8a03004",
+   "a00a0002",
+   "6e403012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "00010005",
+   "0x8c7": "00000000"
+  },
+  "expectations": {
+   "H-eq32": {
+    "echo": "0x0000000000000005"
+   },
+   "H-eq16": {
+    "echo": "stock"
+   },
+   "H-uge32": {
+    "echo": "stock"
+   },
+   "H-ule32": {
+    "echo": "0x0000000000000005"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "f5=4 i6=0 width-masked pair (0x10005,0x5) echo form (seed delivers the wide operand within budget); known-F predecessor; T->stock, F->write rt | eq32/eq16 separator: width-masked descendant of the (0x10005,0x20003) start pair \u2014 low16 equal, high16 differ (0x10005 vs 0x0005); T={eq16} F={eq32,uge32,ule32}; with fuzz-4 deaths (uge/ule) the outcome pins eq16 vs eq32; 7-word budget forces seed+addi (const32 pair + predecessor = 8); seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op36_f5=04_i6=00"
+  ]
+ },
+ {
+  "id": "V-F5R-LTV",
+  "group": "fuzz4rem",
+  "words": [
+   "00032320",
+   "00050003",
+   "00060005",
+   "e0a03002",
+   "d8a03002",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000005"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000005"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000005"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=2 i6=0 pair (0x3,0x5) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | ltV known-T: resolves the fuzz-4 stale-T ambiguity (both ltV vectors wrote F-path); T=>{lt32,lt16} write cc, F=>{uge32,ugt32,V} \u2014 survivors of the ltV pair; seed not needed, CR sentinel fits 7 slots; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=02_i6=00"
+  ]
+ },
+ {
+  "id": "V-F5R-38SELF",
+  "group": "fuzz4rem",
+  "words": [
+   "00051234",
+   "00060005",
+   "00070005",
+   "e0c03802",
+   "e0a02802",
+   "a00a0002",
+   "6e402812",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-38self-false": {
+    "echo": "0x0000000000001234"
+   },
+   "H-38self-keepT": {
+    "echo": "stock"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "cmp38-self repeat with separating operand 0x1234 (fuzz-4 used 7==7 for both predecessor and self); known-T predecessor on an independent pair r6,r7=5,5 \u2014 T-path echo=stock is decisive (predecessor set cc)",
+  "census_rows": [
+   "op38_sel=00"
+  ]
+ },
+ {
+  "id": "V-F5R-0C",
+  "group": "fuzz4rem",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060000",
+   "30a400ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0c-hiand": {
+    "0x8c8": "0x000f0f0f",
+    "echo": "0x000f0f0f"
+   },
+   "H-0c-andn-raw": {
+    "0x8c8": "0x0f0f0f00",
+    "echo": "0x0f0f0f00"
+   },
+   "H-0c-andn-sh16": {
+    "0x8c8": "0x0f000f0f",
+    "echo": "0x0f000f0f"
+   },
+   "H-0c-and-raw": {
+    "0x8c8": "0x0000000f",
+    "echo": "0x0000000f"
+   },
+   "H-0c-and-sh16": {
+    "0x8c8": "0x000f0000",
+    "echo": "0x000f0000"
+   },
+   "H-0c-or": {
+    "0x8c8": "0x0f0f0fff",
+    "echo": "0x0f0f0fff"
+   },
+   "H-0c-bswap": {
+    "0x8c8": "0x000f0f0f",
+    "echo": "0x000f0f0f"
+   },
+   "H-0c-repl": {
+    "0x8c8": "0x000f000f",
+    "echo": "0x000f000f"
+   },
+   "H-0c-loonly": {
+    "0x8c8": "0x00000f0f",
+    "echo": "0x00000f0f"
+   },
+   "H-0c-pass": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   }
+  },
+  "notes": "0x0c new hypothesis H-0c-hi-and (T1): rd_lo = rs_lo & ((imm16<<16)|0xffff); full refuted-space re-check in one slot | space 10 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op0c_imm=00ff"
+  ]
+ },
+ {
+  "id": "V-M36-f501",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03001",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=1 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=01_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f502",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050002",
+   "00060001",
+   "e0a03002",
+   "d8a03002",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-uge32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-ugt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=2 i6=0 pair (0x2,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=02_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f503",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03003",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=3 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=03_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f505",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03005",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=5 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=05_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f506",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03006",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=6 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=06_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f507",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03007",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=7 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=07_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f508",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03008",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=8 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=08_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f509",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03009",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=9 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=09_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f510",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0300a",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=10 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0a_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f511",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0300b",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=11 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0b_i6=00"
+  ]
+ },
+ {
+  "id": "V-M36-f504-i628",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a00384",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=4 i6=28 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=04_i6=1c"
+  ]
+ },
+ {
+  "id": "V-M36-f502-i632",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a00402",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=2 i6=32 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=02_i6=20"
+  ]
+ },
+ {
+  "id": "V-M36-f508-i624",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a00308",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=8 i6=24 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=08_i6=18"
+  ]
+ },
+ {
+  "id": "V-M36-f504-i632",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a00404",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=4 i6=32 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=04_i6=20"
+  ]
+ },
+ {
+  "id": "V-M36-f501-i663",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a007e1",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=1 i6=63 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=01_i6=3f"
+  ]
+ },
+ {
+  "id": "V-M33-f501-i00",
+  "group": "map33",
+  "words": [
+   "00050001",
+   "00060000",
+   "cca43001",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op33_f5=01_idx=00_flag=0 lo11=0x001 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=01_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f501-i01",
+  "group": "map33",
+  "words": [
+   "00050002",
+   "00060000",
+   "cca43021",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   }
+  },
+  "notes": "census row op33_f5=01_idx=01_flag=0 lo11=0x021 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=01_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f501-i15",
+  "group": "map33",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "cca431e1",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "00000000"
+  },
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0xa5a570f0",
+    "echo": "0xa5a570f0"
+   },
+   "H-depM": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   }
+  },
+  "notes": "census row op33_f5=01_idx=0f_flag=0 lo11=0x1e1 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op33_f5=01_idx=0f_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f501-i16",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060000",
+   "cca43201",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   }
+  },
+  "notes": "census row op33_f5=01_idx=10_flag=0 lo11=0x201 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=01_idx=10_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f501-i31",
+  "group": "map33",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "cca433e1",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "80000000",
+   "0x8c7": "00000000"
+  },
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x80000000",
+    "echo": "0x80000000"
+   }
+  },
+  "notes": "census row op33_f5=01_idx=1f_flag=0 lo11=0x3e1 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op33_f5=01_idx=1f_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f504-i00",
+  "group": "map33",
+  "words": [
+   "00050001",
+   "00060000",
+   "cca43004",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op33_f5=04_idx=00_flag=0 lo11=0x004 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=04_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f504-i01",
+  "group": "map33",
+  "words": [
+   "00050002",
+   "00060000",
+   "cca43024",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   }
+  },
+  "notes": "census row op33_f5=04_idx=01_flag=0 lo11=0x024 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=04_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f504-i16",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060000",
+   "cca43204",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   }
+  },
+  "notes": "census row op33_f5=04_idx=10_flag=0 lo11=0x204 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=04_idx=10_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f508-i00",
+  "group": "map33",
+  "words": [
+   "00050001",
+   "00060000",
+   "cca43008",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op33_f5=08_idx=00_flag=0 lo11=0x008 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=08_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f508-i01",
+  "group": "map33",
+  "words": [
+   "00050002",
+   "00060000",
+   "cca43028",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   }
+  },
+  "notes": "census row op33_f5=08_idx=01_flag=0 lo11=0x028 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=08_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f508-i16",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060000",
+   "cca43208",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   }
+  },
+  "notes": "census row op33_f5=08_idx=10_flag=0 lo11=0x208 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=08_idx=10_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f508-i24",
+  "group": "map33",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060000",
+   "cca43308",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000f0f0f",
+    "echo": "0x000f0f0f"
+   },
+   "H-depM": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   }
+  },
+  "notes": "census row op33_f5=08_idx=18_flag=0 lo11=0x308 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=08_idx=18_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f502-i00",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "00067ffe",
+   "cca43002",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008003",
+    "echo": "0x00008003"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8007",
+    "echo": "0xffff8007"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffb",
+    "echo": "0x00007ffb"
+   }
+  },
+  "notes": "census row op33_f5=02_idx=00_flag=0 lo11=0x002 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=02_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f502-i30",
+  "group": "map33",
+  "words": [
+   "000555aa",
+   "08a555aa",
+   "0006005a",
+   "cca433c2",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x95aa55aa",
+    "echo": "0x95aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0xd5aa55aa",
+    "echo": "0xd5aa55aa"
+   },
+   "H-min": {
+    "0x8c8": "0x0000005a",
+    "echo": "0x0000005a"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa5604",
+    "echo": "0x55aa5604"
+   },
+   "H-sub": {
+    "0x8c8": "0x55aa5550",
+    "echo": "0x55aa5550"
+   },
+   "H-and": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55fa",
+    "echo": "0x55aa55fa"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55f0",
+    "echo": "0x55aa55f0"
+   }
+  },
+  "notes": "census row op33_f5=02_idx=1e_flag=0 lo11=0x3c2 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=02_idx=1e_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f503-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060025",
+   "cca43003",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000025",
+    "echo": "0x00000025"
+   },
+   "H-add": {
+    "0x8c8": "0x00000028",
+    "echo": "0x00000028"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffde",
+    "echo": "0xffffffde"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000027",
+    "echo": "0x00000027"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000026",
+    "echo": "0x00000026"
+   }
+  },
+  "notes": "census row op33_f5=03_idx=00_flag=0 lo11=0x003 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=03_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f503-i01",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "0006000a",
+   "cca43023",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-add": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffff9",
+    "echo": "0xfffffff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000b",
+    "echo": "0x0000000b"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000009",
+    "echo": "0x00000009"
+   }
+  },
+  "notes": "census row op33_f5=03_idx=01_flag=0 lo11=0x023 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=03_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f505-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060025",
+   "cca43005",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000025",
+    "echo": "0x00000025"
+   },
+   "H-add": {
+    "0x8c8": "0x00000028",
+    "echo": "0x00000028"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffde",
+    "echo": "0xffffffde"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000027",
+    "echo": "0x00000027"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000026",
+    "echo": "0x00000026"
+   }
+  },
+  "notes": "census row op33_f5=05_idx=00_flag=0 lo11=0x005 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=05_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f505-i24",
+  "group": "map33",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "0006003c",
+   "cca43305",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x1c0f0f0f",
+    "echo": "0x1c0f0f0f"
+   },
+   "H-depM": {
+    "0x8c8": "0x1f0f0f0f",
+    "echo": "0x1f0f0f0f"
+   },
+   "H-min": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-max": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   },
+   "H-add": {
+    "0x8c8": "0x0f0f0f4b",
+    "echo": "0x0f0f0f4b"
+   },
+   "H-sub": {
+    "0x8c8": "0x0f0f0ed3",
+    "echo": "0x0f0f0ed3"
+   },
+   "H-and": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-or": {
+    "0x8c8": "0x0f0f0f3f",
+    "echo": "0x0f0f0f3f"
+   },
+   "H-xor": {
+    "0x8c8": "0x0f0f0f33",
+    "echo": "0x0f0f0f33"
+   }
+  },
+  "notes": "census row op33_f5=05_idx=18_flag=0 lo11=0x305 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=05_idx=18_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f506-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060055",
+   "cca43006",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000015",
+    "echo": "0x00000015"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000017",
+    "echo": "0x00000017"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000055",
+    "echo": "0x00000055"
+   },
+   "H-add": {
+    "0x8c8": "0x00000058",
+    "echo": "0x00000058"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffae",
+    "echo": "0xffffffae"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000057",
+    "echo": "0x00000057"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000056",
+    "echo": "0x00000056"
+   }
+  },
+  "notes": "census row op33_f5=06_idx=00_flag=0 lo11=0x006 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=06_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f506-i16",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "08a50001",
+   "0006000c",
+   "cca43206",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000c0005",
+    "echo": "0x000c0005"
+   },
+   "H-depM": {
+    "0x8c8": "0x000d0005",
+    "echo": "0x000d0005"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-max": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-add": {
+    "0x8c8": "0x00010011",
+    "echo": "0x00010011"
+   },
+   "H-sub": {
+    "0x8c8": "0x0000fff9",
+    "echo": "0x0000fff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0001000d",
+    "echo": "0x0001000d"
+   },
+   "H-xor": {
+    "0x8c8": "0x00010009",
+    "echo": "0x00010009"
+   }
+  },
+  "notes": "census row op33_f5=06_idx=10_flag=0 lo11=0x206 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=06_idx=10_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f507-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000600a5",
+   "cca43007",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000025",
+    "echo": "0x00000025"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000027",
+    "echo": "0x00000027"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x000000a5",
+    "echo": "0x000000a5"
+   },
+   "H-add": {
+    "0x8c8": "0x000000a8",
+    "echo": "0x000000a8"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffff5e",
+    "echo": "0xffffff5e"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x000000a7",
+    "echo": "0x000000a7"
+   },
+   "H-xor": {
+    "0x8c8": "0x000000a6",
+    "echo": "0x000000a6"
+   }
+  },
+  "notes": "census row op33_f5=07_idx=00_flag=0 lo11=0x007 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=07_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f507-i01",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "0006000a",
+   "cca43027",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000015",
+    "echo": "0x00000015"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000017",
+    "echo": "0x00000017"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-add": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffff9",
+    "echo": "0xfffffff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000b",
+    "echo": "0x0000000b"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000009",
+    "echo": "0x00000009"
+   }
+  },
+  "notes": "census row op33_f5=07_idx=01_flag=0 lo11=0x027 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=07_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f516-i14",
+  "group": "map33",
+  "words": [
+   "00057ffe",
+   "00060002",
+   "cca431d0",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x0000bffe",
+    "echo": "0x0000bffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x0000fffe",
+    "echo": "0x0000fffe"
+   },
+   "H-clamp16": {
+    "0x8c8": "0x00008000",
+    "echo": "0x00008000"
+   },
+   "H-fldmin16": {
+    "0x8c8": "0x00004000",
+    "echo": "0x00004000"
+   }
+  },
+  "notes": "census row op33_f5=10_idx=0e_flag=0 lo11=0x1d0 | clamp row (V-33-3 live 0x400000) | space 4 H, split 4 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=10_idx=0e_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f516-i00",
+  "group": "map33",
+  "words": [
+   "00050005",
+   "08a50001",
+   "0006000a",
+   "cca43010",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x0001000a",
+    "echo": "0x0001000a"
+   },
+   "H-depM": {
+    "0x8c8": "0x0001000f",
+    "echo": "0x0001000f"
+   },
+   "H-clamp16": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-fldmin16": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   }
+  },
+  "notes": "census row op33_f5=10_idx=00_flag=0 lo11=0x010 | space 4 H, split 4 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=10_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f524-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43018",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00aa55aa",
+    "echo": "0x00aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x00aa55ab",
+    "echo": "0x00aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   }
+  },
+  "notes": "census row op33_f5=18_idx=00_flag=0 lo11=0x018 | minmax class: live min (V-33-2) vs dep-R(W=24) | space 6 H, split 6 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=18_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f509-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca43009",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000001fe",
+    "echo": "0x000001fe"
+   },
+   "H-depM": {
+    "0x8c8": "0x000001ff",
+    "echo": "0x000001ff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=09_idx=00_flag=0 lo11=0x009 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=09_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f510-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca4300a",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000003fe",
+    "echo": "0x000003fe"
+   },
+   "H-depM": {
+    "0x8c8": "0x000003ff",
+    "echo": "0x000003ff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=0a_idx=00_flag=0 lo11=0x00a | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0a_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f511-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca4300b",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000007fe",
+    "echo": "0x000007fe"
+   },
+   "H-depM": {
+    "0x8c8": "0x000007ff",
+    "echo": "0x000007ff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=0b_idx=00_flag=0 lo11=0x00b | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0b_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f512-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca4300c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000ffe",
+    "echo": "0x00000ffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000fff",
+    "echo": "0x00000fff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=0c_idx=00_flag=0 lo11=0x00c | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0c_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f513-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca4300d",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00001ffe",
+    "echo": "0x00001ffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001fff",
+    "echo": "0x00001fff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=0d_idx=00_flag=0 lo11=0x00d | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0d_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f514-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "cca4300e",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00003ffe",
+    "echo": "0x00003ffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x00003fff",
+    "echo": "0x00003fff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op33_f5=0e_idx=00_flag=0 lo11=0x00e | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0e_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f515-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060005",
+   "08c60001",
+   "cca4300f",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-add": {
+    "0x8c8": "0x00010008",
+    "echo": "0x00010008"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffefffe",
+    "echo": "0xfffefffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00010007",
+    "echo": "0x00010007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00010006",
+    "echo": "0x00010006"
+   }
+  },
+  "notes": "census row op33_f5=0f_idx=00_flag=0 lo11=0x00f | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=0f_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f517-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060005",
+   "08c60002",
+   "cca43011",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00020005",
+    "echo": "0x00020005"
+   },
+   "H-add": {
+    "0x8c8": "0x00020008",
+    "echo": "0x00020008"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffdfffe",
+    "echo": "0xfffdfffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00020007",
+    "echo": "0x00020007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00020006",
+    "echo": "0x00020006"
+   }
+  },
+  "notes": "census row op33_f5=11_idx=00_flag=0 lo11=0x011 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=11_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f518-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43012",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000255aa",
+    "echo": "0x000255aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000255ab",
+    "echo": "0x000255ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=12_idx=00_flag=0 lo11=0x012 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=12_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f520-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43014",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000a55aa",
+    "echo": "0x000a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000a55ab",
+    "echo": "0x000a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=14_idx=00_flag=0 lo11=0x014 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=14_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f521-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43015",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000a55aa",
+    "echo": "0x000a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000a55ab",
+    "echo": "0x000a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=15_idx=00_flag=0 lo11=0x015 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=15_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f522-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43016",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x002a55aa",
+    "echo": "0x002a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x002a55ab",
+    "echo": "0x002a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=16_idx=00_flag=0 lo11=0x016 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=16_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f523-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43017",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x002a55aa",
+    "echo": "0x002a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x002a55ab",
+    "echo": "0x002a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=17_idx=00_flag=0 lo11=0x017 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=17_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f525-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca43019",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x01aa55aa",
+    "echo": "0x01aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x01aa55ab",
+    "echo": "0x01aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=19_idx=00_flag=0 lo11=0x019 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=19_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f526-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca4301a",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x01aa55aa",
+    "echo": "0x01aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x01aa55ab",
+    "echo": "0x01aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=1a_idx=00_flag=0 lo11=0x01a | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=1a_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f527-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca4301b",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x05aa55aa",
+    "echo": "0x05aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x05aa55ab",
+    "echo": "0x05aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=1b_idx=00_flag=0 lo11=0x01b | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=1b_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f528-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca4301c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x05aa55aa",
+    "echo": "0x05aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x05aa55ab",
+    "echo": "0x05aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=1c_idx=00_flag=0 lo11=0x01c | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=1c_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f529-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca4301d",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x15aa55aa",
+    "echo": "0x15aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x15aa55ab",
+    "echo": "0x15aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=1d_idx=00_flag=0 lo11=0x01d | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=1d_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f530-i00",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "cca4301e",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x15aa55aa",
+    "echo": "0x15aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x15aa55ab",
+    "echo": "0x15aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op33_f5=1e_idx=00_flag=0 lo11=0x01e | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=1e_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f531-i00",
+  "group": "map33",
+  "words": [
+   "00072318",
+   "00050021",
+   "64e60002",
+   "cca4301f",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "00000000"
+  },
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x25a5f0f0",
+    "echo": "0x25a5f0f0"
+   },
+   "H-depM": {
+    "0x8c8": "0x25a5f0f1",
+    "echo": "0x25a5f0f1"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   },
+   "H-add": {
+    "0x8c8": "0xa5a5f111",
+    "echo": "0xa5a5f111"
+   },
+   "H-sub": {
+    "0x8c8": "0x5a5a0f31",
+    "echo": "0x5a5a0f31"
+   },
+   "H-and": {
+    "0x8c8": "0x00000020",
+    "echo": "0x00000020"
+   },
+   "H-or": {
+    "0x8c8": "0xa5a5f0f1",
+    "echo": "0xa5a5f0f1"
+   },
+   "H-xor": {
+    "0x8c8": "0xa5a5f0d1",
+    "echo": "0xa5a5f0d1"
+   }
+  },
+  "notes": "census row op33_f5=1f_idx=00_flag=0 lo11=0x01f | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op33_f5=1f_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M33-f500-i00-f1",
+  "group": "map33",
+  "words": [
+   "00050003",
+   "00060005",
+   "cca43400",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-pass": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-add": {
+    "0x8c8": "0x00000008",
+    "echo": "0x00000008"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffffe",
+    "echo": "0xfffffffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   }
+  },
+  "notes": "census row op33_f5=00_idx=00_flag=1 lo11=0x400 | space 9 H, split 8 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=00_idx=00_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f502-i01",
+  "group": "map34",
+  "words": [
+   "00050007",
+   "00060000",
+   "d0a40022",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depR": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   }
+  },
+  "notes": "census row op34_f5=02_idx=01_flag=0 lo11=0x022 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=02_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f502-i05",
+  "group": "map34",
+  "words": [
+   "00050021",
+   "00060002",
+   "d0a430a2",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-depR": {
+    "0x8c8": "0x00000041",
+    "echo": "0x00000041"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000061",
+    "echo": "0x00000061"
+   }
+  },
+  "notes": "census row op34_f5=02_idx=05_flag=0 lo11=0x0a2 | OPEN row: rogue 0x000400ff unexplained by bclr/W=2 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=02_idx=05_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f502-i00",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060002",
+   "d0a43002",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depR": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   }
+  },
+  "notes": "census row op34_f5=02_idx=00_flag=0 lo11=0x002 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=02_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f502-i26-f1",
+  "group": "map34",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060000",
+   "d0a43742",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x0b0f0f0f",
+    "echo": "0x0b0f0f0f"
+   },
+   "H-depR": {
+    "0x8c8": "0x030f0f0f",
+    "echo": "0x030f0f0f"
+   },
+   "H-depM": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   }
+  },
+  "notes": "census row op34_f5=02_idx=1a_flag=1 lo11=0x742 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=02_idx=1a_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f502-i14-f1",
+  "group": "map34",
+  "words": [
+   "00057ffe",
+   "00060002",
+   "d0a435c2",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x00003ffe",
+    "echo": "0x00003ffe"
+   },
+   "H-depR": {
+    "0x8c8": "0x0000bffe",
+    "echo": "0x0000bffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x0000fffe",
+    "echo": "0x0000fffe"
+   }
+  },
+  "notes": "census row op34_f5=02_idx=0e_flag=1 lo11=0x5c2 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=02_idx=0e_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f506-i00",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43006",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op34_f5=06_idx=00_flag=0 lo11=0x006 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=06_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f506-i04",
+  "group": "map34",
+  "words": [
+   "00050021",
+   "00060000",
+   "d0a43086",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   }
+  },
+  "notes": "census row op34_f5=06_idx=04_flag=0 lo11=0x086 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=06_idx=04_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f504-i00",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43004",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op34_f5=04_idx=00_flag=0 lo11=0x004 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=04_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f504-i00-f1",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43404",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op34_f5=04_idx=00_flag=1 lo11=0x404 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=04_idx=00_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f504-i16-f1",
+  "group": "map34",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060000",
+   "d0a43604",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   }
+  },
+  "notes": "census row op34_f5=04_idx=10_flag=1 lo11=0x604 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=04_idx=10_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f508-i00",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43008",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op34_f5=08_idx=00_flag=0 lo11=0x008 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=08_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f508-i24-f1",
+  "group": "map34",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060000",
+   "d0a43708",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000f0f0f",
+    "echo": "0x000f0f0f"
+   },
+   "H-depM": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   }
+  },
+  "notes": "census row op34_f5=08_idx=18_flag=1 lo11=0x708 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=08_idx=18_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f508-i10-f1",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "00060000",
+   "d0a43548",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000234",
+    "echo": "0x00000234"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   }
+  },
+  "notes": "census row op34_f5=08_idx=0a_flag=1 lo11=0x548 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=08_idx=0a_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f512-i00",
+  "group": "map34",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a4300c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   }
+  },
+  "notes": "census row op34_f5=0c_idx=00_flag=0 lo11=0x00c | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0c_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f512-i10",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "00060000",
+   "d0a4314c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000234",
+    "echo": "0x00000234"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   }
+  },
+  "notes": "census row op34_f5=0c_idx=0a_flag=0 lo11=0x14c | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0c_idx=0a_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f512-i10-f1",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "00060000",
+   "d0a4354c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000234",
+    "echo": "0x00000234"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   }
+  },
+  "notes": "census row op34_f5=0c_idx=0a_flag=1 lo11=0x54c | V-34-7 rogue row 0x00004c00 | space 2 H, split 2 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0c_idx=0a_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f500-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00060005",
+   "d0a43000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-pass": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-add": {
+    "0x8c8": "0x00000008",
+    "echo": "0x00000008"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffffe",
+    "echo": "0xfffffffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   }
+  },
+  "notes": "census row op34_f5=00_idx=00_flag=0 lo11=0x000 | space 9 H, split 8 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=00_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f511-i16-f1",
+  "group": "map34",
+  "words": [
+   "00050005",
+   "08a50001",
+   "0006000c",
+   "d0a4360b",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000c0005",
+    "echo": "0x000c0005"
+   },
+   "H-depM": {
+    "0x8c8": "0x000d0005",
+    "echo": "0x000d0005"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-max": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-add": {
+    "0x8c8": "0x00010011",
+    "echo": "0x00010011"
+   },
+   "H-sub": {
+    "0x8c8": "0x0000fff9",
+    "echo": "0x0000fff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0001000d",
+    "echo": "0x0001000d"
+   },
+   "H-xor": {
+    "0x8c8": "0x00010009",
+    "echo": "0x00010009"
+   }
+  },
+  "notes": "census row op34_f5=0b_idx=10_flag=1 lo11=0x60b | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0b_idx=10_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f527-i05",
+  "group": "map34",
+  "words": [
+   "00050021",
+   "0006003c",
+   "d0a430bb",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000781",
+    "echo": "0x00000781"
+   },
+   "H-depM": {
+    "0x8c8": "0x000007a1",
+    "echo": "0x000007a1"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-add": {
+    "0x8c8": "0x0000005d",
+    "echo": "0x0000005d"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffe5",
+    "echo": "0xffffffe5"
+   },
+   "H-and": {
+    "0x8c8": "0x00000020",
+    "echo": "0x00000020"
+   },
+   "H-or": {
+    "0x8c8": "0x0000003d",
+    "echo": "0x0000003d"
+   },
+   "H-xor": {
+    "0x8c8": "0x0000001d",
+    "echo": "0x0000001d"
+   }
+  },
+  "notes": "census row op34_f5=1b_idx=05_flag=0 lo11=0x0bb | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1b_idx=05_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f527-i05-f1",
+  "group": "map34",
+  "words": [
+   "00050021",
+   "0006003c",
+   "d0a434bb",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000781",
+    "echo": "0x00000781"
+   },
+   "H-depM": {
+    "0x8c8": "0x000007a1",
+    "echo": "0x000007a1"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-add": {
+    "0x8c8": "0x0000005d",
+    "echo": "0x0000005d"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffe5",
+    "echo": "0xffffffe5"
+   },
+   "H-and": {
+    "0x8c8": "0x00000020",
+    "echo": "0x00000020"
+   },
+   "H-or": {
+    "0x8c8": "0x0000003d",
+    "echo": "0x0000003d"
+   },
+   "H-xor": {
+    "0x8c8": "0x0000001d",
+    "echo": "0x0000001d"
+   }
+  },
+  "notes": "census row op34_f5=1b_idx=05_flag=1 lo11=0x4bb | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1b_idx=05_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f503-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00060025",
+   "d0a43003",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000025",
+    "echo": "0x00000025"
+   },
+   "H-add": {
+    "0x8c8": "0x00000028",
+    "echo": "0x00000028"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffde",
+    "echo": "0xffffffde"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000027",
+    "echo": "0x00000027"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000026",
+    "echo": "0x00000026"
+   }
+  },
+  "notes": "census row op34_f5=03_idx=00_flag=0 lo11=0x003 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=03_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f505-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00060025",
+   "d0a43005",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000025",
+    "echo": "0x00000025"
+   },
+   "H-add": {
+    "0x8c8": "0x00000028",
+    "echo": "0x00000028"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffde",
+    "echo": "0xffffffde"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000027",
+    "echo": "0x00000027"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000026",
+    "echo": "0x00000026"
+   }
+  },
+  "notes": "census row op34_f5=05_idx=00_flag=0 lo11=0x005 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=05_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f507-i01",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "0006000a",
+   "d0a43027",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000015",
+    "echo": "0x00000015"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000017",
+    "echo": "0x00000017"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-add": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffff9",
+    "echo": "0xfffffff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000b",
+    "echo": "0x0000000b"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000009",
+    "echo": "0x00000009"
+   }
+  },
+  "notes": "census row op34_f5=07_idx=01_flag=0 lo11=0x027 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=07_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f509-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "d0a43009",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000001fe",
+    "echo": "0x000001fe"
+   },
+   "H-depM": {
+    "0x8c8": "0x000001ff",
+    "echo": "0x000001ff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op34_f5=09_idx=00_flag=0 lo11=0x009 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=09_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f510-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "d0a4300a",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000003fe",
+    "echo": "0x000003fe"
+   },
+   "H-depM": {
+    "0x8c8": "0x000003ff",
+    "echo": "0x000003ff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op34_f5=0a_idx=00_flag=0 lo11=0x00a | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0a_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f513-i09",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "00060005",
+   "d0a4312d",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000a34",
+    "echo": "0x00000a34"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001a34",
+    "echo": "0x00001a34"
+   },
+   "H-min": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-max": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   },
+   "H-add": {
+    "0x8c8": "0x00001239",
+    "echo": "0x00001239"
+   },
+   "H-sub": {
+    "0x8c8": "0x0000122f",
+    "echo": "0x0000122f"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x00001235",
+    "echo": "0x00001235"
+   },
+   "H-xor": {
+    "0x8c8": "0x00001231",
+    "echo": "0x00001231"
+   }
+  },
+  "notes": "census row op34_f5=0d_idx=09_flag=0 lo11=0x12d | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0d_idx=09_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f514-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00067ffe",
+   "d0a4300e",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00003ffe",
+    "echo": "0x00003ffe"
+   },
+   "H-depM": {
+    "0x8c8": "0x00003fff",
+    "echo": "0x00003fff"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00007ffe",
+    "echo": "0x00007ffe"
+   },
+   "H-add": {
+    "0x8c8": "0x00008001",
+    "echo": "0x00008001"
+   },
+   "H-sub": {
+    "0x8c8": "0xffff8005",
+    "echo": "0xffff8005"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-xor": {
+    "0x8c8": "0x00007ffd",
+    "echo": "0x00007ffd"
+   }
+  },
+  "notes": "census row op34_f5=0e_idx=00_flag=0 lo11=0x00e | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0e_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f515-i16",
+  "group": "map34",
+  "words": [
+   "00050005",
+   "08a50001",
+   "0006000c",
+   "d0a4320f",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000c0005",
+    "echo": "0x000c0005"
+   },
+   "H-depM": {
+    "0x8c8": "0x000d0005",
+    "echo": "0x000d0005"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-max": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-add": {
+    "0x8c8": "0x00010011",
+    "echo": "0x00010011"
+   },
+   "H-sub": {
+    "0x8c8": "0x0000fff9",
+    "echo": "0x0000fff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0001000d",
+    "echo": "0x0001000d"
+   },
+   "H-xor": {
+    "0x8c8": "0x00010009",
+    "echo": "0x00010009"
+   }
+  },
+  "notes": "census row op34_f5=0f_idx=10_flag=0 lo11=0x20f | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=0f_idx=10_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f516-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "00060005",
+   "08c60001",
+   "d0a43010",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-add": {
+    "0x8c8": "0x00010008",
+    "echo": "0x00010008"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffefffe",
+    "echo": "0xfffefffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00010007",
+    "echo": "0x00010007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00010006",
+    "echo": "0x00010006"
+   }
+  },
+  "notes": "census row op34_f5=10_idx=00_flag=0 lo11=0x010 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=10_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f517-i05",
+  "group": "map34",
+  "words": [
+   "00050021",
+   "0006003c",
+   "d0a430b1",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000781",
+    "echo": "0x00000781"
+   },
+   "H-depM": {
+    "0x8c8": "0x000007a1",
+    "echo": "0x000007a1"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-add": {
+    "0x8c8": "0x0000005d",
+    "echo": "0x0000005d"
+   },
+   "H-sub": {
+    "0x8c8": "0xffffffe5",
+    "echo": "0xffffffe5"
+   },
+   "H-and": {
+    "0x8c8": "0x00000020",
+    "echo": "0x00000020"
+   },
+   "H-or": {
+    "0x8c8": "0x0000003d",
+    "echo": "0x0000003d"
+   },
+   "H-xor": {
+    "0x8c8": "0x0000001d",
+    "echo": "0x0000001d"
+   }
+  },
+  "notes": "census row op34_f5=11_idx=05_flag=0 lo11=0x0b1 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=11_idx=05_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f518-i00-f1",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43412",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000255aa",
+    "echo": "0x000255aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000255ab",
+    "echo": "0x000255ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op34_f5=12_idx=00_flag=1 lo11=0x412 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=12_idx=00_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f520-i12-f1",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "0006000c",
+   "d0a43594",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x0000c234",
+    "echo": "0x0000c234"
+   },
+   "H-depM": {
+    "0x8c8": "0x0000d234",
+    "echo": "0x0000d234"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-max": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   },
+   "H-add": {
+    "0x8c8": "0x00001240",
+    "echo": "0x00001240"
+   },
+   "H-sub": {
+    "0x8c8": "0x00001228",
+    "echo": "0x00001228"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0000123c",
+    "echo": "0x0000123c"
+   },
+   "H-xor": {
+    "0x8c8": "0x00001238",
+    "echo": "0x00001238"
+   }
+  },
+  "notes": "census row op34_f5=14_idx=0c_flag=1 lo11=0x594 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=14_idx=0c_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f522-i10-f1",
+  "group": "map34",
+  "words": [
+   "00051234",
+   "00060021",
+   "d0a43556",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00008634",
+    "echo": "0x00008634"
+   },
+   "H-depM": {
+    "0x8c8": "0x00009634",
+    "echo": "0x00009634"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   },
+   "H-add": {
+    "0x8c8": "0x00001255",
+    "echo": "0x00001255"
+   },
+   "H-sub": {
+    "0x8c8": "0x00001213",
+    "echo": "0x00001213"
+   },
+   "H-and": {
+    "0x8c8": "0x00000020",
+    "echo": "0x00000020"
+   },
+   "H-or": {
+    "0x8c8": "0x00001235",
+    "echo": "0x00001235"
+   },
+   "H-xor": {
+    "0x8c8": "0x00001215",
+    "echo": "0x00001215"
+   }
+  },
+  "notes": "census row op34_f5=16_idx=0a_flag=1 lo11=0x556 | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=16_idx=0a_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f524-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43018",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00aa55aa",
+    "echo": "0x00aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x00aa55ab",
+    "echo": "0x00aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op34_f5=18_idx=00_flag=0 lo11=0x018 | minmax class: live min (V-33-2) vs dep-R(W=24) | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=18_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f526-i06-f1",
+  "group": "map34",
+  "words": [
+   "00050055",
+   "0006000c",
+   "d0a434da",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000315",
+    "echo": "0x00000315"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000355",
+    "echo": "0x00000355"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-max": {
+    "0x8c8": "0x00000055",
+    "echo": "0x00000055"
+   },
+   "H-add": {
+    "0x8c8": "0x00000061",
+    "echo": "0x00000061"
+   },
+   "H-sub": {
+    "0x8c8": "0x00000049",
+    "echo": "0x00000049"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0000005d",
+    "echo": "0x0000005d"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000059",
+    "echo": "0x00000059"
+   }
+  },
+  "notes": "census row op34_f5=1a_idx=06_flag=1 lo11=0x4da | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1a_idx=06_flag=1"
+  ]
+ },
+ {
+  "id": "V-M34-f528-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a4301c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x05aa55aa",
+    "echo": "0x05aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x05aa55ab",
+    "echo": "0x05aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "census row op34_f5=1c_idx=00_flag=0 lo11=0x01c | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1c_idx=00_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f529-i03",
+  "group": "map34",
+  "words": [
+   "0005000a",
+   "0006000c",
+   "d0a4307d",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000062",
+    "echo": "0x00000062"
+   },
+   "H-depM": {
+    "0x8c8": "0x0000006a",
+    "echo": "0x0000006a"
+   },
+   "H-min": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-add": {
+    "0x8c8": "0x00000016",
+    "echo": "0x00000016"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffffe",
+    "echo": "0xfffffffe"
+   },
+   "H-and": {
+    "0x8c8": "0x00000008",
+    "echo": "0x00000008"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000e",
+    "echo": "0x0000000e"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   }
+  },
+  "notes": "census row op34_f5=1d_idx=03_flag=0 lo11=0x07d | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1d_idx=03_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f530-i02",
+  "group": "map34",
+  "words": [
+   "00050005",
+   "0006000c",
+   "d0a4305e",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000031",
+    "echo": "0x00000031"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000035",
+    "echo": "0x00000035"
+   },
+   "H-min": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   },
+   "H-add": {
+    "0x8c8": "0x00000011",
+    "echo": "0x00000011"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffff9",
+    "echo": "0xfffffff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000009",
+    "echo": "0x00000009"
+   }
+  },
+  "notes": "census row op34_f5=1e_idx=02_flag=0 lo11=0x05e | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1e_idx=02_flag=0"
+  ]
+ },
+ {
+  "id": "V-M34-f531-i01",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "0006000a",
+   "d0a4303f",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000015",
+    "echo": "0x00000015"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000017",
+    "echo": "0x00000017"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-add": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffff9",
+    "echo": "0xfffffff9"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000b",
+    "echo": "0x0000000b"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000009",
+    "echo": "0x00000009"
+   }
+  },
+  "notes": "census row op34_f5=1f_idx=01_flag=0 lo11=0x03f | space 9 H, split 9 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=1f_idx=01_flag=0"
+  ]
+ },
+ {
+  "id": "V-C2R-16i028",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "58a40028",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "80000000"
+  },
+  "expectations": {
+   "H-16-shr64u": {
+    "0x8c8": "0x00800000",
+    "echo": "0x00800000"
+   },
+   "H-16-shr64a": {
+    "0x8c8": "0xff800000",
+    "echo": "0xff800000"
+   },
+   "H-16-shr32u": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-16-shr32a": {
+    "0x8c8": "0xffffffff",
+    "echo": "0xffffffff"
+   }
+  },
+  "notes": "H-16-shr second support; negative seeded rs discriminates logical-vs-arithmetic and 64-vs-32 width in low32 at shift 40 | space 4 H, split 4 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op16_lo11=028"
+  ]
+ },
+ {
+  "id": "V-C2R-16i03c",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "58a4003c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "80000000"
+  },
+  "expectations": {
+   "H-16-shr64u": {
+    "0x8c8": "0x00000008",
+    "echo": "0x00000008"
+   },
+   "H-16-shr64a": {
+    "0x8c8": "0xfffffff8",
+    "echo": "0xfffffff8"
+   },
+   "H-16-shr32u": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-16-shr32a": {
+    "0x8c8": "0xffffffff",
+    "echo": "0xffffffff"
+   }
+  },
+  "notes": "H-16-shr second support; negative seeded rs discriminates logical-vs-arithmetic and 64-vs-32 width in low32 at shift 60 | space 4 H, split 4 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op16_lo11=03c"
+  ]
+ },
+ {
+  "id": "V-C2R-16i07d",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "58a4007d",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "80000000"
+  },
+  "expectations": {
+   "H-16-shr64u": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-16-shr64a": {
+    "0x8c8": "0xfffffffc",
+    "echo": "0xfffffffc"
+   },
+   "H-16-shr32u": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-16-shr32a": {
+    "0x8c8": "0xffffffff",
+    "echo": "0xffffffff"
+   }
+  },
+  "notes": "H-16-shr second support; negative seeded rs discriminates logical-vs-arithmetic and 64-vs-32 width in low32 at shift 61 | space 4 H, split 4 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op16_lo11=07d"
+  ]
+ },
+ {
+  "id": "V-C2R-16i000",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060000",
+   "58a40000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "80000000"
+  },
+  "expectations": {
+   "H-16-pass": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   },
+   "H-16-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-16-hi2lo": {
+    "0x8c8": "0x80000000",
+    "echo": "0x80000000"
+   }
+  },
+  "notes": "H-16-shr second support; negative seeded rs discriminates logical-vs-arithmetic and 64-vs-32 width in low32 at shift 0 | space 3 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op16_lo11=000"
+  ]
+ },
+ {
+  "id": "V-C2R-39i000",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e40002",
+   "e4840000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "12345678",
+   "0x8c7": "89abcdef"
+  },
+  "expectations": {
+   "H-39-lo": {
+    "0x8c8": "0x12345678",
+    "echo": "0x12345678"
+   },
+   "H-39-hi-swap": {
+    "0x8c8": "0x89abcdef",
+    "echo": "0x89abcdef"
+   },
+   "H-39-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   }
+  },
+  "notes": "0x39 second support (fuzz-4: rs.low passthrough, 1-method); in-place rd=rs=r4 seeded, halves distinct; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op39_lo11=000"
+  ]
+ },
+ {
+  "id": "V-C2R-39i7ff",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e40002",
+   "e48407ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "12345678",
+   "0x8c7": "89abcdef"
+  },
+  "expectations": {
+   "H-39-lo": {
+    "0x8c8": "0x12345678",
+    "echo": "0x12345678"
+   },
+   "H-39-hi-swap": {
+    "0x8c8": "0x89abcdef",
+    "echo": "0x89abcdef"
+   },
+   "H-39-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   }
+  },
+  "notes": "0x39 second support (fuzz-4: rs.low passthrough, 1-method); in-place rd=rs=r4 seeded, halves distinct; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op39_lo11=7ff"
+  ]
+ },
+ {
+  "id": "V-C2R-3ci000",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "0006003c",
+   "f0a43000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "5a5a5a5a"
+  },
+  "expectations": {
+   "H-3c-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-3c-pass": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   },
+   "H-3c-rt": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-3c-andn-lo11": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   },
+   "H-3c-and-lo11": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   }
+  },
+  "notes": "0x3c second support (fuzz-4: writes zero); controlled rt=r6 instead of r31 | space 5 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op3c_lo11=000"
+  ]
+ },
+ {
+  "id": "V-C2R-3ci7ff",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "0006003c",
+   "f0a437ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "a5a5f0f0",
+   "0x8c7": "5a5a5a5a"
+  },
+  "expectations": {
+   "H-3c-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-3c-pass": {
+    "0x8c8": "0xa5a5f0f0",
+    "echo": "0xa5a5f0f0"
+   },
+   "H-3c-rt": {
+    "0x8c8": "0x0000003c",
+    "echo": "0x0000003c"
+   },
+   "H-3c-andn-lo11": {
+    "0x8c8": "0xa5a5f000",
+    "echo": "0xa5a5f000"
+   },
+   "H-3c-and-lo11": {
+    "0x8c8": "0x000000f0",
+    "echo": "0x000000f0"
+   }
+  },
+  "notes": "0x3c second support (fuzz-4: writes zero); controlled rt=r6 instead of r31 | space 5 H, split 5 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op3c_lo11=7ff"
+  ]
+ },
+ {
+  "id": "V-C2R-0Cx0000",
+  "group": "c2rare",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060000",
+   "30a40000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0c-hiand": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-0c-andn-raw": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-0c-andn-sh16": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-0c-and-raw": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-0c-and-sh16": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-0c-or": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-0c-bswap": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   },
+   "H-0c-repl": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-0c-loonly": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-0c-pass": {
+    "0x8c8": "0x00010005",
+    "echo": "0x00010005"
+   }
+  },
+  "notes": "0x0c imm-axis robustness for H-0c-hi-and (op-level parametric model; design imms 0x00ff/0x0000/0x01ff) | space 10 H, split 3 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op0c_imm=0000"
+  ]
+ },
+ {
+  "id": "V-C2R-0Cx01ff",
+  "group": "c2rare",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060000",
+   "30a401ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0c-hiand": {
+    "0x8c8": "0x010f0f0f",
+    "echo": "0x010f0f0f"
+   },
+   "H-0c-andn-raw": {
+    "0x8c8": "0x0f0f0e00",
+    "echo": "0x0f0f0e00"
+   },
+   "H-0c-andn-sh16": {
+    "0x8c8": "0x0e000f0f",
+    "echo": "0x0e000f0f"
+   },
+   "H-0c-and-raw": {
+    "0x8c8": "0x0000010f",
+    "echo": "0x0000010f"
+   },
+   "H-0c-and-sh16": {
+    "0x8c8": "0x010f0000",
+    "echo": "0x010f0000"
+   },
+   "H-0c-or": {
+    "0x8c8": "0x0f0f0fff",
+    "echo": "0x0f0f0fff"
+   },
+   "H-0c-bswap": {
+    "0x8c8": "0x000e0f0f",
+    "echo": "0x000e0f0f"
+   },
+   "H-0c-repl": {
+    "0x8c8": "0x010f010f",
+    "echo": "0x010f010f"
+   },
+   "H-0c-loonly": {
+    "0x8c8": "0x00000f0f",
+    "echo": "0x00000f0f"
+   },
+   "H-0c-pass": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   }
+  },
+  "notes": "0x0c imm-axis robustness for H-0c-hi-and (op-level parametric model; design imms 0x00ff/0x0000/0x01ff) | space 10 H, split 10 distinct low32; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op0c_imm=01ff"
+  ]
+ },
+ {
+  "id": "V-M36-f500",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03000",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=0 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=00_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f512",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0300c",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=12 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0c_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f513-i648",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a0060d",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=13 i6=48 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs | live_only (zero-site mask row); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0d_i6=30"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f514",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0300e",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=14 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0e_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f515",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0300f",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=15 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=0f_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f516",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03010",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=16 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=10_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f517-i654",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a006d1",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=17 i6=54 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs | live_only (zero-site mask row); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=11_i6=36"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f518-i646",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a005d2",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=18 i6=46 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs | live_only (zero-site mask row); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=12_i6=2e"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f519",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03013",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=19 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=13_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f520",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03014",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=20 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=14_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f521",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03015",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=21 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=15_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f522",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03016",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=22 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=16_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f523",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03017",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=23 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=17_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f524-i620",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a00298",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=24 i6=20 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs | live_only (zero-site mask row); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=18_i6=14"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f525",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a03019",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=25 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=19_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f526",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0301a",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=26 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1a_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f527",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0301b",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=27 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1b_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f528-i622",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050001",
+   "00060000",
+   "e0a03002",
+   "d8a002dc",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32i": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32i": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form f5=28 i6=22 rs=0x1 (rt field zero); known-F predecessor; F-path writes rs | live_only (zero-site mask row); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1c_i6=16"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f529",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0301d",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=29 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1d_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f530",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0301e",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=30 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1e_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M36-f531",
+  "group": "map36",
+  "words": [
+   "00032320",
+   "00050000",
+   "00060001",
+   "e0a03002",
+   "d8a0301f",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-eq16": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-uge32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ugt32": {
+    "0x8c8": "0x0000000000000001"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000001"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=31 i6=0 pair (0x0,0x1) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op36_f5=1f_i6=00"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M33-f519-i20",
+  "group": "map33",
+  "words": [
+   "00050f0f",
+   "08a50f0f",
+   "00060021",
+   "cca43293",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x021f0f0f",
+    "echo": "0x021f0f0f"
+   },
+   "H-depM": {
+    "0x8c8": "0x0f1f0f0f",
+    "echo": "0x0f1f0f0f"
+   },
+   "H-min": {
+    "0x8c8": "0x00000021",
+    "echo": "0x00000021"
+   },
+   "H-max": {
+    "0x8c8": "0x0f0f0f0f",
+    "echo": "0x0f0f0f0f"
+   },
+   "H-add": {
+    "0x8c8": "0x0f0f0f30",
+    "echo": "0x0f0f0f30"
+   },
+   "H-sub": {
+    "0x8c8": "0x0f0f0eee",
+    "echo": "0x0f0f0eee"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x0f0f0f2f",
+    "echo": "0x0f0f0f2f"
+   },
+   "H-xor": {
+    "0x8c8": "0x0f0f0f2e",
+    "echo": "0x0f0f0f2e"
+   }
+  },
+  "notes": "f5=19 axis anchor (zero-site class) | space 9 H, split 9 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op33_f5=13_idx=14_flag=1"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M34-f501-i00",
+  "group": "map34",
+  "words": [
+   "00050007",
+   "0006000a",
+   "d0a43001",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-min": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-max": {
+    "0x8c8": "0x0000000a",
+    "echo": "0x0000000a"
+   },
+   "H-add": {
+    "0x8c8": "0x00000011",
+    "echo": "0x00000011"
+   },
+   "H-sub": {
+    "0x8c8": "0xfffffffd",
+    "echo": "0xfffffffd"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x0000000f",
+    "echo": "0x0000000f"
+   },
+   "H-xor": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   }
+  },
+  "notes": "f5=1 axis anchor (f5_fill synthetic) | space 9 H, split 8 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=01_idx=00_flag=0"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M34-f519-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43013",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000255aa",
+    "echo": "0x000255aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000255ab",
+    "echo": "0x000255ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "f5=19 axis anchor (f5_fill synthetic) | space 9 H, split 9 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=13_idx=00_flag=0"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M34-f521-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43015",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000a55aa",
+    "echo": "0x000a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x000a55ab",
+    "echo": "0x000a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "f5=21 axis anchor (f5_fill synthetic) | space 9 H, split 9 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=15_idx=00_flag=0"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M34-f523-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43017",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x002a55aa",
+    "echo": "0x002a55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x002a55ab",
+    "echo": "0x002a55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "f5=23 axis anchor (f5_fill synthetic) | space 9 H, split 9 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=17_idx=00_flag=0"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-M34-f525-i00",
+  "group": "map34",
+  "words": [
+   "00050003",
+   "000655aa",
+   "08c655aa",
+   "d0a43019",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x01aa55aa",
+    "echo": "0x01aa55aa"
+   },
+   "H-depM": {
+    "0x8c8": "0x01aa55ab",
+    "echo": "0x01aa55ab"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x55aa55aa",
+    "echo": "0x55aa55aa"
+   },
+   "H-add": {
+    "0x8c8": "0x55aa55ad",
+    "echo": "0x55aa55ad"
+   },
+   "H-sub": {
+    "0x8c8": "0xaa55aa59",
+    "echo": "0xaa55aa59"
+   },
+   "H-and": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-or": {
+    "0x8c8": "0x55aa55ab",
+    "echo": "0x55aa55ab"
+   },
+   "H-xor": {
+    "0x8c8": "0x55aa55a9",
+    "echo": "0x55aa55a9"
+   }
+  },
+  "notes": "f5=25 axis anchor (f5_fill synthetic) | space 9 H, split 9 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [
+   "op34_f5=19_idx=00_flag=0"
+  ],
+  "live_only": true
+ },
+ {
+  "id": "V-C2R-38v",
+  "group": "c2rare",
+  "words": [
+   "00072318",
+   "64e50002",
+   "0006005a",
+   "e0a43018",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "12345678",
+   "0x8c7": "89abcdef"
+  },
+  "expectations": {
+   "H-38v-bool-eq": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-38v-bool-ne": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-38v-rs": {
+    "0x8c8": "0x12345678",
+    "echo": "0x12345678"
+   },
+   "H-38v-rt": {
+    "0x8c8": "0x0000005a",
+    "echo": "0x0000005a"
+   }
+  },
+  "notes": "0x38 value-form anchor: sel=rd field; sel=4 (rd=r4) is the only dst-legal selector; FW site @0x154e50 uses rd=r1 rt=r23 funct5=24 (imm=0x018) | space 4 H, split 4 distinct low32 | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": [
+   "op38_sel=04"
+  ],
+  "live_only": true
+ }
+]

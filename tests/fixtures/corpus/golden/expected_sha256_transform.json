@@ -1,0 +1,14 @@
+{
+  "entry_dc": "0x2b13b0",
+  "size_words": 137,
+  "frame_push_count": 1,
+  "frame_words": 10,
+  "calls": [],
+  "source": {
+    "entry": "journal 2026-09-23-irisc-isa-i2b-rosetta.md:32 (fn table)",
+    "size": "i2b-rosetta:32 range 0x2b13b0..0x2b15d0 = 0x220/4 = 136 words + ret.d word at 0x2b15d0 (extraction-verified; next fn sha256_final prologue at 0x2b15d4, i2b-rosetta:33)",
+    "frame_push_count": "prologue st.d! r1,r1,-0x28 at 0x2b13b0 (extraction); leaf without LR spill per i2b-rosetta:122-125",
+    "frame_words": "0x28/4 = 10 (push offset -0x28)",
+    "calls": "empty: transform is a leaf (i2b-rosetta:122-124 'transform is a leaf with no LR spill'); called from sha256_update at site dc 0x2b1370 (journal 2026-10-28-burn-digest-gate-task-06.md:119)"
+  }
+}

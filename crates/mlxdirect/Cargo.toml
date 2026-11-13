@@ -1,0 +1,12 @@
+[package]
+name = "mlxdirect"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+deku = "0.16.0"
+libc = "0.2"
+log = "0.4"
+pci-driver = "0.1.4"
+thiserror = "1.0.58"

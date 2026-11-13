@@ -1,0 +1,1862 @@
+site	family	target	class	class_name	level	str_rt	string
+000002c8	W5	0001b5e0	0x1000000	STEERING	1	0xb49e39	steering_access_initial_ste: rw_=0x%x, portid=0x%x, mc_uc_=0x%x, sx_rx_=0x%x, sx_special_rx_error_root=0x%x
+00000ac0	W6	0001b6d8	0x20000	TRANSPORT	3	0xb718bd	,diagnostic_counter=%03d,timestamp=0x%08x,id=0x%04x,sample_id=0x%04x,value=0x%08x%08x
+00001540	A0	0001b570	0x20000	TRANSPORT	2	0xb643cf	pop_packet_from_header_capture() called before an event was sent
+00001640	A0	0001b570	0x20000	TRANSPORT	0	0xb55bbf	isr_rxs_header_capture failed to lock eqe gw
+000024f8	A2	0001b15c	0x20000	TRANSPORT	0	0xb46382	inc_error_counter_8: ctr_bit_offset=0x%x, inc_amount=%x
+00002f48	W5	0001b5e0	0x20000	TRANSPORT	0	0xb69fab	get_currently_completing_wqe_index: gvmi=0x%x, qpi=0x%x,ldb_pop=0x%x, ldp_push=0x%x cci=0x%x
+00003744	W5	0001b5e0	0x20000	TRANSPORT	3	None	
+000037e8	A2	0001b15c	0x20000	TRANSPORT	0	0xb5066e	flush_swqe_by_gw: failed to read doorbell record: gvmi=0x%.4x, qpi=0x%.6x
+0000382c	A0	0001b570	0x20000	TRANSPORT	0	0xb604a8	flush_swqe_by_gw: could not read WQE
+00003974	W5	0001b5e0	0x20000	TRANSPORT	0	0xb76956	flush_swqe_by_gw: internal qp gvmi=0x%.4x, qpi=0x%.6x, dcs_number=0x%.6x, ldb_pop_pointer=0x%x, ldb_push_pointer=0x%x
+00003a90	A2	0001b15c	0x20000	TRANSPORT	0	0xb5baf2	inc_error_counter_32: ctr_offset=0x%x, inc_amount=%x
+00003d68	A3	0001b1ec	0x20000	TRANSPORT	0	0xb6259d	QP ix:0x%.6x req_res_=%x need async event:event type = 0x%x
+00003dcc	A3	0001b1ec	0x20000	TRANSPORT	0	0xb6259d	QP ix:0x%.6x req_res_=%x need async event:event type = 0x%x
+00003f9c	Bcore	0002ac60	None	?	None	None	
+00004214	A0	0001b570	0x20000	TRANSPORT	0	0xb68485	flush_rwqe_by_gw: failed to read doorbell record
+0000464c	A0	0001b570	0x20000	TRANSPORT	0	0xb8120e	flush_srq_wq_by_gw: failed to read doorbell record
+00004850	A0	0001b570	0xffffe4bd	DEBUG_INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_MANAGER+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb6fab1	flush_srq_wq_by_gw: wqe_ctrl=0x%.4x
+00004b18	W6	0001b6d8	0x20000	TRANSPORT	0	0xb6be0e	flush_srq_wq_by_gw update: gvmi=0x%.4x qpi=0x%.6x, sqn=0x%.6x, ci=0x%.4x, pi=0x%.4x rwqe_ci=0x%.4x
+0000535c	A2	0001b15c	0x4000	MAD	0	0xb626af	hal_get_clear_port_cntr: counters group type=%d doesn't match port type=%d
+00008028	A2	0001b15c	0x20000	TRANSPORT	0	0xb7f485	inc_error_counter: ctr_bit_offset=0x%x, inc_amount=%x
+00008228	A2	0001b15c	0x20000	TRANSPORT	0	0xb6fad5	inc_error_counter_16: ctr_bit_offset=0x%x, inc_amount=%x
+000089e0	A2	0001b15c	0x1000	FLR	0	0xb625f8	detect_invalidate_gvmi_in_qpc: detect_invalidate_=%d, gvmi = 0x%x
+000094a8	Bcore	0002ac60	None	?	None	None	
+0000a950	W6	0001b6d8	0x20	CMD_IF	1	0xb6be71	hal_get_ib_speed_and_width (PTYS): ib_proto_capability=0x%x, ib_link_width_capability=0x%x, ib_proto_admin=0x%x, ib_link_width_admin=0x%x, ib_proto_oper=0x%x, ib_link_width_oper=0x%x
+0000ab64	A2	0001b15c	0x20	CMD_IF	0	0xb506da	hal_set_ib_speed_and_width (PTYS): width is %d, speed is %d. width1X/speed SDR bit can't be cleared.
+0000ad44	A2	0001b15c	0x20	CMD_IF	0	0xb7cdca	hal_set_ib_speed_and_width (PTYS): Values sent to Phy Manager - speed_enabled.ib=0x%x, width_enabled=0x%x
+0000ae8c	A3	0001b1ec	0x200	PHY_COMMON	0	0xb74e48	set_clear_got_paos_down: set_clear_[%d] gvmi[0x%x] idx[%d]
+0000b474	A2	0001b15c	0x200	PHY_COMMON	0	0xb7ce34	change_port_state: PM_EVENT_PAOS_CMD_OPEN_PORT portid=%d discarded, phy link already up
+0000b6e4	A2	0001b15c	0x200	PHY_COMMON	0	0xb4c3fb	change_port_state: PM_EVENT_PAOS_CMD_CLOSE_PORT portid=%d, is_fpga=%d 
+0000c128	W5	0001b5e0	0x200	PHY_COMMON	0	0xb661f4	enable_disable_port_state_management: port0_1=%d, enable_disable_=%d, asn1_admin_=%d, old_paos_req=0x%.8x, old_driver_fd=%d
+0000c854	W6	0001b6d8	0x200	PHY_COMMON	0	0xb6a0c0	_set_keep_link_up_stat_no_lock: portid[%d], new_klu_state[%d], drivers_mask[0x%x%x], new_admin_state[%d], old_driver_fd=%d
+0000d034	W5	0001b5e0	0x200	PHY_COMMON	0	0xb66270	hal_set_paos: gvmi[0x%x] got_paos_down[%d] config_toggling[%d] toggle_port[%d], is_fpga[%d]
+0000d670	A3	0001b1ec	0x20	CMD_IF	0	0xb5429c	PTYS query: ptys->eth_proto_capability=0x%x, ptys->eth_proto_admin=0x%x, ptys->eth_proto_oper=0x%x
+0000d9d4	A3	0001b1ec	0x20	CMD_IF	1	0xb46446	PTYS: Trying to set extended_proto=%d eth_proto_admin=0x%x. Not a valid speed, eth_speed_supported=0x%x
+0000da84	A0	0001b570	0x20	CMD_IF	1	0xb6bf28	PTYS: Trying to disable auto-neg with 56G which is not supported
+0000daac	A2	0001b15c	0x20	CMD_IF	1	0xb6bf28	PTYS: Trying to disable auto-neg with 56G which is not supported
+0000de3c	A2	0001b15c	0x4000	MAD	0	0xb7abb0	access register PPCNT: pnat=%d. local_port=0x%.16x is invalid
+0000debc	A0	0001b570	0x4000	MAD	0	0xb5e341	access register PPCNT: all ports tpye doesn't match with requested group type
+0000e814	A2	0001b15c	0x20	CMD_IF	0	0xb5bb56	set_clr_=%d flick WA, WA type: 0x%x
+0000fb30	W5	0001b5e0	0x20007	DEBUG_INIT+INIT+ICM+TRANSPORT	None	0xb64465	lag_port_remap: req_p0 = %d, req_p1=%d ,port 0:%d, port 1:%d, num_lists_active = %d
+00012b44	A3	0001b1ec	0x20000	TRANSPORT	0	0xb838ca	hal_set_ecn_rate_shift : portid=%d, link_speed_gbps=%d, required_rate_shift=%d
+00012ed4	A3	0001b1ec	0x20000	TRANSPORT	0	None	
+00013430	A3	0001b1ec	0x20000	TRANSPORT	0	None	
+000136e8	A3	0001b1ec	0x20000	TRANSPORT	0	0xb5e38f	cc_handle_linkup_event: portid=%d, link_speed_gbps=%d, lock=%d
+00014ea4	Bcore	0002ac60	0x8113	DEBUG_INIT+INIT+HOST_MNG+LIBFHI+RXT_CHECKS	137	None	
+000150b4	A2	0001b15c	0x10000000	DC_CLEANUP	1	0xb521ce	load_fw_version - ret=%d, SUBMINOR=%d
+00015388	A0	0001b570	0x10000000	DC_CLEANUP	0	0xb4e60e	compute_lfwp_versioning: lfwp is not supported due to versioning
+00015418	W5	0001b5e0	0x10000049	DEBUG_INIT+ICM_FREE_LIST+PHY_IB+DC_CLEANUP	0	0xb6bf69	compute_reset_level_mask: cur_vector_en=%d, new_vector_en=%d, vectors_ver_match=%d, current=%d, new=%d
+000154bc	A2	0001b15c	0x10000000	DC_CLEANUP	0	0xb4e64f	Starting fw_finalize_burn command. New image=0x%x curr=0x%x
+000154f0	A0	0001b570	0xfffffffe	INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb662fe	Read current image's ITOC database to memory
+00015558	A0	0001b570	0xfffffffd	DEBUG_INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb6fbd3	Read new image's ITOC database to memory
+000155a4	A0	0001b570	0x10000000	DC_CLEANUP	0	0xb57ee6	Checking for a match between versions
+00015970	A0	0001b570	0x10000000	DC_CLEANUP	0	0xb6dcbf	load_iron_code_to_icmc
+000159fc	A3	0001b1ec	0x10000000	DC_CLEANUP	0	0xb4c442	trampoline_code data start:0x%x, base: 0x%x, flash addr 0x%x
+00015b28	A0	0001b570	0x10000000	DC_CLEANUP	1	0xb55c5a	calling IRON code to start the trampoline code
+00015de8	A0	0001b570	0x10000000	DC_CLEANUP	0	0xb4e68b	dispatcher_post_flow
+00016054	A2	0001b15c	0x10000000	DC_CLEANUP	0	0xb76b62	prepare_lfwp_flow: curr_image_address=0x%x, new_image_address=0x%x
+00016aec	A0	0001b570	0x100039a5	DEBUG_INIT+ICM+CMD_IF+PHY_RX_ADAP+LIBFHI+PWR+FLR+ICM_ACCESS+DC_CLEANUP	1	0xb68538	MFRL write: not enough space for trampoline code
+00017398	A0	0001b570	0x10000000	DC_CLEANUP	1	0xb50795	MFRL: got response timeout - aborting sync.
+0001758c	A2	0001b15c	0xffffbc25	DEBUG_INIT+ICM+CMD_IF+PHY_MANAGER+PWR+FLR+ICM_ACCESS+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	1	0xb7ac61	MFRL: pci_sync_for_fw_update_event cap on gvmi=0x%x is disabled - aborting sync.
+0001767c	A2	0001b15c	0x10000000	DC_CLEANUP	1	0xb54328	MFRL command with reset response: gvmi=0x%x, final mask=0x%x
+00017894	A2	0001b15c	0xffffa13b	DEBUG_INIT+INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+LIBFHI+ICM_ACCESS+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	1	0xb644b9	MFRL: host is restricted: gvmi=0x%x - aborting write
+000179d0	A0	0001b570	0x10000000	DC_CLEANUP	1	0xb5e3ce	MFRL command: lfwp flow in progress
+00017bf8	A0	0001b570	0x10000001	DEBUG_INIT+DC_CLEANUP	1	0xb6fc7e	MFRL write: trampoline code locking in icmc has failed
+00017d18	A0	0001b570	0x10000000	DC_CLEANUP	1	0xb839d0	MFRL: no reset request sent - aborting sync.
+00017f30	A0	0001b570	0x1000008a	INIT+ICM_FREE_LIST+PHY_RX_ADAP+DC_CLEANUP	1	0xb6057d	MFRL write: not supported reset type
+00017fc8	A2	0001b15c	0x10000000	DC_CLEANUP	1	0xb6632b	access_register_mfai command. read=%d got image address=0x%x
+000180b0	A2	0001b15c	0x10000000	DC_CLEANUP	1	0xb6a18e	isr_driver_sync_reset: stage: %d, time: 0x%x msecs.
+00019268	A2	0001b15c	0x800592	INIT+HOST_MNG+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+FLASH	0	0xb839fd	starting read_16_bytes_for_main offset=0x%x num_bytes=%d
+0001938c	A0	0001b570	0x800000	FLASH	0	0xb6c06e	Waiting on flash for over 4 seconds
+0001a454	A2	0001b15c	0x20	CMD_IF	0	0xb812bb	read_data_from_partition: offset=0x%x length=0x%x
+0001afe4	A3	0001b1ec	0x10	HOST_MNG	0	0xb6a1c2	....Data: 0x%.8x
+0001b004	A2	0001b15c	0x10	HOST_MNG	0	0xb52227	....Data: 0x%.8x 0x%.8x 0x%.8x
+0001b0b8	W4	0001b53c	None	?	None	None	
+0001b144	W1	0001b4b8	None	?	None	None	
+0001b1d0	W2	0001b4e0	None	?	None	None	
+0001b26c	W3	0001b50c	None	?	None	None	
+0001b334	Bcore	0002ac60	None	?	None	None	
+0001b4a8	CORE	0001b430	None	?	0	None	
+0001b4d0	CORE	0001b430	None	?	1	None	
+0001b4fc	CORE	0001b430	None	?	2	None	
+0001b52c	CORE	0001b430	None	?	3	None	
+0001b560	CORE	0001b430	None	?	4	None	
+0001b5cc	W0	0001b494	None	?	None	None	
+0001b678	W5b	0001b6a0	None	?	None	None	
+0001b6c8	CORE	0001b430	None	?	5	None	
+0001b77c	W6b	0001b7a8	None	?	None	None	
+0001b7d4	CORE	0001b430	None	?	6	None	
+0001b8f4	CORE	0001b430	None	?	7	None	
+0001b9b0	A2	0001b15c	0xffffe6a0	CMD_IF+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	None	None	
+0001bae8	CORE	0001b430	None	?	None	None	
+0001c1e8	W6	0001b6d8	0x4000000	ICMD	0	0xb55ca1	parameter: 0x%x 0x%x 0x%x 0x%x 0x%x, function_addr: 0x%x
+0001c420	W0	0001b494	None	?	None	None	
+0001c494	W1	0001b4b8	None	?	None	None	
+0001c510	W2	0001b4e0	None	?	None	None	
+0001c594	W3	0001b50c	None	?	None	None	
+0001c624	W4	0001b53c	None	?	None	None	
+0001c6c0	W5b	0001b6a0	None	?	None	None	
+0001ce14	A0	0001b570	0x20	CMD_IF	3	0xb62773	9 TRACER: timestamp update
+0001d188	A0	0001b570	0x1	DEBUG_INIT	1	None	
+0001dad0	B	0010a954	None	?	None	None	
+00021114	A3	0001b1ec	0xb0000	I2C+TRANSPORT+RX_ERRORS	1	0xb5bd4f	responder_db_push: gvmi=0x%x qpi=0x%x, sq=0x%x
+00022338	W6	0001b6d8	0x20000	TRANSPORT	0	0xb6fcc9	sxdc_schedint_write: gvmi=0x%.4x qp_type=%x qpi=0x%.6x op=0x%x new_schedint_cause=0x%.8x prev_schedint_cause=0x%.8x
+00022914	W5	0001b5e0	0x20000	TRANSPORT	0	0xb813ad	vlq_sq_push_access: set_clear_=0x%x,  gvmi=0x%x sq_num=0x%x, host_num=0x%x, vl=0x%x
+00023f70	W6	0001b6d8	0x20	CMD_IF	0	0xb6dda7	set_get_q_counter: fw_opcode=0x%x, gvmi=0x%x, sx_rx_=0x%x, counter_offset=0x%x, counter_set_id=0x%x, data=0x%x
+00024110	W5	0001b5e0	0x20	CMD_IF	0	0xb78b19	write_add_to_vport_counter: gvmi=0x%x, portid=0x%x, sx_rx_=0x%x, counter_ix=0x%x, write_add_=0x%x
+0002418c	A3	0001b1ec	0x20	CMD_IF	0	0xb55d16	write_add_to_vport_counter: PCKT: gw_offset=0x%x, result=0x%x%.8x
+00024204	A3	0001b1ec	0x20	CMD_IF	0	0xb71985	write_add_to_vport_counter: BYTE: gw_offset=0x%x, result=0x%x%.8x
+00024eb4	Bcore	0002ac60	None	?	None	None	
+0002529c	Bcore	0002ac60	None	?	None	None	
+00025388	Bcore	0002ac60	None	?	None	None	
+00025530	W5	0001b5e0	0x20	CMD_IF	0	0xb74f69	execute_dcr_free_list_gw_cmd: cmd=%x gvmi=%x, port=%d, ptr=%x, data=%x
+000257cc	Bcore	0002ac60	0xffffe41b	DEBUG_INIT+INIT+ICM_FREE_LIST+HOST_MNG+PHY_MANAGER+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	None	None	
+00025968	A2	0001b15c	0x1000	FLR	0	0xb74fb0	enable_disable_gvmi_doorbell_recovery_via_toc : enable_disable_ = 0x%x, gvmi = 0x%x
+00025e10	A2	0001b15c	0x1000	FLR	0	None	
+00026a98	A2	0001b15c	0x108e92	INIT+HOST_MNG+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+PWR+RXT_CHECKS+CMD_DRIVER	1	0xb543ae	host_mem_access access to a low address. addr=0x%llx
+00027200	A3	0001b1ec	0x8000000	PCI	0	0xb6457c	copy from umem gvmi=0x%x, umemid=0x%x len=0x%x
+000272ac	A3	0001b1ec	0x8000000	PCI	2	0xb465a5	read umem failed gvmi=0x%x, umemid=0x%x len=0x%x
+00027ecc	A2	0001b15c	0x20	CMD_IF	1	0xb465d6	[][][][]debug sig32=0x%x, sig8=0x%x 
+00028770	A2	0001b15c	0x20	CMD_IF	1	0xb465d6	[][][][]debug sig32=0x%x, sig8=0x%x 
+0002902c	W5	0001b5e0	0x20	CMD_IF	3	0xb5e513	hal_resource_reference_test_invalidate_return_fw_qpc: FAIL, uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x], ctx_icm_address=0x%llx, syndrome=0x%x
+0002917c	W5	0001b5e0	0x20	CMD_IF	3	0xb59c01	dec_resource_reference: FAIL1, [cre_type << 16, cre_check_mod[.mask << 8, .cmp_val << 4], ret]=0x%.8x, ctx_icm_address=0x%llx, uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x],
+000291f8	W5	0001b5e0	0x20	CMD_IF	1	0xb76c28	test_and_inc_resource_reference: FAIL1, [cre_type << 16, cre_check_mod[.mask << 8, .cmp_val << 4], ret]=0x%.8x, ctx_icm_address=0x%llx, uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x],
+00029274	W5	0001b5e0	0x20	CMD_IF	1	0xb55d81	test_and_invalidate_resource_reference: FAIL1, [cre_type << 16, cre_check_mod[.mask << 8, .cmp_val << 4], ret]=0x%.8x, ctx_icm_address=0x%llx, uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x],
+00029290	A2	0001b15c	0x20	CMD_IF	1	0xb55d81	test_and_invalidate_resource_reference: FAIL1, [cre_type << 16, cre_check_mod[.mask << 8, .cmp_val << 4], ret]=0x%.8x, ctx_icm_address=0x%llx, uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x],
+0002956c	W6	0001b6d8	0x20	CMD_IF	0	0xb6278e	_hal_resource_reference - uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x], ctx_icm_address=0x%llx, num_2=0x%.8x, opcode=0x%x
+00029b2c	W5	0001b5e0	0x20	CMD_IF	0	0xb5be07	test_connect_resource_reference: OK uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x], ctx_icm_address=0x%llx, [uid<<16,res_uid]=0x%.8x
+00029b54	W5	0001b5e0	0x20	CMD_IF	3	0xb5be07	test_connect_resource_reference: OK uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x], ctx_icm_address=0x%llx, [uid<<16,res_uid]=0x%.8x
+00029cd8	A3	0001b1ec	0x20	CMD_IF	0	0xb4a22f	hal_set_clear_in_use_resource_reference: OK ctx_icm_address=0x%llx, in_use=0x%x
+0002a84c	Bcore	0002ac60	None	?	None	None	
+0002bd04	B	0010a954	None	?	None	None	
+0002f794	A2	0001b15c	0x8000f8	ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+FLASH	0	0xb59cad	isr write to flash: curr_desc_op_sub_state=0x%x ret=0x%x
+0002fa58	A3	0001b1ec	0x800000	FLASH	0	0xb6de16	isr_invalidate_tlvs_on_boot: state=%d, sub_state=%d, inv_req=0x%x
+00030ab8	A0	0001b570	0x800000	FLASH	0	0xb685e9	read_vpi_tlv_and_write_to_sp: accessing flash after snoop flow
+0004178c	A3	0001b1ec	0x2	INIT	1	0xb66506	RXRefClk=%d RXT_WAIT4SCATTER=%d, rx_used_buffer %d
+00041854	A3	0001b1ec	0x2	INIT	1	0xb6fd53	RXT_LOCK_TRANSLATION=%d,RXT_LOCK_DCR=%d,RXT_NO_RXC_CREDITS=%d, RXT_NO_SXD_INTDB_CREDITS=%d 
+0004193c	A2	0001b15c	0x2	INIT	1	0xb507c1	RefClk=%d,RXPS_STEERING0_ACCESS=%d, RXPS_STEERING0_MISS=%d,RXPS_STEERING1_ACCESS=%d 
+00041a34	A3	0001b1ec	0x2	INIT	1	0xb60641	RXSIdle=%d
+00041bc4	A2	0001b15c	0x2	INIT	1	0xb78c45	SXD_RETURN_LIMITED=%d, SXD_DB_DROP=%d, SXD_INT_DB_PUSH=%d, SXDC_CACHE_MISS=%d
+00041c8c	A3	0001b1ec	0x2	INIT	1	0xb6469d	SXW_BACK_PRESSURE_LIMITED_DB=%d, SXW_BACK_PRESSURE_MEMOP=%d, SXW_BACK_PRESSURE_REQ_SL=%d, SXW_LIMITED_FENCE=%d 
+00041ce8	A3	0001b1ec	0x2	INIT	1	0xb7af50	RefClk=%d, SXP_BACKPRESSURE_LOOPBACK_PORT0=%d, SXP_BACKPRESSURE_LOOPBACK_PORT1=%d, SXP_STEERING0_MISS=          %d 
+00041f7c	A3	0001b1ec	0x2	INIT	1	0xb6c10f	HDMonTrc SW Is Bottleneck sxd_threshold %d db_push %d  HDMonRst=%d
+00042004	A3	0001b1ec	0x2	INIT	1	0xb544a9	HDMonTrc RX Is Bottleneck rx_used_buffer %d rx_threshold %d MAX 4096 HDMonRst=%d
+00042108	W5	0001b5e0	0x2	INIT	1	0xb4e797	HDMonTrc TX Perf Drop MR(*48.8)=%d->%d BW(*3124B)=%d->%d HDMonRst=%d 
+0004217c	W5	0001b5e0	0x2	INIT	1	0xb4e797	HDMonTrc TX Perf Drop MR(*48.8)=%d->%d BW(*3124B)=%d->%d HDMonRst=%d 
+00042268	W5	0001b5e0	0x2	INIT	1	0xb7cfc6	HDMonTrc RX Perf Drop MR(*48.8)=%d->%d BW(*3124B)=%d->%d HDMonRst=%d 
+000422d8	W5	0001b5e0	0x2	INIT	1	0xb7cfc6	HDMonTrc RX Perf Drop MR(*48.8)=%d->%d BW(*3124B)=%d->%d HDMonRst=%d 
+000423c0	A3	0001b1ec	0x2	INIT	1	0xb544fa	HDMonTrc SX Is Bottleneck QP Count= %d queue_threshold= %d HDMonRst=%d
+00042410	A3	0001b1ec	0x2	INIT	1	0xb71a10	HDMonTrc Network Is Bottleneck sx_used_buffer %d sxp_threshold %d MAX 256K HDMonRst=%d 
+00042a18	A2	0001b15c	0x20000	TRANSPORT	3	0xb628e1	print_full_wq_from_sx_buffer : wqe index = 0x%x ,  ec= 0x%x 
+00043b98	A3	0001b1ec	0x29028	ICM_FREE_LIST+CMD_IF+FLR+RXT_CHECKS+TRANSPORT	0	0xb57fa3	sl_diff_wqe_check : gvmi=0x%x, qpi=0x%x, connected_ts=%d
+00044210	W6	0001b6d8	0x20000	TRANSPORT	3	0xb4e7dd	handle_any_sx_error: ec_id=0x%.2x, gvmi=0x%x, req_res_=%d, qpi=0x%x,  error_is_send=%d synd=0x%x
+000445d4	Bcore	0002ac60	0x1	DEBUG_INIT	1	None	
+00044628	A2	0001b15c	0x2000d	DEBUG_INIT+ICM+ICM_FREE_LIST+TRANSPORT	0	0xb71a68	handle_any_sx_error: GLOBAL_DUMP_QP had an error for gvmi: 0x%x original qpn: 0x%x
+00044814	A0	0001b570	0x20000	TRANSPORT	0	0xb4c4e1	handle_any_sx_error: slow start responder
+0004486c	A0	0001b570	0x20000	TRANSPORT	0	0xb4e83e	handle_any_sx_error: enter ROCE_SLOW_RESTART_IDLE responder flow
+00044bb0	A0	0001b570	0x20000	TRANSPORT	0	0xb76dc7	handle_any_sx_error: slow start requestor
+00044c24	A0	0001b570	0x20000	TRANSPORT	0	0xb6470d	handle_any_sx_error: enter ROCE_SLOW_RESTART_IDLE requestor flow
+00044ca0	A3	0001b1ec	0x20000	TRANSPORT	0	0xb7f4e6	hw_executing_rollback: slice_ci=0x%x | swqe_consumer_index=0x%x | error_is_send = %d
+00044d64	Bcore	0002ac60	0x150000	I2C+FW_LL+CMD_DRIVER	None	None	
+00044e44	A3	0001b1ec	0x20000	TRANSPORT	3	0xb68641	handle_any_sx_error: signature pipeline error gvmi:0x%x qpn:0x%x wqe_index:0x%x
+00044ed0	A3	0001b1ec	0x20000	TRANSPORT	0	0xb4c50b	sx reponder error on dup read or atomic before: write_ptr=0x%x read_ptr=0x%x exec_ptr=0x%x
+00044fcc	W6	0001b6d8	0x20000	TRANSPORT	0	0xb71abb	sx reponder error on dup read or atomic: gvmi=0x%x, qpi=0x%x, qpc_read_ptr=0x%x, sxw_read_ptr=0x%x, flush_synd=0x%x rdb.ignore_sx_error_cnt=0x%x
+00045618	A3	0001b1ec	0xffffffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb8154e	handle_odp_event_on_sx: gvmi=0x%.4x, qpi=0x%.6x, req_res_=%d raising PAGE_FAULT event
+00045770	Bcore	0002ac60	0x0		None	None	
+00045840	A2	0001b15c	0x245a2	INIT+CMD_IF+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+MAD+TRANSPORT	0	0xb54541	responder SX page fault: bytes_committed=0x%x, r_key=0x%.8x, packet_len=0x%.4x, rdma_op_len=0x%x
+00045914	A3	0001b1ec	0x7fff0000	I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT	0	0xb6febc	requestor SX page fault: wqe_index=0x%x wq_number=0x%x bytes_commited=0x%x
+000459f8	A3	0001b1ec	0x295d8	ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+FLR+RXT_CHECKS+TRANSPORT	1	0xb8154e	handle_odp_event_on_sx: gvmi=0x%.4x, qpi=0x%.6x, req_res_=%d raising PAGE_FAULT event
+0004aecc	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004b0f0	A3	0001b1ec	0x2	INIT	1	None	
+0004b10c	A3	0001b1ec	0x2	INIT	1	None	
+0004b154	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004b5bc	A3	0001b1ec	0x2	INIT	1	0xb736c9	init_hca_alloc_res_range_by_blocks: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004c3c0	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004c59c	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004c7b8	Bcore	0002ac60	None	?	339	None	
+0004cb28	W5	0001b5e0	0x2	INIT	0	0xb59dbc	map_unmap_calc_vlq_sq_hop2_if_needed: (op<<28|ret<<16|gvmi)=0x%x vlq_sq_hop2_res_index=%llx schedq_ix=0x%x is_vlq_sq_hop2_index_allocated<<16|unmap_needed=0x%x
+0004d4ec	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004d6e4	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004d75c	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004d7cc	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004d7ec	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004f2d4	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+0004f910	Bcore	0002ac60	None	?	None	None	
+00051784	A3	0001b1ec	0x20	CMD_IF	0	0xb54641	open_close_dcr_free_list_data_cmdif: map_unmap_=0x%x, num_alloced_ctx = %d, start_index = %d
+000519ec	A3	0001b1ec	0x20	CMD_IF	0	0xb6ffb1	open_close_dcr_hash_cmdif:map_unmap_=0x%x, num_alloced_ctx = %d, start_index = %d
+00051cfc	Bcore	0002ac60	None	?	None	None	
+0005204c	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+00052c80	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+00052f9c	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+00054938	W5	0001b5e0	0x2	INIT	2	0xb7d106	teardown_hca: GVMI=%d - still in use pd0_is_in_use=0x%x, uar0_is_in_use=0x%x, xrcd0_is_in_use=0x%x, apu_pd_is_in_use=0x%x
+00054ad0	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+00054b3c	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+000551e4	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+000555a8	A3	0001b1ec	0x2	INIT	1	0xb4e949	alloc_res_internal_range: num_used_pages=0x%x, opmode=0x%x, icm_type=0x%x
+00056100	A2	0001b15c	0x2	INIT	0	0xb6c152	init_gvmi_fw_ctx_qpn_alloc_hint: start_hint=0x%x, hint_set=0x%x
+00056534	A3	0001b1ec	0x20	CMD_IF	0	0xb62959	init_gvmi_fw_ctx_vport_affiliation: gvmi=0x%.4x, sw_owner_id[0]=0x%x, sw_vhca_id=0x%x
+00056c3c	A2	0001b15c	0x2	INIT	2	None	
+00056ca8	A3	0001b1ec	0x2	INIT	2	None	
+00057510	W6	0001b6d8	0x20000	TRANSPORT	1	0xb4c607	gvmi_management_update_min_max_gvmi: init_teardown=%d gvmi=0x%x, new_min_gvmi=0x%x, new_max_gvmi=0x%x, is_first_gvmi_opened=%d, is_nodnic=0x%d
+00058eac	W6	0001b6d8	0x2	INIT	0	None	
+000590c0	B	0010a954	None	?	None	None	
+00059230	B	0010a954	None	?	None	None	
+00059af8	A2	0001b15c	0x2	INIT	0	0xb8164f	isr_host_chaining_lossless_handler: BEGIN. xoff_threshold %d WQEs, xon_threshold %d WQEs
+00059d3c	W5	0001b5e0	0x2	INIT	0	0xb5e6bf	isr_host_chaining_lossless_handler: lossless enable 0x%x, port 0 pf gvmi 0x%x is in flr state %d, port 1 pf gvmi 0x%x is in flr state %d
+0005a484	A3	0001b1ec	0x2	INIT	0	None	
+0005b40c	A2	0001b15c	0x4	ICM	1	0xb78d3e	teardown hca, gvmi = 0x%.4x, done_missions=0x%.8x
+0005b5c8	A2	0001b15c	0x2	INIT	1	0xb57ff9	wait for lite eq gvmi=%d, ll_s=%d
+0005b608	A0	0001b570	0x2	INIT	0	0xb7d1c1	wait for dct creation to be done
+0005bc8c	Bcore	0002ac60	None	?	339	None	
+0005c4e8	Bcore	0002ac60	None	?	None	None	
+0005c5ac	A3	0001b1ec	0x20	CMD_IF	0	0xb66717	write_try_lock_unlock_ste: lock_unlock_=0x%x, ste_ix=0x%x, ret=0x%x
+0005c820	B	0010a954	None	?	None	None	
+0005ca40	B	0010a954	None	?	None	None	
+0005cce8	B	0010a954	0x0		None	None	
+0005cd54	Bcore	0002ac60	None	?	339	None	
+0005f208	Bcore	0002ac60	None	?	339	None	
+0005f2c8	Bcore	0002ac60	None	?	339	None	
+0005f370	A2	0001b15c	0x1000000	STEERING	0	0xb5801b	enable_disable_gvmi_steering_ctrl: enable_disable_=0x%x, gvmi=0x%x
+0005f488	Bcore	0002ac60	None	?	339	None	
+0005f67c	Bcore	0002ac60	None	?	339	None	
+0005fb2c	B	0010a954	0x0		None	None	
+00060808	W5	0001b5e0	0x1000000	STEERING	0	0xb466d3	map_unmap_steering_table. opmode=0x%x, gvmi=0x%x, portid=0x%x, table=0x%x, size=0x%x
+00060f90	A2	0001b15c	0xffffc801	DEBUG_INIT+PWR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	2	None	
+000617fc	W5	0001b5e0	0x1000001	DEBUG_INIT+STEERING	0	None	
+00061874	W5	0001b5e0	0x1000000	STEERING	0	0xb5bfb8	search_for_ste_in_table: table_gvmi=0x%x, portid=0x%x, steering_table=0x%x, match_mode=0x%x, steering_search_result=0x%x
+00062618	W5	0001b5e0	0x1000000	STEERING	0	0xb52389	dmfs_get_num_valid_cache_lines_for_resource: gvmi=0x%x, res_type=0x%x, parent_res_type=0x%x, num_valid_entries=0x%x, log_cache_lines_per_entry=0x%x
+00062808	B	0010a954	0x16a8	ICM_FREE_LIST+CMD_IF+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+FLR	None	None	
+00062910	Bcore	0002ac60	None	?	0	None	
+00062958	A3	0001b1ec	0x1000000	STEERING	0	None	
+00062b0c	Bcore	0002ac60	None	?	339	None	
+00062c40	Bcore	0002ac60	None	?	339	None	
+00062d58	Bcore	0002ac60	None	?	339	None	
+00062ed4	B	0010a954	0x1	DEBUG_INIT	None	None	
+00062f6c	A2	0001b15c	0x1000000	STEERING	0	0xb59e5c	_steering_update_bypasses_for_gvmi: gvmi=0x%x, portid=0x%x
+0006310c	Bcore	0002ac60	None	?	339	None	
+00063284	B	0010a954	None	?	None	None	
+00064004	Bcore	0002ac60	None	?	339	None	
+00064dec	A2	0001b15c	0x1000000	STEERING	0	0xb7f5ce	build_mpfs_cache_tables_from_pfs_tables_inner: portid=0x%x, pfs_list_size=0x%x
+00064e60	Bcore	0002ac60	None	?	339	None	
+000652e0	Bcore	0002ac60	None	?	339	None	
+00065408	W5	0001b5e0	0x1000000	STEERING	0	None	
+00065b4c	Bcore	0002ac60	None	?	339	None	
+00066010	A2	0001b15c	0x83220000	TRANSPORT+PROFILING+STEERING+IFARM+bit31	0	0xb6df54	mpfs_reconstruct_merge_unmerge_cache: mpfs_merged=0x%x num_of_ports=0x%x
+0006cf14	B	0010a954	None	?	4294967295	None	
+0006cfbc	B	0010a954	None	?	None	None	
+0006d0a0	Bcore	0002ac60	None	?	339	None	
+0006d0e0	Bcore	0002ac60	None	?	339	None	
+0006d4f0	B	0010a954	0x0		0	None	
+0006d7cc	A3	0001b1ec	0x1000000	STEERING	0	0xb647a5	dmfs_init_teardown_gvmi_steering: gvmi=0x%x, portid=0x%x, init_teardown_,=0x%x
+0006dc10	B	0010a954	None	?	None	None	
+0006dc5c	Bcore	0002ac60	None	?	339	None	
+0006e038	B	0010a954	None	?	2	None	
+0006e060	W5	0001b5e0	0x1000000	STEERING	0	0xb7b0b5	DMFS ste_build_rx_nic_vport_lag_slave_head: lag_slave_gvmi=0x%x, lag_master_gvmi=0x%x, mc_uc_=0x%x, master_rx_vport_head_ix=0x%x, is_slave_gvmi_active=0x%x
+0006e2a8	A0	0001b570	0x1000000	STEERING	0	0xb62a6d	dmfs_enable_disable_lag_tx_affinity: DONE.
+0006e35c	B	0010a954	None	?	None	None	
+0006e398	A2	0001b15c	0x1000000	STEERING	0	None	
+0006e4f4	Bcore	0002ac60	None	?	339	None	
+0006e654	A2	0001b15c	0x1000000	STEERING	0	0xb7f6cb	dmfs_enable_disable_rx_vport_lag: DONE. enable_disable_=0x%x, gvmi=0x%x
+0006eb10	W6	0001b6d8	0x1000000	STEERING	0	0xb817d3	DMFS update_rx_steering_bypasses: gvmi=0x%x, portid=0x%x, esw_ix_on_port=0x%x, mpfs_exist=0x%x, mpfs_cache_en=0x%x, esw_bypass_en=0x%x
+0006eb60	B	0010a954	None	?	None	None	
+0006eba8	Bcore	0002ac60	None	?	339	None	
+0006ebf4	B	0010a954	0x0		None	None	
+0006ed14	B	0010a954	None	?	None	None	
+0006fcf8	B	0010a954	0x0		None	None	
+000706cc	B	0010a954	0x0		None	None	
+00070718	Bcore	0002ac60	None	?	339	None	
+00071100	A3	0001b1ec	0x1000000	STEERING	0	0xb816ff	dmfs_init_flow_sampler_stes: sample_ratio=0x%x, random_mask=0x%x, random_val=0x%x
+00072ab0	B	0010a954	0xef7e	INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+ICM_ACCESS+MAD+RXT_CHECKS	3	None	
+00073990	Bcore	0002ac60	None	?	339	None	
+00073a24	A3	0001b1ec	0x1000000	STEERING	0	0xb78d70	dmfs_enable_disable_wred_inner: esw_owner_gvmi=0x%x, portid=0x%x, steering_wred_enable_disable_=0x%x
+00073ce8	B	0010a954	None	?	None	None	
+00074080	W5	0001b5e0	0x1000000	STEERING	0	0xb83cfd	update_sx_steering_roots: esw_owner_gvmi=0x%x, portid=0x%x, lag_enable=0x%x, sx_gvmi_resolution_is_needed=0x%x, virt_bypass_enable=0x%x
+00074124	B	0010a954	None	?	None	None	
+000749a4	W5	0001b5e0	0x1000000	STEERING	0	0xb4a33b	DMFS update_rx_nic_vport_layer 2: vport_lag_enable=0x%x, is_gvmi_lag_capable=0x%x, esw_owner_gvmi=0x%x, esw_bypass_enable=0x%x, mpfs_exist=0x%x
+00074b98	B	0010a954	None	?	None	None	
+00074d50	W6	0001b6d8	0x1000000	STEERING	0	0xb4842f	DMFS update_sx_steering_bypasses: sx_ll_bypass_en=0x%x, roce_en=0x%x, sx_nic_ft_exist=0x%x, bmc_bypass_en=0x%x, sx_sniffer_enable=0x%x, mpfs_cache_en=0x%x
+00075264	A3	0001b1ec	0x1000000	STEERING	0	0xb83d85	ste_build_esw_uc_wred: building wred for gvmi %x hix %x lix %x wred
+00075694	A3	0001b1ec	0x1000000	STEERING	1	0xb5c163	update_nodnic_vport_sx_steering_bypasses: nodnic_gvmi=0x%x, portid=0x%x steering_vport_enable=0x%x
+00075e1c	A2	0001b15c	0x1000000	STEERING	1	0xb7009d	update_nodnic_vport_steering_bypasses(nodnic_gvmi=0x%x, portid=0x%x):: DONE.
+00076868	W5	0001b5e0	0x1000000	STEERING	1	0xb60778	enable_disable_nodnic_steering_promisc: enable_disable_=0x%x, gvmi=0x%x, portid=0x%x, mc_uc_=0x%x, ste_ix=0x%x
+00076a88	A3	0001b1ec	0x1000000	STEERING	1	0xb607e7	teardown_nodnic_steering: gvmi=0x%x, portid=0x%x, esw_ix_on_port=0x%x
+00076bb4	A3	0001b1ec	0x1000000	STEERING	0	0xb4ea00	DMFS add_entry_to_mpfs_cache: adding to mpfs_cache pool , ste_ix=0x%x, gvmi=0x%x, portid=0x%x
+00076d14	A2	0001b15c	0x100ffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+STEERING	1	0xb7b1ac	GET DMAC: ste_dmac=0x%llx
+00076dc4	W6	0001b6d8	0x1000000	STEERING	1	0xb71c14	set_get_nodnic_steering_mac_filter : set_get_=0x%x | gvmi=0x%x | hw_portid=0x%x | filter_ix=0x%x | hi_lo_=0x%x | mac_dw=0x%x
+00076ea8	W5	0001b5e0	0x1000000	STEERING	1	0xb4a3cb	get_nodnic_steering_mac_filter_if_valid : gvmi=0x%x | portid=0x%x | filter_ix=0x%x | ste_dmac=0x%llx
+000779e8	W5	0001b5e0	0x1008c4c	ICM+ICM_FREE_LIST+PHY_IB+PHY_MANAGER+PWR+RXT_CHECKS+STEERING	1	0xb7539d	build_and_write_self_lb_block_ste_to_pool: gvmi=0x%x, ste_ix=0x%x, hash_bucket_ix=0x%x, sqn=0x%x, find_res=0x%x
+00077ab8	A3	0001b1ec	0x1000000	STEERING	0	0xb59fdd	DMFS alloc_tir_ste: DONE (status: 0x%x). gvmi=0x%x, tir ste_ix=0x%x
+00077bd8	A2	0001b15c	0x1000000	STEERING	0	0xb4c8f6	DMFS dealloc_tir_ste: gvmi=0x%x, ste_ix=0x%x
+00077c6c	Bcore	0002ac60	None	?	None	None	
+0007802c	A3	0001b1ec	0x1000000	STEERING	0	0xb5475d	DMFS dmfs_modify_tir_self_lb_prevention_check_stes: gvmi=0x%x, tir_ste_ix=0x%x, start_pipe=0x%x
+00078240	W6	0001b6d8	0x1000000	STEERING	0	0xb4a430	DMFS dmfs_alloc_tir_lb_block_hash_entries_ste: gvmi=0x%x, td=0x%x, base_ix=0x%x, self_lb_filter_ste_ix=0x%x, tir_ste_ix=0x%x, sq_list_size=0x%x
+00078324	Bcore	0002ac60	None	?	None	None	
+0007844c	A2	0001b15c	0x1000000	STEERING	0	0xb66815	DMFS dmfs_dealloc_tir_lb_block_hash_ste: gvmi=0x%x, ste_ix=0x%x
+0007857c	A3	0001b1ec	0x1000000	STEERING	0	0xb7b1c6	DMFS set_tir_ste_direct: DONE. gvmi=0x%x, tir_ste_ix=0x%x, modify_bitmask=0x%x
+00078670	A3	0001b1ec	0x1000000	STEERING	0	0xb7f766	DMFS dmfs_set_tir_ste_indirect: DONE. gvmi=0x%x, tir_ste_ix=0x%x, modify_bitmask=0x%x
+00078b50	A3	0001b1ec	0x1000000	STEERING	0	None	
+00078d38	Bcore	0002ac60	None	?	339	None	
+00078ebc	B	0010a954	None	?	27246	None	
+00078fc0	Bcore	0002ac60	None	?	339	None	
+000791fc	A3	0001b1ec	0x1000000	STEERING	1	0xb6dfed	MPFS load balance update: gvmi=0x%x was removed, registered_esw_bitmask=0x%x, portid=0x%x
+0007990c	W5	0001b5e0	0x1000001	DEBUG_INIT+STEERING	0	0xb7b2d6	register_load_balance_mac: portid=0x%x, mac=0x%llx, gvmi=0x%x, gvmi_ref_count=0x%x
+00079b04	W5	0001b5e0	0x1000000	STEERING	0	0xb71c91	unregister_load_balance_mac: portid=0x%x, mac=0x%llx, gvmi=0x%x, gvmi_ref_count=0x%x
+00079bf0	A3	0001b1ec	0x1000000	STEERING	0	0xb7f7bc	DMFS remove_entry_from_mpfs_cache: removing from mpfs_cache pool , ste_ix=0x%x, gvmi=0x%x, portid=0x%x
+00079da0	W5	0001b5e0	0x1000000	STEERING	0	0xb4ea5e	DMFS add_l2_table_entry_to_steering_table: mpfs_merged=0x%x, gvmi=0x%x, mpfs_portid=0x%x, portid=0x%x, table_Index=0x%x
+0007a0c0	W6	0001b6d8	0x1000000	STEERING	0	0xb484ca	DMFS remove_l2_table_entry_from_steering_table: gvmi=0x%x, sx_rx_=0x%x, ste_ix=0x%x, vlan_valid=0x%x, mpfs_cache_en=0x%x, table_index=0x%x
+0007a11c	W5	0001b5e0	0x1000000	STEERING	0	0xb8185a	DMFS remove_l2_table_entry_from_steering_table: mpfs_merged=0x%x, gvmi=0x%x, mpfs_portid=0x%x, portid=0x%x, table_Index=0x%x
+0007a6fc	A3	0001b1ec	0x1000000	STEERING	0	0xb71ce6	DMFS dmfs_delete_l2_table_entry: DONE. gvmi=0x%x, mpfs_cache_old_state=0x%x, mpfs_cache_new_state=0x%x
+0007a8e8	W6	0001b6d8	0x1000000	STEERING	0	0xb78e7c	steering_is_mac_vlan_loopback: DONE. portid=0x%x, mac=0x%llx, vlan_exist=0x%x, vlan_id=0x%x, res=0x%x
+0007b2c0	B	0010a954	0x0		1	None	
+0007b33c	B	0010a954	0x0		None	None	
+0007b438	W5	0001b5e0	0x1000002	INIT+STEERING	0	0xb5241d	DMFS dmfs_enable_disable_bmc_loopback_entry: enable_disable_=0x%x, portid=0x%x, index=0x%x, dmac=0x%llx
+0007b850	W5	0001b5e0	0x1000000	STEERING	0	0xb6a448	DMFS dmfs_dealloc_rqt_hw_data: gvmi=0x%x, res_num=0x%llx, rqt_hw_data_ix=0x%x, alloc_rss_type=0x%x
+0007be58	A2	0001b15c	0x1000000	STEERING	1	0xb702d8	set_roce_entry tagged gvmi=0x%x, ste_ix=0x%x
+0007beb0	A3	0001b1ec	0x1000000	STEERING	1	0xb48555	set_roce_entry untagged_allowed=0x%x, l2_addr->sx_insert_vlan=0x%x, l2_addr->vlan_id=0x%x
+0007c014	A2	0001b15c	0x1000000	STEERING	1	0xb5c1c6	set_roce_entry untagged gvmi=0x%x, ste_ix=0x%x
+0007c6cc	Bcore	0002ac60	None	?	None	None	
+0007c7e4	W6	0001b6d8	0x1000000	STEERING	0	0xb668db	sw2hw_header_modify_set_action: sw_field=0x%x, hw_field=0x%x, sw_offset=0x%x, hw_offset=0x%x, hw_length=0x%x, data=0x%x
+0007c8cc	W5	0001b5e0	0x1000000	STEERING	0	0xb7f823	sw2hw_header_modify_add_action: sw_field=0x%x, hw_field=0x%x, hw_offset=0x%x, hw_length=0x%x, data=0x%x
+0007cac8	W5	0001b5e0	0x1000000	STEERING	0	0xb818d7	sw2hw_header_modify_copy_action - COPY: hw_src_field=0x%x, hw_src_offset=0x%x, hw_dst_field=0x%x, hw_dst_offset=0x%x, hw_length=0x%x
+0007cc8c	W6	0001b6d8	0x1000000	STEERING	0	0xb7540d	hw2sw_modify_action - SET: sw_field=0x%x, hw_field=0x%x, sw_offset=0x%x, hw_offset=0x%x, length=0x%x, inline_data=0x%x
+0007cd8c	W5	0001b5e0	0x1000000	STEERING	0	0xb4a4fb	hw2sw_modify_action - COPY: sw_src_field=0x%x, sw_src_offset=0x%x, sw_dst_field=0x%x, sw_dst_offset=0x%x, sw_length=0x%x
+0007d1c4	A3	0001b1ec	0x1000000	STEERING	0	0xb754b9	copy_modify_header_action_to_icm: gvmi=0x%x, modify_header_id=0x%x, num_of_sw_actions=0x%x
+0007d48c	B	0010a954	0x2	INIT	4	None	
+0007d7a0	W5	0001b5e0	0x1000000	STEERING	0	0xb7d40f	dmfs_add_reformat_md_ste_to_table: DONE. esw_owner_gvmi=0x%x, portid=0x%x, metadata_ctrl=0x%x, metadata_value=0x%x, encap_size=0x%x
+0007d8f0	A3	0001b1ec	0x1000000	STEERING	0	0xb6e047	dmfs_remove_ste_from_hairpin_sx_metadata_table: DONE. esw_owner_gvmi=0x%x, portid=0x%x, pool_ste_ix=0x%x
+0007e208	Bcore	0002ac60	None	?	None	None	
+0007e444	Bcore	0002ac60	None	?	339	None	
+0007e59c	B	0010a954	None	?	None	None	
+0007e7ec	A3	0001b1ec	0x1000000	STEERING	0	0xb524eb	DMFS dmfs_enable_disable_uplink_vport: DONE. enable_disable_=0x%x, gvmi=0x%x, portid=0x%x
+0007eaa8	A3	0001b1ec	0x1000000	STEERING	0	0xb8195c	DMFS dmfs_remove_old_vport_uc_address_list: DONE. gvmi=0x%x, portid=0x%x, old_list_size=0x%x
+0007eb74	W5	0001b5e0	0x1000000	STEERING	0	0xb819b9	DMFS dmfs_set_vport_uc_address: DONE. gvmi=0x%x, portid=0x%x, offset=0x%x, dmac=0x%llx
+0007edd4	Bcore	0002ac60	None	?	339	None	
+0007fe4c	W5	0001b5e0	0x8	ICM_FREE_LIST	0	0xb75514	query_freelist_is_someone_busy_no_prefix gvmi=%.4x type=%d first_idx=0x%llx log2_cyclewrap: %d
+00080314	A3	0001b1ec	0x8	ICM_FREE_LIST	0	0xb70305	init_evaluate_lmh_cntrs, gvmi=0x%.4x, init_eval=%d, num_pages=%d
+000804d4	A2	0001b15c	0x8	ICM_FREE_LIST	0	0xb5e849	init_evaluate_freelist: init_evaluate_ %d num_pages: %x
+000809bc	W5	0001b5e0	0x2000	ICM_ACCESS	0	0xb5c1f5	get_idx_recommendation_from_freelist_bitmap: gvmi: 0x%.4x (look4free << 31 | type): 0x%.8x search_hint: 0x%llx, log2space: %d
+000814e4	A3	0001b1ec	0x8	ICM_FREE_LIST	0	None	
+000816bc	W5	0001b5e0	0x8	ICM_FREE_LIST	0	0xb770d2	lmh_access_inner: op|most_distal_lmh|log_numof_cntrs|log2bytes=0x%.8x, numof_bytes=0x%llx, icm_addr=0x%llx
+0008197c	W5	0001b5e0	0x8	ICM_FREE_LIST	0	None	
+00081b84	W5	0001b5e0	0x8	ICM_FREE_LIST	0	0xb4c955	query_freelist_direct_lm lm: %d qw =0x%llx, final_mask = 0x%llx
+00081cd0	W5	0001b5e0	0x8	ICM_FREE_LIST	0	0xb50933	take_idx_from_freelist_bitmap, gvmi=0x%x (alloc_64_res_init_hca << 31 | type)=0x%.8x idx=0x%llx log_bulk_size = 0x%x
+00082720	Bcore	0002ac60	None	?	12	None	
+000827a8	W5	0001b5e0	0x4000000	ICMD	0	0xb669c1	get_open_resources: gvmi 0x%x res_type 0x%x, res_num 0x%llx log_array_length: %d
+00082d58	Bcore	0002ac60	None	?	None	None	
+00082f90	Bcore	0002ac60	None	?	None	None	
+0008300c	Bcore	0002ac60	None	?	None	None	
+00083298	Bcore	0002ac60	None	?	None	None	
+00083964	W6	0001b6d8	0x2000	ICM_ACCESS	0	0xb66a4c	rw_dummy_address: rw_=%x , addr=0x%llx, idx=0x%x, data=0x%llx
+00083f5c	W6	0001b6d8	0x2000	ICM_ACCESS	0	0xb46833	map_unmap_hop_in_icm op=%d hop=%d addr=0x%llx bytes=0x%x dummy_data_low=0x%.8x
+00085a54	W6	0001b6d8	0x2000	ICM_ACCESS	0	0xb70475	alloc_resource: gvmi 0x%x, type 0x%x, res_num 0x%llx, alloc_64_res_for_init_hca %d, num_pages %d
+00085b78	A3	0001b1ec	0x2000	ICM_ACCESS	0	0xb6a4e5	 alloc_resource recommendation type 0x%x, recommendation res_idx=0x%x, res_idx_hint=0x%x
+00086fc0	A2	0001b15c	0x2000	ICM_ACCESS	0	None	
+000873ec	A3	0001b1ec	0x2000	ICM_ACCESS	3	0xb5e907	is_global_dummy_dirty:  found dirty page gvmi 0x%x, addr=0x%llx
+00087698	A3	0001b1ec	0x2000	ICM_ACCESS	0	0xb78f23	destroy_icm_resources_in_hop: gvmi: 0x%x res_type=0x%x hop=%d
+00087890	W6	0001b6d8	0x2000	ICM_ACCESS	0	None	
+00087e4c	W5	0001b5e0	0x2000	ICM_ACCESS	0	None	
+00088308	Bcore	0002ac60	0x0		None	None	
+000884ec	A2	0001b15c	0x2000	ICM_ACCESS	0	0xb509d8	init_teardown_hca_gvmix, gvmi = 0x%.4x hca_gvmix_state = %d
+0008867c	A2	0001b15c	0x2000	ICM_ACCESS	1	0xb6c48d	pre_init_manage_pages 1) gvmi=0x%.4x, num_pages=0x%x
+00088804	A2	0001b15c	0x2000	ICM_ACCESS	0	None	
+00088fe0	A2	0001b15c	0x1000	FLR	1	0xb6a53e	 disable_hca, gvmi=0x%x num_used pages=%d (should be 0)
+000892e8	A2	0001b15c	0x1000	FLR	0	0xb66a8a	disable_hca, triggering event with num_pages=%d, ret=%d
+000894a8	A2	0001b15c	0x20	CMD_IF	0	0xb4a62b	query_pages_common: gvmi<<16,input_gvmi = 0x%x, input->embedded_cpu_function<<31, page_supplier<<16,input_func_id = 0x%x
+0008984c	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb7725c	pre_init_hca_commands, gvmi=0x%x, opcode= 0x%x, ix=0x%x
+0008aa34	Bcore	0002ac60	None	?	4	None	
+0008aaa8	Bcore	0002ac60	None	?	None	None	
+0008ae24	W5	0001b5e0	0x100000	CMD_DRIVER	1	0xb46973	
+0008b070	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb5c2cf	gvmi=0x%x, _check_and_trigger_event, free=%d, order_value=%d
+0008b2b4	A2	0001b15c	0x100000	CMD_DRIVER	0	0xb7d557	
+0008b514	A3	0001b1ec	0x4	ICM	1	0xb71f90	
+0008b6e0	A2	0001b15c	0x100000	CMD_DRIVER	0	0xb46a08	
+0008b9e0	W5	0001b5e0	0x4	ICM	0	0xb66ac2	Return pages:  page_owner_gvmi=0x%x, Return_count(%d). Free count(%d), threshold=(%d), input_gvmi=0x%x
+0008bbd0	A2	0001b15c	0x2	INIT	1	0xb5c30c	
+0008bc34	A2	0001b15c	0x2	INIT	1	0xb7f9b1	
+0008e464	Bcore	0002ac60	None	?	None	None	
+0008ee20	A2	0001b15c	0x20000	TRANSPORT	1	0xb64974	clear_dcr_odp_event: took=%d seconds dcrn=0x%x
+0008f058	Bcore	0002ac60	None	?	None	None	
+0008f5f8	Bcore	0002ac60	None	?	None	None	
+0008f6c8	Bcore	0002ac60	None	?	None	None	
+00090c14	Bcore	0002ac60	None	?	None	None	
+00091134	B	0010a954	None	?	None	None	
+000912c8	A3	0001b1ec	0x4	ICM	0	0xb4a715	test_remote_res_and_get_dest_gvmi_and_id: alias resource do not have gen_ext_ctx allocated. alias_gvmi=%d  uid_ref_count_as_dw[<0>=0x%.8x, <1>=0x%.8x] 
+00091350	B	0010a954	None	?	None	None	
+00092de4	A3	0001b1ec	0x48ce5	DEBUG_INIT+ICM+CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_MANAGER+PWR+RXT_CHECKS+FW_LL	3	0xb548b9	list_pop_head: enable_lite_qp=0x%x, log_max_lite_qp_size=0x%x, force_disable_dw=0x%.8x
+00092e48	A3	0001b1ec	0x40000	FW_LL	3	0xb6c4e8	list_pop_head: element.list_ix=0x%x, list_ix=0x%x, second time status=0x%x
+00092ed0	Bcore	0002ac60	0xe0	CMD_IF+PHY_IB+PHY_RX_ADAP	None	None	
+00092fe0	A3	0001b1ec	0x40000	FW_LL	3	0xb71fd0	list_pop_head: element.list_ix=0x%x, list_ix=0x%x, thired time status=0x%x
+00093f70	A3	0001b1ec	0x20000	TRANSPORT	3	0xb7201b	check dct_lag_scan_in_process = 1, from caller function enum: %d, gvmi=0x%x, dct_num(for dct funcs)=0x%x
+00093f94	A3	0001b1ec	0x20000	TRANSPORT	4294935337	0xb7201b	check dct_lag_scan_in_process = 1, from caller function enum: %d, gvmi=0x%x, dct_num(for dct funcs)=0x%x
+00094008	A3	0001b1ec	0x20000	TRANSPORT	3	0xb7201b	check dct_lag_scan_in_process = 1, from caller function enum: %d, gvmi=0x%x, dct_num(for dct funcs)=0x%x
+00095ba4	A2	0001b15c	0x20000	TRANSPORT	0	0xb78fac	send_driver_sync_reset_event: gvmi: %#x, pci_sync_for_fw_update_rst_state: %#x
+00095c58	A3	0001b1ec	0xff020000	TRANSPORT+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb54910	send_object_change_event: gvmi: %#x, obj_id: %#x, obj_type: %#x
+0009619c	W5	0001b5e0	0x20000	TRANSPORT	0	0xb560fe	send_affiliated_event: gvmi: %#x, context_index: %#x, event_type: %#x, event_sub_type: %#x, status: %d
+000970a4	B	0010a954	None	?	None	None	
+00097cb8	B	0010a954	None	?	None	None	
+00098328	W6	0001b6d8	0x4000	MAD	0	None	
+00098538	B	0010a954	None	?	None	None	
+000988e4	A3	0001b1ec	0x4000	MAD	0	0xb688da	event_manager_done: portid %d, vport_num=0x%x, more_missins=0x%x
+00098bf8	A3	0001b1ec	0x4000	MAD	0	0xb46bab	isr_generate_port_events: try to gen event: vport_num=0x%x, portid=%d, event_num=0x%x
+00099f28	B	0010a954	0x8	ICM_FREE_LIST	None	None	
+0009a22c	A2	0001b15c	0x20000	TRANSPORT	0	None	
+0009a25c	A3	0001b1ec	0x20000	TRANSPORT	0	None	
+0009a640	B	0010a954	0x82b4	ICM+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_COMMON+RXT_CHECKS	3	None	
+0009a8e8	A2	0001b15c	0x20000	TRANSPORT	0	0xb7b557	push_slow_restart_cnps: gvmi=0x%.4x, qpi=0x%.6x
+0009ab6c	Bcore	0002ac60	None	?	None	None	
+0009ae20	Bcore	0002ac60	None	?	None	None	
+0009b04c	A2	0001b15c	0x20000	TRANSPORT	0	0xb81b06	sched_int_cause_handler gvmi=0x%.4x, pushing qp 0x%.6x to scanning queue
+0009b27c	A3	0001b1ec	0x20000	TRANSPORT	0	0xb704d6	inc_read_vf_flick_objections_counter: gvmi=0x%.4x, counter: 0x%x, inc=0x%x
+0009b738	A3	0001b1ec	0xffff8763	DEBUG_INIT+INIT+CMD_IF+PHY_IB+LIBFHI+PHY_COMMON+PHY_MANAGER+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb6891b	pf_flick_enable: gvmi=0x%.4x, counter: 0x%x, inc=0x%x
+0009b958	B	0010a954	None	?	0	None	
+0009c09c	W6	0001b6d8	0x20000	TRANSPORT	0	0xb5c448	is_max_qp_retry_freq_exceeded : gvmi=0x%x qpi=0x%x, period=%d max_period=%d retry_count=%d max_retry_limit=%d
+0009c264	A3	0001b1ec	0x20000	TRANSPORT	0	0xb46c01	handle_retry_counters: rx_heartbeat=%d, progress_since_last_retry=%d, adp_retrans_reset_counter=%d
+0009cb04	Bcore	0002ac60	None	?	None	None	
+0009cc5c	A2	0001b15c	0x20000	TRANSPORT	0	0xb583c1	flushing_qp_apm_decisions: now migrating. gvmi=0x%.4x qpi=0x%.6x
+0009cdb0	A3	0001b1ec	0x20000	TRANSPORT	0	0xb68951	handle_scanning_q_exp_backoff_recovery: gvmi: 0x%x, qpi: 0x%x, change_gran: %d
+0009ce7c	A3	0001b1ec	0x20000	TRANSPORT	0	0xb6c58c	scanning_q_slow_restart: gvmi=0x%.4x, req_res_=%d, qpi=0x%.6x, pushing CNP
+0009d08c	A3	0001b1ec	0x20000	TRANSPORT	0	0xb60a30	handle_scanning_q_cc_slow_start req: ci=0x%x, fw wqe_index_timestamp=0x%x, current=0x%x
+0009d368	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0009da14	A2	0001b15c	0x20000	TRANSPORT	0	0xb790a5	bad_nack_was_sent: gvmi=0x%x qpi=0x%x
+0009dbc8	Bcore	0002ac60	None	?	None	None	
+0009e2b8	Bcore	0002ac60	None	?	None	None	
+0009e358	W6	0001b6d8	0x20000	TRANSPORT	0	0xb50b47	qpflush_end: gvmi=0x%.4x req_res_=%d qpi=0x%.6x syndrome=0x%.2x state=0x%.2x, chilling_granularity=0x%x
+0009e458	W6	0001b6d8	0x20000	TRANSPORT	0	0xb50b47	qpflush_end: gvmi=0x%.4x req_res_=%d qpi=0x%.6x syndrome=0x%.2x state=0x%.2x, chilling_granularity=0x%x
+0009e4c8	Bcore	0002ac60	None	?	None	None	
+0009e6c0	A0	0001b570	0x20000	TRANSPORT	0	0xb66bdc	qpflush_start: was not in Q
+0009e700	A0	0001b570	0x20000	TRANSPORT	0	0xb5c528	qpflush_start: already in Q 
+0009eed4	Bcore	0002ac60	None	?	None	None	
+0009ef8c	A2	0001b15c	0x26b8e	INIT+ICM+ICM_FREE_LIST+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PWR+ICM_ACCESS+MAD+TRANSPORT	0	0xb5a1db	qpflush_start: gvmi: 0x%.4x, qpi: 0x%.6x, bypassing scanning Q - not in queue
+0009efac	A2	0001b15c	0x20af9	DEBUG_INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_COMMON+PWR+TRANSPORT	0	0xb66b8e	qpflush_start: gvmi: 0x%.4x, qpi: 0x%.6x, can't bypass scanning Q - in buffer
+0009f1e0	Bcore	0002ac60	None	?	None	None	
+0009f858	Bcore	0002ac60	None	?	None	None	
+0009fa78	W6	0001b6d8	0x20000	TRANSPORT	0	0xb6e156	qpflush_end_after_resolution: req_res_=%d gvmi=0x%.4x qpi=0x%.6x syndrome=0x%.2x state=0x%.2x sched_int_clr=%d
+0009fbd4	A3	0001b1ec	0x20000	TRANSPORT	0	0xb70560	qpflush_end_after_resolution: push_db: sched_cause=0x%x, gvmi=0x%x, qpi=0x%x
+0009fe60	Bcore	0002ac60	None	?	None	None	
+0009ff04	Bcore	0002ac60	0x6bf8	ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PWR+ICM_ACCESS+MAD	None	None	
+000a01d4	A3	0001b1ec	0x20000	TRANSPORT	3	0xb5622f	dump info initiated by qp flush_syndrome=0x%x  hw_syndrome=0x%x req_res=%u
+000a2c00	A2	0001b15c	0x20	CMD_IF	1	0xb5ea3c	isr_chipflush_fsm, chipflush_fsm_ps=0x%x, busy_counter=%d
+000a3cf8	A2	0001b15c	0x20	CMD_IF	0	0xb68a01	isr_lro_flush, lro_flush_fsm_ps=0x%x, busy_counter=%d
+000a4c28	A2	0001b15c	0x1000	FLR	0	0xb5a229	isr_standby_handler: exit_enter_=%d, standby_progress_stage=%d
+000a6598	A3	0001b1ec	0x20	CMD_IF	0	0xb46c64	flow_ctrl_modify_profile_fw: portid=0x%x. current_pause_profile=0x%x, wanted_pause_profile=0%x
+000a65c0	W5	0001b5e0	0x20	CMD_IF	0	0xb7fa22	flow_ctrl_modify_profile_fw: portid=0x%x. tx_per_prio_valid_mask= 0x%x, tx_per_prio_pause_mask=0x%x, rx_per_prio_valid_mask= 0x%x, rx_per_prio_pause_mask=0x%x.
+000a66ec	A3	0001b1ec	0x20	CMD_IF	0	0xb562b2	flow_ctrl_modify_profile_sw: portid=0x%x. current_pause_profile=0x%x, wanted_pause_profile=0%x
+000a6714	W5	0001b5e0	0x20	CMD_IF	0	0xb7d65e	flow_ctrl_modify_profile_sw: portid=0x%x. tx_per_prio_valid_mask= 0x%x, tx_per_prio_pause_mask=0x%x, rx_per_prio_valid_mask= 0x%x, rx_per_prio_pause_mask=0x%x.
+000a6f7c	A2	0001b15c	0x20	CMD_IF	0	0xb64a5c	port_hal_set_get_pbmc: set_get_=%d, portid=%d
+000a7930	W6	0001b6d8	0x100000	CMD_DRIVER	0	0xb58434	cmdif_dbase_flush: flush_action=0x%x, vector=%.8x, old_dw1=%.8x, old_dw0=%.8x, new_dw1=%.8x, new_dw0=%.8x
+000aa130	A0	0001b570	0x101b76	INIT+ICM+HOST_MNG+CMD_IF+PHY_IB+LIBFHI+PHY_COMMON+PWR+FLR+CMD_DRIVER	2	None	
+000aa7b8	Bcore	0002ac60	None	?	None	None	
+000aa844	Bcore	0002ac60	None	?	None	None	
+000aad9c	A3	0001b1ec	0x100000	CMD_DRIVER	2	0xb73bc1	cmdif_driver: pre_init commands failure gvmi=0x%x, syndrome=0x%.8x, opcode=0x%x
+000aaec4	A2	0001b15c	0x100000	CMD_DRIVER	2	0xb4cad3	cmdif_driver embedded: ecmd commands failure gvmi=0x%x, syndrome=0x%.8x
+000abadc	A2	0001b15c	0x100000	CMD_DRIVER	1	0xb72132	cmdif_driver: 7) done           dbase_entry_ix=0x%.8x, cmd_ret = 0x%x
+000abafc	A3	0001b1ec	0x10575f	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+MAD+CMD_DRIVER	1	0xb72132	cmdif_driver: 7) done           dbase_entry_ix=0x%.8x, cmd_ret = 0x%x
+000abb34	W5	0001b5e0	0x100000	CMD_DRIVER	1	0xb50baf	cmdif_driver: 1) read command, [uid,gvmi]= (0x%.8x), opcode=(0x%.4x), opcode_mod=(0x%x), input_ix=(0x%x), ctx->missions=0x%.8x
+000abb54	A2	0001b15c	0x100000	CMD_DRIVER	1	0xb5a268	cmdif_driver: 2) get_op_prop opcode=(0x%.4x) op_prop.cmd_missions = %.8x
+000abbd4	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb6a666	cmdif_driver: 5) ctx.missions = 0x%x, more_missions=0x%x, hdr->input_inline.ix=%.8x
+000abc60	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb487b3	cmdif_driver: 6) wr cmd to mem  dbase_entry_ix=0x%.8x dbase_entry=0x%.8x toc.hca_state = 0x%x
+000abc90	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb720e9	cmdif_driver: 3) allocate_pages_req: %d / %d, ctx.allocated_pages=0x%.8x
+000ac114	A2	0001b15c	0x100000	CMD_DRIVER	1	0xb6a6ba	cmdif_driver: 8) CMD_DB_EVENT_NEEDED: sw_eqn 0x%.8x, [is_ecmd,gvmi]=0x%.8x
+000ac2ac	A3	0001b1ec	0x100000	CMD_DRIVER	1	0xb62bc4	cmdif_driver: final_state dbase_entry_ix=0x%.8x dbase_entry=0x%.8x, cmd_ret=%d
+000ac2c8	A2	0001b15c	0xffffa316	INIT+ICM+HOST_MNG+LIBFHI+PHY_COMMON+ICM_ACCESS+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb62bc4	cmdif_driver: final_state dbase_entry_ix=0x%.8x dbase_entry=0x%.8x, cmd_ret=%d
+000ac87c	Bcore	0002ac60	0x4240	PHY_IB+PHY_COMMON+MAD	None	None	
+000ac8cc	Bcore	0002ac60	0x4280	PHY_RX_ADAP+PHY_COMMON+MAD	None	None	
+000ad690	A2	0001b15c	0x20	CMD_IF	0	0xb7fb30	enable_hca_post_init: gvmi=0x%.8x, input_gvmi=0x%.8x
+000add3c	A2	0001b15c	0x20	CMD_IF	0	0xb6a705	disable_hca_post_init: gvmi=0x%.8x, input_gvmi=0x%.8x
+000adef0	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+000ae79c	A2	0001b15c	0x20	CMD_IF	1	0xb72178	copy_mtts: fast copy, num_cachelines=%d, num mtts=%d
+000ae818	A3	0001b1ec	0x20	CMD_IF	1	0xb64ab7	copy_mtts: slow after fast, num_of_unaligned_mtts=%d, start_mtt_ix=0x%llx
+000ae9ec	W5	0001b5e0	0x20	CMD_IF	1	0xb4a7e9	map_unmap_asynchronous_events map_unmap_=%d, gvmi: 0x%.4x, sw_eqn = 0x%.6x, event_bitmask=0x%llx
+000b0578	A2	0001b15c	0x20	CMD_IF	1	0xb66d0b	create_eq mtt res type = 0x%.8x num mtts = 0x%.8x
+000b23a8	A0	0001b570	0x20	CMD_IF	0	0xb7d6fe	resize_cq: still fencing on Special CQE
+000b2460	A3	0001b1ec	0x20	CMD_IF	0	0xb54989	resize_cq: pi=0x%x ci=0x%x size=0x%x
+000b24c8	A2	0001b15c	0x20	CMD_IF	1	0xb5c665	resize_cq, failed required free CQEs test. pi=0x%x ci=0x%x 
+000b2958	A0	0001b570	0x20	CMD_IF	0	0xb549ae	resize_cq: failed taking CQE GW lock to write Special CQE
+000b2a7c	A0	0001b570	0x20	CMD_IF	0	0xb73c49	resize_cq: wrote Special CQE
+000b364c	Bcore	0002ac60	None	?	None	None	
+000b4e4c	Bcore	0002ac60	None	?	339	None	
+000b50f8	Bcore	0002ac60	None	?	339	None	
+000b56f0	Bcore	0002ac60	0x1	DEBUG_INIT	64	None	
+000b5a60	Bcore	0002ac60	None	?	None	None	
+000b5ae4	Bcore	0002ac60	0x3be0000	TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+FLASH+STEERING+IFARM	None	None	
+000b68fc	Bcore	0002ac60	None	?	None	None	
+000b6984	Bcore	0002ac60	None	?	None	None	
+000b6c04	Bcore	0002ac60	None	?	None	None	
+000b77e4	Bcore	0002ac60	None	?	None	None	
+000b81a4	A2	0001b15c	0x20	CMD_IF	0	0xb6a780	create srq, mtt res type = 0x%.8x num mtts = 0x%.8x
+000b8fb0	B	0010a954	None	?	None	None	
+000b9034	W5	0001b5e0	0x20	CMD_IF	0	0xb5a3fa	updated vhca_state: from=%d, to=%d, esw_owner_gvmi=0x%x, input_gvmi=0x%x, event_req=%d 
+000b9470	W5	0001b5e0	0x20	CMD_IF	0	0xb7fb65	modify_vhca_state: gvmi=0x%x, function_id=0x%x, input_gvmi=0x%x, event_required=%d, field_select=%x
+000b95b8	A3	0001b1ec	0x20	CMD_IF	0	0xb7d726	query_esw_functions: gvmi=0x%x, ext_host_pf_gvmi=0x%x, ext_host_pf_disabled=%d
+000b9604	A3	0001b1ec	0x20	CMD_IF	0	0xb7d726	query_esw_functions: gvmi=0x%x, ext_host_pf_gvmi=0x%x, ext_host_pf_disabled=%d
+000b98a0	A3	0001b1ec	0x20	CMD_IF	1	0xb5eaad	
+000bc9bc	A3	0001b1ec	0x20	CMD_IF	0	0xb584db	reg_access_pptb. is_all_prio_3_bits: pptb->prio%dbuff=%d invalid value (over 3 bits). mask_dw=0x%x
+000bd0c8	A3	0001b1ec	0x20	CMD_IF	0	0xb7d775	reg_access_vhca_icm_ctrl. gvmi=%d, vhca_id=%d, rw_=%d
+000bf96c	W5	0001b5e0	0x20	CMD_IF	0	0xb56373	reg_access_port_flow_ctrl: READ - portid= 0x%x, pfctx=0x%x, aptx=0x%x, pfcrx=0x%x, aprx=0x%x
+000bfc84	W5	0001b5e0	0x20	CMD_IF	0	0xb6e2a4	reg_access_port_flow_ctrl: WRITE - portid= 0x%x, pptx=0x%x, prio_mask_tx=0x%x, pprx=0x%x, prio_mask_rx=0x%x
+000bfd1c	A3	0001b1ec	0x20	CMD_IF	0	0xb6c670	reg_access_port_flow_ctrl: READ - portid= 0x%x, pfctx=0x%x, pfcrx=0x%x
+000bfdd8	A3	0001b1ec	0x20	CMD_IF	0	None	
+000c2360	A2	0001b15c	0x20	CMD_IF	0	0xb5853e	ncfg_is_roce_offload_disable: gvmi=%d, block_roce_cap=0x%x
+000c37ec	W6	0001b6d8	0x10002	INIT+I2C	0	0xb6e33d	reg_access_qshr : curr_gvmi=%d, port=%d host=%d rw_=%d rate_to_config_100mbps=%d fr=%d 
+000c3b48	A2	0001b15c	0x20	CMD_IF	0	None	
+000c5118	W6	0001b6d8	0x20	CMD_IF	0	0xb4ecd2	reg_access_roce_accl end: gvmi=%d, roce_slow_restart_idle_field_select=%d, roce_slow_restart_field_select=%d, roce_tx_window_field_select=%d, roce_adp_retrans_field_select=%d, min_ack_timeout_limit_di
+000c5144	W5	0001b5e0	0x20	CMD_IF	0	0xb4edb1	reg_access_roce_accl end: roce_slow_restart_idle_en=%d, roce_slow_restart_en=%d, roce_tx_window_en=%d, roce_adp_retrans_en=%d, min_ack_timeout_limit_disabled=%d
+000c73bc	A2	0001b15c	0x20	CMD_IF	0	0xb73c66	reg_access_nic_cap_ext_reg: gvmi=%d cap_grp=%d
+000c756c	A3	0001b1ec	0x20	CMD_IF	0	0xb757be	check_and_exec_access_register: gvmi=0x%x, reg_id=0x%x, rw_=%d
+000ca5a8	A2	0001b15c	0x20	CMD_IF	0	0xb5eae2	set_monitor_counter: gvmi=0x%.4x, num_of_counters=0x%.4x
+000cac70	A3	0001b1ec	0x20	CMD_IF	0	0xb6e395	arm_resource_dump_event: gvmi=0x%.4x, segment_type=0x%.4x, vhca_id=0x%.4x
+000cb198	A3	0001b1ec	0x20	CMD_IF	0	0xb706b2	query_hca_vport_context: esw_ctx_gvmi=0x%x, portid=%d, vport_num=%d, 
+000cb530	W5	0001b5e0	0x40000000	VIRT	0	0xb66d3d	query_hca_vport_context: vport_ctx.esw_state=0x%x, vport_ctx.nic_state=0x%x, ib_port_info.port_state=0x%x, take_phy_state=%d, sm_virt_aware=%d
+000cb590	B	0010a954	0xffffffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	None	
+000cbcdc	B	0010a954	0xffffffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb4a866	field_select=0x%.8x, field_select_2=0x%x, writable_field_select_2=0x%x, sw_policy=0x%x
+000cbda0	A2	0001b15c	0x40000000	VIRT	0	0xb5269b	modify_hca_vport_context: port_guid has been set 0x%llx, 
+000cbdd4	A2	0001b15c	0x40000000	VIRT	0	0xb840f1	modify_hca_vport_context: node_guid has been set 0x%llx, 
+000cbe08	W5	0001b5e0	0x20	CMD_IF	0	0xb5c706	
+000cc0fc	A2	0001b15c	0x40000001	DEBUG_INIT+VIRT	0	0xb526d5	modify_hca_vport_context: vport_state_policy has been set policy=0x%x (old_policy=0x%x
+000cd0ac	Bcore	0002ac60	None	?	339	None	
+000cd738	W5	0001b5e0	0x20	CMD_IF	1	0xb4ee52	query_vport_counter: vport_gvmi=0x%x, portid=%d, other_vport=%d, vport_number=0x%x, clear=%d
+000ce114	A3	0001b1ec	0x20	CMD_IF	1	0xb5272c	set_driver_version: Driver version sync event sent to PF. gvmi=0x%x pf_gvmi=0x%x sync=%d
+000ce130	A0	0001b570	0x20	CMD_IF	2	0xb5272c	set_driver_version: Driver version sync event sent to PF. gvmi=0x%x pf_gvmi=0x%x sync=%d
+000cebc0	W5	0001b5e0	0x20	CMD_IF	1	0xb48968	set_pp_rate_limit: gvmi = 0x%x, portid = 0x%x, rate_limit_index = 0x%x, rate_limit = %lu, burst_upper_bound = %lu
+000cec38	W5	0001b5e0	0x20	CMD_IF	1	0xb7b5fe	set_pp_rate_limit: gvmi = 0x%x, rate_limit_index = 0x%x, rate_mode = 0x%x, ret = 0x%x, needed_pages = 0x%x
+000ced74	W6	0001b6d8	0x20	CMD_IF	0	0xb585fa	query_pp_rate_limit: gvmi = 0x%x, output.typical_packet_size = 0x%x, rate_limit_index = 0x%x, rate_limit = 0x%x, burst_upper_bound = %x, qos_handle = 0x%x
+000cf478	W5	0001b5e0	0x10000	I2C	1	0xb6a7b4	create_scheduling_element 1): gvmi=0x%x, qos_sched_element_id=0x%x, bw_share=0x%x, max_average_bw=0x%x, max_obj_id=0x%x
+000cf55c	A2	0001b15c	0x10000	I2C	0	0xb60c62	connect nic root to vport: vport_num=0x%x, vport_gvmi=0x%x
+000cf7e8	A3	0001b1ec	0x10000	I2C	1	0xb791bb	destroy_scheduling_element: gvmi=0x%x, scheduling_hierarchy=0x%x, scheduling_qos_sched_element_id=0x%x
+000cf970	A2	0001b15c	0x10000	I2C	0	0xb721ea	disconnect nic root to vport: vport_num=0x%x, vport_gvmi=0x%x
+000cfbf0	A3	0001b1ec	0x10000	I2C	1	0xb4cbc5	query_scheduling_element: gvmi=0x%x, scheduling_hierarchy=0x%x, qos_scheduling_element_id=0x%x
+000cfea4	A3	0001b1ec	0x10000	I2C	1	0xb50ca9	modify_scheduling_element 1): gvmi=0x%x, in_hierarchy=0x%x, in_element_id=0x%x
+000d028c	A3	0001b1ec	0x10001	DEBUG_INIT+I2C	1	0xb4eeaf	create_qos_para_vport: para_vport_index = 0x%x, ret = 0x%x, needed_pages = 0x%x
+000d0414	A2	0001b15c	0x10000	I2C	1	0xb7fc12	destroy_qos_para_vport: gvmi=%d, qos_para_vport_number=0x%x
+000d05ac	A3	0001b1ec	0x10000	I2C	1	0xb6a82c	destroy_qos_para_vport:  qos_para_vport_number = 0x%x, ret = 0x%x, needed_pages = 0x%x
+000d08a8	B	0010a954	None	?	None	None	
+000d0b60	W5	0001b5e0	0x20	CMD_IF	0	0xb4a8bd	enable_disable_vport_affiliation: single_port_vhca_gvmi=0x%.4x, dual_port_vhca_gvmi=0x%.4x, affiliated_sw_vhca_id=0x%.4x, affiliation_criteria,=%d, is_flr=%d
+000d0d20	B	0010a954	None	?	None	None	
+000d1d04	Bcore	0002ac60	None	?	None	None	
+000d1dc8	W5	0001b5e0	0x20	CMD_IF	0	0xb68b27	cmdif_qpflush_start: req_res_=0x%x gvmi=0x%x qpi=0x%x syndrome=0x%x state=%x
+000d1e20	A2	0001b15c	0x20	CMD_IF	0	0xb5c76a	cmdif_qpflush_start called when cmdif_awaiting = 1. gvmi = 0x%x, qpi = 0x%x
+000d2340	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+000d2644	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+000d2698	Bcore	0002ac60	None	?	None	None	
+000d2a54	Bcore	0002ac60	0x0		None	None	
+000d3460	W5	0001b5e0	0x20	CMD_IF	0	0xb5eb7b	cmdif_dealloc_qplist_pages: gvmi=0x%x qpi=%d qp_type=%d counter_w_valid_bit_qplist3.ref_counter=0x%x qplist2_ref_counter=0x%x
+000d4418	A2	0001b15c	0x4	ICM	0	0xb489da	ghost_resources_ll_scan: START (min_gvmi=0x%x, max_gvmi=0x%x)
+000d4448	B	0010a954	0x4	ICM	28245	None	
+000d4808	Bcore	0002ac60	None	?	None	None	
+000d48c0	A3	0001b1ec	0x4	ICM	2	0xb50cf8	is_remote_ghost: remote resource is not ghost but not valid as well. remote_gvmi=0x%x, remote_fw_res_num=0x%x, cre_type=0x%x
+000d4970	B	0010a954	0x0		None	None	
+000d4cb4	A2	0001b15c	0x40000	FW_LL	0	0xb46e95	alias_resources_gvmi_handle: race - list got emptied during iterating the list, gvmi=0x%x, alias_ll_size=0x%x
+000d4ea0	A2	0001b15c	0x4	ICM	0	0xb6e3df	isr_cross_gvmi_resource_handle: alias scan from curr_gvmi=0x%x to max_gvmi=0x%x
+000d4ec4	B	0010a954	0x4	ICM	0	0xb6e3df	isr_cross_gvmi_resource_handle: alias scan from curr_gvmi=0x%x to max_gvmi=0x%x
+000d6fc0	Bcore	0002ac60	None	?	339	None	
+000d86c0	Bcore	0002ac60	0x0		None	None	
+000d930c	A2	0001b15c	0x3020000	TRANSPORT+STEERING+IFARM	0	0xb5647b	*** sw: %d, fw: %d ***
+000dc15c	A2	0001b15c	0x20	CMD_IF	0	0xb7925c	check_prm_pnat_port: invalid pnat=0x%x and local_port=0x%x
+000dcaf8	Bcore	0002ac60	None	?	None	None	
+000dcd94	B	0010a954	0x3310000	I2C+CMD_DRIVER+PROFILING+STEERING+IFARM	None	None	
+000dd84c	A3	0001b1ec	0x20	CMD_IF	0	0xb706f8	reg_access(0x%.4x) - zero_response(ignore):  gvmi=0x%.4x, is_port_owner=%d
+000dfa54	W5	0001b5e0	0x100000	CMD_DRIVER	3	0xb7d82f	
+000e030c	A2	0001b15c	0x20	CMD_IF	1	0xb84165	check_sw_sched_ctx_qos_attributes bad input: element_type=0x%x parent_tsar_type=0x%x
+000e08d0	A3	0001b1ec	0x20	CMD_IF	1	0xb79297	check_sw_sched_ctx_element_params bad input: element_type=0x%x root_tsar_type=0x%x, syndrome=0x%.8x
+000e0974	A2	0001b15c	0x20	CMD_IF	1	0xb758a0	check_sw_sched_root_element bad input: element_type=0x%x root_tsar_type=0x%x
+000e0ad4	W5	0001b5e0	0x20	CMD_IF	1	0xb4eeff	check_sw_sched_ctx Failed: pf_gvmi=0x%x, modify_bitmask=0x%x, bw_share=0x%x, max_average_bw=0x%x, max_bw_obj_id=0x%x
+000e1b18	A2	0001b15c	0x20	CMD_IF	0	0xb66eb8	delete_l2_table_entry: DONE. gvmi=0x%x, table_index=0x%x
+000e1e8c	W6	0001b6d8	0x20	CMD_IF	0	0xb68c52	set_l2_table_entry: DONE. gvmi=0x%x, table_index=0x%x, mac=0x%.4x%.8x, vlan_valid=0x%x, vlan=0x%x
+000e20d0	W6	0001b6d8	0x20	CMD_IF	0	0xb70743	query_l2_table_entry: DONE. gvmi=0x%x, table_index=0x%x, mac=0x%.4x%.8x, vlan_valid=0x%x, vlan=0x%x
+000e26a0	Bcore	0002ac60	None	?	339	None	
+000e2adc	A3	0001b1ec	0x20	CMD_IF	0	0xb73d27	destroy_flow_table: gvmi=0x%x, table_id=0x%x, table_type=0x%x
+000e33a4	Bcore	0002ac60	None	?	339	None	
+000e3640	A2	0001b15c	0x20	CMD_IF	0	0xb6c73f	create_flow_table: DONE. gvmi=0x%x, table_id=0x%x, table_type=0x%x, log2_size=0x%x, level=0x%x, miss_mode=0x%x, miss_ft_id=0x%x
+000e3764	W5	0001b5e0	0x20	CMD_IF	0	0xb4cc24	create_flow_table: DONE - SW OWNER , gvmi=0x%x, table_id=0x%x, table_type=0x%x, sw_owner_rx_ix=0x%x, sw_owner_sx_ix=0x%x
+000e3d64	Bcore	0002ac60	None	?	339	None	
+000e4030	Bcore	0002ac60	None	?	339	None	
+000e4200	W6	0001b6d8	0x20	CMD_IF	0	0xb841ba	modify_flow_table: DONE 1. gvmi=0x%x, table_id=0x%x, table_type=0x%x, miss_action=0x%x, next_ft_id=0x%x, modify_field_select=0x%x
+000e4410	A3	0001b1ec	0x20	CMD_IF	0	0xb79365	query_flow_table: DONE. gvmi=0x%x, table_id=0x%x, table_type=0x%x
+000e52e8	W6	0001b6d8	0x20	CMD_IF	0	0xb62d19	create_flow_group: DONE. gvmi=0x%x, group_id=0x%x, table_id=0x%x, table_type=0x%x, start_ix=0x%x, end_ix=0x%x
+000e5a28	A0	0001b570	0x20	CMD_IF	1	0xb72286	set_flow_table_entry: START
+000e630c	W6	0001b6d8	0x20	CMD_IF	1	0xb6e461	set_flow_table_entry: NOT DONE - ret=0x%x, syndrome=0x%x, group_id=0x%x, flow_index=0x%x, allocated_pages=0x%x, needed_pages=0x%x
+000e6490	W5	0001b5e0	0x20	CMD_IF	1	0xb7d89b	set_flow_table_entry: DONE - op_mod=0x%x, table_type=0x%x, table_id=0x%x, group_id=0x%x, flow_index=0x%x
+000e6c90	A0	0001b570	0x20	CMD_IF	0	0xb564cb	delete_flow_table_entry: waiting for RXT fence
+000e7454	W5	0001b5e0	0x20	CMD_IF	0	0xb5a484	set_flow_table_root DONE: set_unset_=0x%x, gvmi=0x%x, table_gvmi=0x%x, table_id=0x%x, table_type=0x%x
+000e7638	A3	0001b1ec	0x20	CMD_IF	0	0xb564fa	reset_flow_counter_range: initialized HW counters range with zeros: gvmi=0x%x, base_index=0x%x, num_counters=0x%x
+000e7b40	W6	0001b6d8	0x20	CMD_IF	0	0xb5656c	alloc_flow_counter DONE: gvmi=0x%x, first flow_counter=0x%x, log_bulk_size=0x%x, flow_counter_bulk=0x%x, flow_counter_bulk_log_size=0x%x, pd=0x%x
+000e7ce0	A3	0001b1ec	0x20	CMD_IF	0	0xb7fcf7	dealloc_flow_counter DONE: gvmi=0x%x, flow_counter_id=0x%x, pd=0x%x
+000e854c	Bcore	0002ac60	None	?	None	None	
+000e8560	Bcore	0002ac60	None	?	None	None	
+000e87f0	Bcore	0002ac60	None	?	None	None	
+000e928c	A3	0001b1ec	0x20	CMD_IF	0	0xb7b70c	alloc_packet_reformat: DONE. packet_reformat_id=0x%x, reformat_data_size=0x%x, reformat_type=0x%x
+000e9afc	A3	0001b1ec	0x20	CMD_IF	0	0xb5a4ea	create_flow_meter_object 2): obj_id=0x%x, tokens_per_cycle=0x%x, direction = 0x%x
+000ea8e4	A3	0001b1ec	0x20	CMD_IF	0	0xb50e78	create_flow_sampler_object 2): obj_id=0x%x, table_type=0x%x sample_stes_array_base_ix=0x%x
+000eaf8c	W5	0001b5e0	0x20	CMD_IF	0	0xb70826	alloc_modify_header_context: DONE. gvmi=0x%x, modify_header_id=0x%x, num_of_sw_actions=0x%x, num_of_hw_actions=0x%x, table_type=0x%x
+000eb0dc	A2	0001b15c	0x20	CMD_IF	0	0xb46f4a	dealloc_modify_header_context: DONE. gvmi=0x%x, modify_header_id=0x%x
+000eb558	A3	0001b1ec	0x20	CMD_IF	0	0xb62d87	create_match_definer_object Start: gvmi=0x%x format_id=%d res_num=0x%x
+000eb7f4	A3	0001b1ec	0x20	CMD_IF	0	0xb81c81	query_match_definer_object Done: gvmi=0x%x, res_num=0x%x, format_id=0x%x
+000eb98c	A2	0001b15c	0x20	CMD_IF	0	0xb7d904	destroy_match_definer_object Done: gvmi=0x%x, res_num=0x%x
+000ebe84	B	0010a954	0x9980000	RX_ERRORS+CMD_DRIVER+FLASH+STEERING+PCI	None	None	
+000ed6a4	Bcore	0002ac60	None	?	339	None	
+000fee2c	B	0010a954	None	?	None	None	
+00105928	W6	0001b6d8	0x4000000	ICMD	1	0xb4aaab	icmd_mh_sync: (hix<<16 | gvmi)=0x%x status=0x%x, fsm_state=0x%x, input_state=0x%x, fsm_sync_type=0x%x, input_sync_type=0x%x
+00106390	A2	0001b15c	0x4000000	ICMD	1	0xb4ab27	icmd_generic_reg_access: reg_is_flash_reg_access=%d, register_id=0x%.4x
+00106458	A0	0001b570	0x4004c5a	INIT+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_MANAGER+PWR+MAD+ICMD	2	0xb4cc9d	Return src_gvmi for backward compatibility
+00106600	A2	0001b15c	0x4000001	DEBUG_INIT+ICMD	0	0xb68dda	icmd_query_virtual_mac. mac_addr.v_mac.mac_addr_47_32 = 0x%x, mac_addr.v_mac.mac_addr_31_0 = 0x%x
+00106810	A2	0001b15c	0x4000000	ICMD	0	0xb4ef96	icmd_set_virtual_mac. pf_gvmi = 0x%x, port0_1 = %d
+0010688c	A2	0001b15c	0x4000000	ICMD	0	0xb4ab6f	icmd_set_virtual_mac. mac_addr.v_mac.mac_addr_47_32 = 0x%x, mac_addr.v_mac.mac_addr_31_0 = 0x%x
+00106da8	Bcore	0002ac60	None	?	None	None	
+00106ed0	A0	0001b570	0x4000000	ICMD	3	0xb6e506	icmd_set_diagnostic_params: allowed tracer_dump only
+001070e8	A0	0001b570	0x4000000	ICMD	3	0xb6c810	icmd_query_diagnostic_counters: not supported in tracer_dump mode
+00107440	W5	0001b5e0	0x4000000	ICMD	3	0xb84263	icmd_mailbox_access_over_external_memory, gvmi=0x%.4x, addr=0x%llx, addr_safe=0x%llx
+00107884	A2	0001b15c	0x4000000	ICMD	0	0xb7fe75	isr_icmd, opcode=0x%x, extm=%d, 
+0010a870	B	0010a954	None	?	None	None	
+0010aa08	Bcore	0002ac60	None	?	None	None	
+0010c860	B	0010a954	None	?	None	None	
+0010df1c	B	0010a954	None	?	None	None	
+0010efb8	B	0010a954	0x0		None	None	
+0010f03c	B	0010a954	0x0		None	None	
+0010f61c	B	0010a954	None	?	None	None	
+0010f768	A3	0001b1ec	0x20	CMD_IF	3	0xb62e9e	scan_for_sw_vhca_id_gvmi_match: sw_vhca_id exist more than once in the sw_owner_id namespace. gvmi=0x%.4x, sw_vhca_id=0x%.2x, sw_owner_id[0]=0x%x,
+00110594	A3	0001b1ec	0x1000	FLR	0	0xb64cc9	grepper_icmc_invalidate_res: gvmi=0x%x, icm_res_type=0x%x, grepper_addr_op=%d
+0011075c	A3	0001b1ec	0x1000	FLR	0	0xb6c93b	grepper_icmc_unlock_resource: gvmi=0x%x, icm_res_type=0x%x, grepper_addr_op=%d
+00110c74	A3	0001b1ec	0x20016	INIT+ICM+HOST_MNG+TRANSPORT	0	None	
+00110ccc	A3	0001b1ec	0x20000	TRANSPORT	0	None	
+00110fbc	A2	0001b15c	0x80000	RX_ERRORS	0	None	
+00110fe4	A2	0001b15c	0x80000	RX_ERRORS	0	None	
+0011109c	A2	0001b15c	0x80000	RX_ERRORS	0	None	
+001145d0	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb5a574	hal_rxs_slices_do_nothing: slice=0x%x dont_wait_trans=0x%x dont_wait_atomic=0x%x
+00115618	A2	0001b15c	0x80000	RX_ERRORS	0	None	
+00115884	A4	0001b28c	None	?	None	None	
+00115954	A4	0001b28c	None	?	None	None	
+00115a7c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00115ba8	A2	0001b15c	0x1fff0000	I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP	0	0xb6c9c9	dc_fw_implicit_ack: session_id=0x%.6x, target_dcr_number=0x%.6x
+001165d4	Bcore	0002ac60	None	?	None	None	
+00116620	A3	0001b1ec	0x80000	RX_ERRORS	2	0xb6a96b	LDB error handler: ona=0x%x. fpmcc=0x%x. is_ooo=%d
+001167a8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00116e10	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb4efe1	rxw_fte_handle_error: slice_id=0x%x context_number=0x%x wqe_syndrome=0x%x
+00116ec4	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb81de0	rxw_fte_handle_error: ODP tpt syndrome on slice=%d qpn=0x%.6x psn=0x%.6x
+00116fdc	Bcore	0002ac60	0x0		None	None	
+0011730c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+001173b4	A2	0001b15c	0x80000	RX_ERRORS	1	0xb50f61	rx_raise_odp_event_if_needed: event possible=%d qpn=0x%x
+001178c8	W6	0001b6d8	0x20000	TRANSPORT	1	0xb4ad85	Generated RX ODP event: gvmi=%d sub_type [0-WQE, 1-RDMA]=%d page fault type=0x%x token=0x%.6x qpn=0x%.6x wqe_ix or mkc=0x%x
+00117e10	A3	0001b1ec	0xffff87df	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb7fefd	rxs_opcode2flush_synd: opcode=0x%x tpt_dpr_response_synd=0x%x flush_syndrome=0x%x
+00117e68	Bcore	0002ac60	None	?	None	None	
+00117f48	Bcore	0002ac60	None	?	None	None	
+00118380	Bcore	0002ac60	0x0		12	None	
+001185d4	W5	0001b5e0	0x80000	RX_ERRORS	1	0xb5eca9	rxs_handle_tpt_syndrome: tpt_dpr_syndrome=0x%.6x rxw_opcode=0x%.2x, error_type=0x%.6x tmp_wqe_ix=0x%x, postpone:%d
+00119340	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb4cd0a	cqe.owner=0x%x, cqe_error.drop_ctr=0x%x, cqe_error.srq_num=0x%x
+0011979c	A2	0001b15c	0x80000	RX_ERRORS	0	0xb48c62	[RXC] Couldn't take EQE GW. Pushing the EQE back to the queue (gvmi %#x  cq %#x)
+001197c8	A3	0001b1ec	0x80000	RX_ERRORS	2	0xb587dd	[RXC] eqe_gen_q_handler cannot write eqe to sw_eqn NULL (gvmi %#x  cq %#x eq %#x)
+00119804	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb4f02b	[RXC] eqe_gen_q_handler writing EQE (gvmi %#x  cq %#x eq %#x)
+00119978	W6	0001b6d8	0x800dc	ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_RX_ADAP+RX_ERRORS	0	0xb68f31	[RXC-EQ] restore eq hw_eqn=0x%#x new values: PI %#x PA0 0x%llx PA1 0x%llx
+00119a34	A2	0001b15c	0x80000	RX_ERRORS	0	0xb5cae6	[RXC-EQ] Completion EQE: cqn %#x pi %#x
+00119c38	A2	0001b15c	0x8859f	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+RXT_CHECKS+RX_ERRORS	0	0xb6ca09	[RXC-EQ] preparing dummy EQ for gvmi %#x hw_eqn %#x
+00119ccc	A3	0001b1ec	0x8000e	INIT+ICM+ICM_FREE_LIST+RX_ERRORS	0	0xb64d4f	[RXC-EQ] wrote EQE for gvmi %#x hw_eqn %#x cqn %#x
+00119d50	A2	0001b15c	0x80000	RX_ERRORS	0	0xb708ab	[RXC-EQ] will try to probe hw_eqn %#x (gvmi %#x)
+00119d74	A2	0001b15c	0xffffaeb6	INIT+ICM+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+PWR+ICM_ACCESS+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb708ab	[RXC-EQ] will try to probe hw_eqn %#x (gvmi %#x)
+00119da8	A0	0001b570	0x80000	RX_ERRORS	0	0xb77527	[RXC-EQ] failed to lock eqe GW. will not probe eq
+00119ea0	A2	0001b15c	0x80001	DEBUG_INIT+RX_ERRORS	0	0xb62f31	[RXC-EQ] rxc_eq_overrun_eqe_poster called gvmi %#x hw_eqn %#x
+00119f40	A0	0001b570	0x80000	RX_ERRORS	0	0xb7ff4f	[RXC-EQ] failed to lock eqe GW. will not write EQEs
+00119fa8	A2	0001b15c	0x80000	RX_ERRORS	0	0xb81e29	[RXC-EQ] Going to write EQE for EQ %#x  CQ %#x
+0011a408	A3	0001b1ec	0x80000	RX_ERRORS	1	0xb5a5c5	starting dpr/cmu error handler, error_type: 0x%x, slice: 0x%x, ignore_slice_in_drop_vector: 0x%x
+0011ab54	A2	0001b15c	0x80000	RX_ERRORS	0	0xb6e70a	[RXC slice %d] rxc_handle_cq_slice_error called, cqn=0x%x
+0011abf4	A3	0001b1ec	0x80000	RX_ERRORS	0	0xb6e79d	[RXC slice %d] cqn=0x%.6x selected syndrom = RXC_ERR_CONTEXT_TRAP_ERROR | RXC_ERR_E_REQ_TO_IRISC
+0011ac78	A2	0001b15c	0x80000	RX_ERRORS	0	0xb5882f	[RXC slice %d] qpflush_syndrome %#x
+0011ade4	Bcore	0002ac60	None	?	None	None	
+0011aec4	A2	0001b15c	0x89558	ICM_FREE_LIST+HOST_MNG+PHY_IB+LIBFHI+PHY_MANAGER+FLR+RXT_CHECKS+RX_ERRORS	2	0xb5a626	[RXC slice %d] CQ_ERR going to create EQEs qpflush_synd=%x
+0011afb8	W5	0001b5e0	0x80000	RX_ERRORS	0	0xb77559	[RXC slice %d] starting qp flush  (gvmi %#x  req %d  qpn %#x  flush_synd %#x)
+0011b498	W5	0001b5e0	0x880c8	ICM_FREE_LIST+PHY_IB+PHY_RX_ADAP+RXT_CHECKS+RX_ERRORS	2	0xb5cb3a	[RXC-EQ slice %d] rxc_handle_slice_error_eq called. plastic_pipe %#x gvmi %#x hw_eqn %#x. syndrome %#x
+0011b51c	A2	0001b15c	0x80000	RX_ERRORS	0	0xb52942	[RXC-EQ slice %d] going to start rxc_handle_eq_overrun. selected_syndrome=0x%x
+0011b82c	A0	0001b570	0xffffffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb58853	icq cleanup done
+0011b8b4	Bcore	0002ac60	None	?	None	None	
+0011c014	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0011c060	W6	0001b6d8	0x20000	TRANSPORT	3	0xb7955f	isr_dp_sig_error: dps_dpr_=%d, slice_id=0x%.2x qpn=0x%.6x, mkey_index=0x%.6x, fw_count=%d, hw_count=%d
+0011c274	Bcore	0002ac60	None	?	None	None	
+0011c6f8	A2	0001b15c	0x8000	RXT_CHECKS	0	None	
+0011c858	A3	0001b1ec	0x8000	RXT_CHECKS	0	None	
+0011c9d8	A0	0001b570	0x8000	RXT_CHECKS	3	None	
+0011ce00	W6	0001b6d8	0x8000	RXT_CHECKS	0	0xb843b3	isr_fw_rxt_checks_cause: req_res_=0x%x gvmi=0x%.4x qpi=0x%.6x fw_rxt_buffer_id=%x slice_id=0x%x, action=0x%x
+0011e7b8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0011e7d8	A2	0001b15c	0x8000	RXT_CHECKS	0	0xb795c6	srq_trap srqn=0x%.6x trap_reason=0x%x
+0011e804	Bcore	0002ac60	0x1	DEBUG_INIT	0	None	
+0011e87c	A3	0001b1ec	0x8000	RXT_CHECKS	1	0xb58864	SRQ trap - no reason, gvmi=0x%x srqi=0x%x action=0x%x
+0011eae4	A0	0001b570	0x8000	RXT_CHECKS	0	0xb6e7fe	srq limit event
+0011eb78	A0	0001b570	0x8000	RXT_CHECKS	0	0xb6e80e	srq_not_valid
+0011ec5c	A3	0001b1ec	0x8001	DEBUG_INIT+RXT_CHECKS	3	0xb67045	e2e read got syndrome is_dct=%d is_srq=%d px_syndrome=0x%x
+0011f248	Bcore	0002ac60	None	?	None	None	
+0011f280	A0	0001b570	0x8000	RXT_CHECKS	3	0xb79616	rxt responder checks: failed to read doorbell record
+0011f380	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5cba1	rxt responder checks: no e2e credit RCV WQE is posted                  -> PKT continue
+0011f3dc	A0	0001b570	0x8001	DEBUG_INIT+RXT_CHECKS	0	0xb84420	rxt responder checks: no e2e credit, PKT enters RXT                    -> PKT first time
+0011f460	A0	0001b570	0x8000	RXT_CHECKS	0	0xb75950	rxt responder checks: no e2e credit, PKT Timeout in RXT                -> PKT Drop
+0011f5a0	A0	0001b570	0x8000	RXT_CHECKS	0	0xb7b9b7	no e2e credit
+0011f788	A0	0001b570	0x8000	RXT_CHECKS	0	0xb4f0c7	trigger match
+00122e04	A2	0001b15c	0x800000	FLASH	1	0xb6cac9	access_register_non_cmdif: RET_FAIL, status = 0x%x, register_id = 0x%x
+00123400	A0	0001b570	0x800002	INIT+FLASH	1	0xb6ca90	access_register_non_cmdif: no secure host with secure fw
+00123da4	A3	0001b1ec	0x20004	ICM+TRANSPORT	0	0xb5a67d	fast_retry_exceeded is enabled: user_timer=%u retry_cnt=%u retrans_end_time=%u
+00123eb4	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00123edc	A3	0001b1ec	0x20000	TRANSPORT	0	0xb7964b	isr_qp_timer_time_out_handle: gvmi: 0x%.4x, qpi: 0x%.6x fw_qp_state: 0x%.2x
+0012423c	A2	0001b15c	0x20000	TRANSPORT	0	0xb6e81c	isr_qp_timer_time_out_handle: gvmi: 0x%.4x, qpi: 0x%.6x only rearming timer
+00124490	A3	0001b1ec	0x20000	TRANSPORT	0	0xb79697	galil timer handle: slow restart, xqpi.gvmi=0x%.4x, xqpi.qpi=0x%.6x, xqpi.req=%d
+0012451c	A3	0001b1ec	0x20000	TRANSPORT	0	0xb58920	galil timer handle: rx_heartbeat=%d, adp_retrans_set_counter=%d, adp_retrans_set_max=%d
+0012475c	Bcore	0002ac60	None	?	None	None	
+00124784	A2	0001b15c	0x20000	TRANSPORT	3	0xb84479	fix_psv called for invalid mkey: gvmi=0x%.4x, mkey=0x%x
+001249c0	Bcore	0002ac60	None	?	None	None	
+00124d60	Bcore	0002ac60	None	?	None	None	
+00124ea4	W5	0001b5e0	0x20000	TRANSPORT	0	0xb72530	extract_wqe_sge: dump_rollback_=0x%.1x, wqe_index=0x%.4x, start line_offset=0x%.5x, bytes_to_skip=0x%llx
+0012509c	W5	0001b5e0	0x20001	DEBUG_INIT+TRANSPORT	3	None	
+0012549c	A3	0001b1ec	0x20000	TRANSPORT	0	0xb81e58	isr_sig_retrans_wqe_dump: gvmi=0x%.4x, qpi=0x%.6x req_res_=%d
+00125518	Bcore	0002ac60	None	?	None	None	
+00125c88	Bcore	0002ac60	None	?	None	None	
+00125fa8	A3	0001b1ec	0x8000	RXT_CHECKS	0	0xb775a7	res_bad_bth_res_psn_dup: write_ptr=0x%.2x, read_ptr=0x%.2x, new_read_pointer=0x%.2x
+00126280	Bcore	0002ac60	None	?	None	None	
+0012640c	Bcore	0002ac60	None	?	339	None	
+0012650c	Bcore	0002ac60	None	?	None	None	
+0012665c	A2	0001b15c	0x20000	TRANSPORT	0	0xb708dc	enable_disable_rx_duplicate_flow: gvmi=0x%x, enable_disable_=0x%x
+00126710	A3	0001b1ec	0x20000	TRANSPORT	0	0xb67080	rollback_ldb_push_pointer: pop_pointer=0x%x push_pointer=0x%x, wqe_opcode=0x%x
+00126808	A4	0001b28c	None	?	None	None	
+00126ce4	W6	0001b6d8	0x20000	TRANSPORT	0	0xb68fec	sqpc_rollback: gvmi=0x%.4x, qpi=0x%.6x, found sig mkey=0x%.1x, synd=0x%x, dc_state=0x%x, full_handshake: 0x%x
+001270d0	W6	0001b6d8	0x20000	TRANSPORT	0	0xb4cdb1	fw_srq_trap_reason_access: set_rst_=%x, gvmi=0x%4x, srqn=0x%6x, trap_reason=%x, trap_data=0x%x, old_trap_reason=0x%x
+00127338	Bcore	0002ac60	None	?	None	None	
+00127480	Bcore	0002ac60	None	?	None	None	
+0012a06c	B	0010a954	None	?	None	None	
+0012a15c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0012a378	Bcore	0002ac60	None	?	149	None	
+0012a6b0	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0012af88	A2	0001b15c	0x1000	FLR	0	0xb5edad	flr_disconnect_icm_root_detach: gvmi %d, dependent_pfs %d
+0012be10	B	0010a954	None	?	None	None	
+0012beec	A3	0001b1ec	0x1000	FLR	0	0xb5a713	gvmi=0x%x, flr_teardown_hca, DURING init_teardown_hca_infrastructure, toc.hca_state=0x%x. tmrs_flow_lock_id=0x%.8x
+0012c320	A3	0001b1ec	0x1000	FLR	0	0xb6cc1f	flr_disable_gvmi_cq_db start state=0x%x. gvmi=0x%x, no_icm=%d
+0012c41c	A2	0001b15c	0x1000	FLR	0	0xb80032	flr_disable_gvmi_cq_db end state=0x%x ret=%d
+0012c67c	W5	0001b5e0	0x1000	FLR	0	0xb4ce26	flr_handle_disconnect_icm : flr_gvmi = 0x%x, no_icm=%d, flr_sub_state = 0x%x, flr_stage_data.data = 0x%x, flr_stage_data.last_gvmi = 0x%x
+0012c7b8	W5	0001b5e0	0x1000	FLR	0	0xb4f10f	return_flr_to_iron gvmi=0x%x, page_handling_done=%d, flr_ipc.clear_toc=%d, flr_ipc.new_state=0x%x, caller=0x%x
+0012cd00	A2	0001b15c	0x1000	FLR	0	0xb5ede7	flr_release_all_pages: flr_gvmi=0x%x, curr_gvmi_in_loop=0x%x
+0012d7bc	A3	0001b1ec	0x1000	FLR	0	0xb6908a	isr_flr_handler, gvmi=0x%x state=0x%x prev state=0x%x
+0012d8f0	A3	0001b1ec	0x1000	FLR	0	0xb5ee24	isr_flr_handler, flr_smartnic_peer_gvmi_steering: flr_gvmi=0x%x , peer_gvmi=0x%x, peer_is_active=0x%x
+0012e014	A2	0001b15c	0x800001	DEBUG_INIT+FLASH	0	None	
+0012e7b8	A3	0001b1ec	0x800000	FLASH	0	0xb54f85	get_tlv_data_size_target: found type = 0x%x data size: 0x%x, target: 0x%x
+0012e948	A3	0001b1ec	0x800000	FLASH	0	None	
+0012faec	A3	0001b1ec	0x800000	FLASH	0	0xb73f74	read_tlv_from_scratchpad: tlv_type = 0x%x, defaults_current_ = 0x%x, tlv_target = %d
+00130afc	A3	0001b1ec	0x800000	FLASH	0	0xb8005f	read_tlv_from_scratchpad: type = 0x%x base_offset = 0x%x, tlv_diff_from_scratchpad = 0x%x
+001313ac	A2	0001b15c	0x800000	FLASH	0	0xb5eec7	nv_check_apply_tlv_settings: op: %d tlv_type: 0x%x
+0013176c	A2	0001b15c	0x800000	FLASH	0	0xb60eaa	access_register_mvts: get_set_ = 0x%x fsm state: 0x%x
+0013222c	Bcore	0002ac60	None	?	None	None	
+001322f4	A3	0001b1ec	0x4000	MAD	0	0xb6e990	rw_esw_context: esw_ctx_gvmi=0x%x, rw_=%d, fw_esw.vport_ctx0=0x%.8x 
+0013577c	B	0010a954	0x0		None	None	
+001358b4	A2	0001b15c	0x20	CMD_IF	0	0xb81fbb	connect_disconnect_vport_steering : vport_gvmi=0x%x, new_state_is_active=0x%x
+001368d4	Bcore	0002ac60	None	?	None	None	
+00136a00	B	0010a954	0x0		None	None	
+0013745c	Bcore	0002ac60	None	?	339	None	
+00137648	Bcore	0002ac60	None	?	339	None	
+00138d90	A0	0001b570	0x8000000	PCI	3	0xb6e9d5	vuid truncated, drop SN part
+00138eec	A0	0001b570	0x8000000	PCI	3	0xb4b021	vuid plain text SN too long
+00138ff0	A0	0001b570	0x8000000	PCI	3	0xb47202	vuid_get_pf_type, unknown PF type
+00139048	A0	0001b570	0x8000000	PCI	3	0xb4ceb0	vuid truncated, drop pf type part
+0013912c	A0	0001b570	0x8000000	PCI	3	0xb56856	vuid truncated, drop sdf 
+001395b0	A2	0001b15c	0x4000000	ICMD	1	0xb5102e	vpd_read_data_tag_end_offset = 0x%x, offset = 0x%x
+00139844	A2	0001b15c	0x4000000	ICMD	1	0xb75a92	vpd_write_data_tag_end_offset = 0x%x, offset = 0x%x
+001399b4	A2	0001b15c	0x4000000	ICMD	1	0xb5ef27	get_vpd_string_data_tag, len = 0x%x, offset = 0x%x
+00139a78	A2	0001b15c	0x4006870	HOST_MNG+CMD_IF+PHY_IB+PWR+ICM_ACCESS+MAD+ICMD	1	None	
+00139bb4	A0	0001b570	0x4000000	ICMD	1	0xb60fa0	get_ocbb_data_from_vpd
+0013b144	A3	0001b1ec	0x10000	I2C	0	0xb75ac6	sq_iterator_find_next_match.  i.gvmi = 0x%x, ctx->fsm = 0x%x ctx_iter_sl = 0x%x
+0013b580	A3	0001b1ec	0x10000	I2C	0	0xb47224	sq_tree_iterator gl5 start: ctx->fsm=%d, ctx->iteration_num = 0x%x, ->desired_states_bitmask=0x%x
+0013b7fc	B	0010a954	None	?	None	None	
+0013bbdc	W5	0001b5e0	0x10000	I2C	0	0xb690c0	sq_tree_iterator: ctx->fsm=%d, ctx->iteration_num = 0x%x, ctx->match = 0x%x, ctx->match_sqn = 0x%x ctx->desired_states_bitmask = 0x%x
+0013c4cc	A3	0001b1ec	0x10000	I2C	0	0xb52bce	_set_schedule_queue_burst_size :gvmi 0x%x | sqn=0x%x burst_size =0x%x
+0013c650	B	0010a954	None	?	None	None	
+0013eff0	Bcore	0002ac60	None	?	4294952792	None	
+0013f048	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0013f090	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0013f0d4	Bcore	0002ac60	None	?	None	None	
+0013f11c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0013f19c	Bcore	0002ac60	None	?	None	None	
+0013f760	Bcore	0002ac60	None	?	None	None	
+0013fc60	Bcore	0002ac60	0x5c00	PHY_MANAGER+PWR+FLR+MAD	None	None	
+00140128	W6	0001b6d8	0x4000000	ICMD	0	0xb741d0	debug_access_if_cache_exists_invalidate : rw_=%d, va=0x%llx, resource_size_dw=%d, num_dw_to_rw=0x%x, present(1:present, 2:locked)=%d
+0014021c	A2	0001b15c	0x20000	TRANSPORT	3	0xb6717b	Remote address: LID=0x%x SL=%d
+00140240	A3	0001b1ec	0xffffcd5f	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+LIBFHI+PHY_MANAGER+PWR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb6717b	Remote address: LID=0x%x SL=%d
+00140268	W5	0001b5e0	0x26980	PHY_RX_ADAP+LIBFHI+PWR+ICM_ACCESS+MAD+TRANSPORT	3	0xb5cd5f	Remote address: MAC=0x%llx User Priority=%d
+001402f8	A2	0001b15c	0xffffccfa	INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_MANAGER+PWR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb631f9	dump_qp_history_event: found unknown type in requestor qp_history type=%d
+00140368	A2	0001b15c	0xffffccfa	INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_MANAGER+PWR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb800e6	GVMI=0x%.4x QP=0x%.6x qp_history_event_res_rx_error context
+00140454	Bcore	0002ac60	None	?	None	None	
+001405b8	Bcore	0002ac60	None	?	None	None	
+001405d8	A3	0001b1ec	0x20000	TRANSPORT	3	0xb67238	GVMI=0x%.4x QPN=0x%.6x CRE_TYPE=0x%.1x: fw_qpc context:
+001406bc	A3	0001b1ec	0x20000	TRANSPORT	3	0xb74255	GVMI=0x%.4x QPN=0x%.6x valid: 0x%.1x hw_c_qpc context:
+0014079c	A2	0001b15c	0x20000	TRANSPORT	3	0xb820ee	Peer DCR: 0x%.6x dci_state=%d (0-idle, 1-connect sent, 2-connected)
+001407cc	A2	0001b15c	0x20000	TRANSPORT	3	0xb72753	GVMI=0x%.4x QPN=0x%.6x hw_s_qpc context:
+00140870	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	3	0xb5f157	GVMI=0x%.4x QPN=0x%.6x hw_qpc_r_dct context:
+00140974	W5	0001b5e0	0x20000	TRANSPORT	3	0xb5aa36	GVMI=0x%.4x QPN=0x%.6x GVMI_DCT=0x%.6x DCT=0x%.6x SRQN=0x%.6x
+00140a44	A2	0001b15c	0x20000	TRANSPORT	3	0xb55160	GVMI=0x%.4x CQN=0x%.6x SQPC hw_c_cqc_t context:
+00140a84	A2	0001b15c	0x20000	TRANSPORT	3	0xb632a3	RQPC hw_c_cqc_t is equal to SQPC - GVMI=0x%.4x CQN=0x%.6x.
+00140aa0	A2	0001b15c	0xfffff184	ICM+PHY_RX_ADAP+LIBFHI+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb632a3	RQPC hw_c_cqc_t is equal to SQPC - GVMI=0x%.4x CQN=0x%.6x.
+00140af8	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	3	0xb691ab	GVMI=0x%.4x QPN=0x%.6x hw_sxdc context:
+00140e30	A2	0001b15c	0x20000	TRANSPORT	3	0xb55190	GVMI=0x%.4x Q_COUNTER_SET=%u fw_q_counters1 context:
+00140e60	A2	0001b15c	0x20000	TRANSPORT	3	0xb4b10b	GVMI=0x%.4x Q_COUNTER_SET=%u fw_q_counters2 context:
+00140f24	A2	0001b15c	0xffff9862	INIT+CMD_IF+PHY_IB+PWR+FLR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb7dc7a	GVMI=0x%.4x Q_COUNTER_SET=%u ETH_1588 hw_q_counters_eth context:
+00141398	W6	0001b6d8	0x20000	TRANSPORT	3	0xb7277c	 Snd WQEs dump GVMI=0x%.4x QPN=0x%.6x  %u entries, each %u bytes, ci=0x%.6x, pi=0x%.6x
+001414ac	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	3	None	
+00141538	A0	0001b570	0x20000	TRANSPORT	3	0xb4f21d	GVMI management info, gvmi_management context:
+001415c4	A0	0001b570	0x20000	TRANSPORT	3	0xb5504a	CMDIF dbase from IRON: cmdif_dbase context:
+00141680	A3	0001b1ec	0x20000	TRANSPORT	3	0xb80122	dump_gvmi_toc: cmd_phy_addr is not valid: 0x%llx - No command queue dump for (gvmi << 16 | cmdq_phy_addr_valid): %x
+0014178c	Bcore	0002ac60	None	?	29082	None	
+001417a4	A2	0001b15c	0x20000	TRANSPORT	3	None	
+00141820	Bcore	0002ac60	None	?	None	None	
+00141b24	Bcore	0002ac60	None	?	None	None	
+00141b40	A2	0001b15c	0x20000	TRANSPORT	3	0xb5f1b4	GVMI=0x%.4x SRQN=0x%.6x fw_srq context:
+00141bb8	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	3	0xb6cd42	GVMI=0x%.4x SRQN=0x%.6x hw_c_srq context:
+00141c7c	A2	0001b15c	0x20000	TRANSPORT	3	0xb7767f	dump qp related info GVMI=0x%.4x QPN=0x%x
+00143584	Bcore	0002ac60	None	?	None	None	
+00143734	Bcore	0002ac60	None	?	None	None	
+001438c0	Bcore	0002ac60	None	?	None	None	
+00143f08	Bcore	0002ac60	0x1090	HOST_MNG+PHY_RX_ADAP+FLR	4112	None	
+001453d8	Bcore	0002ac60	None	?	339	None	
+001478d0	Bcore	0002ac60	None	?	None	None	
+00147a94	Bcore	0002ac60	None	?	0	None	
+00147c68	W5	0001b5e0	0x272e0	CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_COMMON+FLR+ICM_ACCESS+MAD+TRANSPORT	3	None	
+00147d4c	B	0010a954	None	?	None	None	
+00147ea0	B	0010a954	None	?	None	None	
+00149264	W5	0001b5e0	0x20000	TRANSPORT	3	None	
+001497d4	Bcore	0002ac60	None	?	None	None	
+001498b8	Bcore	0002ac60	None	?	None	None	
+00149a48	A0	0001b570	0x10004	ICM+I2C	3	0xb4b07a	distlist switch is disabled for resource dump
+00149c38	A3	0001b1ec	0x20000	TRANSPORT	3	0xb4f2d9	builder_seg_schedq: gvmi = 0x%x, schedq_number = 0x%x, internal_seg_id = 0x%x
+00149e68	W5	0001b5e0	0x20000	TRANSPORT	3	None	
+0014cbe8	Bcore	0002ac60	None	?	None	None	
+00152d3c	A2	0001b15c	0x20000	TRANSPORT	3	0xb6ea23	GVMI=0x%.4x EQN=0x%.6x is not available
+00152d9c	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	3	0xb79828	GVMI=0x%.4x EQN=0x%.6x hw_c_eqc context:
+0015343c	B	0010a954	None	?	None	None	
+00153c28	W5	0001b5e0	0x10000	I2C	0	0xb6ab59	qshr_back_to_default : gvmi=%d, port=%d host=%d syndrome=%d ncsi_rate_limit_active_configuration = 0x%x
+00154304	W5	0001b5e0	0x1112a	INIT+ICM_FREE_LIST+CMD_IF+LIBFHI+FLR+I2C	0	None	
+001543fc	A3	0001b1ec	0x10000	I2C	0	None	
+00157fac	A0	0001b570	0x4000	MAD	3	0xb7dcbb	smp_cableinfo check fail: connector is not SFP or QSFP
+00158040	A0	0001b570	0x4000	MAD	3	0xb77710	smp_cableinfo check fail: access to module is not allowed,i2c error
+0015807c	A0	0001b570	0x4000	MAD	3	0xb4cf86	smp_cableinfo check fail: selected module %d is disabled
+0015809c	A0	0001b570	0x4000	MAD	3	0xb672d5	smp_cableinfo check fail: module doesn't have eeprom
+001580bc	A0	0001b570	0x4000	MAD	3	0xb48e27	smp_cableinfo check fail: module is not present
+0015811c	A0	0001b570	0x4000	MAD	3	0xb4cfbf	smp_cableinfo check fail: invalid size
+00159fa4	A2	0001b15c	0x20	CMD_IF	0	0xb6730a	PTYS query: gvmi=%d, ptys->local_port=%d
+0015a3cc	A3	0001b1ec	0x20	CMD_IF	0	0xb84527	mppf_query: gvmi=%d; hix=%d, portid=%d
+0015a464	A2	0001b15c	0x20	CMD_IF	1	None	
+0015a6a8	A2	0001b15c	0x20	CMD_IF	3	0xb632ee	PMTU write: admin MTU- %d is greater than device's max MTU - %d
+0015a708	A2	0001b15c	0x20	CMD_IF	3	0xb6332e	PMTU write: admin MTU- %d is under the minimum ETH MTU %d
+0015aa2c	A2	0001b15c	0x20	CMD_IF	0	0xb48e99	PTYS write: gvmi=%d, ptys->local_port=%d
+0015ad1c	Bcore	0002ac60	None	?	None	None	
+0015c730	A0	0001b570	0x10000000	DC_CLEANUP	0	0xb5ce82	default ztt params:
+0015c760	W6	0001b6d8	0x1000520e	INIT+ICM+ICM_FREE_LIST+PHY_COMMON+FLR+MAD+DC_CLEANUP	0	0xb5ce82	default ztt params:
+0015c78c	W6	0001b6d8	0x10000000	DC_CLEANUP	0	0xb70b7c	
+0015c8a4	W6	0001b6d8	0x10000b40	PHY_IB+LIBFHI+PHY_COMMON+PWR+DC_CLEANUP	0	0xb7bb35	ztt_save_defualt_configuration: 0:0x%x, 1:0x%x, 2:0x%x, 3:0x%x, 4:0x%x, 5:0x%x
+0015c8cc	W5	0001b5e0	0xffff9948	ICM_FREE_LIST+PHY_IB+LIBFHI+PWR+FLR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb7bb35	ztt_save_defualt_configuration: 0:0x%x, 1:0x%x, 2:0x%x, 3:0x%x, 4:0x%x, 5:0x%x
+0015caac	Bcore	0002ac60	None	?	None	None	
+0015cb1c	Bcore	0002ac60	None	?	None	None	
+0015cb8c	Bcore	0002ac60	None	?	None	None	
+0015cbe8	Bcore	0002ac60	None	?	None	None	
+0015d018	A3	0001b1ec	0x10000000	DC_CLEANUP	0	0xb569ff	generate_random_with_range: low=0x%x, high=0x%x - result=0x%x
+0015d180	A2	0001b15c	0x10000000	DC_CLEANUP	0	0xb70c13	init_ztt_gvmi_db: log_population_size=%d, log_sample_time_factor=%d
+0015d8d0	A2	0001b15c	0x10000000	DC_CLEANUP	0	0xb692b4	calc_drop_ratio: drop_diff=0x%x packet_diff=0x%x 
+0015dae8	W6	0001b6d8	0x10000000	DC_CLEANUP	1	0xb61148	state %d: individual_6_10 6: 0x%x, 7: 0x%x, 8: 0x%x, 9: 0x%x. 10: 0x%x
+0015db08	A3	0001b1ec	0xffffdd35	DEBUG_INIT+ICM+HOST_MNG+CMD_IF+LIBFHI+PHY_MANAGER+PWR+FLR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	1	0xb61148	state %d: individual_6_10 6: 0x%x, 7: 0x%x, 8: 0x%x, 9: 0x%x. 10: 0x%x
+0015db28	A3	0001b1ec	0x10002cb6	INIT+ICM+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_MANAGER+PWR+ICM_ACCESS+DC_CLEANUP	1	0xb7dd35	state %d: rx_bw_31_0: 0x%x, rx_bw_63_32: 0x%x
+0015db48	A3	0001b1ec	0xfffff1dc	ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_RX_ADAP+LIBFHI+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	1	0xb52cb6	state %d: tx_bw_31_0: 0x%x, tx_bw_63_32: 0x%x
+0015db94	W5	0001b5e0	0x10000000	DC_CLEANUP	1	0xb7bbc4	
+0015dbb4	A3	0001b1ec	0x10000000	DC_CLEANUP	1	0xb5ce96	
+0015e360	W5	0001b5e0	0x10000000	DC_CLEANUP	0	0xb5528b	mutate: special_mutate=%d, best_ix=%d, cur_ix=%d, ratio_from_best=%d, step_size=0x%x
+0015e4a0	W6	0001b6d8	0x10000000	DC_CLEANUP	0	None	
+0015e694	W6	0001b6d8	0x10000000	DC_CLEANUP	0	0xb5cec6	crossover: result - 0:0x%x, 1:0x%x, 2:0x%x, 3:0x%x, 4:0x%x, 5:0x%x
+0015e6bc	W5	0001b5e0	0xfffff20a	INIT+ICM_FREE_LIST+PHY_COMMON+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb5cec6	crossover: result - 0:0x%x, 1:0x%x, 2:0x%x, 3:0x%x, 4:0x%x, 5:0x%x
+0015e794	A3	0001b1ec	0x10000001	DEBUG_INIT+DC_CLEANUP	0	0xb4cfe6	crossover: between indexes first=%d, second=%d, weight=%d
+0015fc8c	W6	0001b6d8	0x10	HOST_MNG	0	None	
+0015fe84	A3	0001b1ec	0x10	HOST_MNG	0	None	
+0015ff20	W5	0001b5e0	0x10	HOST_MNG	0	None	
+00160580	Bcore	0002ac60	None	?	None	None	
+00160624	Bcore	0002ac60	None	?	None	None	
+00160c44	A2	0001b15c	0x20	CMD_IF	0	None	
+00160d6c	Bcore	0002ac60	0x0		None	None	
+00160dcc	Bcore	0002ac60	0xf	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST	15	None	
+00161160	W5	0001b5e0	0x20	CMD_IF	0	0xb4f3e7	create_alias_tir: Done create alias TIR: gvmi=0x%x, alias_tir_id=0x%x, remote_gvmi=0x%x, remote_tirn=0x%x, anchor_ste_id=0x%x
+00161bf8	A3	0001b1ec	0x20	CMD_IF	0	0xb82132	create tir: alloc ste_ix index return status = 0x%.8x, num_pages = 0x%x, ste_ix = 0x%x
+00162388	Bcore	0002ac60	None	?	339	None	
+00162bbc	A3	0001b1ec	0x20	CMD_IF	0	0xb4f4f6	modify tir: dmfs_alloc_tir_lb_block_hash_filter_ste return status = 0x%.8x, num_pages = 0x%x, ste_ix = 0x%x
+00163194	Bcore	0002ac60	None	?	None	None	
+001632d4	A2	0001b15c	0x20	CMD_IF	0	0xb611ae	create tis: alloc cre index return status = 0x%.8x, cren = 0x%x 
+001640b8	B	0010a954	None	?	None	None	
+001640f0	W5	0001b5e0	0x20	CMD_IF	0	0xb56a77	query_nic_vport_context: esw_ctx_gvmi=0x%x, vport_num=0x%x, vport_gvmi=0x%x, vport_gvmi_active=0x%x, nodnic_vport_connected_to_esw=0x%x
+001644dc	A2	0001b15c	0x20	CMD_IF	0	0xb6ea8a	query_nic_vport_context: permanent_address 0x%x,%x 
+00164600	Bcore	0002ac60	None	?	None	None	
+00164888	Bcore	0002ac60	None	?	None	None	
+00164a20	A2	0001b15c	0x20	CMD_IF	0	0xb5ab2e	send_nic_vport_change_event: event sent. event_gvmi: 0x%x, vport_num: 0x%x
+00164a40	A2	0001b15c	0x20	CMD_IF	1	0xb5ab2e	send_nic_vport_change_event: event sent. event_gvmi: 0x%x, vport_num: 0x%x
+00164dd8	W5	0001b5e0	0x20	CMD_IF	0	0xb56aff	modify_nic_vport_context: esw_ctx_gvmi=0x%x, vport_num=0x%x, vport_gvmi=0x%x, portid=0x%x, field_select=0x%x
+00165340	W5	0001b5e0	0x20	CMD_IF	0	0xb799d1	modify_nic_vport_context: event_promisc_change=0x%x, event_address_change,=0x%x, event_mtu_change=0x%x, esw_ctx_dirty=0x%x, arm_change_event=0x%x
+00165424	B	0010a954	None	?	None	None	
+00165454	B	0010a954	None	?	None	None	
+00165ac4	A2	0001b15c	0x20	CMD_IF	0	0xb7ddde	query_esw_vport_context: DONE. gvmi=0x%x, vport_idx=0x%x
+00166df8	A2	0001b15c	0x20	CMD_IF	0	0xb4b1c4	modify_vport_state - UP_LINK: admin_state=0x%x, new_uplink_state=0x%x
+00166f0c	A3	0001b1ec	0x20	CMD_IF	0	0xb7bc59	modify_vport_state - ESW_VPORT: esw_state=0x%x, nic_state=0x%x, trigger_event=0x%x
+00166f94	A3	0001b1ec	0x20	CMD_IF	0	0xb673a3	modify_vport_state - NIC_VPORT: esw_state=0x%x, nic_state=0x%x, trigger_event=0x%x
+001677b0	A3	0001b1ec	0x20	CMD_IF	0	None	
+001678d0	A3	0001b1ec	0x20	CMD_IF	0	None	
+00167b14	A3	0001b1ec	0x20	CMD_IF	0	None	
+00167bdc	Bcore	0002ac60	None	?	None	None	
+00167c50	W6	0001b6d8	0x20	CMD_IF	0	0xb7de17	set_get_sqn_lb_block_list: DONE. set_get_=0x%x, transport_domain=0x%x, index=0x%x, sqn=0x%x, sql_va=0x%x, sq_ix_in_line=0x%x
+00167ebc	Bcore	0002ac60	None	?	None	None	
+00167f74	A3	0001b1ec	0x20	CMD_IF	0	0xb55344	remove_sq_from_lb_block_list: transport_domain=0x%x, removed_sqn=0x%x, tail_sqn=0x%x
+00168e80	A3	0001b1ec	0x20	CMD_IF	0	0xb743ed	query_rqt: DONE. gvmi=0x%x, rqt_num=0x%x, rqt_actual_size=0x%x
+0016aa78	B	0010a954	None	?	None	None	
+0016aa9c	Bcore	0002ac60	None	?	None	None	
+0016aadc	Bcore	0002ac60	0x3	DEBUG_INIT+INIT	None	None	
+0016ab10	W5	0001b5e0	0x20	CMD_IF	1	0xb7deea	hairpin_check_modify_rq_sq_2rdy sq_rq_: %d pair: gvmi %d qpn %x state curr %d expected %d
+0016ac1c	Bcore	0002ac60	None	?	None	None	
+0016aca8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0016acc0	Bcore	0002ac60	None	?	None	None	
+0016ae48	Bcore	0002ac60	None	?	None	None	
+0016afe0	B	0010a954	None	?	None	None	
+0016b014	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0016b15c	Bcore	0002ac60	None	?	None	None	
+0016b300	Bcore	0002ac60	None	?	None	None	
+0016b574	Bcore	0002ac60	None	?	None	None	
+0016b700	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0016b7c8	Bcore	0002ac60	None	?	None	None	
+0016b80c	W5	0001b5e0	0x100000	CMD_DRIVER	0	0xb52e05	modify_rq: gvmi = 0x%x, sw_rq_type = 0x%x, qpi = 0x%x, srqn=0x%x, [fw_srq.uid << 16, fw_qpc.uid_ref.uid]=0x%.8x
+0016b8a8	A3	0001b1ec	0x100000	CMD_DRIVER	0	0xb6122e	modify_rq: MISSION_REFORMAT: current_sw_qp_state = 0x%x input.ctx.state = 0x%x input.modify_bitmask = 0x%x
+0016c014	A0	0001b570	0x100000	CMD_DRIVER	0	0xb728c2	modify_rq: REFORMAT RST2RDY/RST2RST done
+0016c3bc	Bcore	0002ac60	None	?	None	None	
+0016c658	W5	0001b5e0	0x20	CMD_IF	0	0xb52ed7	schedq_diff_handler: gvmi=0x%x, qpi=0x%x,diff_type=%d new_qg_pp_pv_index=0x%x, reg_res_=%d
+0016c9e8	W5	0001b5e0	0x20	CMD_IF	0	0xb61299	modify_sq: MISSION_REFORMAT: gvmi = 0x%x, qpi = 0x%x, current_sw_qp_state = 0x%x input.ctx.state = 0x%x input.modify_bitmask = 0x%x
+0016ca94	W6	0001b6d8	0x20	CMD_IF	0	0xb6cdcf	static_sq_wq_copy_buffer_umem_to_nim: gvmi = 0x%x, qpi = 0x%x, umem_id = 0x%x log_wq_size = 0x%x nim_va = 0x%llx
+0016cd40	Bcore	0002ac60	None	?	None	None	
+0016cfcc	A0	0001b570	0x20	CMD_IF	0	0xb7442c	modify_sq: REFORMAT ERR2ERR/ERR2RST done
+0016cff8	A0	0001b570	0x20	CMD_IF	0	0xb7442c	modify_sq: REFORMAT ERR2ERR/ERR2RST done
+0016d160	A0	0001b570	0x20	CMD_IF	0	0xb52f32	modify_sq: REFORMAT RDY2RST/RDY2ERR done
+0016e354	Bcore	0002ac60	None	?	None	None	
+0016e8b8	A2	0001b15c	0x20	CMD_IF	0	0xb5f283	create_sq: rollback - gvmi = 0x%x, done_missions = 0x%x 
+00175164	Bcore	0002ac60	None	?	None	None	
+00175714	W5	0001b5e0	0x20	CMD_IF	0	0xb8220a	reformat_sq: hairpin SQ: gvmi=0x%x, sqn=0x%x, hairpin_offlad_type=%d, log_hairpin_data_sz=0x%x, log_num_packets=0x%x
+0017638c	Bcore	0002ac60	0x2000000	IFARM	None	None	
+001764b0	W5	0001b5e0	0x20	CMD_IF	0	0xb79af2	reformat_rq_qp: hairpin RQ: gvmi=0x%x, rqn=0x%x, hairpin_offlad_type=%d, log_hairpin_data_sz=0x%x, log_num_packets=0x%x
+00176948	B	0010a954	None	?	None	None	
+00176964	Bcore	0002ac60	None	?	None	None	
+00176e5c	Bcore	0002ac60	None	?	None	None	
+001771fc	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00179ab4	B	0010a954	None	?	None	None	
+00179d64	B	0010a954	0x3770000	I2C+TRANSPORT+FW_LL+CMD_DRIVER+PROFILING+MANAGEMENT+STEERING+IFARM	None	None	
+0017abf0	B	0010a954	None	?	None	None	
+0017bbec	Bcore	0002ac60	None	?	None	None	
+0017bcd8	W5	0001b5e0	0x1000000	STEERING	0	0xb5cfc7	update_hash_meta_counters: gvmi=0x%x, hash_meta_ix=0x%x, log_table_size=0x%x, bucket_count=0x%x, entry_count=0x%x, table will be sent to resize
+0017c248	W5	0001b5e0	0x1000000	STEERING	0	0xb67454	DMFS remove_entry_from_hash: DONE. gvmi=0x%x, hash_meta_ix=0x%x, prev_ix=0x%x, curr_ix=0x%x, miss_ix=0x%x
+0017cb10	A3	0001b1ec	0x1000000	STEERING	0	0xb674be	DMFS dealloc_hash: DONE. gvmi=0x%x, hash_meta_ix= 0x%x, hash_meta_type=0x%x
+0017d510	W5	0001b5e0	0x1000000	STEERING	0	0xb512eb	DMFS send_table_to_garbage_collector: DONE. gvmi=0x%x, hash_meta_ix=0x%x, hash_ll_ix=0x%x, log2_table_size=0x%x, resize_state=0x%x
+0017d6a4	W5	0001b5e0	0x10084d5	DEBUG_INIT+ICM+HOST_MNG+PHY_IB+PHY_RX_ADAP+PHY_MANAGER+RXT_CHECKS+STEERING	0	0xb5aba2	DMFS dmfs_garbage_collector: START gvmi=0x%x, hash_meta_ix=0x%x, hash_ll_ix=0x%x, bucket_count=0x%x, irisc_count=0x%x
+0017d948	A3	0001b1ec	0x1000000	STEERING	0	0xb6eb1a	DMFS dmfs_garbage_collector: DONE. gvmi=0x%x, hash_meta_ix=0x%x, hash_ll_ix=0x%x
+0017da04	Bcore	0002ac60	None	?	None	None	
+0017dab8	Bcore	0002ac60	None	?	None	None	
+0017dd20	A3	0001b1ec	0x1000000	STEERING	0	0xb75ca8	DMFS alloc_resource_for_hash_resize: curr_allocated_pages=0x%x, needed_pages=0x%x, allocated_pages=0x%x
+0017e140	A0	0001b570	0x1000000	STEERING	3	0xb6eb6b	lock is free and hash table sent to GC
+0017e214	Bcore	0002ac60	None	?	None	None	
+0017e838	W5	0001b5e0	0x1000000	STEERING	1	0xb49043	DMFS check_and_alloc_new_hash_table_if_needed: (ret=0x%x) new_hash_meta_ix=0x%x, old_bucket_count=0x%x, old_entry_count=0x%x, old_ref_count=0x%x
+0017e98c	A2	0001b15c	0x1000000	STEERING	0	0xb52fc4	hash_resize_failure_handle: send old table to GC - gvmi=0x%x, hash_meta_ix=0x%x
+0017ef84	W5	0001b5e0	0xffffbdff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+PWR+FLR+ICM_ACCESS+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb5ac85	DMFS add_ste_to_new_hash_table: gvmi=0x%x, old_ste_ix=0x%x, new_bucket_ste_ix=0x%x, new_ste_ix=0x%x, populated_bucket=0x%x
+0017f29c	W5	0001b5e0	0x100125c	ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_COMMON+FLR+STEERING	2	0xb53014	copy_bucket_ll_to_new_table: gvmi=0x%x, group_id=0x%x, table_id=0x%x, old_log2_size=%d - new table has LL longer than %d. looks like one table resize won't help
+0017fa60	W5	0001b5e0	0x1000000	STEERING	0	0xb5136e	copy_entries_from_old_to_new_hash: (ret=0x%x) gvmi=0x%x, old_hash_meta_ix=0x%x, table_size=0x%x, next_bucket_to_copy=0x%x
+0017fe74	B	0010a954	None	?	None	None	
+0017ffac	W5	0001b5e0	0x1000000	STEERING	0	0xb56b9a	update_ft_root_head_ste: gvmi=0x%x, esw_owner_gvmi=0x%x, esw_fdb_exists=0x%x, table_type=0x%x, vport_num=0x%x
+00180680	Bcore	0002ac60	None	?	None	None	
+00180bb4	W5	0001b5e0	0x1000000	STEERING	1	0xb824dc	dmfs_hash_resize: (ret=0x%x) gvmi=0x%x, old_log2_size=0x%x, new_log2_size=0x%x, old_hash_meta_ix=0x%x
+00182b9c	A2	0001b15c	0x1000018	ICM_FREE_LIST+HOST_MNG+STEERING	0	0xb7dfdc	DMFS ste_build_wqe_metadata: DONE. gvmi=0x%x, general_purpose=0x%x
+00182ca4	W5	0001b5e0	0x1000000	STEERING	0	0xb4b29c	DMFS ste_build_registers_0: DONE. gvmi=0x%x, metadata_reg_c_0=0x%x, metadata_reg_c_1=0x%x, metadata_reg_c_2=0x%x, metadata_reg_c_3=0x%x
+00182db0	W5	0001b5e0	0x1000000	STEERING	0	0xb7e01f	DMFS ste_build_registers_0: DONE. gvmi=0x%x, metadata_reg_c_4=0x%x, metadata_reg_c_5=0x%x, metadata_reg_c_6=0x%x, metadata_reg_c_7=0x%x
+001830e8	W5	0001b5e0	0x1000000	STEERING	0	0xb7e0a7	DMFS ste_build_flex_parser_tnl: DONE. gvmi=0x%x, geneve_oam=0x%x, geneve_vni=0x%x, geneve_protocol_type=0x%x, opt_len=0x%x
+001837a8	W5	0001b5e0	0x1000000	STEERING	0	0xb55399	DMFS ste_build_eth_l2_src: DONE. gvmi=0x%x, inner_outer_=0x%x, smac_47_0=0x%x, smac_15_0=0x%x, ethertype=0x%x
+00183b74	A2	0001b15c	0x1000000	STEERING	0	0xb65232	DMFS ste_build_eth_l3_ipv6_des: DONE. gvmi=0x%x, inner_outer_=0x%x
+00183c88	A2	0001b15c	0x1000000	STEERING	0	0xb8463d	DMFS ste_build_eth_l3_ipv6_src: DONE. gvmi=0x%x, inner_outer_=0x%x
+0018417c	A2	0001b15c	0x1000000	STEERING	0	0xb530b5	DMFS ste_build_eth_l4: DONE. gvmi=0x%x, inner_outer_=0x%x
+001842fc	W5	0001b5e0	0x1000000	STEERING	0	0xb56c08	DMFS ste_build_gre: DONE. gvmi=0x%x, gre_key_mask=0x%x, gre_key_data=0x%x, gre_protocol_mask=0x%x, gre_protocol_data=0x%x
+00184534	A3	0001b1ec	0x1000000	STEERING	0	0xb7780a	DMFS ste_build_ib_l4: DONE. gvmi=0x%x, bth_dst_qp=0x%x, bth_opcode=0x%x
+00184c28	A2	0001b15c	0x1000000	STEERING	0	0xb490d4	DMFS ste_build_eth_ipv4_5_touple: DONE. gvmi=0x%x, inner_outer_=0x%x
+00184ddc	W5	0001b5e0	0x1000000	STEERING	0	0xb70dc1	DMFS ste_build_src_gvmi_qpn: DONE. gvmi=0x%x, source_port_pf=0x%x, source_port=0x%x, source_gvmi=0x%x, source_sqn=0x%x
+00185118	A3	0001b1ec	0x1000000	STEERING	0	0xb5d0ff	DMFS ste_build_mpls: DONE. gvmi=0x%x, label0_mask=0x%x, label0_data=0x%x
+0018541c	A2	0001b15c	0x1003517	DEBUG_INIT+INIT+ICM+HOST_MNG+LIBFHI+PHY_MANAGER+FLR+ICM_ACCESS+STEERING	0	0xb802fa	DMFS ste_build_flex_parser_0   gvmi=0x%x ,flex_parser_0(mask, data)=(0x%x, 0x%x), flex_parser_1(mask, data)=(0x%x, 0x%x), flex_parser_2(mask, data)=(0x%x, 0x%x)
+00185668	A2	0001b15c	0x1005275	DEBUG_INIT+ICM+HOST_MNG+CMD_IF+PHY_IB+PHY_COMMON+FLR+MAD+STEERING	0	0xb61391	DMFS ste_build_flex_parser_1   gvmi=0x%x ,flex_parser_4(mask, data)=(0x%x, 0x%x), flex_parser_5(mask, data)=(0x%x, 0x%x), flex_parser_6(mask, data)=(0x%x, 0x%x)
+00185a5c	W6	0001b6d8	0x1000000	STEERING	0	0xb7e14f	DMFS ste_build_eth_l2_src_des: DONE. gvmi=0x%x, inner_outer_=0x%x, dmac_47_0=0x%x, dmac_15_0=0x%x, smac_47_0=0x%x, smac_15_0=0x%x
+00185ca0	A2	0001b15c	0x1000000	STEERING	0	0xb513e8	DMFS ste_build_eth_l2_des_l4_type: DONE. gvmi=0x%x, inner_outer_=0x%x
+001863a0	W5	0001b5e0	0x1000000	STEERING	0	0xb4f605	DMFS ste_build_eth_l2_des: DONE. gvmi=0x%x, inner_outer_=0x%x, dmac_47_0=0x%x, dmac_15_0=0x%x, ethertype=0x%x
+001875d8	A0	0001b570	0x1000000	STEERING	0	0xb5ad2c	DMFS build_ste_list: Always hit
+0018849c	A2	0001b15c	0x1010000	I2C+STEERING	0	0xb75e1d	DMFS ste_set_reformat_gen1: reformat_id=0x%x, reformat_data_size=0x%x
+00188914	A2	0001b15c	0x100001f	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+STEERING	0	0xb4b324	DMFS ste_set_sx_dest_connector: first dest_type=0x%x, first dest_id=0x%x
+001889ac	W5	0001b5e0	0x1000000	STEERING	0	0xb6ce91	rw_flow_sampler_ctx: rw_ = 0x%x, gvmi=0x%x, sampler_id=0x%x, va=0x%llx
+00188af0	A3	0001b1ec	0x1000000	STEERING	0	0xb6355d	
+00188b88	A3	0001b1ec	0x1000000	STEERING	0	0xb4f673	
+00188f6c	W5	0001b5e0	0x1000000	STEERING	0	0xb56c82	DMFS ste_set_rx_dest_connector: gvmi=0x%x, dest_type=0x%x, dest_id=0x%x, dest_ste_ix=0x%x, flow_tag=0x%x
+0018942c	W5	0001b5e0	0x1000000	STEERING	0	0xb530ef	DMFS ste_set_forward_action: gvmi=0x%x, dest_list_size=0x%x, dest_list_type=0x%x, fte_use_iterator=0x%x (iterator_ix=0x%x)
+00189564	A3	0001b1ec	0x1000000	STEERING	0	0xb72a65	DMFS ste_set_drop_action: gvmi=0x%x, vport_num=0x%x, table_type=0x%x
+001895d8	A3	0001b1ec	0x1000000	STEERING	0	0xb69386	DMFS ste_set_allow_action: gvmi=0x%x, vport_num=0x%x, table_type=0x%x
+00189658	A3	0001b1ec	0x1000000	STEERING	0	0xb4f6c2	DMFS ste_set_flow_tag_action: gvmi=0x%x, table_type=0x%x, flow_tag=0x%x
+001897ac	A2	0001b15c	0x1000000	STEERING	0	0xb58cc5	DMFS ste_set_count_action: dest_type=0x%x, flow_counter_id=0x%x
+00189864	A2	0001b15c	0x1000000	STEERING	0	0xb5142e	DMFS ste_set_l3_decap_action: modify_header_id=0x%x, num_of_actions=0x%x
+001898d8	A0	0001b570	0x100000f	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+STEERING	0	0xb67615	DMFS ste_set_decap_action
+00189970	A3	0001b1ec	0x1000001	DEBUG_INIT+STEERING	0	0xb56ceb	DMFS ste_set_modify_action: sx_rx_=0x%x, modify_header_id=0x%x, num_of_actions=0x%x
+0018a868	Bcore	0002ac60	None	?	None	None	
+0018a914	Bcore	0002ac60	0x1000000	STEERING	7	0xb744ad	get_ft_log_size_from_table_id: invalid table_id=0x%x
+0018a9d0	Bcore	0002ac60	0x1000000	STEERING	7	0xb744ad	get_ft_log_size_from_table_id: invalid table_id=0x%x
+0018ab78	Bcore	0002ac60	0x1000000	STEERING	7	None	
+0018ac98	Bcore	0002ac60	0x1000000	STEERING	2	None	
+0018ad18	Bcore	0002ac60	None	?	339	None	
+0018ada4	B	0010a954	0x0		3	None	
+0018adec	Bcore	0002ac60	None	?	339	None	
+0018af50	Bcore	0002ac60	None	?	339	None	
+0018b060	Bcore	0002ac60	None	?	339	None	
+0018b5a4	B	0010a954	None	?	6720	None	
+0018b75c	W5	0001b5e0	0x1000000	STEERING	0	0xb82575	ste_set_hit_to_root_ft: ft_owner_gvmi=0x%x, table_type=0x%x, vport_num=0x%x, dst_table_gvmi=0x%x, table_id=0x%x
+0018b76c	B	0010a954	0x1000000	STEERING	0	0xb82575	ste_set_hit_to_root_ft: ft_owner_gvmi=0x%x, table_type=0x%x, vport_num=0x%x, dst_table_gvmi=0x%x, table_id=0x%x
+0018bb94	B	0010a954	0xffffce50	HOST_MNG+PHY_IB+PHY_COMMON+PHY_MANAGER+PWR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	5	None	
+0018bc60	B	0010a954	None	?	None	None	
+0018c688	B	0010a954	None	?	None	None	
+0018c944	Bcore	0002ac60	None	?	339	None	
+0018cb04	Bcore	0002ac60	None	?	339	None	
+0018cda0	B	0010a954	None	?	0	None	
+0018ce68	W6	0001b6d8	0x1000000	STEERING	0	0xb61493	dmfs_connect_disconnect_ft_type_to_steering: gvmi=0x%x, portid=0x%x, vport_num=0x%x, new_state=0x%x, old_state=0x%x, table_type=0x%x
+0018cf9c	Bcore	0002ac60	None	?	339	None	
+0018d1f8	W6	0001b6d8	0x1000000	STEERING	0	0xb61518	dmfs_set_unset_flow_table_root: cmd_gvmi=0x%x, portid=0x%x, vport_num=0x%x, new_state=0x%x, old_state=0x%x, table_type=0x%x
+0018d214	A2	0001b15c	0x1000000	STEERING	0	0xb846a8	dmfs_set_unset_flow_table_root 2: table_gvmi_to_update=0x%x, table_id_to_update=0x%x
+0018d270	B	0010a954	None	?	None	None	
+0018d420	Bcore	0002ac60	None	?	339	None	
+0018d6d8	Bcore	0002ac60	None	?	339	None	
+0018d9e0	W5	0001b5e0	0x1000000	STEERING	0	0xb5d183	ft_test_and_update failure: ft_test_and_update: access to alias FT is not allowed, opcode=0x%x, gvmi=0x%x, vport_num=0x%x, table_type=0x%x, table_id=0x%x
+0018da3c	W6	0001b6d8	0x1000000	STEERING	0	0xb6adcc	ft_test_and_update: syndrome=0x%x, opcode=0x%x, gvmi=0x%x, vport_num=0x%x, table_type=0x%x, table_id=0x%x
+0018ed24	W6	0001b6d8	0x1000000	STEERING	0	0xb8479b	ft_test_and_update_allow_alias: syndrome=0x%x, opcode=0x%x, gvmi=0x%x, vport_num=0x%x, table_type=0x%x, table_id=0x%x
+0018fb30	W5	0001b5e0	0x1000000	STEERING	0	0xb80487	DMFS add_flow_group_to_fw: DONE. syndrome=0x%x, gvmi=0x%x, group_id=0x%x, prev_group_id=0x%x, next_group_id=0x%x
+0018fd78	A3	0001b1ec	0x1000000	STEERING	0	0xb51505	DMFS remove_flow_group_from_fw: DONE. syndrome=0x%x, gvmi=0x%x, group_id=0x%x
+00190924	A3	0001b1ec	0x1000000	STEERING	0	0xb825e5	DMFS connect_next_hash: DONE. sx_rx_=0x%x, hierarchy=0x%x, hash_table_ix=0x%x
+00190e3c	A2	0001b15c	0x1000000	STEERING	0	None	
+00191610	W5	0001b5e0	0x1000000	STEERING	0	0xb7e201	DMFS rule_link_point: hierarchy=0x%x, hash_bucket_ix=0x%x, prev_ix=0x%x, ll_link_ix=0x%x, find_res=0x%x
+00191774	W5	0001b5e0	0x1000000	STEERING	0	0xb8058c	inc_count_and_add_group_to_hw: gvmi=0x%x, group_id=0x%x, table_id=0x%x, already_in_hw=0x%x, sx_rx_=0x%x
+001918f8	W5	0001b5e0	0x1000000	STEERING	0	0xb7be51	dec_count_and_remove_group_from_hw: gvmi=0x%x, group_id=0x%x, table_id=0x%x, need_to_remove_fg=0x%x, sx_rx_=0x%x
+00191a28	Bcore	0002ac60	None	?	339	None	
+0019276c	W5	0001b5e0	0x1000000	STEERING	0	None	
+001949ec	Bcore	0002ac60	None	?	339	None	
+001950e4	Bcore	0002ac60	None	?	339	None	
+001954ec	B	0010a954	0x3300000	CMD_DRIVER+PROFILING+STEERING+IFARM	None	None	
+00195610	B	0010a954	None	?	None	None	
+00195850	W5	0001b5e0	0x1000000	STEERING	0	None	
+00196480	A3	0001b1ec	0x1000000	STEERING	0	0xb70e71	copy_flow_list_from_icm: DONE, fte_ix=0x%x, dest_list_size=0x%x, flow_counter_list_size=0x%x
+001970fc	A3	0001b1ec	0x1000000	STEERING	0	None	
+00197328	W5	0001b5e0	0x1000000	STEERING	0	0xb4b3c4	copy_flow_list_to_icm: DONE, fte_ix=0x%x, dest_list_size=0x%x, flow_counter_list_size=0x%x, mc_ll_needed=0x%x, fte_use_iterator=%d
+0019811c	W5	0001b5e0	0x1000000	STEERING	0	0xb778de	DMFS set_fte : DONE. gvmi=0x%x, table_id=0x%x, flow_index=0x%x, group_id=0x%x, group member_count=0x%x
+00198374	W5	0001b5e0	0xffffffff	DEBUG_INIT+INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb49293	dmfs_delete_flow_table_entry: START gvmi=0x%x, table_id=0x%x, flow_index=0x%x, group_id=0x%x, group member_count=0x%x
+00198a94	W5	0001b5e0	0x1000000	STEERING	0	0xb80687	dmfs_delete_flow_table_entry: dereference group flow. gvmi=0x%x, table_id=0x%x, flow_index=0x%x, group_id=0x%x, group member_count=0x%x
+00198bf4	Bcore	0002ac60	None	?	339	None	
+00198dec	W5	0001b5e0	0x1000000	STEERING	0	0xb6aeb4	DMFS steering cleanup : fte_rx_ix=0x%x, fte_sx_ix=0x%x, fte_rx2_ix=0x%x, fte_sx2_ix=0x%x, iterator_ix=0x%x
+001992b4	A3	0001b1ec	0x5ab0000	I2C+TRANSPORT+RX_ERRORS+PROFILING+FLASH+STEERING+ICMD	3	0xb67775	set_fte_in_use_if_valid: FTE (gvmi=0x%x, table_id=0x%x, flow_index=0x%x) is already under modification / deletion
+00199364	A0	0001b570	0x1000000	STEERING	3	0xb84811	dmfs_modify_flow_table_entry: action modified but action bit in modify_enable_mask is 0
+001993a0	A0	0001b570	0x1000000	STEERING	3	0xb63660	dmfs_modify_flow_table_entry: flow_tag modified but flow_tag bit in modify_enable_mask is 0
+00199410	A0	0001b570	0x1000000	STEERING	3	0xb5d2c5	dmfs_modify_flow_table_entry: flow_counter_list_size modified but flow_counter_list_size bit in modify_enable_mask is 0
+00199448	A0	0001b570	0x1000000	STEERING	3	0xb6537c	dmfs_modify_flow_table_entry: flow_destination_list_size modified but flow_destination_list_size bit in modify_enable_mask is 0
+00199478	A0	0001b570	0xfffff797	DEBUG_INIT+INIT+ICM+HOST_MNG+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb6537c	dmfs_modify_flow_table_entry: flow_destination_list_size modified but flow_destination_list_size bit in modify_enable_mask is 0
+001994b8	A0	0001b570	0x1000000	STEERING	3	0xb653fc	dmfs_modify_flow_table_entry: modify_header_id modified but modify_header_id bit in modify_enable_mask is 0
+001994f4	A0	0001b570	0x1000000	STEERING	3	0xb6ed85	dmfs_modify_flow_table_entry: push_vlan_tag modified but push_vlan_tag bit in modify_enable_mask is 0
+00199538	A0	0001b570	0x1000000	STEERING	3	0xb677e7	dmfs_modify_flow_table_entry: push_vlan_2_tag modified but push_vlan_2_tag bit in modify_enable_mask is 0
+00199578	A0	0001b570	0x1000000	STEERING	3	0xb84869	dmfs_modify_flow_table_entry: encrypt_decrypt_obj_id modified but encrypt_decrypt_obj_id bit in modify_enable_mask is 0
+00199884	Bcore	0002ac60	None	?	339	None	
+0019a56c	W5	0001b5e0	0x1000000	STEERING	0	0xb75f1b	DMFS mod_fte : DONE. gvmi=0x%x, table_id=0x%x, flow_index=0x%x, group_id=0x%x, modify_enable_mask=0x%x
+0019a734	Bcore	0002ac60	None	?	339	None	
+0019a964	B	0010a954	None	?	None	None	
+0019a990	Bcore	0002ac60	None	?	339	None	
+0019af20	Bcore	0002ac60	None	?	3	None	
+0019b19c	A3	0001b1ec	0x40000	FW_LL	1	0xb77945	update_flow_meters_tokens_array: index_in_cache_line = 0x%x, cache_line_offset=0x%x, ref_count_st.val=0x%x
+0019b490	A2	0001b15c	0x40001	DEBUG_INIT+FW_LL	0	0xb61594	
+0019b630	W5	0001b5e0	0x40000	FW_LL	0	0xb7457d	
+0019b650	A3	0001b1ec	0x40000	FW_LL	0	0xb56f36	
+0019b808	A3	0001b1ec	0x40000	FW_LL	0	0xb6af1f	
+0019b8ec	W6	0001b6d8	0x40000	FW_LL	0	0xb6ced8	
+0019b924	A3	0001b1ec	0x40000	FW_LL	0	0xb53216	add_tokens_and_sync_meter) DONE: wanted_color = 0x%x, leftovers = 0x%llx
+0019c3f4	B	0010a954	0x0		None	None	
+0019c5fc	B	0010a954	None	?	None	None	
+0019c89c	B	0010a954	None	?	14012	None	
+0019c960	A3	0001b1ec	0x40000	FW_LL	0	None	
+0019ca3c	A0	0001b570	0x40000	FW_LL	0	0xb555bc	ISR isr_flow_meter_timer_handler found no jobs
+001a3d0c	A0	0001b570	0x10	HOST_MNG	1	0xb58d59	Cam replacement
+001a3d98	W5	0001b5e0	0x10	HOST_MNG	1	0xb8070f	Cam miss, mac=0x%llx, vlan_vld=0x%x, vlan=0x%x, loopback=0x%x
+001a3db4	A2	0001b15c	0x10	HOST_MNG	1	0xb5d40d	Cam miss, new_entry_index=0x%x, valid_entries=0x%x
+001a7d4c	A0	0001b570	0x10	HOST_MNG	3	0xb6ee50	change_fsm_and_reconnect_module: er_pmaos_write fails
+001b3e70	A2	0001b15c	0x10	HOST_MNG	0	0xb53343	mult a:%x, b: %x
+001b69b0	A2	0001b15c	0x10	HOST_MNG	0	0xb58d69	query_device_identifiers: offset:%x, array size: %x
+001b6fec	A0	0001b570	0x10	HOST_MNG	0	0xb61607	update_component
+001b72a4	A2	0001b15c	0x10	HOST_MNG	0	0xb4b4d1	pass_component_table num_bytes_in_cmd %x, num_bytes %x
+001b7488	A2	0001b15c	0x10	HOST_MNG	0	0xb6ee86	pass_component_table comparison_stamp 0x%x, component_identifier 0x%x
+001b7554	A0	0001b570	0x10	HOST_MNG	0	0xb6944f	request_update
+001b7710	A0	0001b570	0x10	HOST_MNG	0	0xb4936d	activate_firmware
+001b790c	A0	0001b570	0x10	HOST_MNG	0	0xb4b508	get_status
+001b82d4	A2	0001b15c	0x10	HOST_MNG	0	0xb6cf55	Request Firmware Data Response completion_code %x, length %x
+001b83b8	A0	0001b570	0x10	HOST_MNG	0	0xb77a18	Update Cmd Complete and successful
+001b98b0	A3	0001b1ec	0x10	HOST_MNG	1	0xb57025	isr_rde_operattion start: op_type = %u, op_flags = 0x%x, res_id = %u
+001bb11c	A2	0001b15c	0x10	HOST_MNG	0	0xb6374f	Platform Event Message Response: completion_code: %x, status:%x
+001bb168	A0	0001b570	0x10	HOST_MNG	0	0xb5d51b	Platform Event Message Response: updating the sensor state
+001bf868	A3	0001b1ec	0x10	HOST_MNG	0	None	
+001bf97c	A2	0001b15c	0x10	HOST_MNG	0	0xb515c8	pldm type 0x%.2x - pldm cmd code 0x%.2x
+001c5854	A3	0001b1ec	0x10	HOST_MNG	3	0xb82737	push_to_buffer error: buf_size = %u, offset = %u, push_size = %u
+001c58d8	A3	0001b1ec	0x10	HOST_MNG	3	0xb848e1	pop_from_buffer error: buf_size = %u, offset = %u, pop_size = %u
+001c5964	A3	0001b1ec	0x10	HOST_MNG	3	0xb694b4	get_data_from_buffer error: buf_size = %u, offset = %u, ptr_size = %u
+001c5a04	A3	0001b1ec	0x10	HOST_MNG	3	0xb7bf96	alloc_from_buffer error: buf_size = %u, offset = %u, alloc_size = %u
+001c6190	A2	0001b15c	0x10	HOST_MNG	3	None	
+001c62dc	W6	0001b6d8	0x10	HOST_MNG	1	0xb82778	encode_tuple start: ant|seq_nbr = %u|%u, fmt = %u, size = %u , count = %u, depth = %u
+001c6354	W6	0001b6d8	0x10	HOST_MNG	3	0xb69522	encode_tuple error: ant|seq_nbr = %u|%u, fmt = %u, size = %u , count = %u, depth = %u
+001c6478	A3	0001b1ec	0x10	HOST_MNG	1	0xb533ad	encode_to_bej start: bej_ver = 0x%x, bej_flags = %u, schema_class = %u
+001c6518	A3	0001b1ec	0x10	HOST_MNG	3	0xb79cd6	encode_to_bej error: bej_ver = 0x%x, bej_flags = %u, schema_class = %u
+001c6608	W6	0001b6d8	0x10	HOST_MNG	3	0xb5708d	decode_tuple error: ant|seq_nbr = %u|%u, fmt = %u, size = %u , count = %u, depth = %u
+001c67ac	A0	0001b570	0x10	HOST_MNG	1	0xb6168c	decode_from_bej start:
+001c6890	A3	0001b1ec	0x10	HOST_MNG	1	0xb58dad	bej_ver = 0x%x, bej_flags = %u, schema_class = %u
+001c6a34	W5	0001b5e0	0x10	HOST_MNG	1	0xb6cf92	process_tuple start: ant|seq_nbr = %u|%u, fmt = %u, size = %u , count = %u
+001c6ca8	W5	0001b5e0	0x10	HOST_MNG	3	0xb4d41a	process_tuple error: ant|seq_nbr = %u|%u, fmt = %u, size = %u , count = %u
+001c6e70	A3	0001b1ec	0x10	HOST_MNG	3	0xb74608	get_count_by_seq_nbr error: dict_id = %u, count = %d, seq_nbr = %d
+001c6f08	A3	0001b1ec	0x10	HOST_MNG	1	0xb4f8e9	process_mapping start: res_id = %d, op_type = %d, count = %d
+001c714c	A2	0001b15c	0x10	HOST_MNG	1	0xb55620	parse_bej_locator start: dict_id = %u, size = %d
+001c71d0	A3	0001b1ec	0x10	HOST_MNG	3	0xb4751c	parse_bej_locator error: dict_id = %u, count = %u, size = %u
+001c86ac	A3	0001b1ec	0x10	HOST_MNG	1	0xb4f9ad	err_code=%d, bus_id=%d, param=0x%x
+001ca0b8	A0	0001b570	0x10	HOST_MNG	0	0xb638a0	MCTP message droped due to Msg Tag
+001ca730	W5	0001b5e0	0x10	HOST_MNG	0	None	
+001ca854	A2	0001b15c	0x10	HOST_MNG	0	0xb5d638	MCTP new message starting assembly Msg Type is:0x%0x buffer index is:0x%x 
+001cceb8	A0	0001b570	0x10	HOST_MNG	0	0xb77b30	===SMBUS SEND FAILED===
+001ce7c8	Bcore	0002ac60	None	?	None	None	
+001cfa30	A2	0001b15c	0x10	HOST_MNG	0	0xb638c3	fw_burn_is_secure: is_secure %x, is_debug_fw %x
+001d09b4	A2	0001b15c	0x10	HOST_MNG	0	0xb4f9d0	fw_burn_read_tlv_data_from_nv_file_buffer: nv_file_buff_addr %x, length %x
+001d0bec	A2	0001b15c	0x10	HOST_MNG	0	0xb5f5b6	fw_burn_is_forbidden_versions_tlv_latest current ts %.8x%.8x
+001d0c18	A2	0001b15c	0x10	HOST_MNG	0	0xb5f5b6	fw_burn_is_forbidden_versions_tlv_latest current ts %.8x%.8x
+001d16ac	A3	0001b1ec	0x10	HOST_MNG	0	0xb67993	fw_burn_erase_and_write_flash: base_address %x, erase_relative_offset %x, relative_offset + size %x
+001d1acc	A0	0001b570	0x10	HOST_MNG	0	0xb80820	FW_BURN_APPLY_STATE_FW_UPDATE_FORBIDDEN_VERSIONS_TS: itoc TLV saved
+001d1d68	A3	0001b1ec	0x10	HOST_MNG	0	0xb679f7	calc_and_save_pci_link_downtime_for_synced_reset: current_synced_reset_downtime %d pending_synced_reset_downtime %d synced_reset_downtime %d
+001d238c	A2	0001b15c	0x10	HOST_MNG	0	0xb654a0	fw_burn_initialize_verify_parameters: file_signature_relative_offset_bytes 0x%.8x, ret 0x%.8x
+001d2414	A2	0001b15c	0x10	HOST_MNG	0	0xb7e470	fw_burn_initialize_verify_parameters: file_signature_2_relative_offset_bytes 0x%.8x, ret 0x%.8x
+001d2530	A3	0001b1ec	0x10	HOST_MNG	0	0xb77b48	fw_burn_patch_buffer_to_read: start_offset_to_patch 0x%.8x, end_offset_to_patch = 0x%.8x, relative_offset = 0x%.8x
+001d3818	A2	0001b15c	0x10	HOST_MNG	0	0xb695da	fw_burn_verify_file_id_data: version %x, file_id version %x
+001d3bf8	A0	0001b570	0x10	HOST_MNG	0	0xb4fa6d	fw_burn_device_psid_check
+001d40c8	A2	0001b15c	0x10	HOST_MNG	0	0xb74678	fw_burn_verify_mac_data: system_base_mac %.8x%.8x
+001d410c	A3	0001b1ec	0x10	HOST_MNG	0	None	
+001d4538	A2	0001b15c	0x10	HOST_MNG	0	0xb516ad	fw_burn_verify_version ts %.8x%.8x
+001d4c2c	A0	0001b570	0x10	HOST_MNG	0	0xb5f5f3	INIT_FW_BURN_FW_UPDATE_FORBIDDEN_VERSIONS_TS: itoc TLV saved
+001d55fc	A2	0001b15c	0x10	HOST_MNG	0	0xb4d515	fw_burn_fsm: timeout %x, force_release %x
+001d56c0	A2	0001b15c	0x10	HOST_MNG	3	0xb58e7c	fw_burn_fsm: requestor_update_handle %x, fw_burn_update_handle %x
+001d5828	A2	0001b15c	0x4000000	ICMD	3	0xb82897	fw_burn_fsm: the fw_burn_state =0x%x and request->cmd=0x%xfw_burn_get_is_isr_erase_in_progress()
+001d5848	A0	0001b570	0x4007a84	ICM+PHY_RX_ADAP+PHY_COMMON+PWR+FLR+ICM_ACCESS+MAD+ICMD	0	0xb82897	fw_burn_fsm: the fw_burn_state =0x%x and request->cmd=0x%xfw_burn_get_is_isr_erase_in_progress()
+001d5de8	A2	0001b15c	0x4000000	ICMD	3	0xb4b6c2	fw_burn_fsm: FW_BURN_STATE_SEND_ACTIVATE_STATUS ret =0x%x and master_action=0x%x so u get RET_FAIL
+001d5e0c	A2	0001b15c	0xffff8ebe	INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+PWR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb4b6c2	fw_burn_fsm: FW_BURN_STATE_SEND_ACTIVATE_STATUS ret =0x%x and master_action=0x%x so u get RET_FAIL
+001d5e70	A0	0001b570	0x4000007	DEBUG_INIT+INIT+ICM+ICMD	3	0xb4d56a	fw_burn_fsm: FW_BURN_STATE_UPLOAD component_max_size_in_bytes not bigger then download_state_current_relative_offset  RET_FAIL
+001d5ed0	A2	0001b15c	0x4000001	DEBUG_INIT+ICMD	3	0xb534f9	fw_burn_fsm: FW_BURN_STATE_SEND_VERIFY_STATUS ret =0x%x and master_action=0x%x so u get FSM_RET_FAIL
+001d5ef8	A0	0001b570	0xffff9555	DEBUG_INIT+ICM+HOST_MNG+PHY_IB+LIBFHI+PHY_MANAGER+FLR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb534f9	fw_burn_fsm: FW_BURN_STATE_SEND_VERIFY_STATUS ret =0x%x and master_action=0x%x so u get FSM_RET_FAIL
+001d5f18	A0	0001b570	0xffff9555	DEBUG_INIT+ICM+HOST_MNG+PHY_IB+LIBFHI+PHY_MANAGER+FLR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb49555	fw_burn_fsm: state=FW_BURN_STATE_LOCKED, cmd=FW_BURN_ACTIVATE_CMD ret = RET_REARM
+001d631c	A2	0001b15c	0x10	HOST_MNG	0	0xb67ae4	Writing into mailbox PA =0x%llx
+001d65b0	W5	0001b5e0	0x10	HOST_MNG	0	0xb475ee	bytes_left=%d rw_size=%d byte_index=%d image_offset=%d host_dw_size=%d
+001d67d0	A0	0001b570	0x10	HOST_MNG	0	0xb69661	ERASING_PARTITION_DONE:
+001d683c	A0	0001b570	0x10	HOST_MNG	0	0xb5d683	ERASING_PARTITION_ERASE_FREE_PARTITION:
+001d68dc	A0	0001b570	0x10	HOST_MNG	0	0xb65524	ERASING_PARTITION_ERASE_ALTERNATE_PARTITION:
+001d6954	A0	0001b570	0x10	HOST_MNG	0	0xb516d0	ERASING_PARTITION_IDLE:
+001d69d4	A2	0001b15c	0x10	HOST_MNG	0	0xb4d5e9	ERASING_PARTITION_IDLE: base_address 0x%x, alternate_base_address=0x%x
+001d6a70	A0	0001b570	0x10	HOST_MNG	0	0xb6d042	Erasing partition flow successfully done.
+001d6b48	A2	0001b15c	0x10	HOST_MNG	0	0xb79ddb	ERASING_PARTITION_ERASE_FREE_PARTITION: ret=%d, offset=0x%x
+001d868c	A2	0001b15c	0x10	HOST_MNG	0	0xb76082	VPD_VA_UUID size: %x, vpd_field_size %x
+001d86bc	A2	0001b15c	0x10	HOST_MNG	0	None	
+001d87e8	A0	0001b570	0x10	HOST_MNG	0	0xb5d6ab	Ignoring failure of parse_vpd_read_only_data_fields()
+001d882c	A2	0001b15c	0x10	HOST_MNG	0	0xb72bcd	vpd offset: %x size: %x
+001d8b2c	A0	0001b570	0x10	HOST_MNG	0	0xb63928	===SMBUS TRANSACTION SENT(slave_ix: %d)===
+001d8b60	A0	0001b570	0x10	HOST_MNG	0	0xb556d6	===SMBUS TRANSACTION RECIVED===
+001d8b88	A0	0001b570	0x10	HOST_MNG	0	0xb556d6	===SMBUS TRANSACTION RECIVED===
+001d8bb4	A0	0001b570	0x10	HOST_MNG	0	0xb80864	payload:
+001dacb0	A0	0001b570	0x10	HOST_MNG	0	0xb696ab	received lldp packet. processing ret code=%d
+001db214	A3	0001b1ec	0x200	PHY_COMMON	1	0xb6d0d0	notify_link_status: is_fpga_link_up=%d, current_state=%d, my_current_state=%d
+001e00bc	A3	0001b1ec	0x20000000	PHY_ETH	1	0xb47665	
+001e02f0	A3	0001b1ec	0x20000000	PHY_ETH	0	0xb72be5	
+001e8618	A3	0001b1ec	0x200	PHY_COMMON	0	0xb5aee2	phy2core_ingress_neg_page: pport = %d, page number = %d, port neighbor's page data = 0x%x
+001e8710	A0	0001b570	0x200	PHY_COMMON	1	0xb808c1	phy2core_ingress_neg_page: page number %d is not supported
+001eccac	A0	0001b570	0xfffffb1d	DEBUG_INIT+ICM+ICM_FREE_LIST+HOST_MNG+LIBFHI+PHY_COMMON+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb6d11e	er_mjtag_write: cmd=%d
+001ecd84	A0	0001b570	0x4007c0d	DEBUG_INIT+ICM+ICM_FREE_LIST+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+ICMD	3	0xb7c0d0	mjtag - Command not supported
+001ed028	A0	0001b570	0x4000001	DEBUG_INIT+ICMD	3	0xb4fb33	mjtag - JTAG master already activated
+001ee384	A3	0001b1ec	0x20000	TRANSPORT	3	0xb8293b	isr_check_fatal_causes : cause_dw=0x%x addr=0x%x ext_synd=%d
+001f56e8	A3	0001b1ec	0x20	CMD_IF	3	0xb655a5	dmfs_check_match_mask: format_id=0x%x, mask[%d] is not reserved: 0x%08x
+001f59b8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+001f5c88	W5	0001b5e0	0x20000	TRANSPORT	0	0xb58f81	fw_schedq_requestor_nack_handler : gvmi=0x%x, qpi=0x%x, flush_syndrome=0x%x, aeth_synd_msb=0x%x, aeth_synd_lsb=0x%x
+001f6028	A3	0001b1ec	0x20000	TRANSPORT	0	0xb5d6e1	access_sx_enable: gvmi=0x%.4x req_res_=%x qpi=0x%.6x 
+001f65a4	A2	0001b15c	0x20000	TRANSPORT	0	0xb79e51	handle_extended_retry_counters: rx_heartbeat=%d, adp_retrans_reset_counter=%d
+001f66d4	A3	0001b1ec	0x20000	TRANSPORT	0	0xb67b6a	handle_extended_retry_counters: exted_retry=%d, retrans_end_time=%d, curr_time=%d
+001f75f0	A2	0001b15c	0x80000000	bit31	0	0xb84a2b	nodnic_cmd_interpreter_port : port_seg_offset=0x%x | sw_portid=0x%x
+001f823c	A2	0001b15c	0x80000001	DEBUG_INIT+bit31	0	0xb58ff5	nodnic_cmd_interpreter_port (filter_mod) : network_en_ns=0x%x    | network_en_ps=0x%x
+001f8258	A2	0001b15c	0x800071dc	ICM+ICM_FREE_LIST+HOST_MNG+PHY_IB+PHY_RX_ADAP+LIBFHI+FLR+ICM_ACCESS+MAD+bit31	0	0xb58ff5	nodnic_cmd_interpreter_port (filter_mod) : network_en_ns=0x%x    | network_en_ps=0x%x
+001f8278	A2	0001b15c	0xffffd1fe	INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+FLR+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb571dc	nodnic_cmd_interpreter_port (filter_mod) : filters_en_ns=0x%x    | filters_en_ps=0x%x
+001f8294	A2	0001b15c	0xffff978c	ICM+ICM_FREE_LIST+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	0xb6d1fe	nodnic_cmd_interpreter_port (filter mod) : dma_en_ns=0x%x        | dma_en_ps=0x%x
+001f82b0	A2	0001b15c	0x800035b5	DEBUG_INIT+ICM+HOST_MNG+CMD_IF+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+FLR+ICM_ACCESS+bit31	0	0xb6978c	nodnic_cmd_interpreter_port (filter mod) : promisc_en_ns=0x%x    | promisc_en_ps=0x%x
+001f82cc	A2	0001b15c	0x800039c0	PHY_IB+PHY_RX_ADAP+LIBFHI+PWR+FLR+ICM_ACCESS+bit31	0	0xb535b5	nodnic_cmd_interpreter_port (filter mod) : promisc_mc_en_ns=0x%x | promisc_mc_en_ps=0x%x
+001f8414	A3	0001b1ec	0x80000000	bit31	0	0xb5360e	get_gvmi_for_worker: gvmi=0x%.8x worker_vector=0x%.8x, worker_new_offset=0x%.8x
+001f8540	W5	0001b5e0	0x80000000	bit31	0	0xb6b1be	isr_nodnic_cmd_driver : worker_id=0x%x | gvmi=0x%x | rw_=0x%x | init_seg_offset=0x%x | data=0x%.8x
+001f86f8	A2	0001b15c	0x80000000	bit31	0	0xb7e501	isr_nodnic_cmd_driver (read data before send to iron): read_data=0x%.8x | nodnic_seg_offset_dw=0x%x
+001f8850	A3	0001b1ec	0x80000000	bit31	0	0xb49622	isr_nodnic_doorbell_dispatcher gvmi=0x%x, pf_nodnic_idx=%d, pi=0x%x
+001f8b3c	A3	0001b1ec	0x80000000	bit31	0	0xb77c6f	calc_nodnic_sq_idx :  hw_portid 0x%x | gvmi 0x%x | sqn=0x%x
+001f8f40	A3	0001b1ec	0x80000000	bit31	0	0xb4d776	_calc_nodnic_gen_table_ctx_idx : gvmi=0x%x | ctx_type=0x%x | idx_final=0x%x
+001f8fcc	A3	0001b1ec	0x80000000	bit31	0	0xb7c186	_calc_nodnic_ctx_idx : gvmi=0x%x | ctx_type=0x%x | idx_final=0x%x
+001f90e4	A3	0001b1ec	0x80000000	bit31	0	0xb556f6	icmc_line_write_lock_invalidate : icmc_set=0x%x | ctx_addr=0x%llx
+001f91d4	A3	0001b1ec	0x80000000	bit31	0	None	
+001f95a4	A3	0001b1ec	0x80000000	bit31	0	None	
+001f96c4	W5	0001b5e0	0x80001770	HOST_MNG+CMD_IF+PHY_IB+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+bit31	0	None	
+001f9e70	A2	0001b15c	0x80000000	bit31	0	0xb7c1c8	init_lock_invalidate_ctx_nodnic : gvmi 0x%x | ctx_type=0x%x
+001fa060	A2	0001b15c	0x80000000	bit31	0	0xb65605	init_lock_invalidate_ste_nodnic : gvmi 0x%.4x | hw_portid 0x%x
+001fa250	W5	0001b5e0	0x80000000	bit31	0	0xb5904b	read_wr_mtt_nodnic : gvmi 0x%x | ctx_type=0x%x  | mtt_idx=0x%x  | mtt_pa_63_32=0x%x | mtt_pa_31_3=0x%x
+001fa2d4	W5	0001b5e0	0x80000000	bit31	0	0xb84a6f	read_write_nodnic_ctx_pa : rw_=0x%x | gvmi=0x%x | hw_portid=0x%x | ctx_type=0x%x | hi_lo_=0x%x
+001faed8	Bcore	0002ac60	0xffff0000	I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	None	None	
+001fb090	A2	0001b15c	0x80000001	DEBUG_INIT+bit31	0	0xb590b2	static_config_send_queue_nodnic (sxdc sanity check) : sq=0x%x, uar=0x%x
+001fb5cc	Bcore	0002ac60	None	?	None	None	
+001fb7d0	A2	0001b15c	0x80000000	bit31	0	0xb6188f	enable_disable_nodnic_doorbell_recovery : enable_disable_=%d, gvmi=%d
+001fbb9c	A2	0001b15c	0x80000000	bit31	0	0xb49666	init_hca_nodnic_vf : gvmi=0x%x, stage=0x%x
+001fbf9c	A2	0001b15c	0x80000000	bit31	0	0xb51758	init_hca_nodnic : gvmi=0x%x, stage=%d
+001fc028	A2	0001b15c	0x80000000	bit31	0	0xb65644	nodnic_flush : gvmi=0x%x, stage=0x%x
+001fc0e0	Bcore	0002ac60	0x0		220	None	
+001fc6b8	A2	0001b15c	0x80000000	bit31	0	0xb7c204	teardown_hca_nodnic : gvmi=0x%x, stage=0x%x
+001fc958	A2	0001b15c	0x80000000	bit31	0	0xb618d5	teardown_port_nodnic : gvmi=0x%x, stage=0x%x
+001fca68	A2	0001b15c	0x80000000	bit31	0	0xb829aa	init_port_nodnic : gvmi=0x%x | hw_portid=0x%x
+001fcedc	W5	0001b5e0	0x80000000	bit31	0	0xb57232	update_completion_queue_size : log2_size_sq_0=0x%x | log2_size_rq_0=0x%x | log2_size_sq_1=0x%x | log2_size_rq_1=0x%x | log_sum_all_queues=0x%x
+001fd02c	W5	0001b5e0	0x80000000	bit31	0	0xb572c1	read_write_log_queue_size : rw_=0x%x | gvmi=0x%x | hw_portid=0x%x | ctx_type=0x%x | log_size_wqe_bb=0x%x
+001fd280	W5	0001b5e0	0x80008002	INIT+RXT_CHECKS+bit31	0	0xb829d8	read_write_nodnic_pipa : rw_=%d, gvmi=%d, ctx_type=%d, high_low_=%d, pa=0x%x
+001fd3b4	W5	0001b5e0	0x80000000	bit31	0	0xb8095b	read_write_nodnic_rx_dma_pi : rw_=%d, gvmi=%d, ctx_type=%d, high_low_=%d, pa=0x%x
+001fda34	Bcore	0002ac60	None	?	None	None	
+001ff7b4	W5	0001b5e0	0x20	CMD_IF	0	0xb61944	get_host_transmit_rate_limit: port = %d, hix = %d, host_rl = %d , pci_speed = %d , port_speed = %d
+00200260	A3	0001b1ec	0x10000	I2C	0	0xb63b08	get_first_set_clr_qos_enabled_element_no_lock: no element found. set_clr_=%d, gvmi=%d, max_loop_ix=%d
+00200e70	A2	0001b15c	0x10080	PHY_RX_ADAP+I2C	0	0xb809ad	disconnect_schedq_fw_scheduling_element: sq_ix=%x, gvmi=%d
+00200f20	A2	0001b15c	0x10080	PHY_RX_ADAP+I2C	0	0xb82a4e	init_schedq_fw_scheduling_element:sq_ix=%x, gvmi=%d
+00200fd8	A3	0001b1ec	0x10000	I2C	0	0xb809e8	connect_schedq_2_vqos_tree: gvmi=%d, sq_index=%x, can_connect_sq=%d 
+0020107c	A3	0001b1ec	0x10000	I2C	0	0xb55738	connect_schedq_2_vqos_tree : gvmi=%d, sq_index=%x, father_sched_element_id=%x 
+002016fc	B	0010a954	0x0		None	None	
+00201900	A2	0001b15c	0x10000	I2C	1	0xb49691	init_ib_fw_scheduling_default_elements gvmi %d esw_gvmi %d
+00201b94	A3	0001b1ec	0x10000	I2C	0	None	
+00201ed0	B	0010a954	None	?	4294960485	None	
+00201f1c	A3	0001b1ec	0x10000	I2C	0	None	
+00202198	A3	0001b1ec	0x10000	I2C	0	None	
+00202264	B	0010a954	None	?	None	None	
+00202314	W5	0001b5e0	0x10000	I2C	0	0xb7c2be	enable_disable_vqos_tokens_for_gvmi: enable_disable_ = %d gvmi = 0x%x father_esw_element_type = 0x%x tc_sl=0x%x, para_vport = 0x%x
+00202338	A2	0001b15c	0x10000	I2C	0	0xb76108	--------> match_props.valid = 0x%x, match_sl = 0x%x
+00202418	A2	0001b15c	0x10000	I2C	0	None	
+00202cb8	B	0010a954	0x0		None	None	
+00202ff8	B	0010a954	0x7fff0000	I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT	None	None	
+00203210	A3	0001b1ec	0x10006	INIT+ICM+I2C	0	0xb77d38	isr_raise_pp_residue_hw_bug_wa: start_time:%d, end_time:%d, qos_timer_val:0x%x
+0020348c	W5	0001b5e0	0x10000	I2C	0	0xb6980b	set_sq_context_pp_rate :gvmi = 0x%x, sqn = 0x%x burst_bytes = %d, timeout[64ns] = %llx
+00203b90	A3	0001b1ec	0x10000	I2C	0	0xb4b944	set_clr_packet_pacing_enabled_element: rate_limit_index=0x%x, gvmi=0x%x, set_clear_=0x%x
+00203ce0	W5	0001b5e0	0x10000	I2C	0	0xb69862	burst_uppper_bound = 0x%x, burst = 0x%x, typical_packet_size, time_element = 0x%llx,
+00203d98	A2	0001b15c	0x10000	I2C	0	0xb63b6e	set_sched_queues_qp_rate_limiter: needed_pages = 0x%x, allocated_pages = 0x%x
+00206690	W5	0001b5e0	0x10000	I2C	1	None	
+0020757c	A3	0001b1ec	0x10000	I2C	1	0xb82aa7	vqos_tree_node_insert: type=0x%.8x, gvmi=0x%x, id=%d
+002076bc	A0	0001b570	0x10000	I2C	1	0xb5379e	vqos_init_all_global_elements 
+00207ad0	W5	0001b5e0	0x40000000	VIRT	1	0xb5f787	tree_update_distlist:PUSH this entry gvmi 0x%x sqn 0x%x sched_elem->tokens2alloc 0x%llx tpi 0x%x
+00207af8	A3	0001b1ec	0x40000000	VIRT	1	0xb698b7	--------------> log2steps=%d entry_index=%d dlist_entry->remainder=%x
+00208540	A3	0001b1ec	0x10000	I2C	1	0xb84ba9	vqos_remove: context: type=0x%.8x, gvmi=0x%x, id=%d
+002085c0	W6	0001b6d8	0x10000	I2C	1	0xb5180a	-->: node %llx father %llx father_child %llx
+00208808	B	0010a954	None	?	None	None	
+00208cc4	B	0010a954	None	?	4294967295	None	
+00208e1c	A2	0001b15c	0x10001	DEBUG_INIT+I2C	1	None	
+00209958	B	0010a954	0xffffc341	DEBUG_INIT+PHY_IB+LIBFHI+PHY_COMMON+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	None	None	
+00209b38	W6	0001b6d8	0x40000000	VIRT	1	None	
+00209b88	A3	0001b1ec	0x40000000	VIRT	1	None	
+00209d14	B	0010a954	None	?	1	None	
+00209ef0	W6	0001b6d8	0x40000000	VIRT	1	0xb6d396	1-new_vqos_round_decision: port_id=%d keep_raise_ =%d ctr=%d granted2hw= 0x%.8x tokens4keep=0x%.8x too_low_bw=%d
+00209fc8	A2	0001b15c	0x40000000	VIRT	1	0xb67c67	2-new_vqos_round_decision: actual_gain=0x%.8x expected_gain= 0x%.8x
+0020a1ec	A2	0001b15c	0x40001164	ICM+CMD_IF+PHY_IB+LIBFHI+FLR+VIRT	1	0xb4773d	3-vqos_round_decision: result: keep_raise_=%d ctr=%d return=0x%.8x+0x%.8x=tokens4keep
+0020a704	B	0010a954	0x37bd	DEBUG_INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+ICM_ACCESS	None	None	
+0020a738	B	0010a954	0x0		None	None	
+0020a77c	A2	0001b15c	0x40000000	VIRT	1	None	
+0020a7f8	A2	0001b15c	0x40000000	VIRT	1	None	
+0020aae8	B	0010a954	0x1a64	ICM+CMD_IF+PHY_IB+PHY_COMMON+PWR+FLR	None	None	
+0020ab08	B	0010a954	0x1a64	ICM+CMD_IF+PHY_IB+PHY_COMMON+PWR+FLR	None	None	
+0020ab28	B	0010a954	None	?	None	None	
+0020ab6c	A3	0001b1ec	0x40000000	VIRT	1	None	
+0020abac	A2	0001b15c	0x40000000	VIRT	1	None	
+0020ac00	A3	0001b1ec	0x40000000	VIRT	1	0xb7e5dc	num_of_limited_elements=%d next_mode=%d force_scan_needed=%d
+0020b2bc	A2	0001b15c	0x40000000	VIRT	1	0xb4ba05	allocator: start, distlist_id = %d iterations %d
+0020b880	W5	0001b5e0	0x10000	I2C	0	None	
+0020bcb0	W5	0001b5e0	0x10000	I2C	0	None	
+0020c040	A3	0001b1ec	0x10000	I2C	0	0xb7c397	handle_other_port_sqs: gvmi = 0x%x, needed_pages = 0x%x, allocated_pages = 0x%x
+0020dde8	A3	0001b1ec	0x4000	MAD	0	0xb82bd2	get_clr_mpcnt: grp=0x%x, clr=%d, rw_=%d. all groups allowed with clr and Set() only
+0020fbac	A3	0001b1ec	0x200000	PROFILING	1	None	
+00210838	W5	0001b5e0	0x200000	PROFILING	2	None	
+00210858	A3	0001b1ec	0x200000	PROFILING	2	None	
+002110ec	A2	0001b15c	0x200000	PROFILING	3	0xb6b221	handle_nvmf_respond_exception sending_uapp_sw_cqe: gvmi: 0x%x,qpn: 0x%x
+002118e0	A3	0001b1ec	0x200000	PROFILING	0	0xb5d7ba	flush_uapp_qp_from_srq_meta start: gvmi 0x%x, tgt_num 0x%x, qpn 0x%x
+00211cc0	A2	0001b15c	0x200000	PROFILING	1	0xb47793	handle_rndv_tag_too_small - invalid dct: gvmi 0x%x, qpn: 0x%x
+00211cf0	A3	0001b1ec	0x209720	CMD_IF+LIBFHI+PHY_COMMON+PHY_MANAGER+FLR+RXT_CHECKS+PROFILING	1	0xb7c3e7	handle_rndv_tag_too_small - invalid qp: gvmi 0x%x, qpn: 0x%x,  is_dc=0x%x
+00212560	A2	0001b15c	0x200000	PROFILING	2	0xb59355	
+00212d58	A2	0001b15c	0x2096f8	ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+PHY_COMMON+PHY_MANAGER+FLR+RXT_CHECKS+PROFILING	2	0xb69980	csqe with error encountered. gvmi=0x%x, status=0x%x
+00212ff0	W6	0001b6d8	0x200000	PROFILING	0	0xb80a88	uapp_qp_flush : gvmi=0x%x, qpi=0x%x, xrq_type=0x%x, is_dct=0x%x, drain_send_q=0x%x, state=0x%x,
+00215468	W5	0001b5e0	0x200000	PROFILING	1	0xb77e46	activate_uapp_target_update_context_nums: uapp_data_lkey: 0x%x, fw_srqn: 0x%x, contig_buf: %d, data_first_pa: 0x%llx
+002159ac	W5	0001b5e0	0x200000	PROFILING	1	0xb55787	
+00216430	A3	0001b1ec	0x200000	PROFILING	1	0xb518a6	micro_apps_db: uapp_qpn: 0x%x, qp_param_va: 0x%llx
+00217314	A3	0001b1ec	0x200000	PROFILING	1	0xb67d0c	calc_nvme_target_base_buf_log_size: staging_buffer_log_num_bytes: 0x%x, nvme_queue_log_size: 0x%x, tgt_base_log_size: 0x%x
+00217384	B	0010a954	0x0		None	None	
+0021a744	A2	0001b15c	0x20000	TRANSPORT	3	0xb6d407	Hang Sensor: Rx hang event raised for port [%d] into gvmi[0x%x]
+0021a7dc	A2	0001b15c	0x20000	TRANSPORT	3	0xb67d87	Hang Sensor: Tx hang event raised into gvmi[0x%x], slice[0x%x]
+0021ab6c	A2	0001b15c	0x20000	TRANSPORT	3	0xb5f8e7	RX Hang: ldb_active=0x%.8x, slice_idle=0x%.8x
+0021ab88	A2	0001b15c	0x26172	INIT+HOST_MNG+CMD_IF+PHY_IB+LIBFHI+ICM_ACCESS+MAD+TRANSPORT	3	0xb5f8e7	RX Hang: ldb_active=0x%.8x, slice_idle=0x%.8x
+0021aba4	A2	0001b15c	0xfffffe1b	DEBUG_INIT+INIT+ICM_FREE_LIST+HOST_MNG+PHY_COMMON+PHY_MANAGER+PWR+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	0xb76172	RX Hang: fte_active=0x%.8x, commit.slice_pipe_req=0x%.8x
+0021ac94	A3	0001b1ec	0x20000	TRANSPORT	3	None	
+0021ad34	A3	0001b1ec	0xfffff164	ICM+CMD_IF+PHY_IB+LIBFHI+FLR+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	3	None	
+0021b130	A2	0001b15c	0x20000	TRANSPORT	3	None	
+0021b3a8	W5	0001b5e0	0x20000	TRANSPORT	3	None	
+0021b408	A2	0001b15c	0x20000	TRANSPORT	3	0xb4d897	TX Hang: packet_send_idle=0x%.8x, slice_mask=%.8x
+0021b424	A2	0001b15c	0x23cb1	DEBUG_INIT+HOST_MNG+CMD_IF+PHY_RX_ADAP+PHY_MANAGER+PWR+FLR+ICM_ACCESS+TRANSPORT	3	0xb4d897	TX Hang: packet_send_idle=0x%.8x, slice_mask=%.8x
+00220058	A2	0001b15c	0x400	PHY_MANAGER	1	0xb7c463	inside update_mod_req_with_curr_db. local=%d. lanes_mask=0x%x
+00220970	A2	0001b15c	0x400	PHY_MANAGER	0	0xb6578f	inside set_phy_properties. local=%d. WIDTH_ENABLED. write width_enabled=0x%x.
+00220a70	A2	0001b15c	0x400	PHY_MANAGER	0	0xb6d48a	inside set_phy_properties. local=%d. calculated qdr_is_fdr10_sup_prev=0x%x
+00220aa0	A2	0001b15c	0x400	PHY_MANAGER	0	0xb6d4d5	inside set_phy_properties. local=%d. in SPEED_SUPPORTED. write speed_supported=0x%x.
+00220c18	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb84c62	inside set_phy_properties. local=%d. in EXT_SPEED_ENABLED. write speed_enabled.ib=0x%x. before conversion SPEC_SPEED_TO_HW_SPEED it was=0x%x
+00220c94	A2	0001b15c	0x400	PHY_MANAGER	0	0xb6f1bf	inside set_phy_properties. local=%d. EXT_SPEED_ENABLED. write speed_supported=0x%x.
+00220d00	A2	0001b15c	0x400	PHY_MANAGER	0	0xb557f9	inside set_phy_properties. local=%d. WIDTH_SUPPORTED. write width_supported=0x%x.
+00221488	A3	0001b1ec	0x40	PHY_IB	1	0xb573a7	ib_speed_nego_fsm: set_preset_mask. cl=%d, clp=%d, chosen_mask=0x%x
+002222ac	A3	0001b1ec	0x40	PHY_IB	1	0xb49744	ib_speed_nego_fsm: pport: %d. set_default_ts3. default_ts3_speed=0x%x , defalt_ts3.rev=%d
+002224d4	W5	0001b5e0	0x40	PHY_IB	1	0xb5b0b7	ib_speed_nego_fsm: cl:%d. clp:%d. cnf_test. agreed_ts3 speed=0x%x, local_ts3.rev=%d, agreed_ts3.rev=%d
+0022268c	A3	0001b1ec	0x40	PHY_IB	1	0xb5390f	ib_speed_nego_fsm: pport=%d, updating ts3. rev=%d, test_done=%d
+002226c4	W5	0001b5e0	0x40	PHY_IB	1	0xb4bb2b	ib_speed_nego_fsm: pport=%d, updating ts3. dds[0]=%d,dds[1]=%d,dds[2]=%d,dds[3]=%d
+0022377c	W5	0001b5e0	0x40	PHY_IB	1	None	
+00223c98	A2	0001b15c	0x40	PHY_IB	1	0xb477d1	ib_speed_nego_fsm: pport: %d. Tx stabiliztion time shortened by half to 0x%x
+00224d20	W5	0001b5e0	0x40	PHY_IB	1	None	
+00224d54	A3	0001b1ec	0x40	PHY_IB	1	0xb7c4a1	ib_speed_nego_fsm-test: Test not done. cl:%d, clp:%d. uc_done_mask=0x%x
+0022535c	A3	0001b1ec	0x40	PHY_IB	1	0xb6582c	ib_speed_nego_fsm: cl: %d, clp: %d. test has failed. lowering speed to=0x%x
+00225460	A3	0001b1ec	0x40	PHY_IB	1	0xb59402	ib_speed_nego_fsm: cl: %d, clp: %d. Current speed test DONE with Speed=0x%x
+00225488	A3	0001b1ec	0x40	PHY_IB	1	0xb59402	ib_speed_nego_fsm: cl: %d, clp: %d. Current speed test DONE with Speed=0x%x
+002254a4	A3	0001b1ec	0x40	PHY_IB	1	0xb5f972	ib_speed_nego_fsm: cl: %d, clp: %d. Current speed test PASSED with Speed=0x%x
+00225e7c	W5	0001b5e0	0x40	PHY_IB	1	0xb74873	ib_speed_nego_fsm: cl=%d. clp_4x:%d , ps=0x%x, ns=0x%x , input_event=%d
+00226410	A2	0001b15c	0x40	PHY_IB	1	0xb80b56	ib_speed_nego_fsm: pport=%d, test is already done. Waiting for peer to finish. speed=0x%x
+00226564	A2	0001b15c	0x40	PHY_IB	1	0xb80b1f	ib_speed_nego_fsm: pport %d is_peer_legacy_device = %d
+00226618	A3	0001b1ec	0x40	PHY_IB	1	0xb4fe9f	ib_speed_nego_fsm: cl:%d, clp:%d. End test WITHOUT rx_adaptaion. speed=0x%x
+00227074	W5	0001b5e0	0x40	PHY_IB	1	0xb79fd6	ib_speed_nego_fsm: peer requested INVALID dds value. cl=%d, clp_4x=%d, lane=%d, dds=%d, ddsv=%d
+002287a4	A2	0001b15c	0x200	PHY_COMMON	0	0xb7e7b4	get_connector_type: pport=%d, type=%d
+002300cc	A2	0001b15c	0x80	PHY_RX_ADAP	1	0xb748bb	
+00230110	A2	0001b15c	0x80	PHY_RX_ADAP	1	0xb748bb	
+0023018c	A3	0001b1ec	0x80	PHY_RX_ADAP	1	0xb4781e	
+00230a14	W5	0001b5e0	0x80	PHY_RX_ADAP	0	0xb6d52a	
+00230aa4	W5	0001b5e0	0x80	PHY_RX_ADAP	0	0xb5b178	
+00230c9c	W5	0001b5e0	0x80	PHY_RX_ADAP	0	0xb6f213	
+00232e28	A3	0001b1ec	0x20000000	PHY_ETH	0	None	
+00232f70	A3	0001b1ec	0x20000000	PHY_ETH	1	None	
+002359d4	A2	0001b15c	0x20000000	PHY_ETH	3	0xb5944e	in phy_lane_2_ini_module_lane: fail to get ini logic lane for pport = %d phy_lane = %d 
+00239e34	A3	0001b1ec	0x20000000	PHY_ETH	1	0xb6d5ce	
+0023acc4	A2	0001b15c	0x20000000	PHY_ETH	0	0xb761ab	Calc Topology pport: %d topology: %d 
+0023b060	A2	0001b15c	0x2000000c	ICM+ICM_FREE_LIST+PHY_ETH	1	0xb5584b	Calc cable enforce fec pport: %d detected UNKOWN ext_spec_com_code: 0x%x
+0023b7c4	A2	0001b15c	0x20000000	PHY_ETH	0	0xb47858	ETH fsm, pport: %d Enforce-FEC:mode: 0x%x fec was not enforced.
+0023b85c	A3	0001b1ec	0x20000000	PHY_ETH	0	0xb5190b	ETH fsm, pport: %d Enforce-FEC:mode: 0x%x fec was enforced to: 0x%x
+0023d21c	A2	0001b15c	0x80	PHY_RX_ADAP	1	0xb5b21f	eth_speed_nego local: %d, fast linkup flow, disable mask 0x%x
+0023d23c	A3	0001b1ec	0x80	PHY_RX_ADAP	0	0xb5b21f	eth_speed_nego local: %d, fast linkup flow, disable mask 0x%x
+0023d25c	A3	0001b1ec	0x80	PHY_RX_ADAP	0	0xb67dc6	eth_speed_nego local: %d, fast linkup flow, cable length prev/curr: %d/%d
+0023d284	A3	0001b1ec	0x80	PHY_RX_ADAP	0	0xb658bf	eth_speed_nego local: %d, fast linkup flow, link_hcd prev/curr: %d/%d
+0023d2a8	A3	0001b1ec	0x80	PHY_RX_ADAP	0	0xb61ba7	eth_speed_nego local: %d, fast linkup flow, rx rev prev/curr: %d/%d
+0023d418	A2	0001b15c	0x80	PHY_RX_ADAP	1	0xb6b40e	eth_speed_nego local: %d, fast linkup support by INI. Update prev db: %d
+0024434c	A3	0001b1ec	0x20000000	PHY_ETH	1	0xb65905	eth_1g_an: generic, pport %d, prev_state_or_event %d, input_event %d
+00245a70	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb558dc	phy test mode: generic, pport %d, prev_state_or_event %d, input_event %d
+00248350	W6	0001b6d8	0x20000000	PHY_ETH	1	0xb7e810	kr_startup: cl=%d. clp_4x:%d lane:%d, ps=0x%x, ns=0x%d , input_event=%d
+00248ca4	W5	0001b5e0	0x20000000	PHY_ETH	1	0xb7e858	kr_startup rx_ctrl: cl=%d. clp_4x:%d lane:%d, Coefficient update field, Preset=0x%x, Initialize=0x%x
+00248cd8	W6	0001b6d8	0x20000000	PHY_ETH	1	0xb6f2bb	kr_startup rx_ctrl: cl=%d. clp_4x:%d lane:%d, Coefficient update field, Coefficient+1=0x%x, Coefficient0=0x%x, Coefficient-1=0x%x
+00248d40	W5	0001b5e0	0x20000000	PHY_ETH	1	0xb80bf4	kr_startup tx_ctrl: cl=%d. clp_4x:%d lane:%d, Coefficient update field, Preset=0x%x, Initialize=0x%x
+00248d74	W6	0001b6d8	0x20000000	PHY_ETH	1	0xb7a079	kr_startup tx_ctrl: cl=%d. clp_4x:%d lane:%d, Coefficient update field, Coefficient+1=0x%x, Coefficient0=0x%x, Coefficient-1=0x%x
+0024a61c	A0	0001b570	0x400	PHY_MANAGER	0	0xb711ce	phy_reg_PPBMC illegal pnat
+0024a930	A0	0001b570	0x400	PHY_MANAGER	0	0xb77f4b	phy_reg_PPBMP illegal pnat
+0024dbd8	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb6b457	phy_reg_PPTT set port0_1=%d, disable_mask_paos: %d, test_mode: %d 
+0024e390	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb4bb97	phy_reg_PPRT  port0_1=%d, disable_mask_paos: %d, test_mode: %d 
+0024efd0	A2	0001b15c	0x400	PHY_MANAGER	0	0xb4feeb	phy_reg_PTER get_set=%d port0_1=%d
+00250110	A0	0001b570	0x400	PHY_MANAGER	0	0xb7a0fb	phy_reg_PHFR fault mode is unsupported
+00254400	A0	0001b570	0x400	PHY_MANAGER	3	0xb80c59	phy_reg_PMDR: invalid send with set opertaion. Only get.
+00254460	A3	0001b1ec	0x400	PHY_MANAGER	3	0xb4ffb9	phy_reg_PMDR: invalid pport %d from portid %d and pant %d
+00258ad0	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb5fb1e	inside phy_notify_link_status. local=%d. changing to state: %d. time_gap: %d 
+0025a460	A2	0001b15c	0x400	PHY_MANAGER	0	0xb4fff3	inside apply_stamping_ib. local=%d,compliance_code_stamping_disable=%d
+0025abc0	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb7121d	
+0025ac0c	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb4da27	
+0025accc	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb84e8c	inside set_pm_speed_and_width IB. before stamping: local=%d, speed_enable=0x%x, width_enable=0x%x.
+0025ad10	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb7ea41	
+0025b088	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb84eef	inside phy_manager_set_next_state. pport=%d. port_type:%d. event: %d 
+0025cb8c	W5	0001b5e0	0x400	PHY_MANAGER	0	0xb47898	inside phy_manager_set_next_state. pport=%d. port_type:%d. curr_state: %d next_state: %d. new_next_state: %d.
+0025de58	W5	0001b5e0	0x800	PWR	0	0xb5d939	in power_up_down_clock_tree. local_port=%d, chain=%d, center_pll_index=%d, rx_serdes_4x=%d, tx_serdes_4x=%d.
+0025def0	W5	0001b5e0	0x800	PWR	0	None	
+0025df38	A3	0001b1ec	0x800	PWR	1	0xb77fdd	in chain_power_up_down_clock_tree - set_pll_clkrep_left_right_power_hal. chain=%d, center_pll_index=%d, pll_mask=%d.
+0025e32c	W6	0001b6d8	0x800	PWR	0	0xb5747a	in serdes_update_port_usage in en_dis_ %d, pport %d, hw_port.sd_4x_rx=%d, hw_port.sd_4x_tx=%d, current rx_serdes_lanes_mask %d, current tx_serdes_lanes_mask %d.
+0025e450	A3	0001b1ec	0x800	PWR	0	0xb73012	in serdes_update_port_usage in en_dis_ %d, pm_state active, local port %d, maximum width=%d.
+0025e568	A2	0001b15c	0x800	PWR	0	0xb53a00	in serdes_update_port_usage in en_dis_ %d ,pm_state disable, local port %d.
+0025e5a0	A3	0001b1ec	0x800	PWR	0	0xb73012	in serdes_update_port_usage in en_dis_ %d, pm_state active, local port %d, maximum width=%d.
+0025e990	W6	0001b6d8	0x800	PWR	0	None	
+0025e9e8	W6	0001b6d8	0x800	PWR	0	None	
+0025ea4c	A3	0001b1ec	0x800	PWR	0	None	
+0025eaa0	A3	0001b1ec	0x800	PWR	0	None	
+0025eaf4	A2	0001b15c	0x800	PWR	0	None	
+0025ec24	A2	0001b15c	0x800	PWR	0	None	
+0025eec0	A2	0001b15c	0x800	PWR	0	0xb7a192	in port_required_plls_are_up. center pll %d. pport_active_pll_mask %d.
+0025ef7c	A2	0001b15c	0x800	PWR	0	0xb4bd1a	in all_active_plls_are_up. center pll %d. global_pll_active=%d.
+0025f0b4	A2	0001b15c	0x800	PWR	0	0xb6f384	
+0025f158	A2	0001b15c	0x800	PWR	0	0xb749e2	
+0025f214	A2	0001b15c	0x800	PWR	0	None	
+0025f248	A2	0001b15c	0x800	PWR	0	0xb6b528	
+0025f474	W5	0001b5e0	0x40	PHY_IB	0	None	
+0025fd84	A2	0001b15c	0x800	PWR	0	0xb59638	in speed_2_pll_mask. local=%d. enabled_active_=%d.
+0025fe08	A2	0001b15c	0x800	PWR	0	0xb61c8a	in speed_2_pll_mask. called query_phy_properties with local=%d. speed_active.ib in SPEC speed is 0x%x.
+0025fea8	A2	0001b15c	0x800	PWR	0	0xb5fb6c	in speed_2_pll_mask. ETH. local=%d. speed=0x%x.
+00260030	A2	0001b15c	0x800	PWR	0	0xb49854	in speed_2_pll_mask. IB. local=%d. speed=0x%x.
+00260aec	A2	0001b15c	0x800	PWR	0	0xb6b568	inside manage_power_open. local port=%d, pport=%d.
+00260b64	A2	0001b15c	0x800	PWR	0	0xb7809b	
+00260de0	A2	0001b15c	0x800	PWR	0	0xb5b320	in manage_pll_open. local port %d, pll_handler_mask=%d.
+00260e10	A2	0001b15c	0x800	PWR	0	None	
+00260fa0	A2	0001b15c	0x800	PWR	0	0xb65b8d	inside manage_power_and_pll_close, state active. marking active_pll_mask as 0x%x for local:%d.
+002611a4	A3	0001b1ec	0x800	PWR	0	0xb4dbac	
+00261410	A2	0001b15c	0x800	PWR	0	None	
+00261468	A2	0001b15c	0x800	PWR	0	0xb65bec	
+00261708	A3	0001b1ec	0x800	PWR	0	0xb82eea	in init_plls. input_buffer_mask=%d. freq_in=%d. opened center pll in center #%d.
+00261760	A2	0001b15c	0x800	PWR	0	None	
+00261874	A2	0001b15c	0x800	PWR	3	None	
+002618cc	A2	0001b15c	0x800	PWR	0	None	
+00261b04	A2	0001b15c	0x800	PWR	0	None	
+00261b68	A0	0001b570	0x800	PWR	0	0xb49883	
+00261b8c	A0	0001b570	0x800	PWR	0	0xb49883	
+00261bf0	W5	0001b5e0	0x800	PWR	0	None	
+00261c54	A0	0001b570	0x800	PWR	0	0xb7306f	
+00262230	A2	0001b15c	0x40	PHY_IB	1	0xb7c5ad	in  check_link_maintenance_validity. pport = %d . speed_valid = %d .
+00262494	A2	0001b15c	0x40	PHY_IB	1	None	
+00262590	A2	0001b15c	0x40	PHY_IB	1	0xb47982	in pport_activate_lm_flow. curr_active_port = %d . lane_mask = %d . activate rx adaptaion
+0026266c	A2	0001b15c	0x40	PHY_IB	1	0xb78106	in lm_input_event_handler. input_event= %d . old lane mask = %d .
+002626f4	A2	0001b15c	0x40	PHY_IB	1	0xb7c5f2	in lm_input_event_handler. input_event= %d . new lane mask = %d .
+00262794	W5	0001b5e0	0x40	PHY_IB	1	0xb61d21	in calc_link_maintenance_postpone_time_sec. time_stamp_low_ticks= %d . time_stamp_high_ticks= %d . lm_start_time_sec= %d . current_time_sec= %d . lm_time_interval_sec= %d .
+00262958	A3	0001b1ec	0x40	PHY_IB	1	0xb53a4c	in link_maintenance_handler. input_event= %d , event_action = %d , curr_active_port = %d .
+00262a04	A3	0001b1ec	0x40	PHY_IB	1	0xb53a4c	in link_maintenance_handler. input_event= %d , event_action = %d , curr_active_port = %d .
+00262ec0	A3	0001b1ec	0x40	PHY_IB	1	0xb6d676	in link_maintenance_handler. input_event= %d , event_action = LM_INITIATE , old curr_active_port = %d . new curr_active_port is first pport= %d
+002635e4	A2	0001b15c	0x40	PHY_IB	1	0xb47a69	Initiating force EDR, pport: %d, fec_mode:%d
+00263818	W5	0001b5e0	0x40	PHY_IB	1	None	
+00263bf8	W6	0001b6d8	0x40	PHY_IB	0	0xb5b3a6	ib_force_edr_fsm, activate rx adaptation, pport=%d, cl=%d, clp=%d, lane_mask=%d, full/fast=%d, measure method=%d,
+00263cac	A3	0001b1ec	0x40	PHY_IB	0	0xb5dabf	force EDR, uc_done lane:%d, current_done_mask = %d, needed mask: 0x%x
+00263da8	A0	0001b570	0x40	PHY_IB	1	0xb7a205	ib_force_edr_fsm: return with catastrophic pport_0_err
+00263de8	A2	0001b15c	0x40	PHY_IB	0	0xb7ebdb	pport %d received idle, counter is = %d
+00263e70	A3	0001b1ec	0x40	PHY_IB	0	0xb61dce	pport %d blocks_aligned = %d, block_mask = 0x%x
+002643c4	A2	0001b15c	0x40	PHY_IB	1	0xb6b698	IB force EDR, pport %d, at linkup, link phy state: 0x%x
+00264410	A2	0001b15c	0x40	PHY_IB	1	0xb498e9	IB force EDR, pport %d, activated fast flow of rx adaptation, link phy state: 0x%x
+00264ed8	A2	0001b15c	0x400	PHY_MANAGER	0	0xb82f88	check_ppbmp_params bad_param monitor_group: %d larger than allowed value: %d 
+00264fec	A3	0001b1ec	0x400	PHY_MANAGER	0	0xb76291	check_ppbmp_params threshold: %d is not in allowed range min: %d max: %d 
+00265160	A2	0001b15c	0x400	PHY_MANAGER	0	0xb59719	check_ppbmc_params ppbmc->monitor_cntl: %d larger than allowed value: %d
+00272f9c	A0	0001b570	0x80	PHY_RX_ADAP	0	0xb74aa7	Start of opamp calibration
+00273094	A0	0001b570	0x80	PHY_RX_ADAP	0	0xb55973	End of opamp calibration
+00278c84	A2	0001b15c	0x10000	I2C	1	0xb6d706	handle_trans_done. cause code = %d, state=%02x
+00278e6c	A3	0001b1ec	0x10000	I2C	1	0xb53aa7	smbus slave new trans. addr=%02x rw_=%d fw_cause=%d
+00279b38	A3	0001b1ec	0x10000	I2C	1	0xb69a66	smbus_slave_get_trans_data: buffer error: skip+buff/trans size: %d+%d/%d
+0027ace0	A0	0001b570	0x400000	MANAGEMENT	0	0xb63ea4	WRITE GPIO NAME VALUE - return status = WRITE_GPIO_BUSY
+0027db8c	A2	0001b15c	0x440000	FW_LL+MANAGEMENT	3	0xb51a15	smbus finish trans. Read block buffer too small (buf/trans = %d/%d
+0027e04c	A2	0001b15c	0x400000	MANAGEMENT	3	0xb61e79	smbus_master_err_cnt: gw_idx=%d, smb_err_cnt=%d
+00284220	A2	0001b15c	0x4000000	ICMD	1	0xb6f3ce	inside er_msci_query: index=%d num_of_cpld=%d
+002856bc	A0	0001b570	0x4000000	ICMD	1	0xb85056	inside tempsensing_set_get
+0028936c	A0	0001b570	0x4000	MAD	0	0xb6b71b	er_mc_mcion_query: inside GPIO_MODULE_DIAGNOSTIC_SUPPORTED(): 
+0028947c	A2	0001b15c	0x4000	MAD	0	0xb59762	er_mc_mcion_query: module_status_bits=%d, module=%d
+002895c4	A0	0001b570	0x4000	MAD	0	0xb6b75a	er_mc_mcion_query: inside MEMORY_MAP_MODULE_DIAGNOSTIC_SUPPORTED()
+00289634	A0	0001b570	0x4000	MAD	0	0xb78200	er_mc_mcion_query: inside MEMORY_MAP_MODULE_DIAGNOSTIC_SUPPORTED(): inside I2C_INIT_STATE: return EMAD_STS_LONG_PROCESS
+00289664	A0	0001b570	0x4000	MAD	0	0xb78200	er_mc_mcion_query: inside MEMORY_MAP_MODULE_DIAGNOSTIC_SUPPORTED(): inside I2C_INIT_STATE: return EMAD_STS_LONG_PROCESS
+00289690	A0	0001b570	0x4000	MAD	0	0xb65c7d	er_mc_mcion_query: inside MEMORY_MAP_MODULE_DIAGNOSTIC_SUPPORTED(): inside I2C_INIT_STATE: return EMAD_STS_RETRY
+00289714	A0	0001b570	0x4000	MAD	0	0xb7ec40	er_mc_mcion_query: inside MEMORY_MAP_MODULE_DIAGNOSTIC_SUPPORTED(): inside NOT I2C_INIT_STATE: return EMAD_STS_INTERNAL_ERR
+0028c5fc	A3	0001b1ec	0x4000000	ICMD	1	0xb69abe	PMAOS write: slot_id- %d, module- %d, host_module- %d
+0028c684	A3	0001b1ec	0x4000000	ICMD	3	0xb7a32b	PMAOS write: invalid module type = %d of module = %d, slot index %d
+0028c6c4	A2	0001b15c	0x4000000	ICMD	3	0xb4dce1	PMAOS write: module = %d, slot index %d, rst not supported for twisted pair.
+0028c920	A3	0001b1ec	0x4000000	ICMD	3	None	
+0028cd84	A3	0001b1ec	0x4000000	ICMD	1	0xb7136f	PMAOS write: (2) module_admin_status=%d . module= %d, slot index- %d
+0028d02c	A3	0001b1ec	0x4000000	ICMD	3	0xb8509f	PMAOS read: invalid module type = %d of module = %d, slot index- %d
+0028d068	A2	0001b15c	0x4000000	ICMD	3	0xb74b07	PMAOS read: module = %d, slot index %d, rst not supported for twisted pair.
+0028d138	A2	0001b15c	0x4000000	ICMD	0	0xb61f37	PMAOS read: module- %d, slot index- %d
+0028fe28	A2	0001b15c	0x400004	ICM+MANAGEMENT	0	0xb47b52	isr_mng2core_handler: bus_index = 0x%x, module = %d
+0029df7c	A0	0001b570	0x400000	MANAGEMENT	3	0xb50107	module_management_init_sm: ERROR: entered default state.
+0029e058	A3	0001b1ec	0x409438	ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_MANAGER+FLR+RXT_CHECKS+MANAGEMENT	1	0xb850e3	module_management_init_sm: MM_INIT_PLUGGED_IN: module= %d identifier= %d eeprom=%d
+0029fb2c	A3	0001b1ec	0x400000	MANAGEMENT	1	0xb7c634	module_management_init_sm: MM_INIT_PARSE_PAGE: module = %d, request_page=%d, actual_page=%d
+002a0520	A3	0001b1ec	0x400008	ICM_FREE_LIST+MANAGEMENT	0	0xb7ed11	module_management_init_sm: curr_state = %d, next_state = %d, module = %d
+002a12bc	A3	0001b1ec	0x400000	MANAGEMENT	3	0xb4998c	cable_module_read_write: write unlock password failed, state = %d, gw = %d, smbus status = %d
+002a196c	A3	0001b1ec	0x400000	MANAGEMENT	0	0xb7ed5a	CABLE_MODULE_RW_READ_WRITE_FROM_MODULE - page smbus write failed, gw %d, smbus status %d, stats.status %d
+002a1a90	A2	0001b15c	0x400000	MANAGEMENT	3	0xb85136	CABLE_MODULE_RW_CHANGE_SELECTED_PAGE - select page smbus write failed, gw %d, smbus status %d
+002a1b98	A2	0001b15c	0x400000	MANAGEMENT	3	0xb65d00	CABLE_MODULE_RW_SET_CLEAR_CABLE_PROTECTION - write lock password smbus write failed, gw %d, smbus status %d
+002a1bb8	A3	0001b1ec	0x404b53	DEBUG_INIT+INIT+HOST_MNG+PHY_IB+LIBFHI+PHY_COMMON+PWR+MAD+MANAGEMENT	0	0xb65d00	CABLE_MODULE_RW_SET_CLEAR_CABLE_PROTECTION - write lock password smbus write failed, gw %d, smbus status %d
+002aca70	A2	0001b15c	0x20	CMD_IF	1	0xb69b28	
+002acb20	A3	0001b1ec	0x20	CMD_IF	1	0xb7ee18	
+002aec20	A0	0001b570	0x800000	FLASH	0	0xb6d771	acquire_release_nvram: SEMAPHORE_GENERAL could not be locked
+002aee7c	A2	0001b15c	0x800000	FLASH	0	0xb5761f	submit_nvram_job: nvram_access_requestor.id = %d, nvram_access_requestor.key = %d
+002af1c0	A0	0001b570	0x800000	FLASH	1	0xb5fd46	submit_nvram_job_after_lock: job_request = NV_OPCODE_INVALIDATE_ALL
+002b0120	A0	0001b570	0x800000	FLASH	0	0xb851fc	access_nvram: nvram could not be acquired
+002b02b4	A0	0001b570	0x800000	FLASH	0	0xb69b53	access_nvram: RET_BUSY
+002b0534	A2	0001b15c	0x800000	FLASH	1	0xb61fb3	nv_ram_read_write_tlv: operation = 0x%x, access_nvram status=0x%x
+002b06f0	A0	0001b570	0x800000	FLASH	0	0xb57671	access_register_nvgc: called 
+002b0a2c	A0	0001b570	0x800000	FLASH	0	0xb5768f	access_register_nvqc: called 
+002b5544	A0	0001b570	0x4000	MAD	0	0xb69b6a	access register PPCNT: ports tpye doesn't match with requested group type
+002b5a2c	A2	0001b15c	0x4000	MAD	0	0xb85278	get_clr_ppcnt: local_port=%d, rw=%d. all ports allowed with clr only
+002b5ad4	A3	0001b1ec	0x4000	MAD	0	0xb4bf38	get_clr_ppcnt: grp=0x%x, clr=%d, rw=%d. all groups allowed with clr and Set() only
+002b5b3c	A2	0001b15c	0x4000	MAD	0	0xb80d2c	get_clr_ppcnt: prio_tc=%d, grp=0x%x. prio_tc not 0 only for per priority or per traffic
+002b7088	A3	0001b1ec	0x20	CMD_IF	1	0xb5dbb8	write_capi_dummy_addr_to_hw, hix=%d tmp_ix=%d tmp_valid=%d
+002b71b0	A3	0001b1ec	0x20	CMD_IF	0	0xb83109	write_capi_dummy_addr_to_hw: gvmi=%d dra.high=0x%.8x dra.low=0x%.8x
+002b73cc	A3	0001b1ec	0x20	CMD_IF	1	0xb47b86	remove_capi_dummy_addr_from_hw, hix=%d curr=%d valid=%d
+002b7c2c	A2	0001b15c	0x20	CMD_IF	0	0xb67f43	starting capi_access_register_rw, gvmi=0x%x rw=%d
+002b7d4c	W5	0001b5e0	0x20	CMD_IF	1	0xb7311d	capi_access_register_rw, gvmi=0x%x hix=%d inv=%d trans=%d owner=%d
+002b7dc4	A0	0001b570	0x20	CMD_IF	0	0xb78393	CAPI icmd, initializing HW
+002b7ef8	Bcore	0002ac60	None	?	None	None	
+002b7f5c	W5	0001b5e0	0x20	CMD_IF	0	0xb8314d	capi_modify_capi_gvmi_invalidation_entry: inv_gvmi=0x%x address=0x%llx setting CAPP_ID=0x%x  CAPI_ID=0x%x
+002b8308	A3	0001b1ec	0x20	CMD_IF	0	0xb80d84	capi_reformat_pec_context: capiind=0x%.2x cappid=0x%.2x nmmu_id=0x%.3x
+002b832c	A3	0001b1ec	0x20	CMD_IF	0	0xb59796	capi_reformat_pec_context: thread_id=0x%.4x lpid=0x%.3x pid=0x%.5x
+002b8548	A2	0001b15c	0x20	CMD_IF	0	0xb53b06	capi_static_config_init_pf_inv_cache: locking address=0x%llx
+002b88dc	W5	0001b5e0	0x10000	I2C	0	0xb7c6f9	alloc_dealloc_queue_group_or_para_vport_index: gvmi=0x%x, alloc_dealloc_=0x%x, queue_group_para_vport_=0x%x, index=0x%x, allocated_pages = 0x%x
+002b8948	A3	0001b1ec	0x10000	I2C	0	0xb4bf8b	alloc_dealloc_queue_group_or_para_vport_index: gvmi=0x%x, needed_pages=0x%x, allocated_pages=0x%x
+002b92d0	A0	0001b570	0x10000	I2C	1	0xb74c1c	Live-Patch: Restarting CC_BURST_MODE
+002b9304	A0	0001b570	0x1001e	INIT+ICM+ICM_FREE_LIST+HOST_MNG+I2C	1	0xb713f1	MFRL command: Running lfwp during CC_BURST_MODE
+002bafc4	Bcore	0002ac60	None	?	8192	None	
+002bb10c	A2	0001b15c	0x4000000	ICMD	0	0xb51a8d	icmd_read_icmc_tags_and_info: first_set =%d number_of_sets=%d
+002bb848	Bcore	0002ac60	None	?	8192	None	
+002bba20	Bcore	0002ac60	None	?	339	None	
+002bbb38	Bcore	0002ac60	None	?	339	None	
+002bdc20	Bcore	0002ac60	None	?	339	None	
+002bdc90	Bcore	0002ac60	None	?	339	None	
+002befbc	W5	0001b5e0	0x40001f0	HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+ICMD	0	0xb783ae	icmd_read_g_rse_desc: slice=0x%x, pipe_type=0x%x, array_index=0x%x, level=0x%x, addr=0x%x
+002c0c04	Bcore	0002ac60	None	?	None	None	
+002c0e28	A3	0001b1ec	0x4007bfa	INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PWR+FLR+ICM_ACCESS+MAD+ICMD	None	None	
+002c0ec4	W5	0001b5e0	0x4000000	ICMD	None	None	
+002c0ef4	W6	0001b6d8	0x4000000	ICMD	None	None	
+002c0f2c	A0	0001b570	0x4000000	ICMD	None	None	
+002c0f48	A2	0001b15c	0x4000000	ICMD	None	None	
+002c10bc	A2	0001b15c	0x4	ICM	None	0xb51acb	##### DEBUG FW LOG #####: starting iteration num %d
+002c38b4	Bcore	0002ac60	0x0		None	None	
+002c6e94	W5	0001b5e0	0x4000000	ICMD	0	0xb5fd8a	icmd_calc_sqn: DEBUG_CALC_SQN_MODE_CALC gvmi = 0x%x, port_id = 0x%x , vl = 0x%x, sl_prio = 0x%x, pp = 0x%x
+002c6f84	W5	0001b5e0	0x4000000	ICMD	0	0xb7eeb7	icmd_calc_sqn: DEBUG_CALC_SQN_MODE_REV_CALC gvmi = 0x%x, port_id = 0x%x , vl = 0x%x, sl_prio = 0x%x, pp = 0x%x
+002c6fb0	W5	0001b5e0	0x4000000	ICMD	0	0xb4dd5f	icmd_calc_sqn: DEBUG_CALC_SQN_MODE_REV_CALC pp = 0x%x, req_res_ = 0x%x, is_gga = 0x%x, ctrl_schedq = 0x%x, live_update_schedq = 0x%x
+002c70ac	W6	0001b6d8	0x4000000	ICMD	0	None	
+002c70d8	W6	0001b6d8	0x4000000	ICMD	0	None	
+002c7954	B	0010a954	None	?	None	None	
+002c7994	A3	0001b1ec	0x4000000	ICMD	0	0xb7c7aa	icmd_write_ste_definer: ste_ix=0x%x, dst_ix=0x%x, miss_default_ix=0x%x
+002c7eb4	A3	0001b1ec	0x4000000	ICMD	0	0xb62066	icmd_force_fw_feature_support: bad version = %d. min_supported=%d, max_supported=%d
+002c823c	A2	0001b15c	0x4000000	ICMD	3	0xb7636e	icmd_hang_sensor_config_set_rx: bad timeout = %d. Must be 0 to disable or > %d
+002c82f8	A2	0001b15c	0x4000000	ICMD	3	0xb7ef26	icmd_hang_sensor_config_set_tx: bad timeout = %d. Must be 0 to disable or > %d
+002c8b10	A2	0001b15c	0x1000207c	ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_IB+ICM_ACCESS+DC_CLEANUP	1	0xb4dde4	icmd_ver_lfwp - current_image_addr=0x%x, pending_image_addr=0x%x
+002c910c	A2	0001b15c	0x4000000	ICMD	0	0xb57719	icmd_gen_assert assert_value = %d, assert_severity = %d
+002c9458	A2	0001b15c	0x20	CMD_IF	0	0xb83282	icmd_send_flr_request(): gvmi = 0x%x, opcode  = 0x%x
+002c947c	A0	0001b570	0x20	CMD_IF	0	0xb4c04b	icmd_send_flr_request() invalid gvmi
+002c94d8	A0	0001b570	0x20	CMD_IF	0	0xb7c8ab	icmd_send_flr_request() FLR done
+002ca530	W5	0001b5e0	0x20	CMD_IF	0	None	
+002ca574	A2	0001b15c	0x20	CMD_IF	1	None	
+002ca690	A3	0001b1ec	0x4000000	ICMD	0	0xb620ba	icmd_standby, flow_id=%d, flow_id_mask=%d, exit_enter_=%d
+002ca7e8	A0	0001b570	0x1000	FLR	0	None	
+002ca7f4	Bcore	0002ac60	0x1000	FLR	0	None	
+002ca814	A0	0001b570	0x1000	FLR	0	None	
+002cb1a4	B	0010a954	0x4	ICM	None	None	
+002cb324	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+002cc4ec	A0	0001b570	0x4000000	ICMD	0	0xb6f514	icmd_header_capture was called, but there is no packet since check was accelerator check
+002cc72c	Bcore	0002ac60	None	?	None	None	
+002cc8a8	B	0010a954	None	?	None	None	
+002cd544	A2	0001b15c	0x4000000	ICMD	0	0xb6d7f9	icmd_get_packet_pacing_debug_info: gvmi = 0x%x, rate_limit_index = 0x%x
+002cde14	Bcore	0002ac60	None	?	339	None	
+002cee9c	W6	0001b6d8	0x4000000	ICMD	0	0xb4c0a3	icmd_get_fte: gvmi=0x%x, partition=0x%x, table_id=0x%x, flow_index=0x%x, dest_list_size=0x%x, flow_counter_list_size=0x%x
+002cf244	W5	0001b5e0	0x4000000	ICMD	0	0xb57797	icmd_access_ste: rw_=0x%x, gvmi=0x%x, ste_ix=0x%x, is_locked=0x%x, icm_blocked=0x%x
+002d0f0c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+002d0fb0	W6	0001b6d8	0x20000	TRANSPORT	0	0xb71459	common_bad_bth_migreq: gvmi=0x%.4x qpi=0x%.6x, pm_state=%x, rx_migreq=%d, sx_migreq=%d, bth_migreq=%d
+002d10b0	Bcore	0002ac60	None	?	0	None	
+002d1184	A3	0001b1ec	0x20000	TRANSPORT	0	0xb4c11d	common_bad_bth_migreq: APM - path validation failed. gvmi=0x%.4x qpi=0x%.6x syndrome=0x%.1x
+002d11fc	A2	0001b15c	0x20000	TRANSPORT	0	0xb714bf	common_bad_bth_migreq: APM is now ARMED. gvmi=0x%.4x qpi=0x%.6x
+002d1394	A2	0001b15c	0x20000	TRANSPORT	0	0xb78530	common_bad_bth_migreq: APM - now migrating. gvmi=0x%.4x qpi=0x%.6x
+002d1400	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+002d14f0	W5	0001b5e0	0x8000	RXT_CHECKS	0	0xb501c1	any_nak: synd=0x%x, bth_psn=0x%x, oldest_non_acked_psn=0x%x, (n2s_psn: 0x%x, fpmcc: 0x%x)
+002d1a14	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+002d1b50	A2	0001b15c	0x8001	DEBUG_INIT+RXT_CHECKS	0	0xb5b540	RXT CHECKS - MAD or TRAP, QP: 0x%x, DLID: 0x%x, also BTH is:
+002d1c08	A3	0001b1ec	0x8000	RXT_CHECKS	1	0xb85382	RXT CHECKS - QP1 bad pkey gvmi=%d, qpn=0x%x, ib_bth_hdr->p_key=0x%x 
+002d1cf4	A3	0001b1ec	0x8000	RXT_CHECKS	1	0xb65e34	RXT CHECKS - GVMI_MNG_TRAP_QP, lid=0x%x
+002d1d38	A3	0001b1ec	0x87eb	DEBUG_INIT+INIT+ICM_FREE_LIST+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+RXT_CHECKS	0	0xb620f4	RXT CHECKS - QP1 MAD, gvmi=%d, qpn=0x%x, ib_bth_hdr->p_key=0x%x 
+002d220c	A3	0001b1ec	0x8000	RXT_CHECKS	0	0xb7c8cc	RXT CHECKS - DC bug - DUP WA - gvmi: 0x%x, dctn: 0x%x, dcri: 0x%x - setting trap
+002d22cc	Bcore	0002ac60	None	?	1	None	
+002d23e4	Bcore	0002ac60	None	?	None	None	
+002d25a4	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+002d25ec	Bcore	0002ac60	None	?	1	None	
+002d261c	W5	0001b5e0	0x8000	RXT_CHECKS	0	0xb59819	res_bad_bth_opcode_rdb_full: gvmi=0x%x, qpi=0x%x, write_ptr=0x%x, read_ptr=0x%x, allow_excessiveness=%x
+002d2890	A0	0001b570	0x8000	RXT_CHECKS	0	0xb53bc0	rxt responder checks: dct_trap (bad_dct_two_bits_coded_2b01)
+002d28e4	A0	0001b570	0x8c83	DEBUG_INIT+INIT+PHY_RX_ADAP+PHY_MANAGER+PWR+RXT_CHECKS	0	0xb51bc1	rxt responder checks: qp_trap
+002d2940	A3	0001b1ec	0x8001	DEBUG_INIT+RXT_CHECKS	0	0xb49ad0	responder_check_handler_rdma: dcri 0x%x, connect %d, hash_head %d
+002d299c	A0	0001b570	0x8000	RXT_CHECKS	0	0xb83358	rxt responder checks: bth_padding/mtu
+002d2b20	A0	0001b570	0x8000	RXT_CHECKS	0	0xb59881	rxt responder checks: pkey_dc
+002d2b58	A0	0001b570	0x8000	RXT_CHECKS	0	0xb6b841	rxt responder checks: qkey
+002d2ba8	A0	0001b570	0x8000	RXT_CHECKS	0	0xb53bfd	rxt responder checks: dct bad access key
+002d2bdc	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5feca	rxt responder checks: migreq
+002d2c18	A0	0001b570	0x8000	RXT_CHECKS	0	0xb47d73	rxt responder checks: psn_too_big_uc
+002d2c70	A0	0001b570	0x8000	RXT_CHECKS	0	0xb62135	rxt responder checks: resync_res_uc_first_only
+002d2cac	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5ddd3	rxt responder checks: bad_bth_resync_res_uc_middle_last
+002d2d08	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5783e	rxt responder checks: bad_msg_size
+002d2d58	A0	0001b570	0x8000	RXT_CHECKS	0	0xb4c179	rxt responder checks: atomic_type
+002d2d98	A0	0001b570	0x8000	RXT_CHECKS	0	0xb68043	rxt responder checks: ateth_va unalligned
+002d2dd8	A0	0001b570	0x8000	RXT_CHECKS	0	0xb559c7	rxt responder checks: invalid_rma operation opcode
+002d2e18	A0	0001b570	0x8000	RXT_CHECKS	0	0xb47d98	rxt responder checks: bad rma va
+002d2e58	A0	0001b570	0x8000	RXT_CHECKS	0	0xb69c5b	rxt responder checks: bad rma/dma  msg size
+002d2ea0	A0	0001b570	0x8000	RXT_CHECKS	0	0xb8337e	rxt responder checks: opcode_mismatch
+002d2efc	A0	0001b570	0x8000	RXT_CHECKS	0	0xb53c26	rxt responder checks: dup
+002d2f44	A0	0001b570	0x8000	RXT_CHECKS	0	0xb7eff9	rxt responder checks: xrceth_xrcsrq_qpc/srq
+002d309c	A0	0001b570	0x8000	RXT_CHECKS	0	0xb74c41	rxt responder checks: xrceth_srq_domain
+002d30d8	A0	0001b570	0x8000	RXT_CHECKS	0	0xb62164	rxt responder checks: rdb_full
+002d3110	A0	0001b570	0x8000	RXT_CHECKS	0	0xb49aa2	rxt responder checks: mad_filter going to MAD
+002d316c	A0	0001b570	0x8001	DEBUG_INIT+RXT_CHECKS	0	0xb5b5ac	rxt responder checks: reconnect with version 0
+002d325c	A0	0001b570	0x8001	DEBUG_INIT+RXT_CHECKS	0	0xb5b5db	rxt requestor checks: bth_padding/mtu
+002d32a0	A0	0001b570	0x8000	RXT_CHECKS	0	0xb6b85c	rxt requestor checks: error flow trigger match
+002d32c0	A0	0001b570	0xe3bd	DEBUG_INIT+ICM+ICM_FREE_LIST+HOST_MNG+CMD_IF+PHY_RX_ADAP+LIBFHI+PHY_COMMON+ICM_ACCESS+MAD+RXT_CHECKS	0	0xb6b85c	rxt requestor checks: error flow trigger match
+002d3328	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5021b	rxt requestor checks: aeth_syndrome_negative - RDMA/atmoic response
+002d3374	A0	0001b570	0x8000	RXT_CHECKS	0	0xb714ff	rxt requestor checks: pkey
+002d33ac	A0	0001b570	0x8000	RXT_CHECKS	0	0xb63fa5	rxt requestor checks: qkey
+002d33e0	A0	0001b570	0x8000	RXT_CHECKS	0	0xb7a408	rxt requestor checks: migreq
+002d341c	A0	0001b570	0x8000	RXT_CHECKS	0	0xb5fee7	rxt requestor checks: qp_trap (bad_qp_two_bits_coded_2b01)
+002d3a5c	A0	0001b570	0x10	HOST_MNG	0	0xb5d6ab	Ignoring failure of parse_vpd_read_only_data_fields()
+002d3b74	A0	0001b570	0x10	HOST_MNG	0	0xb5d6ab	Ignoring failure of parse_vpd_read_only_data_fields()
+002d5ad4	A0	0001b570	0x10	HOST_MNG	2	0xb76401	Set iSCSI Common called from NODNIC driver. Command unavailable
+002d6238	A0	0001b570	0x10	HOST_MNG	2	0xb63fc0	Command nvram commit called from NODNIC driver. Command unavailable
+002d6540	A0	0001b570	0x10	HOST_MNG	2	0xb53c40	Command nvram commit status called from NODNIC driver. Command unavailable
+002d9988	W5	0001b5e0	0x10	HOST_MNG	0	0xb7a425	prio_to_tc=0x%x, tc_bw=0x%llx, tc_tsa=0x%llx
+002d9c60	W5	0001b5e0	0x10	HOST_MNG	0	0xb7c91d	prio_to_tc_r=0x%x, tc_bw_r=0x%llx, tsa_tc_r=0x%llx
+002d9d70	A3	0001b1ec	0x10	HOST_MNG	0	0xb6806d	pause_profile=%d, pfc_en_tx=0x%x, pfc_en_rx=0x%x
+002d9ef4	A3	0001b1ec	0x10	HOST_MNG	0	0xb57886	Checking if this is a dcbx TLV---- oui=0x%x offset=%d, tlv_len_cee=%d
+002da164	A0	0001b570	0x10	HOST_MNG	0	0xb6809e	dcbx_update_rx_desc done
+002da1e0	A0	0001b570	0x10	HOST_MNG	0	0xb65e5c	check_dcbx_app_event function
+002da934	W6	0001b6d8	0x10	HOST_MNG	0	0xb69c87	DCBX: remote_tc=%d, remote_prio_to_tc=0x%x, remote_tc_bw=0x%llx, remote_tsa_tc=0x%llx
+002daa20	W6	0001b6d8	0x10	HOST_MNG	0	0xb6f56d	DCBX: local_max_tc=%d, local_prio_to_tc=0x%x, local_tc_bw=0x%llx, local_tc_tsa=0x%llx
+002db054	A2	0001b15c	0x10	HOST_MNG	0	0xb6b88b	DCBX: remote_pfc_cap=%d, remote_pfc_en=0x%x
+002db07c	A2	0001b15c	0x10	HOST_MNG	0	0xb559fa	DCBX: local_pfc_cap=%d, local_pfc_en=0x%x
+002db560	W5	0001b5e0	0x10	HOST_MNG	0	0xb73160	process_pg_cee_tlv_dcbx_rx_packet: port=%d
+002db6b8	W5	0001b5e0	0x10	HOST_MNG	0	0xb833a4	DCBX: local_willing=%d, local_max_tcs=%d, local_pg_to_prio=0x%x, local_pg_bw=0x%llx
+002dbc34	A3	0001b1ec	0x10	HOST_MNG	0	0xb51bdf	DCBX: remote_willing=%d, remote_pfc_cap=%d, remote_pfc_en_table=%d
+002dbc74	A3	0001b1ec	0x10	HOST_MNG	0	0xb51c22	DCBX: local_willing=%d, local_pfc_cap=%d, local_pfc_en_table=%d
+002dd48c	A0	0001b570	0x10	HOST_MNG	0	0xb6d86b	DCBX, IEEE without ETS TLV
+002dd4e8	A0	0001b570	0x10	HOST_MNG	0	0xb6d886	Exited pfc_conf process with return_type=%d
+002df60c	A0	0001b570	0x10	HOST_MNG	0	0xb833f8	lldp debug print Received
+002df680	A2	0001b15c	0x10	HOST_MNG	0	0xb4de7f	=========== TX == port=%d packet_length=%d) ========
+002df6c0	A2	0001b15c	0x10	HOST_MNG	0	0xb680b7	length:  %d
+002df6dc	A2	0001b15c	0x10	HOST_MNG	0	0xb5025f	DMAC:    %.8x%.4x
+002df740	A3	0001b1ec	0x10	HOST_MNG	0	None	
+002df784	A0	0001b570	0x10	HOST_MNG	0	0xb69cdd	TLV size and offset exceeds packet length - aborting
+002df8e0	A0	0001b570	0x10	HOST_MNG	0	0xb5b601	LLDP buffer not allocated - aborting print
+002e0394	A2	0001b15c	0x10	HOST_MNG	0	0xb5ff22	lldp_rx_recieve_packet start: port=%d length=%d
+002e0848	A3	0001b1ec	0x10	HOST_MNG	0	None	
+002e0a58	A0	0001b570	0x10	HOST_MNG	0	0xb578cc	calling the dcbx process packet
+002e1f48	W6	0001b6d8	0x10	HOST_MNG	0	None	
+002e2508	A2	0001b15c	0xffff80c3	DEBUG_INIT+INIT+PHY_IB+PHY_RX_ADAP+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	0	None	
+002e2da0	A2	0001b15c	0x10	HOST_MNG	1	0xb85456	lldp_build_and_update_tlv for tlv type=0x%x rc=%d
+002e3b74	A0	0001b570	0x10	HOST_MNG	0	0xb6b8cd	lldp_tx_send_flow starting tx flow. passed check
+002e55ac	W5	0001b5e0	0x20	CMD_IF	0	None	
+002e586c	A2	0001b15c	0x20	CMD_IF	0	0xb65ec4	modify_lag: gvmi=0x%x, remap=0x%.8x
+002e60b0	A3	0001b1ec	0x20	CMD_IF	0	0xb50277	query_sf_partitions: num_sf_partitions=0x%x, sf_partition[0].log_num_sf=0x%x, sf_partition[0].log_sf_bar_size=0x%x
+002e625c	A3	0001b1ec	0x20	CMD_IF	0	0xb78580	set_sf_partitions: num_sf_partitions=0x%x, sf_partition[0].log_num_sf=0x%x, sf_partition[0].log_sf_bar_size=0x%x
+002e64cc	Bcore	0002ac60	None	?	None	None	
+002e64fc	W5	0001b5e0	0x20	CMD_IF	0	0xb5b62c	alloc_sf: gvmi=0x%x, input->function_id=0x%x, sf_gvmi=0x%x, sf_toc.valid=%d, sf_toc.func_gc_state=0x%x
+002e662c	Bcore	0002ac60	None	?	None	None	
+002e665c	W5	0001b5e0	0x20	CMD_IF	0	0xb785f1	dealloc_sf: gvmi=0x%x, input->function_id=0x%x, sf_gvmi=0x%x, sf_toc.valid=%d, sf_toc.func_gc_state=0x%x
+002e67f8	A2	0001b15c	0x20	CMD_IF	0	0xb7865a	create_uctx: gvmi=0x%x, res_num=0x%x
+002e6a70	A2	0001b15c	0x20	CMD_IF	0	0xb4deb9	destroy_uctx: gvmi=0x%x, uid=0x%x
+002e770c	A3	0001b1ec	0x20	CMD_IF	0	0xb7867f	create_sw_icm_object: icm_start_addr=0x%llx  log_sw_icm_size=%d
+002e8a7c	W5	0001b5e0	0x20	CMD_IF	0	None	
+002e9530	Bcore	0002ac60	None	?	None	None	
+002e99a8	B	0010a954	0x3fd0000	I2C+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM	None	None	
+002ed16c	A2	0001b15c	0x4000	MAD	1	0xb6d926	Make trap_index %d, portid=%d
+002ed3b8	A2	0001b15c	0x4000	MAD	1	0xb51c67	Make trap %d, portid=%d
+002edd40	A2	0001b15c	0x4000	MAD	0	0xb7648c	build_smp_trap_mad: portid: %d trap_num: %d
+002ede94	A2	0001b15c	0x4000	MAD	0	0xb50319	build_gmp_trap_mad: portid: %d trap_num: %d
+002ee444	A2	0001b15c	0x4000	MAD	1	0xb5b693	check_trap_repress: bad transaction_id=0x%x,mad_transaction_id=0x%x
+002ee4dc	A2	0001b15c	0x4000	MAD	1	0xb6b911	check_trap_repress: bad vendor_id(0x%x)/device_id(0x%x)
+002ee57c	A2	0001b15c	0x4000	MAD	0	0xb4df69	trap_repress: portid=%d trap_index: %d
+002ee5b4	A3	0001b1ec	0x4000	MAD	None	0xb50345	trap_repress: portid=%d trap_num: %d, status %d
+002ee684	A2	0001b15c	0x4000	MAD	0	0xb7c950	trap_repress: portid=%d trap_num: %d
+002ee6bc	A3	0001b1ec	0x4000	MAD	None	0xb50345	trap_repress: portid=%d trap_num: %d, status %d
+002ee9d8	A0	0001b570	0x4000	MAD	1	0xb6817e	set_get_virtualization_info: virtualization_not_supported
+002eec1c	A2	0001b15c	0x4000	MAD	1	0xb83428	vmad: INVALID attribute_mod=0x%.8x or virtualization not supported, status=0x%x
+002ef134	A0	0001b570	0x4000	MAD	1	0xb62183	set_get_vport_info_mad: virtualization not enable by sm
+002ef198	A2	0001b15c	0x4000	MAD	1	0xb5ffbb	set_get_vport_info: illegal port state portid=0x%x, ib_vport=0x%x, check_status=0x%x, vport_is_active=%d
+002ef6b4	W5	0001b5e0	0x40000000	VIRT	0	0xb6f62a	
+002ef768	A2	0001b15c	0x4000	MAD	1	0xb598c3	get_vport_state_mad: set is not supported, portid=%d, ib_vport_number=%d
+002ef9b4	A2	0001b15c	0x4000	MAD	0	None	
+002efabc	A2	0001b15c	0x40000000	VIRT	1	0xb7155d	process get_vnode_info on vport_gvmi=0x%x, ib_vport_number=%d
+002efc74	A2	0001b15c	0x40000000	VIRT	1	0xb6f69c	process get_vnode_description on vport_gvmi=0x%x, ib_vport_number=%d
+002f17f8	W6	0001b6d8	0x4000	MAD	0	0xb50375	notify_port_info_changes Port_0_1=%d: gid_prefix_change=%d lid change=%d client_rereg=%d port_state=%d new lid=%d
+002f254c	Bcore	0002ac60	0x8111	DEBUG_INIT+HOST_MNG+LIBFHI+RXT_CHECKS	None	None	
+002f27ac	Bcore	0002ac60	0x8111	DEBUG_INIT+HOST_MNG+LIBFHI+RXT_CHECKS	1	None	
+002f2ec8	B	0010a954	None	?	None	None	
+002f3054	W5	0001b5e0	0x4000	MAD	1	0xb764b8	get_diag_counters: page_num=0x%x, gvmi=0x%x, port=0x%x, mad_port=0x%x, port_check_fail=0x%x
+002f3608	W5	0001b5e0	0x4000	MAD	1	0xb5990c	get_diag_counters: return=0x%x, page_num=0x%x, gvmi=0x%x, port=0x%x, port_check_fail=0x%x
+002f371c	A2	0001b15c	0x4000	MAD	1	0xb6f6e1	clear_diag_counters: page_num=0x%x clear_device=0x%x
+002f3d0c	A2	0001b15c	0x4000	MAD	1	0xb681b8	mad diag_counters_access: clearing ppcnt physical counters portid_or_all=0x%.2x, clear_all_port=%d
+002f4574	W6	0001b6d8	0x4000	MAD	1	0xb4c21f	Congestion log event write on port 0x%x - index: 0x%x. local_qpn=0x%x, sl=0x%x, remote_lid=0x%x, remote_qpn=0x%x
+002f4bec	A0	0001b570	0x4000	MAD	1	0xb6d944	new_port_state -> PORT_DOWN
+002f4c38	A2	0001b15c	0x4000	MAD	1	0xb53d27	port_state changed from INIT to ARM
+002f4c70	A0	0001b570	0x4000	MAD	1	0xb53d4b	illegal port state transition to ACTIVE. cur_port_state=0x%.1x
+002f4d0c	B	0010a954	None	?	None	None	
+002f50e8	A3	0001b1ec	0x4000	MAD	2	0xb49bd1	set_get_lossy_vl: status=0x%x, port_state=%d, set_get_=%d
+002f5108	A2	0001b15c	0x4000	MAD	2	0xb49bd1	set_get_lossy_vl: status=0x%x, port_state=%d, set_get_=%d
+002f52bc	A3	0001b1ec	0x4000	MAD	1	0xb6b949	get_hierarchy_info: hierarchy_index out of range, hierarchy_index=0x%x, gvmi=0x%x, portid=0x%x
+002f564c	A0	0001b570	0x4000	MAD	1	0xb4dfee	set_get_qos_config_sl: vport out of range or virtualization not supported
+002f5aa4	A0	0001b570	0x4000	MAD	1	0xb6825e	set_get_port_info: multicast_pkey_trap_suppression_supported is not supported
+002f6828	A3	0001b1ec	0x4000	MAD	1	0xb50440	mad port counters: port_select= %d doesn't match portid= %d, port_is_ib=%d
+002f73d4	A2	0001b15c	0x4000	MAD	1	0xb7f150	mad port_ext_speeds_counters: port_select= %d doesn't match portid= %d
+002f786c	A2	0001b15c	0x4000	MAD	1	0xb80ec8	mad port_rcv_error_details: port_select= %d doesn't match portid= %d
+002f7a2c	A2	0001b15c	0x4000	MAD	1	0xb6f749	mad port_xmit_discard_details: port_select= %d doesn't match portid= %d
+002f7b60	A2	0001b15c	0x4000	MAD	1	0xb53dfe	mad port_flow_ctl_counters: port_select= %d doesn't match portid= %d
+002f7e08	A2	0001b15c	0x4000	MAD	1	0xb5048b	mad port_vl_xmit_flow_ctl_update_errors: port_select= %d doesn't match portid= %d
+002f8170	A2	0001b15c	0x4000	MAD	1	0xb4e038	mad port_vl_xmit_wait_counters: port_select= %d doesn't match portid= %d
+002f8ac0	A2	0001b15c	0x4000	MAD	1	0xb55a87	mad port counters extended: port_select= %d doesn't match portid= %d
+002f8efc	A3	0001b1ec	0x4000	MAD	1	0xb51c7f	mad port_rcv_con_ctrl: port_select= %d  doesn't match portid=%d, or attribute modifier=0x%x is not 0
+002f9018	A2	0001b15c	0x4000	MAD	1	0xb6b9a8	mad port_xmit_con_ctrl: port_select= %d doesn't match portid= %d
+002f938c	A2	0001b15c	0x4000	MAD	1	0xb715ca	mad port_xmit_data_sl: port_select= %d doesn't match portid= %d
+002f9998	A2	0001b15c	0x4000	MAD	1	0xb80f0d	mad port_rcv_data_sl: port_select= %d doesn't match portid= %d
+002f9ee4	W6	0001b6d8	0x4000	MAD	1	0xb6d960	mad diag_counters_access: set_get_=%d, port_select=0x%.2x, port_check_failed=%d, page_num=0x%.2x, clear_all=%d, clear_all_on_port=%d
+002f9f0c	A0	0001b570	0x4000	MAD	1	0xb7c995	mad diag_counters_access: bad attribute
+002fa6b4	A2	0001b15c	0x4000	MAD	1	0xb834bf	mad port_llr_statistics: port_select= %d doesn't match portid= %d
+002fa9d4	A2	0001b15c	0x4000	MAD	1	0xb74c8b	set_get_port_cntr_vl: port_select= %d doesn't match portid= %d
+002fab80	A3	0001b1ec	0x4000	MAD	1	0xb7160a	port_samples_control invalid: port_select=%d rcv port=%d attr_mod=%d
+002fb020	A2	0001b15c	0x4000	MAD	1	0xb5dfdf	set_get_internal_config_space_access: INVALID address=0x%.8x at record=%d
+002fb95c	A2	0001b15c	0x4000	MAD	1	0xb73233	process cc_info on port %d, gvmi:0x%x - with illegal method=SET
+002fb9f0	A2	0001b15c	0x4000	MAD	1	0xb6ba27	process cc_log on port %d, gvmi:0x%x - with illegal method=SET
+002fbfd8	A3	0001b1ec	0x4000	MAD	1	0xb7a604	handle_access_reg_mad: insufficient function permissions - access register ignored. gvmi=0x%x, get_set_=%d, reg_id=0x%.4x
+002fc4fc	A3	0001b1ec	0x4000	MAD	1	0xb7164f	handle_access_reg_mad: PAOS on GLOBAL_GVMI. get_set_=%d, mad_paos_local_port=%d, new_gvmi=0x%.4x
+002fcd14	A0	0001b570	0x4000	MAD	1	0xb7a6b3	process_smp_lid mkey check FAILED
+002fce7c	A3	0001b1ec	0x4000	MAD	1	0xb6babc	process reg access on portid %d, gvmi:0x%x, long_process %d
+002fcec4	A3	0001b1ec	0x4000	MAD	1	0xb80f4c	process set_get_temperature_sensing on portid %d, gvmi:0x%x, set_get_: %d
+002fd034	A0	0001b570	0x4000	MAD	1	0xb5b737	process_smp_lid: ATTRV_SM_INFO handled by SW not FW
+002fddbc	A3	0001b1ec	0x4000	MAD	1	0xb7329a	process gmp_vendor_ext [set_get << 31 | attr_id] = 0x%.8x, port %d, gvmi: 0x%x
+002fdea0	A0	0001b570	0x4000	MAD	1	0xb7c9bd	handle_access_reg_vsp_vmad key check FAILED
+002fe054	A2	0001b15c	0x4000	MAD	1	0xb60154	process_gmp_vendor_ext: invalid ATTR_ID=0x%x, set_set=%d
+002fe264	W5	0001b5e0	0x4000	MAD	1	0xb5b7c1	process cc_table on port %d, gvmi:0x%x, set_get_: %d - bad attr_modifier: %d (base >= CCT_SIZE=%d)
+002fe31c	A2	0001b15c	0x4000	MAD	1	0xb504dd	process cc_timestamp on port %d, gvmi:0x%x - with illegal method=SET
+002fe470	A0	0001b570	0x4000	MAD	1	0xb53f02	handle_access_reg_cc_vmad key check FAILED
+002fe92c	A3	0001b1ec	0x4000	MAD	1	0xb5b824	process_mad: gvmi = 0x%.4x, class is blocked, class_num:0x%x, attribute_id=0x%x, dropping MAD
+002fea2c	A3	0001b1ec	0x4000	MAD	1	0xb7c9e9	process_mad: gvmi = 0x%.4x, bad mgmt_class, class_num:0x%x, attribute_id=0x%x, dropping MAD
+002ff194	B	0010a954	None	?	None	None	
+002ff1e0	Bcore	0002ac60	None	?	339	None	
+003029c8	W5	0001b5e0	0x1000000	STEERING	0	0xb53fb1	update_ib_rx_uc_root_entry: pf_gvmi=0x%x, portid=0x%x, driverless=0x%x, steering_virtualization_enable=0x%x, lid_based_virtualization=0x%x
+00302eec	B	0010a954	0x20000	TRANSPORT	None	None	
+00302f34	Bcore	0002ac60	None	?	339	None	
+003030c4	B	0010a954	0x1	DEBUG_INIT	None	None	
+0030310c	Bcore	0002ac60	None	?	339	None	
+003035a4	A3	0001b1ec	0x1000000	STEERING	0	None	
+0030386c	A3	0001b1ec	0x1008111	DEBUG_INIT+HOST_MNG+LIBFHI+RXT_CHECKS+STEERING	0	0xb5403c	ste_build_ib_sx_nic_head_uc_entry: gvmi=0x%x. portid=0x%x, ib_port_info.lid=0x%x
+00303f78	A2	0001b15c	0x1000000	STEERING	0	None	
+0030407c	B	0010a954	None	?	7545	None	
+003042a0	Bcore	0002ac60	None	?	339	None	
+00304424	W6	0001b6d8	0x1000000	STEERING	0	0xb78762	init_teardown_ib_gvmi_steering_bypasses: gvmi=0x%x, portid=0x%x, init_teardown_=0x%x, esw_ctx_gvmi=0x%x, rdma_sx_ft_valid=0x%x, is_ibcc_active=0x%x
+00304a28	Bcore	0002ac60	None	?	339	None	
+00304c28	Bcore	0002ac60	None	?	None	None	
+00304f00	Bcore	0002ac60	None	?	None	None	
+00304ff0	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+003055ec	Bcore	0002ac60	None	?	None	None	
+00305668	Bcore	0002ac60	None	?	None	None	
+00305e78	W5	0001b5e0	0x1000000	STEERING	0	0xb51e18	steering_attach_to_mcg: DONE. gvmi=0x%x, prev_gvmi=0x%x, prev_ste_ix=0x%x, new_mcg_ix=0x%x, steering_table=0x%x
+00306180	W5	0001b5e0	0x1000000	STEERING	0	0xb47f95	steering_detach_from_mcg: DONE. gvmi=0x%x, prev_gvmi=0x%x, prev_ste_ix=0x%x, new_mcg_ix=0x%x, member_count=0x%x
+003068e4	A3	0001b1ec	0x1000000	STEERING	0	0xb55acc	search_for_mcg_gvmi_ste_in_mcg: result=0x%x, prev_gvmi=0x%x, prev_ste_ix=0x%x
+00306a04	A2	0001b15c	0x1000000	STEERING	0	0xb65ffd	get_mcg: DONE, mcg_search_result: 0x%x, mcg_index: 0x%x
+00306ca0	A2	0001b15c	0x1000000	STEERING	1	0xb682d8	attach/detach_to_mcg: attach_detach_=0x%x. modify_hw_mcg: steering_table=0x%x
+00306e1c	W5	0001b5e0	0x1000000	STEERING	1	0xb7ca45	attach/detach_to_mcg: attach_detach_=0x%x. gvmi=0x%x, QP=0x%x, member_count=0x%x, num_of_enhanced_ipoib_qps=0x%x
+00307280	A2	0001b15c	0x1000000	STEERING	0	0xb48005	attach/detach_to_mcg: attach_detach_=0x%x, waiting for RXT fence to cleanup steering: mcg_ctrl_index=0x%x
+00307c1c	A3	0001b1ec	0x1000000	STEERING	0	0xb7cab6	handle_gvmi_steering_multicast_groups: DONE. gvmi=0x%x, portid=0x%x, opcode=0x%x
+00307e38	Bcore	0002ac60	None	?	339	None	
+00308064	B	0010a954	0xffffe122	INIT+CMD_IF+LIBFHI+ICM_ACCESS+MAD+RXT_CHECKS+I2C+TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM+ICMD+PCI+DC_CLEANUP+PHY_ETH+VIRT+bit31	None	None	
+003080b8	Bcore	0002ac60	None	?	339	None	
+00308494	A3	0001b1ec	0x1008111	DEBUG_INIT+HOST_MNG+LIBFHI+RXT_CHECKS+STEERING	0	0xb6f85c	insert_ste_to_virt_cache_gid: portid=0x%x, cache_ste_ix=0x%x, entry_id=0x%x
+00308528	A2	0001b15c	0x1008111	DEBUG_INIT+HOST_MNG+LIBFHI+RXT_CHECKS+STEERING	0	0xb51ec0	remove_ste_from_virt_cache_gid: portid=0x%x, cache_ste_ix=0x%x
+00308740	B	0010a954	None	?	580	None	
+00308790	Bcore	0002ac60	None	?	339	None	
+003090b0	W5	0001b5e0	0x1000000	STEERING	1	0xb69da2	steering_update_guid: DONE. gvmi=0x%x, portid=0x%x, guid_index=0x%x, new_guid=0x%llx
+003096ac	A3	0001b1ec	0x1000000	STEERING	1	0xb49c62	steering_update_lid: DONE. gvmi=0x%x, portid=0x%x, lid=0x%x
+00309af0	B	0010a954	0x1	DEBUG_INIT	None	None	
+00309b88	W5	0001b5e0	0x1000000	STEERING	1	0xb66035	steering_update_gid_prefix: DONE. portid=0x%x, new_gid_prefix=0x%llx, old_gid_prefix=0x%llx
+00309f34	W5	0001b5e0	0x1000000	STEERING	0	0xb76692	dmfs_search_and_replace_ipoib_pkey_entries: gvmi=0x%x, pkey_index=0x%x, old_pkey_value=0x%x, new_pkey_value=0x%x, hits=0x%x
+0030a094	B	0010a954	0x0		3	None	
+0030a0dc	Bcore	0002ac60	None	?	339	None	
+0030a14c	W6	0001b6d8	0x1000000	STEERING	1	0xb6baf8	steering_update_pkey: DONE. gvmi=0x%x, portid=0x%x, old_pkey=0x%x, new_pkey=0x%x, pkey_index=0x%x, ipoib_qps_counter=0x%x
+0030a4b8	W5	0001b5e0	0x1000000	STEERING	1	0xb787f6	steering_attach_detach_special_qp: DONE (attach_detach_: 0x%x). gvmi=0x%x, portid=0x%x, qp_number=0x%x, special_qp_type=0x%x
+0030b03c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0030b15c	A3	0001b1ec	0x1000000	STEERING	0	0xb74d06	attach/detach_sniffer: attach_detach_: %d, sx_rx: %d, portid: %d - updated sniffer_qpn, starting flush...
+0030b1b0	A3	0001b1ec	0x1000000	STEERING	0	0xb73379	attach/detach_sniffer: attach_detach_: %d, sx_rx: %d, portid: %d - checking for fence done...
+0030b214	A3	0001b1ec	0x1000000	STEERING	0	0xb4e1e9	attach/detach_sniffer: attach_detach_: %d, sx_rx: %d, portid: %d - fence done, connecting / disconnecting sniffer, releasing semaphore
+003147b8	A3	0001b1ec	0x10	HOST_MNG	1	None	
+003150e0	A0	0001b570	0x10	HOST_MNG	1	0xb6bc6d	
+0031b4f8	W5	0001b5e0	0x200000	PROFILING	1	0xb6038d	init_and_write_uapp_mkey : buf_type=%d, gvmi=0x%x, lgpgsz=0x%x, length=0x%x, mkey_ix=0x%x
+0031b6e8	A2	0001b15c	0x20000	TRANSPORT	0	0xb6245a	get_num_nvmf_queue_mtts: buf_type=%d, num_mtts=%d
+0031b748	A2	0001b15c	0x200000	PROFILING	1	0xb5b9e0	create_xrq fw context) : start, ctx->done_missions = 0x%x offload=%d
+0031b78c	Bcore	0002ac60	None	?	None	None	
+0031beec	A3	0001b1ec	0x20	CMD_IF	1	0xb7cba7	create_xrq_fw_context: gvmi=0x%x, xrqn=0x%x, nvme: uapp_ctrl_mkn=0x%x
+0031c9cc	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0031d88c	Bcore	0002ac60	None	?	None	None	
+0031dfa0	A2	0001b15c	0x2	INIT	3	0xb734e1	CMDIF_MISSION_XRQ_REF_ALLOC_UAPP_EQ: gvmi=0x%0x, ret=0x%x
+0031eaa4	A3	0001b1ec	0x20	CMD_IF	1	0xb6db74	destroy_xrq: flush_qpn=0x%x, dci_count=0x%x, dci_to_flush_ix=0x%x
+0031ee20	Bcore	0002ac60	None	?	None	None	
+0031ee60	A3	0001b1ec	0x20	CMD_IF	0	0xb6bcb6	query_xrq_dc_params gvmi=0x%x, tgt_num=0x%x, xrqn=0x%x
+0031f00c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0031f454	Bcore	0002ac60	0x0		None	None	
+0031f8c8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0031fe80	Bcore	0002ac60	None	?	None	None	
+0032031c	A2	0001b15c	0x200001	DEBUG_INIT+PROFILING	0	0xb624c2	create_nvmf_backend_cntlr : gvmi=0x%x, res_num=0x%x
+00320778	Bcore	0002ac60	None	?	None	None	
+003207c8	Bcore	0002ac60	None	?	None	None	
+00320818	Bcore	0002ac60	None	?	None	None	
+00320af0	Bcore	0002ac60	0x3fa0000	TRANSPORT+RX_ERRORS+CMD_DRIVER+PROFILING+MANAGEMENT+FLASH+STEERING+IFARM	None	None	
+00320e9c	Bcore	0002ac60	None	?	None	None	
+00321320	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00321524	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0032179c	Bcore	0002ac60	0x0		None	None	
+00321a0c	Bcore	0002ac60	None	?	None	None	
+00322548	Bcore	0002ac60	None	?	None	None	
+00322bb0	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00323808	Bcore	0002ac60	0x3be0000	TRANSPORT+FW_LL+RX_ERRORS+CMD_DRIVER+PROFILING+FLASH+STEERING+IFARM	None	None	
+00324b4c	Bcore	0002ac60	None	?	None	None	
+00326794	Bcore	0002ac60	None	?	None	None	
+00326db4	A3	0001b1ec	0x20000	TRANSPORT	0	0xb767e8	calc_qp_sl_vlan_prio, trust_state=%d, vlan_prio_from_path=%d, sl=%d
+00329b20	Bcore	0002ac60	None	?	None	None	
+0032a1bc	A3	0001b1ec	0x20000	TRANSPORT	0	0xb4e366	reformat (init2rtr): gvmi=0x%.4x, qpn=0x%.6x, is_tx_window_enabled=%d
+0032a43c	A2	0001b15c	0x20001	DEBUG_INIT+TRANSPORT	0	0xb66158	reformat (rtr2rts): gvmi=0x%.4x, qpn=0x%.6x, enable slow start trap
+0032b688	A3	0001b1ec	0x20000	TRANSPORT	0	0xb6bd5c	reformat: adp_retrans=%d, timer_granularity: 0x%x, log_rtm=%d
+0032c0b4	Bcore	0002ac60	0xc7c5	DEBUG_INIT+ICM+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+MAD+RXT_CHECKS	3	None	
+0032c464	A2	0001b15c	0x20000	TRANSPORT	0	0xb4c36d	build_packet: ROCE_type=%d ethertype=0x%x
+0032c6fc	Bcore	0002ac60	0x55000000	STEERING+ICMD+DC_CLEANUP+VIRT	None	None	
+0032ca70	A0	0001b570	0x20000	TRANSPORT	0	0xb5e18b	build_packet: could not read WQE
+0032cbf8	A3	0001b1ec	0x28791	DEBUG_INIT+HOST_MNG+PHY_RX_ADAP+LIBFHI+PHY_COMMON+PHY_MANAGER+RXT_CHECKS+TRANSPORT	0	0xb69f18	build_packet: packet_type=0x%x, opcode=0x%x. psn=0x%x
+0032ded8	Bcore	0002ac60	None	?	None	None	
+0032e0ec	A2	0001b15c	0x4000	MAD	1	0xb51fad	send_mad: start. portid %d, gvmi 0x%x
+0032e158	A2	0001b15c	0x4000	MAD	0	0xb59aa0	send_mad: before SMP and trap check. portid %d, gvmi 0x%x
+0032e1f4	A2	0001b15c	0x4000	MAD	0	0xb49d4b	send_mad: prepare to send. portid %d, gvmi 0x%x
+0032e29c	A2	0001b15c	0x4000	MAD	1	0xb4814d	Port %d, gvmi = %d, send_mad before send_packet:
+0032e3d8	A2	0001b15c	0x4000	MAD	1	0xb5e20e	Received MAD expected packet lenght %d, got packet lenght %d
+0032e568	A2	0001b15c	0x4000	MAD	0	0xb68411	handle_rxt_qp0: finshed process_mad. portid %d, ret %d
+0032e878	Bcore	0002ac60	None	?	None	None	
+0032ea64	Bcore	0002ac60	None	?	None	None	
+0032ede4	Bcore	0002ac60	None	?	None	None	
+0032f138	A2	0001b15c	0x20	CMD_IF	1	0xb4e3ac	_destroy_uapp_send_q: gvmi=0x%x, dctn=0x%x
+0032f190	Bcore	0002ac60	None	?	None	None	
+0032fee4	Bcore	0002ac60	None	?	None	None	
+00330094	A2	0001b15c	0x20	CMD_IF	1	0xb69f4e	init_uapp_send_q: gvmi=0x%x, dctn=0x%x
+003300f8	Bcore	0002ac60	None	?	None	None	
+00330df0	Bcore	0002ac60	None	?	None	None	
+003314d8	A3	0001b1ec	0x20	CMD_IF	1	0xb6bdd2	_destroy_dct: gvmi=0x%x, dctn=0x%x, ctx->done_missions=0x%x
+00331504	Bcore	0002ac60	0x1	DEBUG_INIT	1	None	
+00332160	Bcore	0002ac60	None	?	None	None	
+00332198	A2	0001b15c	0x20	CMD_IF	0	0xb505e1	_create_ipoib_qp: IPoIB UD QP created, gvmi=%d, qpn=0x%x
+00333ac4	A3	0001b1ec	0x20	CMD_IF	0	0xb60461	calc_ece_response: gvmi=%d, cmd_enum=%d, ece_ver=%d, ECE not supported
+003343d0	B	0010a954	None	?	None	None	
+00334888	A2	0001b15c	0x20	CMD_IF	0	None	
+003348e8	A2	0001b15c	0x20	CMD_IF	0	None	
+00334a88	A3	0001b1ec	0x20	CMD_IF	0	None	
+0033543c	Bcore	0002ac60	None	?	None	None	
+00335770	Bcore	0002ac60	None	?	339	None	
+00336220	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+003367bc	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00336c4c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00337234	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+003379dc	Bcore	0002ac60	None	?	None	None	
+00337c70	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00337e08	A3	0001b1ec	0x20000	TRANSPORT	0	0xb5207b	rts2rts_qp: revert mtt pa optimization. gvmi=0x%.4x , qpi=0x%.6x , mtt_ix=0x%x
+00338008	Bcore	0002ac60	None	?	None	None	
+003383ec	Bcore	0002ac60	0x9db0000	I2C+TRANSPORT+RX_ERRORS+CMD_DRIVER+MANAGEMENT+FLASH+STEERING+PCI	None	None	
+00338960	A2	0001b15c	0x200000	PROFILING	0	0xb7f319	rts2rts_qp: create uapp in rts2rts. gvmi=0x%.4x qpi=0x%.6x
+00338c3c	A2	0001b15c	0x20000	TRANSPORT	0	0xb7351b	rts2rts_qp: APM - now migrating. gvmi=0x%.4x qpi=0x%.6x
+00338e54	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00339170	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00339500	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+00339d04	Bcore	0002ac60	None	?	None	None	
+00339e54	Bcore	0002ac60	None	?	1	None	
+0033a3a8	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0033a68c	A3	0001b1ec	0x20000	TRANSPORT	1	0xb57d2d	qp_page_fault_resume: gvmi=0x%.4x, qpi=0x%.6x, (is_type_srq << 28) | (pg_type << 24) | (sx_rx_ << 20) | (req_res_<<16) | (rdma_wqe <<12) | (error_in_page_fault<<8) | ((!!syndrome) << 4) | abort_withou
+0033a6fc	A3	0001b1ec	0x20000	TRANSPORT	1	0xb59ada	qp_page_fault_resume: aborted flow on gvmi=0x%.4x, qpi=0x%.6x wq_num=0x%.6x
+0033a784	Bcore	0002ac60	0x95e8	ICM_FREE_LIST+CMD_IF+PHY_IB+PHY_RX_ADAP+LIBFHI+PHY_MANAGER+FLR+RXT_CHECKS	1	None	
+0033a8b4	A2	0001b15c	0x20000	TRANSPORT	1	0xb85631	qp_page_fault_resume: dcrn entry not found gvmi=0x%.4x, qpi=0x%.6x
+0033ad74	A3	0001b1ec	0x20000	TRANSPORT	2	0xb85674	ECE input verssion not supported, gvmi=0x%.4x, input_ver=0x%x,  max_supported_ver=0x%x
+0033ae18	A0	0001b570	0x20	CMD_IF	0	0xb49d7b	create_qpn_reserved_object
+0033c764	A2	0001b15c	0x20	CMD_IF	0	0xb49d96	destroy_pec, starting, gvmi=0x%x PEC=0x%x
+0033ca10	A2	0001b15c	0x20	CMD_IF	0	0xb59b26	CAPI PEC gvmi=0x%x num=0x%x
+0033ce5c	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0033cfb0	A2	0001b15c	0x20000	TRANSPORT	0	0xb69f75	DCR Cleanup: gvmi %#x dct %#x sent WQ_CATAS_ERR event
+0033d028	A3	0001b1ec	0x20000	TRANSPORT	0	0xb7f3b1	DCR Cleanup: gvmi %#x dct %#x sent ALL_CONNECTIONS_CLOSED event, status=%d
+0033d85c	A2	0001b15c	0x20000	TRANSPORT	0	0xb5061a	sent DC packet to DCR %#x  packet type %d
+0033dd54	A4	0001b28c	None	?	None	None	
+0033dddc	Bcore	0002ac60	0x1	DEBUG_INIT	2048	None	
+0033e7b0	A3	0001b1ec	0x10000000	DC_CLEANUP	0	0xb811cd	store_ts_and_toggle_hb: gvmi=0x%.4x, dcri=0x%.6x, timestamp=0x%x
+0033e838	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0033e9d0	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+0033ea44	A3	0001b1ec	0x10000000	DC_CLEANUP	0	0xb4817e	cleanup_a_dcr freeze state: gvmi: 0x%.4x, dcri=0x%.6x drtl_reason_vec=0x%x
+00340418	W5	0001b5e0	0x20000	TRANSPORT	0	0xb7cd1e	build_dummy_connect_wqe: gvmi=0x%.4x, qp=0x%.6x, wqe_size_in_bytes=0x%x, wqe_size_in_ds=0x%x, wqe_size_in_bbs=0x%x
+00340d68	Bcore	0002ac60	0x1	DEBUG_INIT	None	None	
+003411c8	W5	0001b5e0	0x20000	TRANSPORT	0	0xb6fa39	fix_dc_fields_for_rollback after fix: dci_state: 0x%x, dci_handshake_mode=0x%x, n2s: 0x%.6x, ona: 0x%.6x, fpmcc: 0x%.6x
+003412dc	A0	0001b570	0x2013a	INIT+ICM_FREE_LIST+HOST_MNG+CMD_IF+LIBFHI+TRANSPORT	1	0xb5426c	fw_ll_handle_ll_swap: swapping DCT scan lists. 
+00341614	A0	0001b570	0x20	CMD_IF	1	0xb74ddf	reg_access_fpga_access_reg(): smbus_get_status returned error
+003420e0	A0	0001b570	0x2	INIT	2	0xb5bab1	send_mfrl_perst() return FAIL from fpga_ctrl_oper_load for Morse

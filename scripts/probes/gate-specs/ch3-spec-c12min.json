@@ -1,0 +1,9 @@
+{
+  "id": "C12MIN",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {"offset": "0x25a3ec", "bytes": "0011001f", "expected_before": "fcb1c083",
+     "kind": "code", "note": "C12MIN minimal discriminator: graft + C12 word ONLY (no C4/C6/C7/C8, no port0-VPI; ini 0x2b7=0x0a stock port0, 0x2bb=0x07 port1-VPI from graft base). C12: apply_stamping_ib fn 0x25a2f0 module speed term r17 := 0x1f (SDR..FDR) constant — was shr r17,r5,0x18; semantics/note identical to ch3-spec-c12.json (task-12c12), solo here. expected_before verified vs 4030cda-graft.bin MAIN_CODE dc read-back (2026-10-09). (task-12c12min)"}
+  ]
+}

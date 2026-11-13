@@ -1,0 +1,9 @@
+{
+  "id": "C12ANALOG-CX4LX-1900-0X07",
+  "card": "cx4lx-14_32_1900-c1-ri-based",
+  "section": 3,
+  "patches": [
+    {"offset": "0x1f1f00", "bytes": "00110007", "expected_before": "fcb1c083",
+     "kind": "code", "note": "first iteration per owner GO 2026-10-11 after 0x1f assert (RE: full-mask not viable, assert dc 0x18c120); 0x07 = SDR/DDR/QDR — mask of QSFP28 sibling 03:00.0 Enabled (IB). Same encoding as 0x1f build (0011001f): addi r17,zero,0x07. Base = fresh ri (VPI byte already on card, GUID/MAC/PSID native); raw offset 0x37e0f0, next-word 6430000a; verified vs ri task-02."}
+  ]
+}

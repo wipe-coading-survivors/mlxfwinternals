@@ -1,0 +1,175 @@
+{
+ "cmp38_self": {
+  "supports": [
+   {
+    "cycle": "fuzz-4",
+    "fact": "cmp38-self 7==7 -> cc=F (1-method live fact)",
+    "ref": "docs/superpowers/journal/2026-10-25-irisc-fuzz4-task-07.md:32",
+    "vector_id": "V-op38-self"
+   },
+   {
+    "cycle": "fuzz-5",
+    "fact": "self -> cc=F repeat with separating operand 0x1234 + known-T predecessor (double-live)",
+    "ref": "docs/superpowers/journal/2026-10-26-irisc-fuzz5-task-04.md:66",
+    "vector_id": "V-F5R-38SELF"
+   }
+  ],
+  "unique_model": "H-38self-false"
+ },
+ "meta": {
+  "census_rows": 9,
+  "note": "isa-max-b task-1 test fixture: deterministic slice of fuzz5_live.json shape"
+ },
+ "rows": {
+  "op33_f5=0f_idx=00_flag=0": {
+   "alive_set": ["H-depR"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "unique",
+   "observations": [
+    {
+     "observed": "0x00000005",
+     "operands_seed": {"rs": "0x00000003", "rt": "0x00010005"},
+     "source": "fixture",
+     "vector_id": "V-M33-f515-i00"
+    }
+   ],
+   "op": "0x33",
+   "section": "MAIN",
+   "selector": {"f5": 15, "flag": 0, "idx": 0, "lo11": 15},
+   "source": "fixture",
+   "static": null,
+   "unique_model": "H-depR"
+  },
+  "op33_f5=0f_idx=0a_flag=0": {
+   "alive_set": [],
+   "coverage": "none",
+   "in_census": true,
+   "live_verdict": "unobserved",
+   "observations": [],
+   "op": "0x33",
+   "section": "MAIN",
+   "selector": {"f5": 15, "flag": 0, "idx": 10, "lo11": 335},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op33_f5=0f_idx=10_flag=0": {
+   "alive_set": [],
+   "coverage": "none",
+   "in_census": true,
+   "live_verdict": "unobserved",
+   "observations": [],
+   "op": "0x33",
+   "section": "MAIN",
+   "selector": {"f5": 15, "flag": 0, "idx": 16, "lo11": 527},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=00_i6=00": {
+   "alive_set": ["H-V", "H-eq16", "H-eq32", "H-uge32", "H-ugt32"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "multi",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 0, "i6": 0, "lo11": 0},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=01_i6=00": {
+   "alive_set": ["H-lt16", "H-lt32", "H-ne32", "H-ule32"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "multi",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 1, "i6": 0, "lo11": 1},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=01_i6=3f": {
+   "alive_set": ["H-V", "H-eq32i", "H-uge32i"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "multi",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 1, "i6": 63, "lo11": 2017},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=02_i6=00": {
+   "alive_set": ["H-V"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "unique",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 2, "i6": 0, "lo11": 2},
+   "source": "fixture",
+   "static": null,
+   "unique_model": "H-V"
+  },
+  "op36_f5=0a_i6=00": {
+   "alive_set": ["H-V"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "unique",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 10, "i6": 0, "lo11": 10},
+   "source": "fixture",
+   "static": null,
+   "unique_model": "H-V"
+  },
+  "op36_f5=02_i6=20": {
+   "alive_set": ["H-lt32i", "H-ne32i"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "multi",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 2, "i6": 32, "lo11": 1026},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=03_i6=00": {
+   "alive_set": ["H-V", "H-eq16", "H-eq32", "H-uge32", "H-ugt32"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "multi",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 3, "i6": 0, "lo11": 3},
+   "source": "fixture",
+   "static": null,
+   "unique_model": null
+  },
+  "op36_f5=04_i6=00": {
+   "alive_set": ["H-eq32"],
+   "coverage": "battery",
+   "in_census": true,
+   "live_verdict": "unique",
+   "observations": [],
+   "op": "0x36",
+   "section": "MAIN",
+   "selector": {"f5": 4, "i6": 0, "lo11": 4},
+   "source": "fixture",
+   "static": null,
+   "unique_model": "H-eq32"
+  }
+ }
+}

@@ -1,0 +1,24 @@
+# flowtable query NONEXISTENT table (neg path) via VFIO cmdif, mlxscope flowtable, card=0000:81:00.0 ConnectX-5 Ex 15b3:1019 fw=16.35.4030 psid=MT_0000000013 image=mlxini-irisc-fuzz4-v1 binary-md5=db0d9a59; expected: stock bad-param completion
+TX 093200000000000000000000000000000000000000000000
+RX 03000000001c2b780000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+NOTE status=0x03
+NOTE syndrome=0x001c2b78
+NOTE err_flag=0
+NOTE opcode=0x0932
+NOTE tx_len=0x18
+NOTE rx_len=0x40
+NOTE repro=byte-identical across runs 2026-11-07T22:15Z and 2026-11-08T05:47Z
+
+# flowtable create (tt=0 log_size=4) via VFIO cmdif, mlxscope flowtable, card=0000:81:00.0 ConnectX-5 Ex 15b3:1019 fw=16.35.4030 psid=MT_0000000013 image=mlxini-irisc-fuzz4-v1 binary-md5=db0d9a59; expected: ok, table id in RX[8..12]
+TX 09300000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000000
+RX 0000006f000000002800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+NOTE status=0x00
+NOTE syndrome=0x0
+NOTE err_flag=0
+NOTE opcode=0x0930
+NOTE tx_len=0x40
+NOTE rx_len=0x40
+NOTE table_id_raw=0x28000000
+NOTE table_id_masked_24bit=0x0
+NOTE warning=query-after-create on this fw image wedges the mailbox (exec hook, zero/garbage payload); destroy unreachable via cli on this image - see journal
+

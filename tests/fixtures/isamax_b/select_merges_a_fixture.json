@@ -1,0 +1,42 @@
+{
+ "audit": [
+  {
+   "category": "excluded.single_method",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {"f5": 7, "i6": 0, "lo11": 7}
+   },
+   "reason": "fixture decoy: single-method row, not a conflict",
+   "source": "h36"
+  },
+  {
+   "category": "excluded.conflict",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {"f5": 10, "i6": 0, "lo11": 10}
+   },
+   "reason": "live_join status conflict (live model outside the static family / usage-vs-semantics tension) -- two methods disagree, no merge",
+   "source": "h36"
+  },
+  {
+   "category": "excluded.conflict",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {"f5": 2, "i6": 0, "lo11": 2}
+   },
+   "reason": "live_join status conflict (live model outside the static family / usage-vs-semantics tension) -- two methods disagree, no merge",
+   "source": "h36"
+  }
+ ],
+ "counts": {
+  "excluded.conflict": 2,
+  "excluded.single_method": 1
+ },
+ "meta": {
+  "cycle": "isa-max-b task-1 test fixture",
+  "pins": {}
+ }
+}

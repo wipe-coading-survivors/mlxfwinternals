@@ -1,0 +1,11 @@
+{
+  "id": "C6",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {"offset": "0x254168", "bytes": "0004001f", "expected_before": "642404ae",
+     "kind": "code", "note": "C6 feeder 1/2: ld.d r4,r1,0x4ac -> addi r4,zero,0x1f (SCS classification fork, task-08c)"},
+    {"offset": "0x2541bc", "bytes": "0004001f", "expected_before": "fca42008",
+     "kind": "code", "note": "C6 feeder 2/2: or r4,r5,r4 -> addi r4,zero,0x1f (both feeders of st.d r4,r23,0x18 @0x2541c0)"}
+  ]
+}

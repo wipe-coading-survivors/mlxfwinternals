@@ -1,0 +1,70 @@
+{
+ "meta": {
+  "cycle": "isa-max-b task-1 test fixture",
+  "model_spec": {
+   "formula": "rd = (rs & ~(mask32(f5) << idx)) | (((0xc | flag) & mask32(f5)) << idx)  [32-bit]",
+   "mask32": "mask32(0) = 0xffffffff; mask32(f5>0) = 2^f5 - 1"
+  },
+  "pins": {}
+ },
+ "phases": {
+  "A": {"rows": []},
+  "B": {
+   "join_stats": {"match": 0, "silence": 4},
+   "rows": [
+    {
+     "conflict": true,
+     "key": {
+      "section": "MAIN",
+      "op": "0x34",
+      "selector": {"f5": 10, "flag": 0, "idx": 22, "lo11": 714}
+     },
+     "live_join": {"status": "silence"},
+     "model_form": "residual",
+     "predicted": {"deposit": "0x03000000", "mask": "0xffc00000"},
+     "static_verdict": "H-34-rt-fed",
+     "unique": false
+    },
+    {
+     "conflict": true,
+     "key": {
+      "section": "IRON_PREP",
+      "op": "0x34",
+      "selector": {"f5": 16, "flag": 0, "idx": 0, "lo11": 16}
+     },
+     "live_join": {"status": "silence"},
+     "model_form": "residual",
+     "predicted": {"deposit": "0x0000000c", "mask": "0x0000ffff"},
+     "static_verdict": "H-34-rt-fed",
+     "unique": false
+    },
+    {
+     "conflict": false,
+     "key": {
+      "section": "MAIN",
+      "op": "0x34",
+      "selector": {"f5": 4, "flag": 0, "idx": 0, "lo11": 4}
+     },
+     "live_join": {"status": "silence"},
+     "model_form": "formula",
+     "predicted": {"deposit": "0x0000000c", "mask": "0x0000000f"},
+     "static_verdict": "H-34-field-consistent",
+     "unique": true
+    },
+    {
+     "conflict": true,
+     "key": {
+      "section": "MAIN",
+      "op": "0x34",
+      "selector": {"f5": 12, "flag": 0, "idx": 0, "lo11": 12}
+     },
+     "live_join": {"status": "silence"},
+     "model_form": "residual",
+     "predicted": {"deposit": "0x0000000c", "mask": "0x00000fff"},
+     "static_verdict": "H-34-rt-fed",
+     "unique": false
+    }
+   ]
+  }
+ }
+}

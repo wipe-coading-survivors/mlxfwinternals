@@ -1,0 +1,43 @@
+{
+ "meta": {
+  "cycle": "isa-max-b task-1 test fixture",
+  "formulas": {
+   "0x3c": {
+    "formula": "rd = 0",
+    "id": "H-3c-zero",
+    "note": "zero-write; lo11-independent (the 0x7ff live point killed H-3c-and-lo11; lo11=000 stays live-multi zero|and-lo11 -- both predict 0 there)"
+   }
+  },
+  "pins": {}
+ },
+ "phases": {
+  "A": {"rows": []},
+  "B": {
+   "rows": [
+    {
+     "conflict": false,
+     "formula": {
+      "formula": "rd = 0",
+      "id": "H-3c-zero",
+      "note": "zero-write; lo11-independent (lo11=000 stays live-multi zero|and-lo11 -- both predict 0 there)"
+     },
+     "key": {
+      "section": "MAIN",
+      "op": "0x3c",
+      "selector": {"lo11": 0}
+     },
+     "live_join": {
+      "live_verdict": "multi",
+      "n_checked": 1,
+      "n_observations": 1,
+      "note": "live multi: all 1 captured values agree with the candidate but there is no unique model to join",
+      "status": "silence",
+      "unique_model": null
+     },
+     "static_verdict": "H-3c-zero-consistent",
+     "unique": true
+    }
+   ]
+  }
+ }
+}

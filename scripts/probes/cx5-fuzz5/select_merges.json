@@ -1,0 +1,517 @@
+{
+ "census_rows": 1250,
+ "excluded": [
+  {
+   "attached_rows": 38,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x1d",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x1d"
+  },
+  {
+   "attached_rows": 17,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x20",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x20"
+  },
+  {
+   "attached_rows": 8,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x22",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x22"
+  },
+  {
+   "attached_rows": 10,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x2d",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x2d"
+  },
+  {
+   "attached_rows": 8,
+   "covered_rows": 2,
+   "flag": "static_livefact",
+   "op": "0x39",
+   "reason": "census record is a 1-method live fact (static leg contributed contexts only, no semantic formula) \u2014 live x static not met",
+   "static_id": "C2-0x39"
+  },
+  {
+   "attached_rows": 8,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x3a",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x3a"
+  },
+  {
+   "attached_rows": 6,
+   "covered_rows": 0,
+   "flag": "no_live_coverage",
+   "op": "0x3b",
+   "reason": "no live-covered attached rows (outside the T2 live mandate, static track only)",
+   "static_id": "C2-0x3b"
+  },
+  {
+   "attached_rows": 12,
+   "covered_rows": 2,
+   "flag": "static_livefact",
+   "op": "0x3c",
+   "reason": "census record is a 1-method live fact (static leg contributed contexts only, no semantic formula) \u2014 live x static not met",
+   "static_id": "C2-0x3c"
+  },
+  {
+   "attached_rows": 39,
+   "confirms": [
+    [
+     "op16_lo11=028",
+     "H-16-shr32u",
+     [
+      "V-C2R-16i028"
+     ]
+    ],
+    [
+     "op16_lo11=03c",
+     "H-16-shr32u",
+     [
+      "V-C2R-16i03c"
+     ]
+    ],
+    [
+     "op16_lo11=07d",
+     "H-16-shr32u",
+     [
+      "V-C2R-16i07d"
+     ]
+    ]
+   ],
+   "conflicts": [
+    [
+     "op16_lo11=000",
+     "unique-out-of-family H-16-zero",
+     [
+      "V-C2R-16i000"
+     ]
+    ]
+   ],
+   "covered_rows": 4,
+   "div_rows": [],
+   "flag": "conflict",
+   "formula": "rd = rs >> (imm & 0x3f) (64-bit shift right; the live battery separated the shr family from pass/hi2lo/zero models; H-16-pass is the sh=0 degenerate of the family)",
+   "non_separating": [],
+   "op": "0x16",
+   "reason": "live x static conflict on attached covered rows (rule: conflict => no merge, journal)",
+   "static_id": "H-16-shr"
+  },
+  {
+   "attached_rows": 1,
+   "covered_rows": 1,
+   "flag": "static_refuted",
+   "op": "0x33",
+   "reason": "attached rows live-resolve to H-depR: live dep-R explains the clamp row (obs 0x0000bffe); clamp16 dead",
+   "static_id": "H-33-clamp16"
+  },
+  {
+   "attached_rows": 4,
+   "covered_rows": 1,
+   "flag": "static_refuted",
+   "op": "0x33",
+   "reason": "attached rows live-resolve to H-depR: live dep-R explains both f5=24 points; min dead (V-M33-f524-i00), max dead (disc cross-point)",
+   "static_id": "H-33-minmax"
+  },
+  {
+   "attached_rows": 25,
+   "confirms": [],
+   "conflicts": [
+    [
+     "op34_f5=04_idx=00_flag=0",
+     "rogue",
+     [
+      "V-M34-f504-i00"
+     ]
+    ],
+    [
+     "op34_f5=06_idx=00_flag=0",
+     "rogue",
+     [
+      "V-M34-f506-i00"
+     ]
+    ],
+    [
+     "op34_f5=06_idx=04_flag=0",
+     "rogue",
+     [
+      "V-M34-f506-i04"
+     ]
+    ],
+    [
+     "op34_f5=08_idx=00_flag=0",
+     "rogue",
+     [
+      "V-M34-f508-i00"
+     ]
+    ],
+    [
+     "op34_f5=0c_idx=00_flag=0",
+     "rogue",
+     [
+      "V-M34-f512-i00"
+     ]
+    ],
+    [
+     "op34_f5=0c_idx=0a_flag=0",
+     "rogue",
+     [
+      "V-M34-f512-i10"
+     ]
+    ]
+   ],
+   "covered_rows": 6,
+   "div_rows": [],
+   "flag": "conflict",
+   "formula": "replace-deposit W=f5, flag=0 classes (same formula as H-33-dep-R)",
+   "non_separating": [],
+   "op": "0x34",
+   "reason": "live x static conflict on attached covered rows (rule: conflict => no merge, journal)",
+   "static_id": "H-34-dep-R"
+  },
+  {
+   "attached_rows": 2,
+   "covered_rows": 2,
+   "flag": "static_no_semantics",
+   "op": "0x34",
+   "reason": "usage hypothesis (bit-array MMIO address helper), no rd-formula",
+   "static_id": "H-34-mmio"
+  },
+  {
+   "attached_rows": 1,
+   "covered_rows": 0,
+   "flag": "already_merged",
+   "op": "0x0d",
+   "reason": "census status merged (prior slaspec commit)",
+   "static_id": "MERGED-0d"
+  },
+  {
+   "attached_rows": 1,
+   "covered_rows": 1,
+   "flag": "already_merged",
+   "op": "0x34",
+   "reason": "census status merged (prior slaspec commit)",
+   "static_id": "MERGED-34-bclr1"
+  },
+  {
+   "attached_rows": 1,
+   "covered_rows": 1,
+   "flag": "open_conflict",
+   "live_rows": [
+    [
+     "op34_f5=02_idx=05_flag=0",
+     "H-bclr"
+    ]
+   ],
+   "op": "0x34",
+   "reason": "static record refutes both bclr and W=2 replace (fuzz-4 V-34-2 rogue), live battery row resolves to bclr \u2014 unresolved reading conflict, ruling: f5=2 axis untouched",
+   "static_id": "OPEN-34-f5=2-idx=5"
+  },
+  {
+   "attached_rows": 1,
+   "covered_rows": 1,
+   "flag": "already_merged",
+   "op": "0x38",
+   "reason": "census status merged (prior slaspec commit)",
+   "static_id": "V-38-sel0"
+  },
+  {
+   "attached_rows": 6,
+   "covered_rows": 1,
+   "flag": "static_no_semantics",
+   "op": "0x38",
+   "reason": "value-form closure (non-cc-writers); the only live-covered attached row (sel=4) is DIV \u2014 volatile field, not a merge candidate by ruling",
+   "static_id": "V-38-selne0"
+  }
+ ],
+ "live_covered": 141,
+ "live_only_rows": {
+  "0x33": {
+   "note": "live verdicts without census static attachment: 1-method (live_only) rows, never merge candidates; for op 0x33 they corroborate (not ground) the merged dep constructor; op 0x36 axis has no static leg at all",
+   "rogue_rows": 0,
+   "rows": 33,
+   "unique_examples": [
+    [
+     "op33_f5=00_idx=00_flag=1",
+     "unique",
+     "H-pass",
+     "V-M33-f500-i00-f1",
+     1
+    ],
+    [
+     "op33_f5=02_idx=00_flag=0",
+     "unique",
+     "H-depR",
+     "V-M33-f502-i00",
+     1
+    ],
+    [
+     "op33_f5=02_idx=1e_flag=0",
+     "unique",
+     "H-depR",
+     "V-M33-f502-i30",
+     1
+    ],
+    [
+     "op33_f5=03_idx=00_flag=0",
+     "unique",
+     "H-depR",
+     "V-M33-f503-i00",
+     1
+    ],
+    [
+     "op33_f5=03_idx=01_flag=0",
+     "unique",
+     "H-depR",
+     "V-M33-f503-i01",
+     1
+    ],
+    [
+     "op33_f5=05_idx=00_flag=0",
+     "unique",
+     "H-depR",
+     "V-M33-f505-i00",
+     1
+    ]
+   ]
+  },
+  "0x34": {
+   "note": "live verdicts without census static attachment: 1-method (live_only) rows, never merge candidates; for op 0x33 they corroborate (not ground) the merged dep constructor; op 0x36 axis has no static leg at all",
+   "rogue_rows": 27,
+   "rows": 34,
+   "unique_examples": [
+    [
+     "op34_f5=01_idx=00_flag=0",
+     "unique",
+     "H-depR",
+     "V-M34-f501-i00",
+     0
+    ],
+    [
+     "op34_f5=02_idx=00_flag=0",
+     "unique",
+     "H-bclr",
+     "V-M34-f502-i00",
+     1
+    ],
+    [
+     "op34_f5=0f_idx=10_flag=0",
+     "unique",
+     "H-depR",
+     "V-M34-f515-i16",
+     1
+    ],
+    [
+     "op34_f5=14_idx=0c_flag=1",
+     "unique",
+     "H-depM",
+     "V-M34-f520-i12-f1",
+     1
+    ],
+    [
+     "op34_f5=1a_idx=06_flag=1",
+     "unique",
+     "H-depM",
+     "V-M34-f526-i06-f1",
+     1
+    ],
+    [
+     "op34_f5=1d_idx=03_flag=0",
+     "unique",
+     "H-depR",
+     "V-M34-f529-i03",
+     1
+    ]
+   ]
+  },
+  "0x36": {
+   "note": "live verdicts without census static attachment: 1-method (live_only) rows, never merge candidates; for op 0x33 they corroborate (not ground) the merged dep constructor; op 0x36 axis has no static leg at all",
+   "rogue_rows": 0,
+   "rows": 37,
+   "unique_examples": [
+    [
+     "op36_f5=02_i6=00",
+     "unique",
+     "H-V",
+     "V-F5R-LTV",
+     2
+    ],
+    [
+     "op36_f5=04_i6=00",
+     "unique",
+     "H-eq32",
+     "V-F5R-EQ",
+     1
+    ],
+    [
+     "op36_f5=0a_i6=00",
+     "unique",
+     "H-V",
+     "V-M36-f510",
+     1
+    ]
+   ]
+  }
+ },
+ "merges": [
+  {
+   "attached_rows": 349,
+   "confirms": [
+    [
+     "op0c_imm=01ff",
+     "H-0c-hiand",
+     [
+      "V-C2R-0Cx01ff"
+     ]
+    ]
+   ],
+   "conflicts": [],
+   "covered_rows": 3,
+   "div_rows": [],
+   "flag": "MERGE",
+   "formula": "rd_lo = rs_lo & ((imm16<<16) | 0xffff)",
+   "non_separating": [
+    [
+     "op0c_imm=0000",
+     "H-0c-hiand,H-0c-loonly (outside: H-0c-loonly)",
+     [
+      "V-C2R-0Cx0000"
+     ]
+    ],
+    [
+     "op0c_imm=00ff",
+     "H-0c-bswap,H-0c-hiand (outside: H-0c-bswap)",
+     [
+      "V-F5R-0C"
+     ]
+    ]
+   ],
+   "op": "0x0c",
+   "reason": "live unique verdict x static hypothesis, zero conflicts on attached covered rows",
+   "static_id": "H-0c-hi-and"
+  },
+  {
+   "attached_rows": 32,
+   "confirms": [
+    [
+     "op33_f5=01_idx=00_flag=0",
+     "H-depR",
+     [
+      "V-M33-f501-i00"
+     ]
+    ],
+    [
+     "op33_f5=01_idx=01_flag=0",
+     "H-depR",
+     [
+      "V-M33-f501-i01"
+     ]
+    ],
+    [
+     "op33_f5=01_idx=0f_flag=0",
+     "H-depR",
+     [
+      "V-M33-f501-i15"
+     ]
+    ],
+    [
+     "op33_f5=01_idx=10_flag=0",
+     "H-depR",
+     [
+      "V-M33-f501-i16"
+     ]
+    ],
+    [
+     "op33_f5=01_idx=1f_flag=0",
+     "H-depR",
+     [
+      "V-M33-f501-i31"
+     ]
+    ]
+   ],
+   "conflicts": [],
+   "covered_rows": 5,
+   "div_rows": [],
+   "flag": "MERGE",
+   "formula": "single-bit deposit: W=1 case of H-33-dep-R (census verdict text) \u2014 same formula",
+   "non_separating": [],
+   "op": "0x33",
+   "reason": "live unique verdict x static hypothesis, zero conflicts on attached covered rows",
+   "static_id": "H-33-bit"
+  },
+  {
+   "attached_rows": 40,
+   "confirms": [
+    [
+     "op33_f5=04_idx=00_flag=0",
+     "H-depR",
+     [
+      "V-M33-f504-i00"
+     ]
+    ],
+    [
+     "op33_f5=04_idx=01_flag=0",
+     "H-depR",
+     [
+      "V-M33-f504-i01"
+     ]
+    ],
+    [
+     "op33_f5=04_idx=10_flag=0",
+     "H-depR",
+     [
+      "V-M33-f504-i16"
+     ]
+    ],
+    [
+     "op33_f5=08_idx=00_flag=0",
+     "H-depR",
+     [
+      "V-M33-f508-i00"
+     ]
+    ],
+    [
+     "op33_f5=08_idx=01_flag=0",
+     "H-depR",
+     [
+      "V-M33-f508-i01"
+     ]
+    ],
+    [
+     "op33_f5=08_idx=10_flag=0",
+     "H-depR",
+     [
+      "V-M33-f508-i16"
+     ]
+    ],
+    [
+     "op33_f5=08_idx=18_flag=0",
+     "H-depR",
+     [
+      "V-M33-f508-i24"
+     ]
+    ]
+   ],
+   "conflicts": [],
+   "covered_rows": 7,
+   "div_rows": [],
+   "flag": "MERGE",
+   "formula": "rd = (rs & ~((2^f5-1)<<idx)) | ((rt & (2^f5-1))<<idx); W = f5 (replace deposit)",
+   "non_separating": [],
+   "op": "0x33",
+   "reason": "live unique verdict x static hypothesis, zero conflicts on attached covered rows",
+   "static_id": "H-33-dep-R"
+  }
+ ]
+}

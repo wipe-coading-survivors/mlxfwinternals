@@ -1,0 +1,739 @@
+[
+ {
+  "id": "V-F4-MARKER",
+  "group": "marker",
+  "words": [
+   "2403f00d",
+   "2063f00d",
+   "6e401812",
+   "00042320",
+   "6c801802",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-marker": {
+    "0x8c8": "0xf00df00d",
+    "echo": "0xf00df00d"
+   }
+  },
+  "notes": "execution marker 0xF00DF00D to echo [r18+0x10] and CR rt 0x2320; CR word must be exactly 0xF00DF00D; echo upper 32 bits unspecified (set2/set3 load, low32 check); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-0c-1",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "30a400ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0xabcd1234",
+   "0x8c7": "0x00000000"
+  },
+  "expectations": {
+   "H-0c-ANDN-raw": {
+    "0x8c8": "0xabcd1200",
+    "echo": "0xabcd1200"
+   },
+   "H-0c-ANDN-sh16": {
+    "0x8c8": "0xab001234",
+    "echo": "0xab001234"
+   },
+   "H-0c-OR": {
+    "0x8c8": "0xabcd12ff",
+    "echo": "0xabcd12ff"
+   }
+  },
+  "notes": "or-imm revision trio 1/3: rs=0xabcd1234 imm=0x00ff, three outcomes pairwise distinct; rs seeded (hi half 0xabcd is negative s16, inline pair would leave upper stale); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-0c-2",
+  "group": "w1prio",
+  "words": [
+   "00050000",
+   "30a4ff00",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0c-ANDN-raw": {
+    "0x8c8": "0x0000000000000000",
+    "echo": "0x0000000000000000"
+   },
+   "H-0c-ANDN-sh16": {
+    "0x8c8": "0x0000000000000000",
+    "echo": "0x0000000000000000"
+   },
+   "H-0c-OR": {
+    "0x8c8": "0x000000000000ff00",
+    "echo": "0x000000000000ff00"
+   }
+  },
+  "notes": "or-imm trio 2/3: rs=0 imm=0xff00, only OR-raw nonzero (closes position for ANDN=0 cases jointly with V-0c-1/3); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-0c-3",
+  "group": "w1prio",
+  "words": [
+   "00055678",
+   "08a51234",
+   "30a40f00",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0c-ANDN-raw": {
+    "0x8c8": "0x12345078",
+    "echo": "0x12345078"
+   },
+   "H-0c-ANDN-sh16": {
+    "0x8c8": "0x10345678",
+    "echo": "0x10345678"
+   },
+   "H-0c-OR": {
+    "0x8c8": "0x12345f78",
+    "echo": "0x12345f78"
+   }
+  },
+  "notes": "or-imm trio 3/3: rs=0x12345678 imm=0x0f00, all three outcomes pairwise distinct; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-34-1",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "d0a40822",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0xffffffff",
+   "0x8c7": "0xffffffff"
+  },
+  "expectations": {
+   "H-34-clr": {
+    "0x8c8": "0xfffffffffffffffd",
+    "echo": "0xfffffffffffffffd"
+   }
+  },
+  "notes": "rosetta f5=2 bit-clr: FW word @0x08c124 bit-exact (rt=r1 read-only, value irrelevant for clr); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-34-2",
+  "group": "w1prio",
+  "words": [
+   "000500ff",
+   "d0a40a22",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-34-clr": {
+    "0x8c8": "0x000000df",
+    "echo": "0x000000df"
+   }
+  },
+  "notes": "rosetta f5=2 idx=5 on rs=0xff: idx-semantics check (clr bit5 -> 0xdf); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-34-6",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "d0a40086",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0xffffffff",
+   "0x8c7": "0x00000000"
+  },
+  "expectations": {
+   "H-34-6-clr-lo": {
+    "0x8c8": "0x00000000fffffff0",
+    "echo": "0x00000000fffffff0"
+   },
+   "H-34-6-clr-hi": {
+    "0x8c8": "0x00000000ffffff0f",
+    "echo": "0x00000000ffffff0f"
+   }
+  },
+  "notes": "ESW-top class @0x3156c4: f5=6 idx=4, clr-nibble@4 sub-hypotheses (nibble position open); rs seeded 64-bit 0x00000000ffffffff (upper=0 required by expectations); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-34-7",
+  "group": "w1prio",
+  "words": [
+   "00050000",
+   "00091234",
+   "d0a44d4c",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-34-7-w14": {
+    "0x8c8": "0x003ffc00",
+    "echo": "0x003ffc00"
+   },
+   "H-34-7-w10": {
+    "0x8c8": "0x003fc00",
+    "echo": "0x003fc00"
+   },
+   "H-34-7-w8": {
+    "0x8c8": "0x00ffc00",
+    "echo": "0x00ffc00"
+   }
+  },
+  "notes": "rosetta-context f5=0xc idx=10: FW word @0x3157c8 bit-exact, rt=r9=0x1234, deposit@10 width? (14/10/8); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-0d-2",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "34a400ff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0xffffffff",
+   "0x8c7": "0x00000000"
+  },
+  "expectations": {
+   "H-0d-A": {
+    "0x8c8": "0x0000000000ff0000",
+    "echo": "0x0000000000ff0000"
+   },
+   "H-0d-raw": {
+    "0x8c8": "0x00000000000000ff",
+    "echo": "0x00000000000000ff"
+   },
+   "H-0d-sh16": {
+    "0x8c8": "0x00000000000000ff",
+    "echo": "0x00000000000000ff"
+   }
+  },
+  "notes": "mask position discriminator: unit mask 0x00ff on rs=0x00000000ffffffff; H-0d-sh16 gives 0xff (same as H-raw here, position closed by V-0d-3/4); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-0d-3",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "34a4ff00",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0xccdd2233",
+   "0x8c7": "0x0011aabb"
+  },
+  "expectations": {
+   "H-0d-A": {
+    "0x8c8": "0x00000000cc000000",
+    "echo": "0x00000000cc000000"
+   },
+   "H-0d-raw": {
+    "0x8c8": "0x0000000000002200",
+    "echo": "0x0000000000002200"
+   },
+   "H-0d-sh16": {
+    "0x8c8": "0x000000000000cc00",
+    "echo": "0x000000000000cc00"
+   }
+  },
+  "notes": "mask position discriminator 2: imm=0xff00, all three outcomes pairwise distinct; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-0d-4",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "34a48000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0x80000000",
+   "0x8c7": "0x00000000"
+  },
+  "expectations": {
+   "H-0d-A": {
+    "0x8c8": "0x0000000080000000",
+    "echo": "0x0000000080000000"
+   },
+   "H-0d-raw": {
+    "0x8c8": "0x0000000000000000",
+    "echo": "0x0000000000000000"
+   },
+   "H-0d-sh16": {
+    "0x8c8": "0x0000000080000000",
+    "echo": "0x0000000080000000"
+   }
+  },
+  "notes": "mask position discriminator 3: imm=0x8000 on rs=0x80000000 (H-A and H-sh16 coincide here, split by V-0d-2/3); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-0d-5",
+  "group": "w1prio",
+  "words": [
+   "00050abc",
+   "fca58081",
+   "34a40f00",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-0d-A": {
+    "0x8c8": "0x000000000a000000",
+    "echo": "0x000000000a000000"
+   },
+   "H-0d-raw": {
+    "0x8c8": "0x0000000000000000",
+    "echo": "0x0000000000000000"
+   },
+   "H-0d-sh16": {
+    "0x8c8": "0x0000000000000a00",
+    "echo": "0x0000000000000a00"
+   }
+  },
+  "notes": "FW idiom check (shl64+0x0d): rs built by shl64.i 0xabc,0x10 -> 0x0abc0000; journal used 0xabcd<<0xc \u2014 0xabcd is negative s16 (addi sign-extends, upper polluted), substituted with positive-s16 constant of the same mask class (three outcomes still pairwise distinct); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-33-2",
+  "group": "w1prio",
+  "words": [
+   "00050005",
+   "00060003",
+   "cca43018",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-33-2-min": {
+    "0x8c8": "0x3",
+    "echo": "0x3"
+   },
+   "H-33-2-max": {
+    "0x8c8": "0x5",
+    "echo": "0x5"
+   },
+   "H-33-2-add": {
+    "0x8c8": "0x8",
+    "echo": "0x8"
+   },
+   "H-33-2-or": {
+    "0x8c8": "0x7",
+    "echo": "0x7"
+   }
+  },
+  "notes": "FW-top class @0x1636bc/0x3062c8: f5=0x18 idx=0, four outcomes pairwise distinct (min/max/add/or) \u2014 4-in-1 slot; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-33-1",
+  "group": "w1prio",
+  "words": [
+   "00050000",
+   "00060001",
+   "cca43321",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-33-bit": {
+    "0x8c8": "0x2000000",
+    "echo": "0x2000000"
+   }
+  },
+  "notes": "bit-deposit f5=1 idx=25: rt=1 into rs=0; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-33-3",
+  "group": "w1prio",
+  "words": [
+   "00032318",
+   "64650002",
+   "00060100",
+   "cca431d0",
+   "00032320",
+   "6c602002",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0x00168000",
+   "0x8c7": "0x00000000"
+  },
+  "expectations": {
+   "H-33-3-clamp": {
+    "0x8c8": "0x400000"
+   },
+   "H-33-3-pass": {
+    "0x8c8": "0x168000"
+   }
+  },
+  "notes": "FW word @0x38b0: f5=0x10 idx=14, clamp16@14 (0x5a<<14 = 0x168000, rt=0x100 clamp limit) vs pass; rs seeded 64-bit (upper=0); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-f5map-1",
+  "group": "fuzz3rem",
+  "words": [
+   "00032320",
+   "00050003",
+   "00060005",
+   "e0a03002",
+   "d8a03004",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-f5p4-eq32": {
+    "0x8c8": "0x5"
+   },
+   "H-36-f5p4-uge32": {
+    "0x8c8": "0x5"
+   },
+   "H-36-f5p4-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-f5p4-eq16": {
+    "0x8c8": "0x5"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=4 map, pair (rs=3, rt=5); known-FALSE predecessor cmp38(3,5) \u2014 T can only come from op0x36; T-path skips write -> sentinel stays; F-path writes rt value 5; T=>{ule32}, F=>{eq32,uge32,eq16, no-cc-write}; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-f5map-2",
+  "group": "fuzz3rem",
+  "words": [
+   "00032320",
+   "00050007",
+   "00060003",
+   "e0a03002",
+   "d8a03004",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-f5p4-uge32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-f5p4-eq32": {
+    "0x8c8": "0x3"
+   },
+   "H-36-f5p4-eq16": {
+    "0x8c8": "0x3"
+   },
+   "H-36-f5p4-ule32": {
+    "0x8c8": "0x3"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=4 map, pair (rs=7, rt=3) [journal tuple (3,7); orientation chosen so uge vs eq discriminate]; known-FALSE predecessor cmp38(7,3); T=>{uge32}, F=>{eq32,eq16,ule32,no-cc-write}; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-f5map-3",
+  "group": "fuzz3rem",
+  "words": [
+   "00032320",
+   "00050005",
+   "00060003",
+   "e0a03002",
+   "d8a0300a",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-f5pa-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-f5pa-gt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-f5pa-ugt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-f5pa-lt32": {
+    "0x8c8": "0x3"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=0xa map, pair (rs=5, rt=3); known-FALSE predecessor cmp38(5,3); T=>{ne32,gt32,ugt32}, F=>{lt32,no-cc-write}; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-ltV-1",
+  "group": "fuzz3rem",
+  "words": [
+   "24057fff",
+   "20a5ffff",
+   "24068000",
+   "20c60000",
+   "d8a03002",
+   "a00a0002",
+   "6e403012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-f5p2-lt32": {
+    "echo": "0x0000000080000000"
+   },
+   "H-36-f5p2-lt16": {
+    "echo": "stock"
+   },
+   "H-36-f5p2-V": {
+    "echo": "stock"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "f5=2 lt32-vs-lt16-vs-V discriminator 1 (0x7FFFFFFF vs 0x80000000), operands inline (seed pair structurally impossible: slots are 4-byte strided, ld.d@+4 would read result slot 0x8c8); no predecessor (budget), T-vs-stale-T ambiguity noted; F=>{lt32} writes echo, T=>{lt16,V} leaves stock golden echo"
+ },
+ {
+  "id": "V-ltV-2",
+  "group": "fuzz3rem",
+  "words": [
+   "00050005",
+   "08a50001",
+   "00060003",
+   "08c60002",
+   "d8a03002",
+   "a00a0002",
+   "6e403012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-f5p2-lt32": {
+    "echo": "stock"
+   },
+   "H-36-f5p2-lt16": {
+    "echo": "0x0000000000020003"
+   },
+   "H-36-f5p2-V": {
+    "echo": "0x0000000000020003"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "f5=2 discriminator 2 (0x00010005 vs 0x00020003), operands inline; T=>{lt32} stale, F=>{lt16,V} writes echo=0x00020003; splits lt32 from lt16/V jointly with V-ltV-1; no predecessor (budget)"
+ },
+ {
+  "id": "V-imm6",
+  "group": "fuzz3rem",
+  "words": [
+   "00032320",
+   "00050005",
+   "00060009",
+   "e0a03002",
+   "d8a00404",
+   "a00a0002",
+   "6c602802",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-36-imm6-lt32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-imm6-ne32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-36-imm6-eq32reg": {
+    "0x8c8": "0x5"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "imm6 form (S2 precedent lo11=i6<<5|f5, i6=32 f5=4): rs=5 vs imm6=32; known-FALSE predecessor cmp38(5,9) (stale-cc0a control); T=>{lt32,ne32}, F=>{eq32 reg-reg (rt field zero = 0), no-cc-write}; F-path writes rs value 5; st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-op38-self",
+  "group": "fuzz3rem",
+  "words": [
+   "00050007",
+   "00060007",
+   "e0a03002",
+   "e0a02802",
+   "a00a0003",
+   "6e403012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-op38-self-false": {
+    "echo": "0x7"
+   },
+   "H-op38-self-keepT": {
+    "echo": "stock"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "self-exclusion: known-T predecessor (7==7 P2-form) then self cmp38_eq32 r5,r5; self=>FALSE leaves echo=7 (branch not taken), keep-T => stock echo"
+ },
+ {
+  "id": "V-r-3c",
+  "group": "c2rare",
+  "words": [
+   "00032318",
+   "64650002",
+   "f0a4ffff",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0x00001234",
+   "0x8c7": "0x0000abcd"
+  },
+  "notes": "rare 0x3c (0x154e58-form): 64-bit shift/mask candidate; rt=r31 read-only unknown; rd captured in CR+echo, halves analyzed offline; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-r-39",
+  "group": "c2rare",
+  "words": [
+   "00032318",
+   "64640002",
+   "e4840000",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "0x12345678",
+   "0x8c7": "0x89abcdef"
+  },
+  "notes": "rare 0x39: 64-bit transform on rs=rd=r4; both halves distinct pattern in seed; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only"
+ },
+ {
+  "id": "V-r-16",
+  "group": "c2rare",
+  "words": [
+   "00050000",
+   "08a50010",
+   "58a40028",
+   "00032320",
+   "6c602002",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "notes": "rare 0x16: lea-semantics candidate rd = rs +imm / +(imm<<k); rs=0x00100000 known, rd-rs analyzed offline"
+ }
+]

@@ -1,0 +1,395 @@
+[
+ {
+  "id": "V-F4-MARKER",
+  "group": "marker",
+  "words": [
+   "2403f00d",
+   "2063f00d",
+   "6e401812",
+   "00042320",
+   "6c801802",
+   "00000000",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-marker": {
+    "0x8c8": "0xf00df00d",
+    "echo": "0xf00df00d"
+   }
+  },
+  "notes": "execution marker 0xF00DF00D to echo [r18+0x10] and CR rt 0x2320; CR word must be exactly 0xF00DF00D; echo upper 32 bits unspecified (set2/set3 load, low32 check); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9"
+ },
+ {
+  "id": "V-D34-OPDEP-A",
+  "group": "disc",
+  "words": [
+   "00057fff",
+   "00060321",
+   "d0a43004",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00007ff1",
+    "echo": "0x00007ff1"
+   },
+   "H-depM": {
+    "0x8c8": "0x00007fff",
+    "echo": "0x00007fff"
+   },
+   "H-rogue": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   }
+  },
+  "notes": "rogue operand-independence: (4,0,0) with wide-distinct operands (0x7fff,0x321); rogue predicts 0xc regardless of operands"
+ },
+ {
+  "id": "V-D34-OPDEP-B",
+  "group": "disc",
+  "words": [
+   "00057fff",
+   "00060321",
+   "d0a43548",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x000087ff",
+    "echo": "0x000087ff"
+   },
+   "H-depM": {
+    "0x8c8": "0x0000ffff",
+    "echo": "0x0000ffff"
+   },
+   "H-rogue": {
+    "0x8c8": "0x00003634",
+    "echo": "0x00003634"
+   }
+  },
+  "notes": "rogue operand-independence: (8,10,1) with (0x7fff,0x321); live table 0x3634 came from other operands (f5 8/12/22 identical)"
+ },
+ {
+  "id": "V-D34-IDX1",
+  "group": "disc",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43024",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {},
+  "notes": "rogue idx-axis at f5=4: idx=1 flag=0, exploratory capture"
+ },
+ {
+  "id": "V-D34-IDX2",
+  "group": "disc",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43044",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {},
+  "notes": "rogue idx-axis at f5=4: idx=2 flag=0, exploratory capture"
+ },
+ {
+  "id": "V-D34-IDX3",
+  "group": "disc",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43064",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {},
+  "notes": "rogue idx-axis at f5=4: idx=3 flag=0, exploratory capture"
+ },
+ {
+  "id": "V-D34-IDX1F",
+  "group": "disc",
+  "words": [
+   "00050001",
+   "00060000",
+   "d0a43424",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {},
+  "notes": "rogue flag-axis at f5=4: idx=1 flag=1, exploratory capture"
+ },
+ {
+  "id": "V-D34-F0B",
+  "group": "disc",
+  "words": [
+   "00051234",
+   "00060567",
+   "d0a4300b",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-depR": {
+    "0x8c8": "0x00001567",
+    "echo": "0x00001567"
+   },
+   "H-depM": {
+    "0x8c8": "0x00001777",
+    "echo": "0x00001777"
+   },
+   "H-min": {
+    "0x8c8": "0x00000567",
+    "echo": "0x00000567"
+   },
+   "H-max": {
+    "0x8c8": "0x00001234",
+    "echo": "0x00001234"
+   },
+   "H-add": {
+    "0x8c8": "0x0000179b",
+    "echo": "0x0000179b"
+   },
+   "H-sub": {
+    "0x8c8": "0x00000ccd",
+    "echo": "0x00000ccd"
+   },
+   "H-and": {
+    "0x8c8": "0x00000024",
+    "echo": "0x00000024"
+   },
+   "H-or": {
+    "0x8c8": "0x00001777",
+    "echo": "0x00001777"
+   },
+   "H-xor": {
+    "0x8c8": "0x00001753",
+    "echo": "0x00001753"
+   },
+   "H-rogue": {
+    "0x8c8": "0x0000000c",
+    "echo": "0x0000000c"
+   }
+  },
+  "notes": "f5=0b at (0,0): depR/depM predict operand-dependent values, rogue predicts 0xc; (16,1) point was degenerate (depM==rogue 0xd0005)"
+ },
+ {
+  "id": "V-D34-F2F1",
+  "group": "disc",
+  "words": [
+   "00050005",
+   "00060003",
+   "d0a43402",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-bclr": {
+    "0x8c8": "0x00000004",
+    "echo": "0x00000004"
+   },
+   "H-depR": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-depM": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-rogue": {
+    "0x8c8": "0x0000000d",
+    "echo": "0x0000000d"
+   }
+  },
+  "notes": "f5=2 flag=1 at (0): bclr/depR(W2)/depM predict operand values, rogue (0,1) predicts 0xd; live point (2,26,1)=0x070f0f0f was rogue"
+ },
+ {
+  "id": "V-D36-F0A-EQ16",
+  "group": "disc",
+  "words": [
+   "00072318",
+   "64e50002",
+   "00060005",
+   "e0a03002",
+   "d8a0300a",
+   "a00a0002",
+   "6e403012",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "seeds": {
+   "0x8c6": "00010005",
+   "0x8c7": "00000000"
+  },
+  "expectations": {
+   "H-eq32": {
+    "echo": "0x0000000000000005"
+   },
+   "H-eq16": {
+    "echo": "stock"
+   },
+   "H-lt32": {
+    "echo": "0x0000000000000005"
+   },
+   "H-uge32": {
+    "echo": "stock"
+   },
+   "H-ule32": {
+    "echo": "0x0000000000000005"
+   },
+   "H-V": {
+    "echo": "0x0000000000000005"
+   }
+  },
+  "controls": {
+   "echo_stale": "stock"
+  },
+  "notes": "f5=10 i6=0 width-masked pair (0x10005,0x5) echo form (seed delivers the wide operand within budget); known-F predecessor; T->stock, F->write rt | eq16-split: low16 equal, high16 differ; T={eq16} F={eq32,lt32,uge32,ule32,V}; seeds u32/slot: 0x8c6=lo/0x8c7=hi word, ld.d base 0x2318 only",
+  "census_rows": []
+ },
+ {
+  "id": "V-D36-F0A-EQ",
+  "group": "disc",
+  "words": [
+   "00032320",
+   "00050007",
+   "00060007",
+   "e0a03002",
+   "d8a0300a",
+   "a00a0002",
+   "6c603002",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-eq32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-eq16": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-lt32": {
+    "0x8c8": "0x0000000000000007"
+   },
+   "H-uge32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-ule32": {
+    "0x8c8": "0xdeadbeef"
+   },
+   "H-V": {
+    "0x8c8": "0x0000000000000007"
+   }
+  },
+  "controls": {
+   "cr_sentinel": "0xdeadbeef"
+  },
+  "notes": "f5=10 i6=0 pair (0x7,0x7) known-F predecessor; T->no-write, F->write rt; CR-sentinel form | live_only (zero-site synthetic); st.d CR pair-check: low32 @0x8c8, high32 @0x8c9",
+  "census_rows": [],
+  "stale_t": true
+ },
+ {
+  "id": "V-D33-F0F1",
+  "group": "disc",
+  "words": [
+   "00050005",
+   "00060003",
+   "cca43400",
+   "00032320",
+   "6c602002",
+   "6e402012",
+   "00000000",
+   "000443c8",
+   "0884008e",
+   "fc002025"
+  ],
+  "expectations": {
+   "H-pass": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-zero": {
+    "0x8c8": "0x00000000",
+    "echo": "0x00000000"
+   },
+   "H-min": {
+    "0x8c8": "0x00000003",
+    "echo": "0x00000003"
+   },
+   "H-max": {
+    "0x8c8": "0x00000005",
+    "echo": "0x00000005"
+   },
+   "H-add": {
+    "0x8c8": "0x00000008",
+    "echo": "0x00000008"
+   },
+   "H-sub": {
+    "0x8c8": "0x00000002",
+    "echo": "0x00000002"
+   },
+   "H-and": {
+    "0x8c8": "0x00000001",
+    "echo": "0x00000001"
+   },
+   "H-or": {
+    "0x8c8": "0x00000007",
+    "echo": "0x00000007"
+   },
+   "H-xor": {
+    "0x8c8": "0x00000006",
+    "echo": "0x00000006"
+   }
+  },
+  "notes": "pass/min split: rs=5 rt=3 -> pass=5, min=3 (old point (3,5) was degenerate: pass==min==3)"
+ }
+]

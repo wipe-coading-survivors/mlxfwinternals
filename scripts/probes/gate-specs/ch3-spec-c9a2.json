@@ -1,0 +1,840 @@
+{
+  "id": "C9a2",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {
+      "offset": "0x1d594",
+      "bytes": "940dc067",
+      "expected_before": "940002de",
+      "kind": "code",
+      "note": "boot detour: call 0x1e10c -> call boot stub (docs/250-re/120-irisc/025-boot-injection.md v3 verbatim 0x940dc067)"
+    },
+    {
+      "offset": "0x2ae82c",
+      "bytes": "94037bc7",
+      "expected_before": "94f5bdd2",
+      "kind": "code",
+      "note": "work-dispatch hook: call 0x1df74 -> call routine W"
+    },
+    {
+      "offset": "0x2ae87c",
+      "bytes": "94037bda",
+      "expected_before": "94fffe28",
+      "kind": "code",
+      "note": "idle-sample hook: call 0x2ae11c -> call routine I"
+    },
+    {
+      "offset": "0x38d730",
+      "bytes": "24050000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: r5 = 0"
+    },
+    {
+      "offset": "0x38d734",
+      "bytes": "20a523f0",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: r5 = 0x23f0 (host-CR channel)"
+    },
+    {
+      "offset": "0x38d738",
+      "bytes": "24065a5a",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: r6 = 0x5a5a0000"
+    },
+    {
+      "offset": "0x38d73c",
+      "bytes": "20c60001",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: r6 = 0x5a5a0001 boot marker"
+    },
+    {
+      "offset": "0x38d740",
+      "bytes": "6ca03002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: [0x23f0] = marker"
+    },
+    {
+      "offset": "0x38d744",
+      "bytes": "95f24272",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "boot stub @0x38d730: resume main init (docs/250-re/120-irisc/025-boot-injection.md verbatim)"
+    },
+    {
+      "offset": "0x38d748",
+      "bytes": "48040004",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: csr.r r4,cpuinfo"
+    },
+    {
+      "offset": "0x38d74c",
+      "bytes": "c8840124",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: mask32 r4,r4,0,4 (cpu id; blob-verbatim 0x2ae778)"
+    },
+    {
+      "offset": "0x38d750",
+      "bytes": "14840000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: subsi r4,r4,0"
+    },
+    {
+      "offset": "0x38d754",
+      "bytes": "a0000002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.t.0x0 zero,GO (cpu==0)"
+    },
+    {
+      "offset": "0x38d758",
+      "bytes": "95000021",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: jump EXIT (non-cpu0: pass through)"
+    },
+    {
+      "offset": "0x38d75c",
+      "bytes": "24050000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: GO: r5 = 0"
+    },
+    {
+      "offset": "0x38d760",
+      "bytes": "20a523f0",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r5 = 0x23f0"
+    },
+    {
+      "offset": "0x38d764",
+      "bytes": "64a40002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r4 = slot value V"
+    },
+    {
+      "offset": "0x38d768",
+      "bytes": "ac9f0017",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.bclr 31,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d76c",
+      "bytes": "ac9e0016",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.bclr 30,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d770",
+      "bytes": "a89d0015",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.bset 29,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d774",
+      "bytes": "ac9c0014",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.bclr 28,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d778",
+      "bytes": "2c84001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: VAL: ands r4,r4,0x1f (idx from tag)"
+    },
+    {
+      "offset": "0x38d77c",
+      "bytes": "240600b8",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = 0x00b80000 (table hi)"
+    },
+    {
+      "offset": "0x38d780",
+      "bytes": "20c6d880",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = table byte base 0x00b8d880"
+    },
+    {
+      "offset": "0x38d784",
+      "bytes": "fc841081",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r4 = idx*4"
+    },
+    {
+      "offset": "0x38d788",
+      "bytes": "fcc62000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = &table[idx]"
+    },
+    {
+      "offset": "0x38d78c",
+      "bytes": "fcc60019",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = source byte addr (lw.r)"
+    },
+    {
+      "offset": "0x38d790",
+      "bytes": "fcc40019",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r4 = value = mem32[source] (lw.r)"
+    },
+    {
+      "offset": "0x38d794",
+      "bytes": "2406badc",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = 0xbadc0000"
+    },
+    {
+      "offset": "0x38d798",
+      "bytes": "20c60ffe",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = 0xbadc0ffe guard"
+    },
+    {
+      "offset": "0x38d79c",
+      "bytes": "e0803002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: cmp.w r4,r6 -> cmpres=(value==guard)"
+    },
+    {
+      "offset": "0x38d7a0",
+      "bytes": "64a60002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = re-read tag from slot"
+    },
+    {
+      "offset": "0x38d7a4",
+      "bytes": "a00a0003",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: b.t.cmpres SUBST"
+    },
+    {
+      "offset": "0x38d7a8",
+      "bytes": "6ca02002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: [0x23f0] = value"
+    },
+    {
+      "offset": "0x38d7ac",
+      "bytes": "9500000c",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: jump EXIT"
+    },
+    {
+      "offset": "0x38d7b0",
+      "bytes": "2cc6001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: SUBST: ands r6,r6,0x1f (idx)"
+    },
+    {
+      "offset": "0x38d7b4",
+      "bytes": "2404fe00",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r4 = 0xfe000000"
+    },
+    {
+      "offset": "0x38d7b8",
+      "bytes": "fc843000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r4 = 0xfe000000|idx"
+    },
+    {
+      "offset": "0x38d7bc",
+      "bytes": "6ca02002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: [0x23f0] = guard substitute"
+    },
+    {
+      "offset": "0x38d7c0",
+      "bytes": "95000007",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: jump EXIT"
+    },
+    {
+      "offset": "0x38d7c4",
+      "bytes": "00840001",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: NOTAG: r4 = V+1"
+    },
+    {
+      "offset": "0x38d7c8",
+      "bytes": "2c84001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: ands r4,r4,0x1f (next idx)"
+    },
+    {
+      "offset": "0x38d7cc",
+      "bytes": "2406d000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = 0xd0000000"
+    },
+    {
+      "offset": "0x38d7d0",
+      "bytes": "fcc62000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: r6 = 0xd0000000|idx (tag)"
+    },
+    {
+      "offset": "0x38d7d4",
+      "bytes": "6ca03002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: [0x23f0] = tag"
+    },
+    {
+      "offset": "0x38d7d8",
+      "bytes": "95000001",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: jump EXIT"
+    },
+    {
+      "offset": "0x38d7dc",
+      "bytes": "20048111",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: restore r4 = 0x8111 (callee arg, was 0x2ae828)"
+    },
+    {
+      "offset": "0x38d7e0",
+      "bytes": "95f241e5",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine W @0x0038d748: tail-jump to 0x1df74 (original callee)"
+    },
+    {
+      "offset": "0x38d7e4",
+      "bytes": "48040004",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: csr.r r4,cpuinfo"
+    },
+    {
+      "offset": "0x38d7e8",
+      "bytes": "c8840124",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: mask32 r4,r4,0,4 (cpu id; blob-verbatim 0x2ae778)"
+    },
+    {
+      "offset": "0x38d7ec",
+      "bytes": "14840000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: subsi r4,r4,0"
+    },
+    {
+      "offset": "0x38d7f0",
+      "bytes": "a0000002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.t.0x0 zero,GO (cpu==0)"
+    },
+    {
+      "offset": "0x38d7f4",
+      "bytes": "95000021",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: jump EXIT (non-cpu0: pass through)"
+    },
+    {
+      "offset": "0x38d7f8",
+      "bytes": "24050000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: GO: r5 = 0"
+    },
+    {
+      "offset": "0x38d7fc",
+      "bytes": "20a523f0",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r5 = 0x23f0"
+    },
+    {
+      "offset": "0x38d800",
+      "bytes": "64a40002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r4 = slot value V"
+    },
+    {
+      "offset": "0x38d804",
+      "bytes": "ac9f0017",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.bclr 31,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d808",
+      "bytes": "ac9e0016",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.bclr 30,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d80c",
+      "bytes": "a89d0015",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.bset 29,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d810",
+      "bytes": "ac9c0014",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.bclr 28,r4,NOTAG (tag top nibble 0xD test)"
+    },
+    {
+      "offset": "0x38d814",
+      "bytes": "2c84001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: VAL: ands r4,r4,0x1f (idx from tag)"
+    },
+    {
+      "offset": "0x38d818",
+      "bytes": "240600b8",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = 0x00b80000 (table hi)"
+    },
+    {
+      "offset": "0x38d81c",
+      "bytes": "20c6d880",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = table byte base 0x00b8d880"
+    },
+    {
+      "offset": "0x38d820",
+      "bytes": "fc841081",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r4 = idx*4"
+    },
+    {
+      "offset": "0x38d824",
+      "bytes": "fcc62000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = &table[idx]"
+    },
+    {
+      "offset": "0x38d828",
+      "bytes": "fcc60019",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = source byte addr (lw.r)"
+    },
+    {
+      "offset": "0x38d82c",
+      "bytes": "fcc40019",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r4 = value = mem32[source] (lw.r)"
+    },
+    {
+      "offset": "0x38d830",
+      "bytes": "2406badc",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = 0xbadc0000"
+    },
+    {
+      "offset": "0x38d834",
+      "bytes": "20c60ffe",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = 0xbadc0ffe guard"
+    },
+    {
+      "offset": "0x38d838",
+      "bytes": "e0803002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: cmp.w r4,r6 -> cmpres=(value==guard)"
+    },
+    {
+      "offset": "0x38d83c",
+      "bytes": "64a60002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = re-read tag from slot"
+    },
+    {
+      "offset": "0x38d840",
+      "bytes": "a00a0003",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: b.t.cmpres SUBST"
+    },
+    {
+      "offset": "0x38d844",
+      "bytes": "6ca02002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: [0x23f0] = value"
+    },
+    {
+      "offset": "0x38d848",
+      "bytes": "9500000c",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: jump EXIT"
+    },
+    {
+      "offset": "0x38d84c",
+      "bytes": "2cc6001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: SUBST: ands r6,r6,0x1f (idx)"
+    },
+    {
+      "offset": "0x38d850",
+      "bytes": "2404fe00",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r4 = 0xfe000000"
+    },
+    {
+      "offset": "0x38d854",
+      "bytes": "fc843000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r4 = 0xfe000000|idx"
+    },
+    {
+      "offset": "0x38d858",
+      "bytes": "6ca02002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: [0x23f0] = guard substitute"
+    },
+    {
+      "offset": "0x38d85c",
+      "bytes": "95000007",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: jump EXIT"
+    },
+    {
+      "offset": "0x38d860",
+      "bytes": "00840001",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: NOTAG: r4 = V+1"
+    },
+    {
+      "offset": "0x38d864",
+      "bytes": "2c84001f",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: ands r4,r4,0x1f (next idx)"
+    },
+    {
+      "offset": "0x38d868",
+      "bytes": "2406d000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = 0xd0000000"
+    },
+    {
+      "offset": "0x38d86c",
+      "bytes": "fcc62000",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: r6 = 0xd0000000|idx (tag)"
+    },
+    {
+      "offset": "0x38d870",
+      "bytes": "6ca03002",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: [0x23f0] = tag"
+    },
+    {
+      "offset": "0x38d874",
+      "bytes": "95000001",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: jump EXIT"
+    },
+    {
+      "offset": "0x38d878",
+      "bytes": "fee4b808",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: restore r4 = r23 (clock buf ptr, was 0x2ae878)"
+    },
+    {
+      "offset": "0x38d87c",
+      "bytes": "95fc8228",
+      "expected_before": "00000000",
+      "kind": "code",
+      "note": "routine I @0x0038d7e4: tail-jump to 0x2ae11c (original callee)"
+    },
+    {
+      "offset": "0x38d880",
+      "bytes": "0000d330",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[00]: G1: cap global word 0x34cc (byte 0xd330)"
+    },
+    {
+      "offset": "0x38d884",
+      "bytes": "0000d338",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[01]: G2: cap global word 0x34ce (byte 0xd338)"
+    },
+    {
+      "offset": "0x38d888",
+      "bytes": "0000d3ec",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[02]: G3: cap global word 0x34fb (byte 0xd3ec)"
+    },
+    {
+      "offset": "0x38d88c",
+      "bytes": "0000b820",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[03]: T0: port0 module-type container (bit 0x5c107)"
+    },
+    {
+      "offset": "0x38d890",
+      "bytes": "0000b8b8",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[04]: T1: port1 module-type container (bit 0x5c5c7)"
+    },
+    {
+      "offset": "0x38d894",
+      "bytes": "00002000",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[05]: M0: RAM word 0x800 (module type global)"
+    },
+    {
+      "offset": "0x38d898",
+      "bytes": "00009450",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[06]: R44[t=0]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d89c",
+      "bytes": "000094c0",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[07]: R44[t=1]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8a0",
+      "bytes": "00009530",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[08]: R44[t=2]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8a4",
+      "bytes": "000095a0",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[09]: R44[t=3]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8a8",
+      "bytes": "00009610",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[10]: R44[t=4]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8ac",
+      "bytes": "00009680",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[11]: R44[t=5]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8b0",
+      "bytes": "000096f0",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[12]: R44[t=6]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8b4",
+      "bytes": "00009760",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[13]: R44[t=7]: record 0x940c+0x70t+0x44 (SCS feeder)"
+    },
+    {
+      "offset": "0x38d8b8",
+      "bytes": "00009448",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[14]: R3c[t=0]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8bc",
+      "bytes": "000094b8",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[15]: R3c[t=1]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8c0",
+      "bytes": "00009528",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[16]: R3c[t=2]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8c4",
+      "bytes": "00009598",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[17]: R3c[t=3]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8c8",
+      "bytes": "00009608",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[18]: R3c[t=4]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8cc",
+      "bytes": "00009678",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[19]: R3c[t=5]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8d0",
+      "bytes": "000096e8",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[20]: R3c[t=6]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8d4",
+      "bytes": "00009758",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[21]: R3c[t=7]: record 0x940c+0x70t+0x3c"
+    },
+    {
+      "offset": "0x38d8d8",
+      "bytes": "00009e3c",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[22]: S0: status word port0 = bitaddr 0x4f1ee+0*0x60 (b0 present, b17-18 status)"
+    },
+    {
+      "offset": "0x38d8dc",
+      "bytes": "00009e48",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[23]: S1: status word port1 = bitaddr 0x4f1ee+1*0x60 (b0 present, b17-18 status)"
+    },
+    {
+      "offset": "0x38d8e0",
+      "bytes": "0000f690",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[24]: W0: raw PM-window slot word port0 (bit 0x7b494)"
+    },
+    {
+      "offset": "0x38d8e4",
+      "bytes": "0000fd10",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[25]: W1: raw PM-window slot word port1 (bit 0x7e894)"
+    },
+    {
+      "offset": "0x38d8e8",
+      "bytes": "0000d260",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[26]: MODE: residual gate word 0x3498 (bit1 gate A/driver, bit2 sink select)"
+    },
+    {
+      "offset": "0x38d8ec",
+      "bytes": "0000d264",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[27]: N99: PM-fed neighbor word 0x3499"
+    },
+    {
+      "offset": "0x38d8f0",
+      "bytes": "0000d268",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[28]: N9a: PM-fed neighbor word 0x349a"
+    },
+    {
+      "offset": "0x38d8f4",
+      "bytes": "0000d26c",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[29]: N9b: PM-fed neighbor word 0x349b"
+    },
+    {
+      "offset": "0x38d8f8",
+      "bytes": "0000d270",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[30]: N9c: PM-fed neighbor word 0x349c"
+    },
+    {
+      "offset": "0x38d8fc",
+      "bytes": "0000d274",
+      "expected_before": "00000000",
+      "kind": "data",
+      "note": "table[31]: N9d: PM-fed neighbor word 0x349d"
+    }
+  ]
+}

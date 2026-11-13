@@ -1,0 +1,9 @@
+{
+  "id": "DUALVPI-PORT0-CX4LX-1900",
+  "card": "cx4lx-14_32_1900-c1-04z1-based",
+  "section": 17,
+  "patches": [
+    {"offset": "0x2af", "bytes": "0b", "expected_before": "0a",
+     "kind": "config", "note": "dual-port VPI on c1 (CX-4 Lx MCX4121A 2p SFP28, root-mellanox): port0 0x0a (EN-only) -> 0x0b (VPI def-ETH) - boots EN as-is, VPI-selectable via mstconfig LINK_TYPE_P1 (NV, no reflash); port1 0x2b3 = 0x07 (VPI def-IB) invariant since T3 2026-09-15. Base = 04z1 (47b15772) - last-assembled image, owner decision 2026-10-17 (spec addendum 2026-10-17 s.9). Encoding docs/550-poc/100-mlxfwutil/020-patch-matrix.md {b0=net_ib,b1=net_eth,b2=def_ib,b3=def_eth}. Precedents: 0x2b3 live on c1 (T3 canary 5 bytes), 0x2af live on 04:00.0 (gca_ib, QDR 4X Active), 0x0b live on CX-5 t53i (0x11+0x2b7)."}
+  ]
+}

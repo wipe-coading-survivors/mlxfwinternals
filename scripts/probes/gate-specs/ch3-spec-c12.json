@@ -1,0 +1,9 @@
+{
+  "id": "C12",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {"offset": "0x25a3ec", "bytes": "0011001f", "expected_before": "fcb1c083",
+     "kind": "code", "note": "C12: apply_stamping_ib fn 0x25a2f0: module speed term r17 := 0x1f (SDR..FDR) constant — was `shr r17,r5,0x18` (r17 = record[+0x44] bits 24-31 of the per-type classification record 0x940c+type*0x70, type = word(0x5c107+local*0x4c0)&0x3f, record copied to stack by fn 0x28f880; SFP28 type-record byte = 0 → stamping AND 0x25a4a8 leaves only bit8 → post-filter 0x25a560-0x25a57c clears bit8 → speed_enabled 0x0 → fn 0x25a5b0 returns 1 → PM FSM abort (event 45, 6->0, serdes down, PLL close — c11-transition-a). Same addi form self-attested in-function at 0x25a424 (QSFP/DAC force path r17=0x1f). IB-path-only: fn 0x25a2f0 single caller 0x25acec (IB branch of set_pm_speed_and_width fn 0x25a5b0); ETH apply fn 0x2580ac + port0-Eth untouched; r17==0 handlers (bit3 flag + empty-caps notifier fn 0x29c7dc incl. event 26 notify) skipped as intended. Expected SFP28 stamp: requested 0x10f & 0xffffff1f = 0x10f -> post-filter (bit8, maybe bit2) -> 0x0b/0x0f != 0 -> return 0 -> serdes enable 0x2575e4 -> open_pport 0x258ef0 disable->polling. (task-12c12)"}
+  ]
+}

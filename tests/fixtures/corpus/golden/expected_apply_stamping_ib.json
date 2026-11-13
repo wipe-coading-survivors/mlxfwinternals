@@ -1,0 +1,22 @@
+{
+  "entry_dc": "0x25a2f0",
+  "size_words": 176,
+  "frame_push_count": 2,
+  "frame_words": 66,
+  "calls": [
+    ["0x25a3a0", "0x28f880"],
+    ["0x25a3a8", "0x28dd48"],
+    ["0x25a3b8", "0x28df58"],
+    ["0x25a3c8", "0x28df58"],
+    ["0x25a3e4", "0x227120"],
+    ["0x25a460", "0x1b15c"],
+    ["0x25a480", "0x29c7dc"]
+  ],
+  "source": {
+    "entry": "docs/250-re/130-cable-gate/002-transceiver-ib-gate.md:27 (set_pm_speed_and_width 0x25a5b0 -> apply_stamping_ib 0x25a2f0)",
+    "size": "ret.r at 0x25a5ac (extraction); whole doc flow inside: module term 0x25a3e8-ec, force 0x25a424, null-tests 0x25a42c/0x25a464, AND 0x25a4a8, r17&4 0x25a4f4, post-filter 0x25a560-0x25a57c (journal 2026-10-08-transceiver-ib-ch3-ghidra-gate-task-12c12.md:34-43); journal 12c12:34 '420 B' contradicts its own flow (0x25a2f0+0x1a4=0x25a494 < 0x25a560) -> Ghidra extent artifact, actual 0x2c0 B = 176 words",
+    "frame_push_count": "st.d! r1,r1,-0x108 at 0x25a2f8 (prologue) + st.d! zero,r5,0x4 at 0x25a344 (stack zero-fill loop push) (extraction)",
+    "frame_words": "0x108/4 = 66 (prologue push offset -0x108)",
+    "calls": "0x28f880 per-type record copy and 0x29c7dc(type,0) no-speed notifier are doc-named (12c12:34-40, 002:27-29); remaining sites read from the extracted words (extraction-verified, targets outside the carve)"
+  }
+}

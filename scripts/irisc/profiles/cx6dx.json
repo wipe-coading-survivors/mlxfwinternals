@@ -1,0 +1,107 @@
+{
+ "name": "cx6dx",
+ "chip": "ConnectX-6 Dx",
+ "verified_on": [
+  "22.50.1002 MCX623435AC-VDA refs (offline static decode; no live facts yet)"
+ ],
+ "load_base": {
+  "MAIN_CODE": 553648128
+ },
+ "anchors": {
+  "sha256_k_table_dc": "0x565830",
+  "sha512_k_table_dc": "0x565930",
+  "sha512_h_table_dc": "0x565bb0",
+  "der_digestinfo_sha256_dc": "0x565800",
+  "der_digestinfo_sha512_dc": "0x565818",
+  "rsa_verify_core_dc": "0x3fa18c",
+  "rsa_verify_wrap_dc": "0x3fa24c",
+  "rsa_verify_full_dc": "0x4049cc",
+  "verify_comparator_dc": "0x404ad4",
+  "memcmp_dc": "0x3f9d5c",
+  "vault_slot_reader_dc": "0x3fe600",
+  "fw_burn_fsm_dc": "0x400360",
+  "progress_handler_table_dc": "0x566c68",
+  "reg_filter_dc": "0x105538",
+  "fw_burn_digest_dc": "0x3fe4d8"
+ },
+ "forms": {
+  "set0": "static",
+  "set1": "static",
+  "set2": "static",
+  "set3": "static",
+  "addi": "static",
+  "subsi": "static",
+  "st.d": "static",
+  "st.d!": "static",
+  "ld.w": "static",
+  "st.w": "static",
+  "ld.d": "static",
+  "jump": "static",
+  "call": "static",
+  "cmp38_eq32": "static",
+  "b.t": "static",
+  "b.f": "static",
+  "ret.r": "static",
+  "or": "static",
+  "shl64.i": "static",
+  "csr.w": "static",
+  "addi.hi": "static",
+  "subi": "static",
+  "and": "static",
+  "and.hi": "static",
+  "andmsk.hi": "static",
+  "ands": "static",
+  "xor": "static",
+  "add": "static",
+  "adds": "static",
+  "sub": "static",
+  "subs": "static",
+  "lw.r": "static",
+  "ret.d": "static",
+  "shl64.r": "static",
+  "shr": "static",
+  "shrh": "static",
+  "alu": "static",
+  "ld.i": "static",
+  "csr.r": "static",
+  "st.i": "static",
+  "ld.d.17": "static",
+  "ld.q.17": "static",
+  "ld.b": "static",
+  "st.b": "static",
+  "st.q": "static",
+  "st.w!": "static",
+  "st.q!": "static",
+  "st.d.1e": "static",
+  "st.q.1e": "static",
+  "b.bset": "static",
+  "b.bclr": "static",
+  "mask32": "static"
+ },
+ "unknown_ops": {
+  "0x1d": {
+   "count_code": 11447,
+   "note": "whole-blob census 22.50.1002 (task-02); CX-5 analog ~0.6k/0.39MB — CX-6 blob 1.51x, rate similar scale; bulk data-side as on cx5"
+  },
+  "0x36": {
+   "count_code": 5566,
+   "note": "predicate-compare; f5 map open (same family as cx5/cx4lx)"
+  },
+  "0x33": {
+   "count_code": 3637,
+   "note": "reg-reg bit-ops family (cx5 analog 2125)"
+  },
+  "0x34": {
+   "count_code": 1652,
+    "note": "reg-reg bit-ops family; dep.c lo11=0x022 subtracted (was bclr.1 pre canon-sync 2026-11-02; cx5 analog 1537)"
+  },
+  "0x0f": {
+   "count_code": 2650,
+   "note": "cx5 analog 1643; rare family, census only"
+  },
+  "0x14": {
+   "count_code": 1487,
+   "note": "cx5 analog 955; census only"
+  }
+ }
+}

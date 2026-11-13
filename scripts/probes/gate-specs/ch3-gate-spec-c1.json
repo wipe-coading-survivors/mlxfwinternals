@@ -1,0 +1,9 @@
+{
+  "id": "C1",
+  "card": "cx5-16_35_4030-ACA-graft-c6",
+  "section": 3,
+  "patches": [
+    {"offset": "0x251910", "bytes": "95000016", "expected_before": "ac890016",
+     "kind": "code", "note": "C1: b.bclr 9,r4,0x251968 -> jump 0x251968 (render-epilogue exit, suppresses opcode-26 render; complements C6, task-08+fix)"}
+  ]
+}

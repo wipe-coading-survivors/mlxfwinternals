@@ -1,0 +1,37 @@
+# upstream: 4c488a43cdbcef957519e3800c3ba796712d3abb
+# upstream-sha256: e7b5e6749c0f2402640fd01f10c3fbe5ef57b7a8ffb08c33c07c54eaf66c11ba
+# result-sha256: c9f700712b4d415a8791eba3c6ae32764168f85617335b22122a9b1600d6adbd
+--- iRISC.upstream.slaspec
++++ iRISC.slaspec
+@@ -4,14 +4,13 @@
+ 
+ define space default type=ram_space size=4 wordsize=4 default;
+ 
+-define space overlay type=overlay_space size=4 wordsize=4;
+-
+ define register offset=0x40000 size=4 [
+ 	r0l r0h r1l r1h r2l r2h r3l r3h
+-	r4l r4h r5l r5h r6l r6h r7l r7h
++	r4l r4h r5l r5h r6l r6h r7l r7h r8l r8h
+ ];
+ 
+ define register offset=0x40008 size=4 [ cpuinfo ];
++define register offset=0x40010 size=4 [ trace_addr ];
+ 
+ define token opword (32)
+ 	op = (31..24)
+@@ -19,6 +18,7 @@
+ 	rs = (17..12)
+ 	rd = (11..6)
+ 	funct = (5..0)
++	op2 = (31..26)
+ ;
+ 
+ define token branch (32)
+@@ -29,3 +29,6 @@
+ 
+ attach variables [ r0l r0h r1l r1h r2l r2h r3l r3h
+ 	r4l r4h r5l r5h r6l r6h r7l r7h ];
++
++:dep.c fixture-a is op=0x3a { export *[ram]:4; }
++:dep.c fixture-b is op=0x3b { export *[ram]:4; }

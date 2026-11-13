@@ -1,0 +1,151 @@
+{
+  "name": "cx4-1228",
+  "chip": "ConnectX-4",
+  "verified_on": [],
+  "load_base": {
+    "MAIN_CODE": 8388608
+  },
+  "anchors": [],
+  "forms": {},
+  "unknown_ops": {
+    "0x36": {
+      "count_code": 3498,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x0d": {
+      "count_code": 2868,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x33": {
+      "count_code": 1798,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x34": {
+      "count_code": 1258,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x15": {
+      "count_code": 6,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x16": {
+      "count_code": 6,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x1d": {
+      "count_code": 6,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x24": {
+      "count_code": 6,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x31": {
+      "count_code": 6,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x14": {
+      "count_code": 5,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x30": {
+      "count_code": 5,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x3c": {
+      "count_code": 5,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x21": {
+      "count_code": 4,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x26": {
+      "count_code": 4,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x2c": {
+      "count_code": 4,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x2d": {
+      "count_code": 4,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x39": {
+      "count_code": 4,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x0f": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x23": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x2f": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x37": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x38": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x3e": {
+      "count_code": 3,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x10": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x20": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x22": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x2e": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x35": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x3a": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x3b": {
+      "count_code": 2,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x11": {
+      "count_code": 1,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x1f": {
+      "count_code": 1,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x27": {
+      "count_code": 1,
+      "note": "provisional recount census (corpus arc A); unverified"
+    },
+    "0x3d": {
+      "count_code": 1,
+      "note": "provisional recount census (corpus arc A); unverified"
+    }
+  },
+  "status": "provisional",
+  "provisional_reason": "corpus-arc-A",
+  "source": "refs/fw/cx-4/fw-ConnectX4-rel-12_28_4706-MCX456A-ECA_Ax-UEFI-14.21.21-FlexBoot-3.6.103.bin"
+}

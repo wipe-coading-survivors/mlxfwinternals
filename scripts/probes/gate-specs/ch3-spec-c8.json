@@ -1,0 +1,9 @@
+{
+  "id": "C8",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {"offset": "0x1edae4", "bytes": "00170002", "expected_before": "fc972008",
+     "kind": "code", "note": "C8: classification status sink fn 0x1edab4: status := 2 (module OK/active) constant — was `or r23,r4,r4` (copy of ladder fn 0x2a935c result). Forces the PM-facing change-notify 0x27ac4c(port, status==2=TRUE) + field commit 0x4f1ee+port*0x60 := 2 (word 0x9e3c+port*0xc bits 17-18) for any classification outcome (class/gate-agnostic). Ladder itself untouched; single-shot per port (2==field silences repeats). (task-12c8)"}
+  ]
+}

@@ -1,0 +1,5961 @@
+{
+ "audit": [
+  {
+   "alive_models": [
+    "H-depR"
+   ],
+   "axis": "0x33|MAIN|f5=0f,flag=0,idx=0a,lo11=14f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-depM"
+   ],
+   "group": "inv33",
+   "key": {
+    "op": "0x33",
+    "section": "MAIN",
+    "selector": {
+     "f5": 15,
+     "flag": 0,
+     "idx": 10,
+     "lo11": 335
+    }
+   },
+   "reason": "corroborating dep-class probe PASSED: H-depR unique at a second idx of f5=0x0f (depM dead) -- the dep-class invariant (spec section 3, deposit-replace like the merged :dep.c) is corroborated; but no static leg for 0x33 exists in the A artifacts: live-only row, parked (2-confirmation rule)",
+   "tried": 1
+  },
+  {
+   "axis": "0x34|IRON_PREP|f5=06,flag=1,idx=13,lo11=666",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "IRON_PREP",
+    "selector": {
+     "f5": 6,
+     "flag": 1,
+     "idx": 19,
+     "lo11": 1638
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00680000",
+    "mask": "0x01f80000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|IRON_PREP|f5=08,flag=0,idx=00,lo11=008",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "IRON_PREP",
+    "selector": {
+     "f5": 8,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 8
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x000000ff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|IRON_PREP|f5=10,flag=0,idx=00,lo11=010",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "IRON_PREP",
+    "selector": {
+     "f5": 16,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 16
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x0000ffff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=00,lo11=002",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 2
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x00000003"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=01,lo11=022",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 1,
+     "lo11": 34
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x00000006"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=08,lo11=102",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 8,
+     "lo11": 258
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x00000300"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=0a,lo11=142",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 10,
+     "lo11": 322
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x00000c00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=12,lo11=242",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 18,
+     "lo11": 578
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x000c0000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=1b,lo11=362",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "flag": 0,
+     "idx": 27,
+     "lo11": 866
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000000",
+    "mask": "0x18000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=03,flag=0,idx=18,lo11=303",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 3,
+     "flag": 0,
+     "idx": 24,
+     "lo11": 771
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x04000000",
+    "mask": "0x07000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=03,flag=0,idx=1c,lo11=383",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 3,
+     "flag": 0,
+     "idx": 28,
+     "lo11": 899
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x40000000",
+    "mask": "0x70000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=00,lo11=004",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 4
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x0000000f"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=08,lo11=104",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 0,
+     "idx": 8,
+     "lo11": 260
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000c00",
+    "mask": "0x00000f00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=10,lo11=204",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 0,
+     "idx": 16,
+     "lo11": 516
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x000c0000",
+    "mask": "0x000f0000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=18,lo11=304",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 0,
+     "idx": 24,
+     "lo11": 772
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0c000000",
+    "mask": "0x0f000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=1c,lo11=384",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 0,
+     "idx": 28,
+     "lo11": 900
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0xc0000000",
+    "mask": "0xf0000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=00,lo11=404",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 1,
+     "idx": 0,
+     "lo11": 1028
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000d",
+    "mask": "0x0000000f"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=18,lo11=704",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 1,
+     "idx": 24,
+     "lo11": 1796
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0d000000",
+    "mask": "0x0f000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=1c,lo11=784",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "flag": 1,
+     "idx": 28,
+     "lo11": 1924
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0xd0000000",
+    "mask": "0xf0000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=00,lo11=005",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 5
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x0000001f"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=08,lo11=105",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "flag": 0,
+     "idx": 8,
+     "lo11": 261
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000c00",
+    "mask": "0x00001f00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=18,lo11=305",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "flag": 0,
+     "idx": 24,
+     "lo11": 773
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0c000000",
+    "mask": "0x1f000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=1b,lo11=365",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "flag": 0,
+     "idx": 27,
+     "lo11": 869
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x60000000",
+    "mask": "0xf8000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=05,flag=1,idx=18,lo11=705",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "flag": 1,
+     "idx": 24,
+     "lo11": 1797
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0d000000",
+    "mask": "0x1f000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=06,flag=0,idx=00,lo11=006",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 6,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 6
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x0000003f"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=06,flag=1,idx=00,lo11=406",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 6,
+     "flag": 1,
+     "idx": 0,
+     "lo11": 1030
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000d",
+    "mask": "0x0000003f"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=06,flag=1,idx=13,lo11=666",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 6,
+     "flag": 1,
+     "idx": 19,
+     "lo11": 1638
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00680000",
+    "mask": "0x01f80000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=01,lo11=027",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "flag": 0,
+     "idx": 1,
+     "lo11": 39
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000018",
+    "mask": "0x000000fe"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=08,lo11=107",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "flag": 0,
+     "idx": 8,
+     "lo11": 263
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000c00",
+    "mask": "0x00007f00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=18,lo11=307",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "flag": 0,
+     "idx": 24,
+     "lo11": 775
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0c000000",
+    "mask": "0x7f000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=19,lo11=327",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "flag": 0,
+     "idx": 25,
+     "lo11": 807
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x18000000",
+    "mask": "0xfe000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=07,flag=1,idx=01,lo11=427",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "flag": 1,
+     "idx": 1,
+     "lo11": 1063
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000001a",
+    "mask": "0x000000fe"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=08,flag=0,idx=00,lo11=008",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 8
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x000000ff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=08,flag=0,idx=18,lo11=308",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "flag": 0,
+     "idx": 24,
+     "lo11": 776
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0c000000",
+    "mask": "0xff000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=00,lo11=408",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "flag": 1,
+     "idx": 0,
+     "lo11": 1032
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000d",
+    "mask": "0x000000ff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=08,lo11=508",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "flag": 1,
+     "idx": 8,
+     "lo11": 1288
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00000d00",
+    "mask": "0x0000ff00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=10,lo11=608",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "flag": 1,
+     "idx": 16,
+     "lo11": 1544
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x000d0000",
+    "mask": "0x00ff0000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=09,flag=0,idx=00,lo11=009",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 9,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 9
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x000001ff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=0a,flag=0,idx=16,lo11=2ca",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 10,
+     "flag": 0,
+     "idx": 22,
+     "lo11": 714
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x03000000",
+    "mask": "0xffc00000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=0c,flag=0,idx=00,lo11=00c",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 12,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 12
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x00000fff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=0c,flag=0,idx=0a,lo11=14c",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 12,
+     "flag": 0,
+     "idx": 10,
+     "lo11": 332
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00003000",
+    "mask": "0x003ffc00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=0f,flag=0,idx=10,lo11=20f",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 15,
+     "flag": 0,
+     "idx": 16,
+     "lo11": 527
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x000c0000",
+    "mask": "0x7fff0000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=0f,flag=1,idx=10,lo11=60f",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 15,
+     "flag": 1,
+     "idx": 16,
+     "lo11": 1551
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x000d0000",
+    "mask": "0x7fff0000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=10,flag=0,idx=00,lo11=010",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 16,
+     "flag": 0,
+     "idx": 0,
+     "lo11": 16
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000c",
+    "mask": "0x0000ffff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|MAIN|f5=1c,flag=0,idx=04,lo11=09c",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "MAIN",
+    "selector": {
+     "f5": 28,
+     "flag": 0,
+     "idx": 4,
+     "lo11": 156
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x000000c0",
+    "mask": "0xfffffff0"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|PCI|f5=00,flag=1,idx=00,lo11=400",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "PCI",
+    "selector": {
+     "f5": 0,
+     "flag": 1,
+     "idx": 0,
+     "lo11": 1024
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x0000000d",
+    "mask": "0xffffffff"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|PCI|f5=08,flag=1,idx=1d,lo11=7a8",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "PCI",
+    "selector": {
+     "f5": 8,
+     "flag": 1,
+     "idx": 29,
+     "lo11": 1960
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0xa0000000",
+    "mask": "0xe0000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|PCI|f5=0c,flag=1,idx=1d,lo11=7ac",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "PCI",
+    "selector": {
+     "f5": 12,
+     "flag": 1,
+     "idx": 29,
+     "lo11": 1964
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0xa0000000",
+    "mask": "0xe0000000"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "axis": "0x34|PCI|f5=10,flag=1,idx=0a,lo11=550",
+   "category": "merge.rt_invariant",
+   "group": "rtfed34",
+   "key": {
+    "op": "0x34",
+    "section": "PCI",
+    "selector": {
+     "f5": 16,
+     "flag": 1,
+     "idx": 10,
+     "lo11": 1360
+    }
+   },
+   "n_agree": 2,
+   "n_observations": 2,
+   "pair_discriminating": true,
+   "predicted": {
+    "deposit": "0x00003400",
+    "mask": "0x03fffc00"
+   },
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=00,i6=00,lo11=000",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 0,
+     "i6": 0,
+     "lo11": 0
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-lt16"
+   ],
+   "axis": "0x36|MAIN|f5=01,i6=00,lo11=001",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32",
+    "H-ne32",
+    "H-ule32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 1,
+     "i6": 0,
+     "lo11": 1
+    }
+   },
+   "reason": "live-only: unique live model H-lt16 (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=01,i6=3f,lo11=7e1",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 1,
+     "i6": 63,
+     "lo11": 2017
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=02,i6=00,lo11=002",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "i6": 0,
+     "lo11": 2
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=02,i6=20,lo11=402",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 2,
+     "i6": 32,
+     "lo11": 1026
+    }
+   },
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=03,i6=00,lo11=003",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 3,
+     "i6": 0,
+     "lo11": 3
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=04,i6=1c,lo11=384",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "i6": 28,
+     "lo11": 900
+    }
+   },
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=04,i6=20,lo11=404",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 4,
+     "i6": 32,
+     "lo11": 1028
+    }
+   },
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=05,i6=00,lo11=005",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 5,
+     "i6": 0,
+     "lo11": 5
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=06,i6=00,lo11=006",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 6,
+     "i6": 0,
+     "lo11": 6
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=07,i6=00,lo11=007",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 7,
+     "i6": 0,
+     "lo11": 7
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=08,i6=00,lo11=008",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "i6": 0,
+     "lo11": 8
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=08,i6=18,lo11=308",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 8,
+     "i6": 24,
+     "lo11": 776
+    }
+   },
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=09,i6=00,lo11=009",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 9,
+     "i6": 0,
+     "lo11": 9
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0a,i6=00,lo11=00a",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 10,
+     "i6": 0,
+     "lo11": 10
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0b,i6=00,lo11=00b",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 11,
+     "i6": 0,
+     "lo11": 11
+    }
+   },
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0c,i6=00,lo11=00c",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 12,
+     "i6": 0,
+     "lo11": 12
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0d,i6=30,lo11=60d",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 13,
+     "i6": 48,
+     "lo11": 1549
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0e,i6=00,lo11=00e",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 14,
+     "i6": 0,
+     "lo11": 14
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0f,i6=00,lo11=00f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 15,
+     "i6": 0,
+     "lo11": 15
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=10,i6=00,lo11=010",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 16,
+     "i6": 0,
+     "lo11": 16
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=11,i6=36,lo11=6d1",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 17,
+     "i6": 54,
+     "lo11": 1745
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=12,i6=2e,lo11=5d2",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 18,
+     "i6": 46,
+     "lo11": 1490
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=13,i6=00,lo11=013",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 19,
+     "i6": 0,
+     "lo11": 19
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=14,i6=00,lo11=014",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 20,
+     "i6": 0,
+     "lo11": 20
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=15,i6=00,lo11=015",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 21,
+     "i6": 0,
+     "lo11": 21
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=16,i6=00,lo11=016",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 22,
+     "i6": 0,
+     "lo11": 22
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=17,i6=00,lo11=017",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 23,
+     "i6": 0,
+     "lo11": 23
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=18,i6=14,lo11=298",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 24,
+     "i6": 20,
+     "lo11": 664
+    }
+   },
+   "reason": "live-only: unique live model H-ne32i (separated, 1 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=19,i6=00,lo11=019",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 25,
+     "i6": 0,
+     "lo11": 25
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1a,i6=00,lo11=01a",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 26,
+     "i6": 0,
+     "lo11": 26
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1b,i6=00,lo11=01b",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 27,
+     "i6": 0,
+     "lo11": 27
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=1c,i6=16,lo11=2dc",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 28,
+     "i6": 22,
+     "lo11": 732
+    }
+   },
+   "reason": "live-only: unique live model H-ne32i (separated, 1 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1d,i6=00,lo11=01d",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 29,
+     "i6": 0,
+     "lo11": 29
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1e,i6=00,lo11=01e",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 30,
+     "i6": 0,
+     "lo11": 30
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1f,i6=00,lo11=01f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "key": {
+    "op": "0x36",
+    "section": "MAIN",
+    "selector": {
+     "f5": 31,
+     "i6": 0,
+     "lo11": 31
+    }
+   },
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-38self-false"
+   ],
+   "axis": "0x38|MAIN|sel=00",
+   "category": "excluded.ruling",
+   "dead_models": [
+    "H-38self-keepT"
+   ],
+   "group": "cmpself",
+   "key": {
+    "op": "0x38",
+    "section": "MAIN",
+    "selector": {
+     "sel": 0
+    }
+   },
+   "reason": "cmp38-self: H-38self-false confirmed live (B REP/VAR, double-live canon x3) but formalizable=FALSE stays (strict_sites=2, strict_insensitive=0): a self->F carve-out would alter FW control flow -- no merge, the observation is recorded to the map",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x38|MAIN|sel=04",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-38v-bool-eq",
+    "H-38v-bool-ne",
+    "H-38v-rs",
+    "H-38v-rt"
+   ],
+   "group": "inv38v",
+   "key": {
+    "op": "0x38",
+    "section": "MAIN",
+    "selector": {
+     "sel": 4
+    }
+   },
+   "reason": "correlation statistics CONVERGED (counter_per_tool_op, step +3, 35/35 transitions): the byte is a deterministic session counter readout, not operand noise -- but no model of the axis space survives and there is no static leg; the semantics stays a residual map row with the observation array",
+   "tried": 36
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=000",
+   "basis": "transfer",
+   "category": "merge",
+   "group": "c3csep",
+   "key": {
+    "op": "0x3c",
+    "section": "MAIN",
+    "selector": {
+     "lo11": 0
+    }
+   },
+   "literal": 0,
+   "literal_uniformity": {
+    "assumption": "verdict transfer from the intermediate separation points relies on the literal-uniformity assumption (both models predict rd=0 at lo11=000; battery_meta separator_whitelist entry)",
+    "intermediate_points": [
+     1,
+     1024
+    ],
+    "violation": false,
+    "winner_candidates": [
+     "H-3c-zero"
+    ]
+   },
+   "reason": "separator outcome: H-3c-zero wins at the intermediate points and its prediction matches the observation at lo11=0x000 (uniformity holds) x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent, transfer assumption recorded",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=001",
+   "basis": "direct",
+   "category": "residual.parked",
+   "group": "c3csep",
+   "key": {
+    "op": "0x3c",
+    "section": "MAIN",
+    "selector": {
+     "lo11": 1
+    }
+   },
+   "literal": 1,
+   "reason": "live-only literal: separator confirmed H-3c-zero at lo11=0x001 but no rare_verdicts static row on the literal -- parked (2-confirmation rule)",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=400",
+   "basis": "direct",
+   "category": "merge",
+   "group": "c3csep",
+   "key": {
+    "op": "0x3c",
+    "section": "MAIN",
+    "selector": {
+     "lo11": 1024
+    }
+   },
+   "literal": 1024,
+   "reason": "separator outcome: live unique H-3c-zero directly at lo11=0x400 x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent",
+   "tried": 1
+  }
+ ],
+ "axis_table": [
+  {
+   "alive_models": [
+    "H-depR"
+   ],
+   "axis": "0x33|MAIN|f5=0f,flag=0,idx=0a,lo11=14f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-depM"
+   ],
+   "group": "inv33",
+   "reason": "corroborating dep-class probe PASSED: H-depR unique at a second idx of f5=0x0f (depM dead) -- the dep-class invariant (spec section 3, deposit-replace like the merged :dep.c) is corroborated; but no static leg for 0x33 exists in the A artifacts: live-only row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 1
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|IRON_PREP|f5=06,flag=1,idx=13,lo11=666",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|IRON_PREP|f5=08,flag=0,idx=00,lo11=008",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|IRON_PREP|f5=10,flag=0,idx=00,lo11=010",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=00,lo11=002",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=01,lo11=022",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=08,lo11=102",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=0a,lo11=142",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=12,lo11=242",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=02,flag=0,idx=1b,lo11=362",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (1 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=03,flag=0,idx=18,lo11=303",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=03,flag=0,idx=1c,lo11=383",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=00,lo11=004",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=08,lo11=104",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=10,lo11=204",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=18,lo11=304",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=0,idx=1c,lo11=384",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=00,lo11=404",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=18,lo11=704",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=04,flag=1,idx=1c,lo11=784",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=00,lo11=005",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=08,lo11=105",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=18,lo11=305",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=05,flag=0,idx=1b,lo11=365",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=05,flag=1,idx=18,lo11=705",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=06,flag=0,idx=00,lo11=006",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=06,flag=1,idx=00,lo11=406",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=06,flag=1,idx=13,lo11=666",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=01,lo11=027",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=08,lo11=107",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=18,lo11=307",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=07,flag=0,idx=19,lo11=327",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=07,flag=1,idx=01,lo11=427",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=08,flag=0,idx=00,lo11=008",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=08,flag=0,idx=18,lo11=308",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=00,lo11=408",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=08,lo11=508",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=08,flag=1,idx=10,lo11=608",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=09,flag=0,idx=00,lo11=009",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=0a,flag=0,idx=16,lo11=2ca",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=0c,flag=0,idx=00,lo11=00c",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=0c,flag=0,idx=0a,lo11=14c",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=0f,flag=0,idx=10,lo11=20f",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=0f,flag=1,idx=10,lo11=60f",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=10,flag=0,idx=00,lo11=010",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|MAIN|f5=1c,flag=0,idx=04,lo11=09c",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|PCI|f5=00,flag=1,idx=00,lo11=400",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|PCI|f5=08,flag=1,idx=1d,lo11=7a8",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|PCI|f5=0c,flag=1,idx=1d,lo11=7ac",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x34|PCI|f5=10,flag=1,idx=0a,lo11=550",
+   "category": "merge.rt_invariant",
+   "dead_models": [],
+   "group": "rtfed34",
+   "reason": "p34 predicted (recomputed P-formula) agrees with all 2 observation(s) and the X/Y pair discriminates (2 vector(s)): the deposit is rt-invariant, the rt-fed alternative is dead -- the A '49 rt-fed contradict' residual closes in favor of the P-formula",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=00,i6=00,lo11=000",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-lt16"
+   ],
+   "axis": "0x36|MAIN|f5=01,i6=00,lo11=001",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32",
+    "H-ne32",
+    "H-ule32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-lt16 (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=01,i6=3f,lo11=7e1",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=02,i6=00,lo11=002",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=02,i6=20,lo11=402",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=03,i6=00,lo11=003",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=04,i6=1c,lo11=384",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=04,i6=20,lo11=404",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=05,i6=00,lo11=005",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=06,i6=00,lo11=006",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=07,i6=00,lo11=007",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=08,i6=00,lo11=008",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=08,i6=18,lo11=308",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-ne32i is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=09,i6=00,lo11=009",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0a,i6=00,lo11=00a",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0b,i6=00,lo11=00b",
+   "category": "excluded.conflict",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live unique model H-V is outside the eq family while the h36 static leg says H-36-eq-usage (usage-vs-semantics tension, the f5=2/f5=0a precedent: dead code, stale-cc or an incomplete live model) -- two methods disagree, no merge",
+   "status": "separated",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0c,i6=00,lo11=00c",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0d,i6=30,lo11=60d",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0e,i6=00,lo11=00e",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=0f,i6=00,lo11=00f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=10,i6=00,lo11=010",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=11,i6=36,lo11=6d1",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=12,i6=2e,lo11=5d2",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 2 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 2
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=13,i6=00,lo11=013",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=14,i6=00,lo11=014",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=15,i6=00,lo11=015",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=16,i6=00,lo11=016",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=17,i6=00,lo11=017",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=18,i6=14,lo11=298",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-ne32i (separated, 1 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=19,i6=00,lo11=019",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1a,i6=00,lo11=01a",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1b,i6=00,lo11=01b",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-ne32i"
+   ],
+   "axis": "0x36|MAIN|f5=1c,i6=16,lo11=2dc",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-lt32i"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-ne32i (separated, 1 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1d,i6=00,lo11=01d",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1e,i6=00,lo11=01e",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-V"
+   ],
+   "axis": "0x36|MAIN|f5=1f,i6=00,lo11=01f",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "group": "map36",
+   "reason": "live-only: unique live model H-V (separated, 3 vector(s)) but no h36 static leg on the selector -- single-method row, parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 3
+  },
+  {
+   "alive_models": [
+    "H-38self-false"
+   ],
+   "axis": "0x38|MAIN|sel=00",
+   "category": "excluded.ruling",
+   "dead_models": [
+    "H-38self-keepT"
+   ],
+   "group": "cmpself",
+   "reason": "cmp38-self: H-38self-false confirmed live (B REP/VAR, double-live canon x3) but formalizable=FALSE stays (strict_sites=2, strict_insensitive=0): a self->F carve-out would alter FW control flow -- no merge, the observation is recorded to the map",
+   "status": "separated",
+   "tried": 2
+  },
+  {
+   "alive_models": [],
+   "axis": "0x38|MAIN|sel=04",
+   "category": "residual.parked",
+   "dead_models": [
+    "H-38v-bool-eq",
+    "H-38v-bool-ne",
+    "H-38v-rs",
+    "H-38v-rt"
+   ],
+   "group": "inv38v",
+   "reason": "correlation statistics CONVERGED (counter_per_tool_op, step +3, 35/35 transitions): the byte is a deterministic session counter readout, not operand noise -- but no model of the axis space survives and there is no static leg; the semantics stays a residual map row with the observation array",
+   "status": "parked",
+   "tried": 36
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=000",
+   "category": "merge",
+   "group": "c3csep",
+   "reason": "separator outcome: H-3c-zero wins at the intermediate points and its prediction matches the observation at lo11=0x000 (uniformity holds) x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent, transfer assumption recorded",
+   "status": "separated",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=001",
+   "category": "residual.parked",
+   "group": "c3csep",
+   "reason": "live-only literal: separator confirmed H-3c-zero at lo11=0x001 but no rare_verdicts static row on the literal -- parked (2-confirmation rule)",
+   "status": "parked",
+   "tried": 1
+  },
+  {
+   "alive_models": [
+    "H-3c-zero"
+   ],
+   "axis": "0x3c|MAIN|lo11=400",
+   "category": "merge",
+   "group": "c3csep",
+   "reason": "separator outcome: live unique H-3c-zero directly at lo11=0x400 x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent",
+   "status": "separated",
+   "tried": 1
+  }
+ ],
+ "counts": {
+  "excluded.conflict": 14,
+  "excluded.ruling": 1,
+  "excluded.single_method": 0,
+  "merge": 2,
+  "merge.rt_invariant": 49,
+  "residual.parked": 25,
+  "residual.untestable": 0
+ },
+ "merges": {
+  "c3c": [
+   {
+    "basis": "transfer",
+    "key": {
+     "op": "0x3c",
+     "section": "MAIN",
+     "selector": {
+      "lo11": 0
+     }
+    },
+    "literal": 0,
+    "literal_uniformity": {
+     "assumption": "verdict transfer from the intermediate separation points relies on the literal-uniformity assumption (both models predict rd=0 at lo11=000; battery_meta separator_whitelist entry)",
+     "intermediate_points": [
+      1,
+      1024
+     ],
+     "violation": false,
+     "winner_candidates": [
+      "H-3c-zero"
+     ]
+    },
+    "model": "H-3c-zero"
+   },
+   {
+    "basis": "direct",
+    "key": {
+     "op": "0x3c",
+     "section": "MAIN",
+     "selector": {
+      "lo11": 1024
+     }
+    },
+    "literal": 1024,
+    "literal_uniformity": null,
+    "model": "H-3c-zero"
+   }
+  ],
+  "map36": [],
+  "rtfed34": [
+   {
+    "key": {
+     "op": "0x34",
+     "section": "IRON_PREP",
+     "selector": {
+      "f5": 6,
+      "flag": 1,
+      "idx": 19,
+      "lo11": 1638
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00680000",
+     "mask": "0x01f80000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "IRON_PREP",
+     "selector": {
+      "f5": 8,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 8
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x000000ff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "IRON_PREP",
+     "selector": {
+      "f5": 16,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 16
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x0000ffff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 2
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x00000003"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 1,
+      "lo11": 34
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x00000006"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 8,
+      "lo11": 258
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x00000300"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 10,
+      "lo11": 322
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x00000c00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 18,
+      "lo11": 578
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x000c0000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 2,
+      "flag": 0,
+      "idx": 27,
+      "lo11": 866
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000000",
+     "mask": "0x18000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 3,
+      "flag": 0,
+      "idx": 24,
+      "lo11": 771
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x04000000",
+     "mask": "0x07000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 3,
+      "flag": 0,
+      "idx": 28,
+      "lo11": 899
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x40000000",
+     "mask": "0x70000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 4
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x0000000f"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 0,
+      "idx": 8,
+      "lo11": 260
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000c00",
+     "mask": "0x00000f00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 0,
+      "idx": 16,
+      "lo11": 516
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x000c0000",
+     "mask": "0x000f0000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 0,
+      "idx": 24,
+      "lo11": 772
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0c000000",
+     "mask": "0x0f000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 0,
+      "idx": 28,
+      "lo11": 900
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0xc0000000",
+     "mask": "0xf0000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 1,
+      "idx": 0,
+      "lo11": 1028
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000d",
+     "mask": "0x0000000f"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 1,
+      "idx": 24,
+      "lo11": 1796
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0d000000",
+     "mask": "0x0f000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 4,
+      "flag": 1,
+      "idx": 28,
+      "lo11": 1924
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0xd0000000",
+     "mask": "0xf0000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 5,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 5
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x0000001f"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 5,
+      "flag": 0,
+      "idx": 8,
+      "lo11": 261
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000c00",
+     "mask": "0x00001f00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 5,
+      "flag": 0,
+      "idx": 24,
+      "lo11": 773
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0c000000",
+     "mask": "0x1f000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 5,
+      "flag": 0,
+      "idx": 27,
+      "lo11": 869
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x60000000",
+     "mask": "0xf8000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 5,
+      "flag": 1,
+      "idx": 24,
+      "lo11": 1797
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0d000000",
+     "mask": "0x1f000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 6,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 6
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x0000003f"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 6,
+      "flag": 1,
+      "idx": 0,
+      "lo11": 1030
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000d",
+     "mask": "0x0000003f"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 6,
+      "flag": 1,
+      "idx": 19,
+      "lo11": 1638
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00680000",
+     "mask": "0x01f80000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 7,
+      "flag": 0,
+      "idx": 1,
+      "lo11": 39
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000018",
+     "mask": "0x000000fe"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 7,
+      "flag": 0,
+      "idx": 8,
+      "lo11": 263
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000c00",
+     "mask": "0x00007f00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 7,
+      "flag": 0,
+      "idx": 24,
+      "lo11": 775
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0c000000",
+     "mask": "0x7f000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 7,
+      "flag": 0,
+      "idx": 25,
+      "lo11": 807
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x18000000",
+     "mask": "0xfe000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 7,
+      "flag": 1,
+      "idx": 1,
+      "lo11": 1063
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000001a",
+     "mask": "0x000000fe"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 8,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 8
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x000000ff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 8,
+      "flag": 0,
+      "idx": 24,
+      "lo11": 776
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0c000000",
+     "mask": "0xff000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 8,
+      "flag": 1,
+      "idx": 0,
+      "lo11": 1032
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000d",
+     "mask": "0x000000ff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 8,
+      "flag": 1,
+      "idx": 8,
+      "lo11": 1288
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00000d00",
+     "mask": "0x0000ff00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 8,
+      "flag": 1,
+      "idx": 16,
+      "lo11": 1544
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x000d0000",
+     "mask": "0x00ff0000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 9,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 9
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x000001ff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 10,
+      "flag": 0,
+      "idx": 22,
+      "lo11": 714
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x03000000",
+     "mask": "0xffc00000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 12,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 12
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x00000fff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 12,
+      "flag": 0,
+      "idx": 10,
+      "lo11": 332
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00003000",
+     "mask": "0x003ffc00"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 15,
+      "flag": 0,
+      "idx": 16,
+      "lo11": 527
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x000c0000",
+     "mask": "0x7fff0000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 15,
+      "flag": 1,
+      "idx": 16,
+      "lo11": 1551
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x000d0000",
+     "mask": "0x7fff0000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 16,
+      "flag": 0,
+      "idx": 0,
+      "lo11": 16
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000c",
+     "mask": "0x0000ffff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "MAIN",
+     "selector": {
+      "f5": 28,
+      "flag": 0,
+      "idx": 4,
+      "lo11": 156
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x000000c0",
+     "mask": "0xfffffff0"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "PCI",
+     "selector": {
+      "f5": 0,
+      "flag": 1,
+      "idx": 0,
+      "lo11": 1024
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x0000000d",
+     "mask": "0xffffffff"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "PCI",
+     "selector": {
+      "f5": 8,
+      "flag": 1,
+      "idx": 29,
+      "lo11": 1960
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0xa0000000",
+     "mask": "0xe0000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "PCI",
+     "selector": {
+      "f5": 12,
+      "flag": 1,
+      "idx": 29,
+      "lo11": 1964
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0xa0000000",
+     "mask": "0xe0000000"
+    }
+   },
+   {
+    "key": {
+     "op": "0x34",
+     "section": "PCI",
+     "selector": {
+      "f5": 16,
+      "flag": 1,
+      "idx": 10,
+      "lo11": 1360
+     }
+    },
+    "n_agree": 2,
+    "n_observations": 2,
+    "pair_discriminating": true,
+    "predicted": {
+     "deposit": "0x00003400",
+     "mask": "0x03fffc00"
+    }
+   }
+  ]
+ },
+ "meta": {
+  "battery_meta": {
+   "baseline": {
+    "build_id": "mlxini irisc fuzz4 v1",
+    "build_id_line": "; mlxini irisc fuzz4 v1 (2026-10-25, fuzz4 spec): exec trampoline 0x38d774, hook 940aa4ec 0x0E43C4, base rc3",
+    "device_id": "0x1019",
+    "fw": "16.35.4030",
+    "ok": true,
+    "post_rebind_ok": true,
+    "psid": "MT_0000000013",
+    "sources": "live q/dc @2026-11-02 11:46Z, cross-checked vs fuzz5 task-04 journal (identity 4/4) and plan Task-2 Step-1"
+   },
+   "matrix_md5": "3557b40ace722a47cb48d08d78a579d4",
+   "session": {
+    "battery_span": "11:47:25-11:59:10 (206 vectors, ~11.8 min)",
+    "discriminators_followup": "not needed: 36/36 map36 and 49/49 rtfed34 axes separated in main battery (0x3c lo11=000 inseparable by design, whitelisted)",
+    "ended": "2026-11-02T12:01:36Z",
+    "groups_run": [
+     "map36",
+     "inv38v",
+     "inv33",
+     "c3csep",
+     "cmpself",
+     "rtfed34"
+    ],
+    "recovery": 0,
+    "slices": {
+     "c3csep+inv38v": "93..97",
+     "cmpself+inv38v": "97..100",
+     "inv38v+inv33": "90..93",
+     "map36": "0..90",
+     "rtfed34+inv38v": "100..206"
+    },
+    "started": "2026-11-02T11:47:14Z",
+    "vfio_sessions": 1,
+    "wedge": "none"
+   }
+  },
+  "cycle": "isa-max-b task-3 (C-B.1 tail -> C-B.3 prep)",
+  "eq_family": [
+   "H-eq16",
+   "H-eq32",
+   "H-eq32i"
+  ],
+  "generated_by": "scripts/probes/cx5-isa-max-b/select_merges_b.py",
+  "inv38v_dataset": {
+   "battery_log_md5": "60aedb7aa534ad961d522c5bf93bebd0",
+   "battery_log_md5_manifest": "battery_b_results_manifest.md5",
+   "extraction": "inv38v_runs_raw.log (36 lines, verbatim)",
+   "note": "the consolidated battery observed carries the run1 value of each repeat only; the full 0..7 range lives in this raw dataset",
+   "source": "root-mellanox:/root/isa-max-b-battery/battery.log, grep -E 'V-B38v-R[0-9]+ run[123]:' (read-only ssh, 2026-11-02)"
+  },
+  "pins": {
+   "battery_b_results.json": "d494d3d83034fc0775b382d74db34da7",
+   "fuzz5_live.json": "42358ef7acab628637cd0c7c2925ad04",
+   "h36_verdicts.json": "78b97147abd0e753b41f4fcb293ad890",
+   "inv38v_runs_raw.log": "40b09014d85cb3c250a1ea28d00bbc90",
+   "matrix_b_vectors.json": "3557b40ace722a47cb48d08d78a579d4",
+   "p34_table.json": "288cb67dca53fb7ee791f6f145696089",
+   "rare_verdicts.json": "74fc94c921b954b247e499ddda83593d"
+  },
+  "rule": "merge = separated axis & single alive model inside the eq family {H-eq16,H-eq32,H-eq32i} & h36 static leg H-36-eq-usage on the selector (family-grade ruling A, :cmp36.eq32 precedent); merge.rt_invariant = rtfed34 axis: p34 predicted recomputed from the selector agrees with ALL observations & the rt=X/rt=Y pair discriminates (rt-fed alternative killed live); live-unique model outside the eq family vs H-36-eq-usage -> excluded.conflict (usage-vs-semantics); P-formula disagreement with an observation -> excluded.conflict (ruling 2026-11-02: residual map rows); no observations -> excluded.single_method; ruling list + cmp38-self formalizable=FALSE -> excluded.ruling; live-only / unseparated / non-discriminating pair / no surviving model -> residual.parked; advisory flags in the A artifacts are ignored",
+  "ruling_exclusions": [
+   {
+    "id": "OPEN-34-f5=2-idx=5",
+    "op": "0x34",
+    "reason": "OPEN-34-f5=2-idx=5 ruling (fuzz-5 owner: the f5=2 idx=5 axis stays OPEN; fuzz-4 V-34-2 rs=0xff/rt=1 -> 0x000400ff is outside the P-formula and outside fuzz5_live.json; the single fuzz-5 battery point is non-discriminating) -- inherited by isa-max B; both flag variants excluded programmatically",
+    "section": "MAIN",
+    "selector_fields": {
+     "f5": 2,
+     "idx": 5
+    }
+   }
+  ]
+ },
+ "sections": {
+  "c3c_000": {
+   "assumption_source": "separator_whitelist",
+   "literals": [
+    {
+     "alive_models": [
+      "H-3c-zero"
+     ],
+     "axis": "0x3c|MAIN|lo11=000",
+     "basis": "transfer",
+     "category": "merge",
+     "group": "c3csep",
+     "key": {
+      "op": "0x3c",
+      "section": "MAIN",
+      "selector": {
+       "lo11": 0
+      }
+     },
+     "literal": 0,
+     "literal_uniformity": {
+      "assumption": "verdict transfer from the intermediate separation points relies on the literal-uniformity assumption (both models predict rd=0 at lo11=000; battery_meta separator_whitelist entry)",
+      "intermediate_points": [
+       1,
+       1024
+      ],
+      "violation": false,
+      "winner_candidates": [
+       "H-3c-zero"
+      ]
+     },
+     "reason": "separator outcome: H-3c-zero wins at the intermediate points and its prediction matches the observation at lo11=0x000 (uniformity holds) x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent, transfer assumption recorded",
+     "tried": 1
+    },
+    {
+     "alive_models": [
+      "H-3c-zero"
+     ],
+     "axis": "0x3c|MAIN|lo11=001",
+     "basis": "direct",
+     "category": "residual.parked",
+     "group": "c3csep",
+     "key": {
+      "op": "0x3c",
+      "section": "MAIN",
+      "selector": {
+       "lo11": 1
+      }
+     },
+     "literal": 1,
+     "reason": "live-only literal: separator confirmed H-3c-zero at lo11=0x001 but no rare_verdicts static row on the literal -- parked (2-confirmation rule)",
+     "tried": 1
+    },
+    {
+     "alive_models": [
+      "H-3c-zero"
+     ],
+     "axis": "0x3c|MAIN|lo11=400",
+     "basis": "direct",
+     "category": "merge",
+     "group": "c3csep",
+     "key": {
+      "op": "0x3c",
+      "section": "MAIN",
+      "selector": {
+       "lo11": 1024
+      }
+     },
+     "literal": 1024,
+     "reason": "separator outcome: live unique H-3c-zero directly at lo11=0x400 x static leg H-3c-zero-consistent -- per-literal merge by the :zero precedent",
+     "tried": 1
+    }
+   ]
+  },
+  "cmp38_self": {
+   "formalizable": false,
+   "live_model": "H-38self-false",
+   "note": "the B battery repeats the double-live canon a third time (fuzz-4, fuzz-5, B); the observation goes to the map as a live fact (cmp38 rs==rt -> cc=F); formalization stays blocked: formalizable=FALSE (strict consumer-sensitive sites, rare_verdicts aggregate)",
+   "observations": [
+    {
+     "expects": {
+      "echo": "0x0000000000001234"
+     },
+     "vector_id": "V-B38S-REP"
+    },
+    {
+     "expects": {
+      "echo": "0x0000000000004321"
+     },
+     "vector_id": "V-B38S-VAR"
+    }
+   ]
+  },
+  "inv38v_sel4": {
+   "axis": "0x38|MAIN|sel=04",
+   "category": "residual.parked",
+   "dataset": "raw battery.log run lines (36 runs, 12 repeats x 3; md5 provenance in meta.inv38v_dataset)",
+   "observations": [
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 1,
+     "run": 1,
+     "t": "11:52:32",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 1,
+     "run": 2,
+     "t": "11:52:33",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 1,
+     "run": 3,
+     "t": "11:52:34",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 2,
+     "run": 1,
+     "t": "11:52:39",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 2,
+     "run": 2,
+     "t": "11:52:40",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01006000",
+     "repeat": 2,
+     "run": 3,
+     "t": "11:52:41",
+     "volatile_byte": 0
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 3,
+     "run": 1,
+     "t": "11:53:02",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01006000",
+     "repeat": 3,
+     "run": 2,
+     "t": "11:53:03",
+     "volatile_byte": 0
+    },
+    {
+     "cr0x8c8": "0x01036000",
+     "repeat": 3,
+     "run": 3,
+     "t": "11:53:04",
+     "volatile_byte": 3
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 4,
+     "run": 1,
+     "t": "11:53:22",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 4,
+     "run": 2,
+     "t": "11:53:23",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 4,
+     "run": 3,
+     "t": "11:53:23",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 5,
+     "run": 1,
+     "t": "11:53:49",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 5,
+     "run": 2,
+     "t": "11:53:50",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 5,
+     "run": 3,
+     "t": "11:53:50",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01066000",
+     "repeat": 6,
+     "run": 1,
+     "t": "11:54:18",
+     "volatile_byte": 6
+    },
+    {
+     "cr0x8c8": "0x01016000",
+     "repeat": 6,
+     "run": 2,
+     "t": "11:54:18",
+     "volatile_byte": 1
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 6,
+     "run": 3,
+     "t": "11:54:19",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 7,
+     "run": 1,
+     "t": "11:55:05",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01006000",
+     "repeat": 7,
+     "run": 2,
+     "t": "11:55:06",
+     "volatile_byte": 0
+    },
+    {
+     "cr0x8c8": "0x01036000",
+     "repeat": 7,
+     "run": 3,
+     "t": "11:55:07",
+     "volatile_byte": 3
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 8,
+     "run": 1,
+     "t": "11:55:53",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 8,
+     "run": 2,
+     "t": "11:55:54",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 8,
+     "run": 3,
+     "t": "11:55:55",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 9,
+     "run": 1,
+     "t": "11:56:57",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 9,
+     "run": 2,
+     "t": "11:56:57",
+     "volatile_byte": 2
+    },
+    {
+     "cr0x8c8": "0x01056000",
+     "repeat": 9,
+     "run": 3,
+     "t": "11:56:58",
+     "volatile_byte": 5
+    },
+    {
+     "cr0x8c8": "0x01066000",
+     "repeat": 10,
+     "run": 1,
+     "t": "11:57:44",
+     "volatile_byte": 6
+    },
+    {
+     "cr0x8c8": "0x01016000",
+     "repeat": 10,
+     "run": 2,
+     "t": "11:57:45",
+     "volatile_byte": 1
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 10,
+     "run": 3,
+     "t": "11:57:46",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01016000",
+     "repeat": 11,
+     "run": 1,
+     "t": "11:58:35",
+     "volatile_byte": 1
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 11,
+     "run": 2,
+     "t": "11:58:36",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 11,
+     "run": 3,
+     "t": "11:58:37",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01046000",
+     "repeat": 12,
+     "run": 1,
+     "t": "11:59:08",
+     "volatile_byte": 4
+    },
+    {
+     "cr0x8c8": "0x01076000",
+     "repeat": 12,
+     "run": 2,
+     "t": "11:59:08",
+     "volatile_byte": 7
+    },
+    {
+     "cr0x8c8": "0x01026000",
+     "repeat": 12,
+     "run": 3,
+     "t": "11:59:09",
+     "volatile_byte": 2
+    }
+   ],
+   "statistics": {
+    "fit_report": {
+     "counter_per_tool_op": {
+      "best_matches": 35,
+      "best_step": 3
+     },
+     "counter_per_vector_run": {
+      "best_matches": 27,
+      "best_step": 3
+     },
+     "time": {
+      "best_matches": 20,
+      "best_step": 3,
+      "naive_step1_matches": 2,
+      "note": "the best single-step time fit aliases the 1-second within-repeat gaps (step 3 there matches the per-op counter); the naive +1/s step is step-1 matches"
+     }
+    },
+    "hypothesis": {
+     "kind": "counter_per_tool_op",
+     "matches": 35,
+     "step": 3,
+     "steps_fitting": [
+      3
+     ],
+     "total": 35
+    },
+    "n_runs": 36,
+    "transitions": [
+     {
+      "delta": 3,
+      "from": "R01/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R01/2"
+     },
+     {
+      "delta": 3,
+      "from": "R01/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R01/3"
+     },
+     {
+      "delta": 5,
+      "from": "R01/3",
+      "gap_s": 5,
+      "ops_between": 7,
+      "run_ops_between": 3,
+      "to": "R02/1"
+     },
+     {
+      "delta": 3,
+      "from": "R02/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R02/2"
+     },
+     {
+      "delta": 3,
+      "from": "R02/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R02/3"
+     },
+     {
+      "delta": 5,
+      "from": "R02/3",
+      "gap_s": 21,
+      "ops_between": 15,
+      "run_ops_between": 7,
+      "to": "R03/1"
+     },
+     {
+      "delta": 3,
+      "from": "R03/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R03/2"
+     },
+     {
+      "delta": 3,
+      "from": "R03/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R03/3"
+     },
+     {
+      "delta": 1,
+      "from": "R03/3",
+      "gap_s": 18,
+      "ops_between": 11,
+      "run_ops_between": 5,
+      "to": "R04/1"
+     },
+     {
+      "delta": 3,
+      "from": "R04/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R04/2"
+     },
+     {
+      "delta": 3,
+      "from": "R04/2",
+      "gap_s": 0,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R04/3"
+     },
+     {
+      "delta": 5,
+      "from": "R04/3",
+      "gap_s": 26,
+      "ops_between": 23,
+      "run_ops_between": 11,
+      "to": "R05/1"
+     },
+     {
+      "delta": 3,
+      "from": "R05/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R05/2"
+     },
+     {
+      "delta": 3,
+      "from": "R05/2",
+      "gap_s": 0,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R05/3"
+     },
+     {
+      "delta": 1,
+      "from": "R05/3",
+      "gap_s": 28,
+      "ops_between": 35,
+      "run_ops_between": 17,
+      "to": "R06/1"
+     },
+     {
+      "delta": 3,
+      "from": "R06/1",
+      "gap_s": 0,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R06/2"
+     },
+     {
+      "delta": 3,
+      "from": "R06/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R06/3"
+     },
+     {
+      "delta": 1,
+      "from": "R06/3",
+      "gap_s": 46,
+      "ops_between": 59,
+      "run_ops_between": 29,
+      "to": "R07/1"
+     },
+     {
+      "delta": 3,
+      "from": "R07/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R07/2"
+     },
+     {
+      "delta": 3,
+      "from": "R07/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R07/3"
+     },
+     {
+      "delta": 1,
+      "from": "R07/3",
+      "gap_s": 46,
+      "ops_between": 59,
+      "run_ops_between": 29,
+      "to": "R08/1"
+     },
+     {
+      "delta": 3,
+      "from": "R08/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R08/2"
+     },
+     {
+      "delta": 3,
+      "from": "R08/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R08/3"
+     },
+     {
+      "delta": 5,
+      "from": "R08/3",
+      "gap_s": 62,
+      "ops_between": 79,
+      "run_ops_between": 39,
+      "to": "R09/1"
+     },
+     {
+      "delta": 3,
+      "from": "R09/1",
+      "gap_s": 0,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R09/2"
+     },
+     {
+      "delta": 3,
+      "from": "R09/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R09/3"
+     },
+     {
+      "delta": 1,
+      "from": "R09/3",
+      "gap_s": 46,
+      "ops_between": 59,
+      "run_ops_between": 29,
+      "to": "R10/1"
+     },
+     {
+      "delta": 3,
+      "from": "R10/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R10/2"
+     },
+     {
+      "delta": 3,
+      "from": "R10/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R10/3"
+     },
+     {
+      "delta": 5,
+      "from": "R10/3",
+      "gap_s": 49,
+      "ops_between": 63,
+      "run_ops_between": 31,
+      "to": "R11/1"
+     },
+     {
+      "delta": 3,
+      "from": "R11/1",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R11/2"
+     },
+     {
+      "delta": 3,
+      "from": "R11/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R11/3"
+     },
+     {
+      "delta": 5,
+      "from": "R11/3",
+      "gap_s": 31,
+      "ops_between": 39,
+      "run_ops_between": 19,
+      "to": "R12/1"
+     },
+     {
+      "delta": 3,
+      "from": "R12/1",
+      "gap_s": 0,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R12/2"
+     },
+     {
+      "delta": 3,
+      "from": "R12/2",
+      "gap_s": 1,
+      "ops_between": 1,
+      "run_ops_between": 1,
+      "to": "R12/3"
+     }
+    ],
+    "value_counts": {
+     "0": 3,
+     "1": 3,
+     "2": 7,
+     "3": 2,
+     "4": 6,
+     "5": 6,
+     "6": 2,
+     "7": 7
+    },
+    "verdict": "converged_counter",
+    "within_repeat_steps": {
+     "3": 24
+    }
+   }
+  }
+ },
+ "separator_crosscheck": {
+  "0x33|MAIN|f5=0f,flag=0,idx=0a,lo11=14f": {
+   "missing_pairs": [],
+   "models": [
+    "H-depM",
+    "H-depR"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|IRON_PREP|f5=06,flag=1,idx=13,lo11=666": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|IRON_PREP|f5=08,flag=0,idx=00,lo11=008": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|IRON_PREP|f5=10,flag=0,idx=00,lo11=010": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=00,lo11=002": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=01,lo11=022": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=08,lo11=102": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=0a,lo11=142": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=12,lo11=242": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=02,flag=0,idx=1b,lo11=362": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=03,flag=0,idx=18,lo11=303": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=03,flag=0,idx=1c,lo11=383": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=0,idx=00,lo11=004": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=0,idx=08,lo11=104": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=0,idx=10,lo11=204": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=0,idx=18,lo11=304": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=0,idx=1c,lo11=384": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=1,idx=00,lo11=404": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=1,idx=18,lo11=704": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=04,flag=1,idx=1c,lo11=784": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=05,flag=0,idx=00,lo11=005": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=05,flag=0,idx=08,lo11=105": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=05,flag=0,idx=18,lo11=305": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=05,flag=0,idx=1b,lo11=365": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=05,flag=1,idx=18,lo11=705": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=06,flag=0,idx=00,lo11=006": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=06,flag=1,idx=00,lo11=406": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=06,flag=1,idx=13,lo11=666": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=07,flag=0,idx=01,lo11=027": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=07,flag=0,idx=08,lo11=107": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=07,flag=0,idx=18,lo11=307": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=07,flag=0,idx=19,lo11=327": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=07,flag=1,idx=01,lo11=427": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=08,flag=0,idx=00,lo11=008": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=08,flag=0,idx=18,lo11=308": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=08,flag=1,idx=00,lo11=408": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=08,flag=1,idx=08,lo11=508": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=08,flag=1,idx=10,lo11=608": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=09,flag=0,idx=00,lo11=009": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=0a,flag=0,idx=16,lo11=2ca": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=0c,flag=0,idx=00,lo11=00c": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=0c,flag=0,idx=0a,lo11=14c": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=0f,flag=0,idx=10,lo11=20f": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=0f,flag=1,idx=10,lo11=60f": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=10,flag=0,idx=00,lo11=010": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|MAIN|f5=1c,flag=0,idx=04,lo11=09c": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|PCI|f5=00,flag=1,idx=00,lo11=400": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|PCI|f5=08,flag=1,idx=1d,lo11=7a8": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|PCI|f5=0c,flag=1,idx=1d,lo11=7ac": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x34|PCI|f5=10,flag=1,idx=0a,lo11=550": {
+   "missing_pairs": [],
+   "models": [
+    "H-34-p-formula",
+    "H-34-rt-fed"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=00,i6=00,lo11=000": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=01,i6=00,lo11=001": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt16",
+    "H-lt32",
+    "H-ne32",
+    "H-ule32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=01,i6=3f,lo11=7e1": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=02,i6=00,lo11=002": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=02,i6=20,lo11=402": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=03,i6=00,lo11=003": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=04,i6=1c,lo11=384": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=04,i6=20,lo11=404": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=05,i6=00,lo11=005": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=06,i6=00,lo11=006": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=07,i6=00,lo11=007": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=08,i6=00,lo11=008": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=08,i6=18,lo11=308": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=09,i6=00,lo11=009": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0a,i6=00,lo11=00a": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0b,i6=00,lo11=00b": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0c,i6=00,lo11=00c": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0d,i6=30,lo11=60d": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0e,i6=00,lo11=00e": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=0f,i6=00,lo11=00f": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=10,i6=00,lo11=010": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=11,i6=36,lo11=6d1": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=12,i6=2e,lo11=5d2": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq32i",
+    "H-uge32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=13,i6=00,lo11=013": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=14,i6=00,lo11=014": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=15,i6=00,lo11=015": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=16,i6=00,lo11=016": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=17,i6=00,lo11=017": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=18,i6=14,lo11=298": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=19,i6=00,lo11=019": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1a,i6=00,lo11=01a": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1b,i6=00,lo11=01b": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1c,i6=16,lo11=2dc": {
+   "missing_pairs": [],
+   "models": [
+    "H-lt32i",
+    "H-ne32i"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1d,i6=00,lo11=01d": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1e,i6=00,lo11=01e": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x36|MAIN|f5=1f,i6=00,lo11=01f": {
+   "missing_pairs": [],
+   "models": [
+    "H-V",
+    "H-eq16",
+    "H-eq32",
+    "H-uge32",
+    "H-ugt32"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x38|MAIN|sel=00": {
+   "missing_pairs": [],
+   "models": [
+    "H-38self-false",
+    "H-38self-keepT"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x38|MAIN|sel=04": {
+   "missing_pairs": [],
+   "models": [
+    "H-38v-bool-eq",
+    "H-38v-bool-ne",
+    "H-38v-rs",
+    "H-38v-rt"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x3c|MAIN|lo11=000": {
+   "missing_pairs": [],
+   "ok": true,
+   "status": "whitelisted"
+  },
+  "0x3c|MAIN|lo11=001": {
+   "missing_pairs": [],
+   "models": [
+    "H-3c-and-lo11",
+    "H-3c-zero"
+   ],
+   "ok": true,
+   "status": "ok"
+  },
+  "0x3c|MAIN|lo11=400": {
+   "missing_pairs": [],
+   "models": [
+    "H-3c-and-lo11",
+    "H-3c-zero"
+   ],
+   "ok": true,
+   "status": "ok"
+  }
+ }
+}

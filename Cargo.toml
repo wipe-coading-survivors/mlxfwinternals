@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "crates/mlxdirect",
+    "crates/mlxscope",
+]
+resolver = "2"

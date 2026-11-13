@@ -1,0 +1,19 @@
+{
+  "id": "C7",
+  "card": "cx5-16_35_4030-ACA-graft",
+  "section": 3,
+  "patches": [
+    {"offset": "0x1eb940", "bytes": "0006000f", "expected_before": "fcc6e083",
+     "kind": "code", "note": "C7-1: PM-window mirror 0xb494+port*0x2c00 := 0xf (was shr r6,r6,0x1c = 0x34ce>>28 FDR/EDR/HDR nibble) — force true-cap, fn 0x1eb7dc (task-12c7)"},
+    {"offset": "0x1eb970", "bytes": "0006000f", "expected_before": "ca060204",
+     "kind": "code", "note": "C7-2: PM-window mirror 0xb3bc+port*0x2c00 := 0xf (was mask32 r6,r16,0,4 = 0x34cc bits24-27 SDR/DDR/QDR nibble)"},
+    {"offset": "0x1eb9a0", "bytes": "0006001f", "expected_before": "c9e602e5",
+     "kind": "code", "note": "C7-3: PM-window mirror 0xb49f+port*0x2c00 := 0x1f (was mask32 r6,r15,0,5 = 0x34ce bits24-28 5-bit speed field)"},
+    {"offset": "0x1ebaf8", "bytes": "00150007", "expected_before": "fe158083",
+     "kind": "code", "note": "C7-4: per-port state compose 0x3d1ff+(port+1)*0x2420 leg0-2 := 7 (was shr r21,r16,0x10 = 0x34cc bits16-18)"},
+    {"offset": "0x1ebafc", "bytes": "00140007", "expected_before": "fdf4b883",
+     "kind": "code", "note": "C7-5: same compose leg3-5 := 7 (was shr r20,r15,0x17 = 0x34ce bits23-25)"},
+    {"offset": "0x1ebb78", "bytes": "00070100", "expected_before": "2ce70100",
+     "kind": "code", "note": "C7-6: same compose FDR10 bit := set (was ands r7,r7,0x100 = 0x34fb bit8)"}
+  ]
+}

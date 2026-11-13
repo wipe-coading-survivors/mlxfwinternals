@@ -1,0 +1,5 @@
+6a8ced5d6eeede213f5b1a50d9109187  docs/superpowers/journal/2026-10-26-irisc-fuzz5-task-04.md
+c6b8dbfaa4ca42f77a5d79e705cc1a75  scripts/probes/cx5-fuzz5/census_map.json
+384f7057a1a9473d00b6168bc2797ba6  scripts/probes/cx5-fuzz5/fuzz5_vectors.json
+ae58b9621d7076fdd1e9ed915540f08b  scripts/probes/cx5-fuzz5/fuzz5_disc_vectors.json
+e9a4ebb34a1ddbadfff20de1c4eeb6bd  scripts/probes/cx5-fuzz5/select_merges.json

@@ -1,0 +1,404 @@
+# upstream: 4c488a43cdbcef957519e3800c3ba796712d3abb
+# upstream-sha256: 8762506f9bd718f0d39154c2a67afecc23652f4ab64bf5565e5cf3e492cf1009
+# result-sha256: 324fffd54d179a261460c3947270b9023f9dcd690c5c39ada944336d5a9a0ab5
+--- iRISC.upstream.slaspec
++++ iRISC.slaspec
+@@ -52,6 +52,10 @@
+ 
+ define register offset=0x81000 size=1 [
+     Z64 C64 N64 V64 Z32 C32 N32 V32
++];
++
++define register offset=0x81008 size=1 [
++    CMPRES
+ ];
+ 
+ define token instr(32)
+@@ -97,6 +101,9 @@
+ 
+     mask=(0, 4)
+     shift=(5, 10)
++    f5=(0, 4)
++    idx=(5, 9)
++    flg=(10, 10)
+ ;
+ 
+ attach variables [ rd rs rt ] [
+@@ -161,11 +168,12 @@
+ cc: "unk."^cmpop is cmpop { tmp1:1 = unkBrCond(cmpop:1, Z32, N32, C32, V32); export tmp1; }
+ cc: "eq32"  is cmpop=0x00 { export Z32; }
+ cc: "gt32"  is cmpop=0x01 { tmp1 = C32 == 1; export tmp1; }
+-cc: "lt32"  is cmpop=0x02 { tmp1 = Z32 == 0 && N32 == 0; export tmp1; }
++cc: "lt32"  is cmpop=0x02 { tmp1 = N32 == 1; export tmp1; }
+ cc: "ugt32" is cmpop=0x03 { tmp1 = C32 == 1; export tmp1; }
+ cc: "ult32" is cmpop=0x04 { tmp1 = Z32 == 0 && C32 == 0; export tmp1; }
+ cc: "neg32" is cmpop=0x0c { export V32; }
+ cc: "pos32" is cmpop=0x0d { tmp1 = V32 == 0 && Z32 == 0; export tmp1; }
++cc: "cmpres" is cmpop=0x0a { export CMPRES; }
+ 
+ cc: "eq64"  is cmpop=0x10 { export Z64; }
+ cc: "gt64"  is cmpop=0x11 { export N64; }
+@@ -241,12 +249,32 @@
+     Z32 = (RDlosrc == 0);
+ }
+ 
+-:or  RD, RSsrc, imm16           is op=0x0c & RD & RSsrc & imm16 {
+-    RD = RSsrc | imm16;
++:andmsk.hi RD, RSsrc, imm16        is op=0x0c & RD & RDlo & RSsrc & RSlosrc & imm16 {
++    RDlo = RSlosrc & ((imm16 << 16) | 0xffff);
++}
++
++:and.hi RD, RSsrc, imm16        is op=0x0d & RD & RDlo & RSsrc & RSlosrc & imm16 {
++    RDlo = RSlosrc & (imm16 << 16);
+ }
+ 
+ :xor RD, RSsrc, imm16           is op=0x0e & RD & RSsrc & imm16 {
+     RD = RSsrc ^ imm16;
++}
++
++:shr32u.z RD, RSsrc             is op=0x16 & imm11=0x000 & RD & RDlo & RSsrc {
++    RDlo = 0;
++}
++
++:shr32u.z RD, RSsrc             is op=0x16 & imm11=0x028 & RD & RDlo & RSsrc {
++    RDlo = 0;
++}
++
++:shr32u.z RD, RSsrc             is op=0x16 & imm11=0x03c & RD & RDlo & RSsrc {
++    RDlo = 0;
++}
++
++:shr32u.z RD, RSsrc             is op=0x16 & imm11=0x07d & RD & RDlo & RSsrc {
++    RDlo = 0;
+ }
+ 
+ define pcodeop RDCSR;
+@@ -351,6 +379,328 @@
+ 
+ :mask32 RD, RSsrc, shift, MASK  is op=0x32 & RD & RSsrc & shift & MASK {
+     RD = (RSsrc >> shift:1) & MASK;
++}
++
++:dep RD, RSsrc, RTsrc, idx, f5  is op=0x33 & flg=0 & f5 & idx & RD & RSsrc & RTsrc {
++    tmp:8 = (1 << f5:1) - 1;
++    tmp2:8 = RSsrc & ~(tmp << idx:1);
++    RD = tmp2 | ((RTsrc & tmp) << idx:1);
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x000 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffffffff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x003 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000007) | 0x00000004;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x00a & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000003ff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x00e & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00003fff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x018 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00ffffff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x01c & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0fffffff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x03f & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffffffe) | 0x00000018;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x05e & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffffffc) | 0x00000030;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x07d & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffffff8) | 0x00000060;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x086 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000003f0) | 0x000000c0;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x0b1 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x003fffe0) | 0x00000180;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x0bb & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffffffe0) | 0x00000180;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x12d & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x003ffe00) | 0x00001800;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x402 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000003) | 0x00000001;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x412 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0003ffff) | 0x0000000d;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x4bb & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffffffe0) | 0x000001a0;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x4da & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffffffc0) | 0x00000340;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x548 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0003fc00) | 0x00003400;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x54c & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x003ffc00) | 0x00003400;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x556 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffffc00) | 0x00003400;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x594 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffff000) | 0x0000d000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x5c2 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000c000) | 0x00004000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x604 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000f0000) | 0x000d0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x60b & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x07ff0000) | 0x000d0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x708 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xff000000) | 0x0d000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x742 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0c000000) | 0x04000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x002 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000003) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x004 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000000f) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x005 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000001f) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x006 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000003f) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x008 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000000ff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x009 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000001ff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x00c & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000fff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x010 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000ffff) | 0x0000000c;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x022 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000006) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x027 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000000fe) | 0x00000018;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x09c & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfffffff0) | 0x000000c0;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x102 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000300) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x104 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000f00) | 0x00000c00;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x105 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00001f00) | 0x00000c00;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x107 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00007f00) | 0x00000c00;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x142 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00000c00) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x14c & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x003ffc00) | 0x00003000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x204 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000f0000) | 0x000c0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x20f & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x7fff0000) | 0x000c0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x242 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000c0000) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x2ca & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffc00000) | 0x03000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x303 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x07000000) | 0x04000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x304 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0f000000) | 0x0c000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x305 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x1f000000) | 0x0c000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x307 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x7f000000) | 0x0c000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x308 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xff000000) | 0x0c000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x327 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xfe000000) | 0x18000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x362 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x18000000) | 0x00000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x365 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xf8000000) | 0x60000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x383 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x70000000) | 0x40000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x384 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xf0000000) | 0xc0000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x400 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xffffffff) | 0x0000000d;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x404 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000000f) | 0x0000000d;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x406 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000003f) | 0x0000000d;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x408 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000000ff) | 0x0000000d;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x427 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x000000fe) | 0x0000001a;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x508 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0000ff00) | 0x00000d00;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x550 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x03fffc00) | 0x00003400;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x608 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x00ff0000) | 0x000d0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x60f & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x7fff0000) | 0x000d0000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x666 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x01f80000) | 0x00680000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x704 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x0f000000) | 0x0d000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x705 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0x1f000000) | 0x0d000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x784 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xf0000000) | 0xd0000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x7a8 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xe0000000) | 0xa0000000;
++}
++
++:dep.c RD, RSsrc               is op=0x34 & imm11=0x7ac & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = (RSlosrc & ~0xe0000000) | 0xa0000000;
++}
++
++:cmp36.eq32 RSsrc, RTsrc        is op=0x36 & imm11=0x004 & RSsrc & RSlosrc & RTsrc & RTlosrc {
++    CMPRES = (RSlosrc == RTlosrc);
++}
++
++:cmp.w RSsrc, RTsrc, imm11 is op=0x38 & cmpop=0x00 & RSsrc & RSlosrc & RTsrc & RTlosrc & imm11 {
++    CMPRES = (RSlosrc == RTlosrc);
++}
++
++:mv.lo RD, RSsrc                is op=0x39 & imm11=0x000 & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = RSlosrc;
++}
++
++:mv.lo RD, RSsrc                is op=0x39 & imm11=0x7ff & RD & RDlo & RSsrc & RSlosrc {
++    RDlo = RSlosrc;
++}
++
++:zero RD                        is op=0x3c & imm11=0x7ff & RD & RDlo {
++    RDlo = 0;
++}
++
++:zero RD                        is op=0x3c & imm11=0x000 & RD & RDlo {
++    RDlo = 0;
++}
++
++:zero RD                        is op=0x3c & imm11=0x400 & RD & RDlo {
++    RDlo = 0;
+ }
+ 
+ :alu.^funct RD, RSsrc, RTsrc    is op=0x3f & funct & RD & RSsrc & RTsrc { RD = UnkAlu(funct:2, RSsrc:8, RTsrc:8); }

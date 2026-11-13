@@ -1,0 +1,11 @@
+{
+  "id": "C12ANALOG-CX4LX-1900-0X1F-PATCHA",
+  "card": "cx4lx-14_32_1900-c1-ri-based",
+  "section": 3,
+  "patches": [
+    {"offset": "0x1f1f00", "bytes": "0011001f", "expected_before": "fcb1c083",
+     "kind": "code", "note": "C12-analog, same word as 0x1f build daf609ec (task-03): apply_stamping fn 0x1f1e04 module IB speed term r17 := 0x1f - was shr r17,r5,0x18. Base = ri dacbcf0e (VPI byte already on card, GUID/MAC/PSID native); raw offset 0x37e0f0, next-word 6430000a."},
+    {"offset": "0x18c0c8", "bytes": "95000029", "expected_before": "94002d2b",
+     "kind": "code", "note": "PATCH A (RE(c) 2026-10-11, assert-suppression workaround, NOT root-fix): F1 fn 0x18c05c flag1-mismatch path - replace call 0x197574 (fail-log/assert chain) with jump 0x18c16c = EXIT; on flag1 mismatch F1 returns the per-port field like the success path and merge continues. Raw 0x311CD4 re-derived via ITOC 0x03 + de-frame in build-c12analog.py (not trusted from journal); build gate verifies pre-patch word at BOTH sites. Purpose: owner's peer test - far end into switch, observe assert suppression / negotiation continuation / link up. Risk: hides out-of-range config (documented in RE(c))."}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "entry_dc": "0x2a48ac",
+  "doc_site_dc": "0x2a49f4",
+  "size_words": 104,
+  "frame_push_count": 2,
+  "frame_words": 8,
+  "calls": [
+    ["0x2a4930", "0x1876bc"],
+    ["0x2a495c", "0x1876bc"],
+    ["0x2a4984", "0x1876bc"],
+    ["0x2a49ac", "0x1876bc"],
+    ["0x2a49d4", "0x1876bc"],
+    ["0x2a49fc", "0x1876bc"],
+    ["0x2a4a20", "0x1876bc"]
+  ],
+  "source": {
+    "entry": "doc 750-exp/130-cx4lx-pcie-gen4.md:276-278 (errata: serializer LX dc 0x2a49f4 unwrapped, NOT raw 0x2cee90, NOT 0x394c88=K256); 0x2a49f4 is the interior site of the addi r5,r23,0x8b template cluster (journal 2026-10-24-pcie-speed-plumbing-re.md:70-72); enclosing function head 0x2a48ac = csr.r/st.d! prologue, prior ret.r at 0x2a48a8 (extraction; serializer family blocks per journal 2026-09-19-cx4lx-pcie-gen4-task-05.md:33-37: st.b sequence + call slots into common trampoline)",
+    "size": "ret.r at 0x2a4a48 (extraction): 0x2a48ac..0x2a4a48 = 104 words (0x1a0 B)",
+    "frame_push_count": "st.d! r1,r1,-0x20 at 0x2a48b4 (prologue) + st.d! zero,r5,0x4 at 0x2a48f4 (stack zero-fill loop push) (extraction)",
+    "frame_words": "0x20/4 = 8 (prologue push offset -0x20)",
+    "calls": "all 7 slots -> common trampoline 0x1876bc; the doc-named slot is site 0x2a49fc (addi r5,r23,0x8b; addi r6,zero,0x1b = 27-byte template at buf[0x8b..0xa1], pcie-speed-plumbing-re:71, gen4 task-05:39-42)"
+  }
+}

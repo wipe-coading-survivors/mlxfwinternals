@@ -1,0 +1,31 @@
+name: public-ci
+
+on:
+  pull_request:
+    branches: [public]
+  push:
+    branches: [public]
+
+permissions:
+  contents: read
+
+jobs:
+  cargo-test:
+    if: vars.PUBLIC_REPO == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --workspace
+
+  pytest:
+    if: vars.PUBLIC_REPO == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pytest

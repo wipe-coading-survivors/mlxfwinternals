@@ -1,0 +1,1 @@
+{"id": "C4", "card": "cx5-16_35_4030-ACA-graft", "section": 3, "patches": [{"offset": "0xa348", "bytes": "0005003f", "expected_before": "2ca50070", "kind": "code", "note": "C4: cap producer fn 0xa338 — force r5=0x3f (was ands r5,r5,0x70) so admin∩cap≠0 -> SCS≠0 (task-08b)"}]}

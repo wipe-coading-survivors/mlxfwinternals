@@ -1,0 +1,9 @@
+{
+  "id": "C12ANALOG-CX4LX-1900",
+  "card": "cx4lx-14_32_1900-c1-ri-based",
+  "section": 3,
+  "patches": [
+    {"offset": "0x1f1f00", "bytes": "0011001f", "expected_before": "fcb1c083",
+     "kind": "code", "note": "C12-analog on 14.32/FS3 (CX-4 Lx MCX4121A c1:00.0): apply_stamping fn 0x1f1e04 module IB speed term r17 := 0x1f constant - was shr r17,r5,0x18; same word as CX-5 C12 (dc 0x25a3ec, docs/250-re/130-cable-gate/002-transceiver-ib-gate.md). Base = fresh ri (VPI byte already on card, GUID/MAC/PSID native). raw offset 0x37e0f0, next-word 6430000a; verified vs ri task-02."}
+  ]
+}
