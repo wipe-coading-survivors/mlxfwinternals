@@ -238,9 +238,15 @@ def _publish_automation_text():
 def test_publish_automation_invokes_publish_py_directly():
     text = _publish_automation_text()
     assert re.search(
-        r'^\s+python3 -m scripts\.publish\.publish '
-        r'--remote "\$PUBLIC_REMOTE_URL" --branch public-next$',
+        r'^\s+PUBLISH_RC=0$',
         text, re.M)
+    assert re.search(
+        r'^\s+python3 -m scripts\.publish\.publish '
+        r'--remote "\$PUBLIC_REMOTE_URL" --branch public-next '
+        r'\|\| PUBLISH_RC=\$\?$',
+        text, re.M)
+    assert not re.search(
+        r'^\s+PUBLISH_RC=\$\?$', text, re.M)
     assert not re.search(r"make\s+-C", text)
     assert not re.search(r"make\s+public", text)
 
