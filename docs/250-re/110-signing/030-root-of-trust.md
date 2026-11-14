@@ -43,7 +43,7 @@ AC-образ, сверено с флэш-адресами; журнал `2026-0
 | pointer | значение | что указывает |
 |---|---|---|
 | boot_record | 0x100 | boot record (CRC-аутентификация, `docs/250-re/100-formats/030-fs4.md`) |
-| boot2 | 0x1000 | payload 0x3f34 (чёрный ящик OSS mstflint, CRC-only `CheckBoot2`) |
+| boot2 | 0x1000 | payload 0x3f2c = (4+DW1)·4, DW1=0xfc7 (эрратум 2026-11-14: ранее «0x3f34» — fb-выемка с +8 B хвостом за регионом; CRC-верифицировано) — чёрный ящик OSS mstflint, CRC-only `CheckBoot2` |
 | toc | 0x5000 | ITOC |
 | tools | 0x500 | tools-блок |
 | authentication_start / end | 0x0 / 0x6fff | **окно SB v1-подписи** |

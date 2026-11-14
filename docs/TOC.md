@@ -10,7 +10,8 @@
 - 160-mlxfw-rust — mlxfwutil Rust: финальный инструмент, порт PoC (кол mlx-fw-tui; модуль PoC — mlxfwutil.py) [seed]
 - 170-factory-image — factory-образ (mlxfwutil factory): base GUID/MAC + кастомный PSID в образе [seed]
 - 180-cx5-secure-dell — secure-фаза: Dell 6120 mixed-CODE на secure CX-5 (41:00.x), FNP-burn [seed]
-- 190-serdes-decomp — SerDes-провижининг (shared vs dedicated) + полная декомпиляция секций (корпус+псевдокод); пересмотр негативов Gen4/FDR [seed]
+- 190-serdes-decomp — SerDes-декомп: провижининг ланов + корпус дизасма; арки A–D закрыты, E → 200 [done]
+- 200-securefw-bypass — обход secure-fw/SB: VPD secure-state, boot-window (pre-verify exec), CX-7 pre-release corpus [seed]
 
 ## 050-hardware — железо: инвентарь (ярлыки карт) и SKU
 - 100-inventory — локальный инвентарь: ярлыки `CARD_*`, стикеры/чипы дословно; реальные Base GUID/MAC — в `hardware.local.md` (untracked), скрипты — `mlxfwutil.hw()`

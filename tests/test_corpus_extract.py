@@ -171,7 +171,10 @@ def test_prior_data_with_irisc_payload_not_raised(monkeypatch):
 
 def test_family_override_cx6_ace_data_no_raise_with_evidence(tmp_path):
     from scripts.corpus.extract import DOMAIN_PRIOR_OVERRIDE
-    assert DOMAIN_PRIOR_OVERRIDE == {("cx6", 0x15): "data"}
+    assert DOMAIN_PRIOR_OVERRIDE == {
+        ("cx6", 0x15): "data",
+        ("cx7", 0x0F): "iRISC",
+    }
     buf = build_synth_image([{"typ": 0x15, "payload": DATA_BLOB}])
     img = Image(buf)
     recs = sections_of(img, family="cx6")
@@ -211,6 +214,36 @@ def test_family_override_zipped_section_evidence_none():
     assert r.domain == "data"
     assert r.domain_override == "data"
     assert r.domain_evidence is None
+
+
+def test_cx7_0x0f_production_override_builds_irisc():
+    buf = build_synth_image([{"typ": 0x0F, "payload": synth_irisc(192),
+                              "param0": 0x20500040, "param1": 0x20500044}])
+    recs = sections_of(Image(buf), family="cx7")
+    r = recs[0]
+    assert r.domain == "iRISC"
+    assert r.domain_override == "iRISC"
+    assert r.status == "OK"
+    assert r.domain_evidence["classifier"] == "iRISC"
+    assert r.domain_evidence["code_ratio"] > 0.5
+
+
+def test_cx7_irisc_override_branch_synthetic_stub(monkeypatch):
+    from scripts.corpus.extract import DOMAIN_PRIOR_OVERRIDE
+    assert DOMAIN_PRIOR_OVERRIDE.get(("cx7", 0x0F)) == "iRISC"
+    buf = build_synth_image([{"typ": 0x02, "payload": DATA_BLOB}])
+    with pytest.raises(PriorDisagreement):
+        sections_of(Image(buf), family="cx7")
+    patched = dict(DOMAIN_PRIOR_OVERRIDE)
+    patched[("cx7", 0x02)] = "iRISC"
+    monkeypatch.setattr(extract_mod, "DOMAIN_PRIOR_OVERRIDE", patched)
+    recs = sections_of(Image(buf), family="cx7")
+    r = recs[0]
+    assert r.domain == "iRISC"
+    assert r.domain_override == "iRISC"
+    assert r.status == "OK"
+    assert r.domain_evidence["classifier"] == "data"
+    assert 0.0 <= r.domain_evidence["code_ratio"] < 0.5
 
 
 def test_domain_prior_map():

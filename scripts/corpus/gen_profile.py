@@ -37,6 +37,7 @@ CHIP_BY_FAMILY = {
     "cx6": "ConnectX-6",
     "cx6dx": "ConnectX-6 Dx",
     "cx6lx": "ConnectX-6 Lx",
+    "cx7": "ConnectX-7",
 }
 
 
