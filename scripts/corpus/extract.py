@@ -23,7 +23,10 @@ for _t in (0x0A, 0x0B, 0x0C):
     DOMAIN_PRIOR[_t] = "PHY"
 DOMAIN_PRIOR[0x18] = "ROM"
 
-DOMAIN_PRIOR_OVERRIDE: dict[tuple[str, int], str] = {("cx6", 0x15): "data"}
+DOMAIN_PRIOR_OVERRIDE: dict[tuple[str, int], str] = {
+    ("cx6", 0x15): "data",
+    ("cx7", 0x0F): "iRISC",
+}
 
 
 @dataclass

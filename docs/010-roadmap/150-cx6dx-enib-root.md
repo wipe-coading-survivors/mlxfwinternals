@@ -30,7 +30,9 @@ CDA↔HDA, карта дельты ~117 Б, VPI-байт `0x11+0x2df`, IB-бит
 **Семёна:** ROADMAP-секция «CX-6 Dx: EN→IB + рут» (поднято 2026-09-26;
 перенесена целиком); офлайн-задел — проект cx6dx-bazzite + циклы
 cx6dx-securefw / cx6dx-introspection (C3-вердикт).
-**Связи:** `docs/250-re/110-signing/055-cx6dx-signing.md`,
+**Связи:** `docs/010-roadmap/200-securefw-bypass.md` (арка B — boot-window:
+кандидат-путь рута на GA SECURED без ключей, заявка 2026-11-14),
+`docs/250-re/110-signing/055-cx6dx-signing.md`,
 `docs/superpowers/reports/2026-10-31-cx6dx-introspection.md`, `docs/850-howto/120-field-merge`
 (методология field-map), `docs/250-re/120-irisc/025-boot-injection.md` (метод рута CX-5), `docs/050-hardware/100-inventory`,
 `docs/850-howto/100-cross-flash-ops` (burn-флаги), `TODO.md` (раздел «BlueField-карты:

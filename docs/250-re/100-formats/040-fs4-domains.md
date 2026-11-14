@@ -12,7 +12,9 @@
 
 | группа | тип | домен |
 |---|---|---|
-| код ASIC | 0x02/0x03/0x04/0x05/0x06/0x07/0x0d/0x0e/0x15 | **iRISC** (все; x86/arm64 в ITOC нет). Эррата (corpus arc A, 2026-11-11): CX-6 20.43 §0x15 — data-dominant (инстанс-классификатор 0.150; size 0x4a00, param0=0, 3 код-островка ≈6.8% слов, без ASCII); CX-6Dx 22.50 §0x15 проходит (0.540). Первопричина: вердикт «(все)» обобщал CX-6Dx-наблюдение без пер-семейной верификации §0x15 (секция встречается только на CX-6/6Dx, §5). Семейный override приора: cx6/0x15 → данные (журнал `2026-11-11-serdes-corpus-a-task-09.md`). CCIR-семантика (arc B, 2026-11-12): 0x0d (8788 B) = event-loop/таймеры, 0x0e (15172 B) = rate-алгоритм `ztr_rttcc` — RoCE RTT-based congestion control (DCQCN/TIMELY-семейство: AIMD/CNP/NACK/RTT); поколенческая карта: есть у CX-6Dx 22.50 и CX-6Lx 26.50, нет у CX-4/5/6 non-Dx и A16; CC-IR = Congestion Control iRISC (гипотеза-бонус; `docs/superpowers/reports/serdes-arc-b.md`) |
+| код ASIC | 0x02/0x03/0x04/0x05/0x06/0x07/0x0d/0x0e/0x15 | **iRISC** (все; x86/arm64 в ITOC нет). Эррата (corpus arc A, 2026-11-11): CX-6 20.43 §0x15 — data-dominant (инстанс-классификатор 0.150; size 0x4a00, param0=0, 3 код-островка ≈6.8% слов, без ASCII); CX-6Dx 22.50 §0x15 проходит (0.540). Первопричина: вердикт «(все)» обобщал CX-6Dx-наблюдение без пер-семейной верификации §0x15 (секция встречается только на CX-6/6Dx, §5). Семейный override приора: cx6/0x15 → данные (журнал `2026-11-11-serdes-corpus-a-task-09.md`). CCIR-семантика (arc B, 2026-11-12): 0x0d (8788 B) = event-loop/таймеры, 0x0e (15172 B) = rate-алгоритм `ztr_rttcc` — RoCE RTT-based congestion control (DCQCN/TIMELY-семейство: AIMD/CNP/NACK/RTT); поколенческая карта: есть у CX-6Dx 22.50, CX-6Lx 26.50 и CX-7 28.33 (предрелиз, n=2: ztr-маркеры `Nvidia ztr_rttcc` / `v0.5` — нумерация версий отличается от CX-6Dx v0.12/v0.13), нет у CX-4/5/6 non-Dx и A16; CC-IR = Congestion Control iRISC (гипотеза-бонус; `docs/superpowers/reports/serdes-arc-b.md`) |
+| код ASIC | 0x0f FS4_BOOT3_CODE (новый, только CX-7 28.33-класс, предрелиз) | **iRISC** (честный вердикт, арка securefw-arc-a 2026-11-14: recount 0.97 у обеих версий; param0 0x20500040, entry=load+4 как PCI_CODE §3; ASCII-строк нет; журнал `2026-11-14-securefw-arc-a-task-03.md`; корпус: `DOMAIN_PRIOR_OVERRIDE[("cx7",0x0f)]="iRISC"` с 2026-11-14, решение владельца, мемо `2026-11-14-cx7-0x0f-domain-promotion.md` — дизасм-артефакты строятся) |
+| APU | 0x14 APU_KERNEL (новый, только CX-7 28.33-класс, предрелиз) | **данные**: recount-мажорити iRISC 0.56–0.68 — ложный сигнал (как у PHY 0x0a); APU-ядро **RISC-V** (строки `src/kernel/arch/riscv_apu0/…`, `fw_rv_kernel`, clang `RISCV_LLVM` 12.0.0; внутри CC-алго `…/src/apu/progcc/algo/{dcqcn,ztr_rttcc,pcc_debug}.c`; param0=param1=0 — ITOC RAM map окно APU не описывает); журнал `2026-11-14-securefw-arc-a-task-03.md` |
 | PHY | 0x0a PHY_UC_CODE, 0x0c PCIE_PHY_UC_CODE | **данные**: таблицы с шагом 16B (микрокод PHY, не код; iRISC-ratio 0.92–0.94 — ложный сигнал) |
 | PHY | 0x0b PHY_UC_CONSTS | данные (zero) |
 | ROM | 0x18 ROM_CODE | **x86**: FlexBoot — цепочка суб-образов PCI option ROM (по `55AA`+PCIR, длина @PCIR+0x10; CodeType: 0=legacy x86 plain, 3=EFI, ff=vendor): legacy 16-bit x86 (iPXE, `55AA`@0, plain) + EFI-суб-образы **standard-compressed** (арх читается офлайн — §2, ROM_CODE) |
@@ -74,5 +76,6 @@
 
 FS3/FS4, PSID (0x10/0xe0), dev (0x10@0x1c), FlexBoot-версия (ROM_CODE),
 SB-набор (0xa3/0xa6/0xa7), набор секций (0x15 ACE_CODE — только CX-6/6Dx;
-0x0d/0x0e CCIR — только CX-6Dx и CX-6Lx 26.50, §1). Любая пара карт
+0x0d/0x0e CCIR — CX-6Dx, CX-6Lx 26.50 и CX-7 28.33 (§1); 0x0f/0x14 —
+только CX-7 28.33-класс). Любая пара карт
 различается по ≥3 независимым сигналам.

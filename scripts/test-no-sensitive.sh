@@ -77,7 +77,7 @@ if [ $# -eq 0 ]; then
                 if printf '%s\n' "$example_values" | grep -Fxq -- "$v"; then
                     ok "skip '$v' (shared with local.mk.example)"
                 else
-                    hits=$(grep_values -Fn -- "$v")
+                    hits=$(grep_values -Fni -- "$v")
                     if [ -n "$hits" ]; then
                         ko "no '$v' ($src) in tracked files (docs/superpowers/ exempt)" "no match" "$hits"
                     else
@@ -121,7 +121,7 @@ else
         v=${line#*=}
         v=$(printf '%s' "$v" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
         [ -n "$v" ] || continue
-        hits=$(grep_values -Fn -- "$v")
+        hits=$(grep_values -Fni -- "$v")
         if [ -n "$hits" ]; then
             ko "no '$v' (registry) in staged public files" "no match" "$hits"
         else

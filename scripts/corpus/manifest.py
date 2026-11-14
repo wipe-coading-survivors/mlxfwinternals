@@ -95,6 +95,8 @@ T3 = [
     _ref("refs/fw/cx-5-6/PG171_Ax_NVD0000000014_rel-20_43.8002.bin", "c72fa726e35d3f388531465dcffa0a6f", "cx6", "20_43_8002", "PG171-NVD", 3),
     _ref("refs/fw/cx-5-6/fw-ConnectX6-rel-20_43_8002-MCX654105A-HCA_Ax-UEFI-14.37.50-FlexBoot-3.7.500.bin", "2ade8a0571ba69bb5285ba3178e92d3d", "cx6", "20_43_8002", "MCX654105A-HCA", 3),
     _ref("refs/fw/cx-5-6/fw-ConnectX6-rel-20_43_8016-MCX654105A-HCA_Ax-UEFI-14.37.50-FlexBoot-3.7.500.bin", "c5d8e04cf4b19064f5be122276956643", "cx6", "20_43_8016", "MCX654105A-HCA", 3),
+    _ref("refs/fw/cx-7/dumps/cx7_firmware_dumps/28.33.0751/orig_firmware.bin", "4308c08e034d6f763a8f327430102a13", "cx7", "28_33_0751", "MCX713106AC-VEA", 3),
+    _ref("refs/fw/cx-7/dumps/cx7_firmware_dumps/28.33.0800.bin", "828b3ce6975166b9c35484d0921f66dd", "cx7", "28_33_0800", "MCX753106ASHEA_DK", 3),
 ]
 
 IMAGE_TO_PROFILE = {
@@ -106,6 +108,7 @@ IMAGE_TO_PROFILE = {
     "cx6dx/22_50": "cx6dx",
     "cx6dx/22_47": "cx6dx",
     "cx6lx/26_50": "cx6lx-2650",
+    "cx7/28_33": "cx7",
 }
 
 

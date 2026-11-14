@@ -318,6 +318,8 @@ repack/resize (T5). Отчёт: `docs/superpowers/reports/serdes-arc-d.md`;
 Корпус A обслуживает secure_fw/secure-boot-арки (см. надцель 100-irisc).
 Boot-домен/prelude/boot2-payload — в скоупе C6; сюда — long-tail
 secure-fw-вопросы поверх корпуса (подпись, lifecycle, read-политики).
+Выделено в `docs/010-roadmap/200-securefw-bypass.md` (VPD-state,
+boot-window, CX-7 pre-release corpus — 2026-11-14).
 
 ### Правила
 
