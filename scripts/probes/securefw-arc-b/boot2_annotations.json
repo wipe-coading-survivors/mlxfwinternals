@@ -1,0 +1,625 @@
+[
+  {
+    "image": "0800",
+    "entry": 4,
+    "functions": [
+      {
+        "name": "entry_gate",
+        "start": 0,
+        "end": 120,
+        "kind": "misc",
+        "notes": "stamp-noop word0 0x0000daad (render addi imm; build-id class, arc A); entry=+4 (040 s3 convention, executable from 0x4). Prologue: csr.r r3,csr0xbc @0x4 (ROM return addr; i2b entry idiom); CRC gate: call crc16_block @0x28 over 7 words @RAM 0x000e68a0 (ptr built @0x18-0x1c set2 0xe/set3 0x68a0), expected 0x9a2f (ld.i @0x14; ld.i render is low 16 of imm20, scripts/irisc/README.md:190) compared @0x30-0x34 (subs+b.f.cc0); mismatch -> epilogue 0x68-0x74 ret.r to CSR 0xbc value (return to ROM, rest of body not executed from this path). Match -> status CSR 0x228 <- r23|2 (0x9a2a-class) @0x50-0x54; dead bit-poll @0x58-0x5c (b.bset on constant); tail @0x60-0x64 r4=0xffffff00 (addi -0x100), ret.r zero,r8,r4 -> jump to r4 value (slaspec ret.r = goto [RTlosrc], scripts/irisc/iRISC.slaspec:738; task-04 canon fix: r8 is not added) - ROM continuation / reset candidate [H]. Static fall-through 0x48-0x4c (call event_report_slotcopy) exists only if b.f @0x44 not taken; with cc0 semantics on constant 0x9a29-2 it is always taken (wrinkle, journal s0). Same bytes in 0751 except stamp and call target @0x4c."
+      },
+      {
+        "name": "main_halt",
+        "start": 516,
+        "end": 544,
+        "kind": "dispatch",
+        "notes": "0x204-0x21c. ROM-entry candidate #2 (no direct callers in body; sits right after zero table 0x78-0x204, 117 zero words = runtime-filled data). Flow: call 0x1a0c @0x204, call 0x19b4 (r4=r1 stack) @0x20c, call 0x510 @0x214, call 0x1434 @0x218, then jump 0x21c to self @0x21c = HALT (the only self-jump in the body). Structural twin in 0751 @0x204 with version-specific call targets (0x19b8/0x1960/0x510/0x1434)."
+      },
+      {
+        "name": "crc16_block",
+        "start": 544,
+        "end": 664,
+        "kind": "verify",
+        "notes": "0x220-0x298. CRC16 over N words at ptr r4 (loop @0x260-0x274, b.f.cc0 while r22!=0), seed r4=0x000effff (set3 0xffff over hi 0xe @0x248), result stored to [r5] @0x27c. Same poly/final as container CRC (crc16_mlx, arc A) but runs on a RAM block, not on the container. Identical in 0751 @0x220 (0751 also carries a byte-identical duplicate copy @0x2464, not annotated separately)."
+      },
+      {
+        "name": "crc16_step",
+        "start": 664,
+        "end": 712,
+        "kind": "verify",
+        "notes": "0x298-0x2c8. Bitwise CRC16 step: 32 iterations (addi r6,0x20 @0x298, loop @0x29c-0x2c0), poly 0x100b (xor @0x2ac), 64-bit shift concat (shl64.i/shr/or @0x29c-0x2a4), b.bclr 15 on msb @0x2a8. ret.d @0x2c4."
+      },
+      {
+        "name": "crc16_final",
+        "start": 712,
+        "end": 760,
+        "kind": "verify",
+        "notes": "0x2c8-0x2f8. CRC16 final: 16 residual rounds (loop @0x2cc-0x2ec), poly xor @0x2e0, inversion xor r4,r4,0x-1 @0x2f0, ret.d @0x2f4. Range includes internal loop label 0x2e4 (jump @0x2dc)."
+      },
+      {
+        "name": "config_pairs_102_104",
+        "start": 760,
+        "end": 828,
+        "kind": "misc",
+        "notes": "0x2f8-0x33c. Config applier via (CSR 0x28 selector, data CSR 0x102/0x103/0x104) pairs: (0x60->0x103) @0x2f8-0x304, (0x1d0,0x7ff->0x103) @0x308-0x314, (0x1c0,0->0x104) @0x318-0x324, (0x18,0x100->0x102) @0x328-0x334. Not boot_record CR-init records (no 0x30d0xxxx/0x0c1xxxxx class values) - internal CSR-space config."
+      },
+      {
+        "name": "map_one",
+        "start": 1072,
+        "end": 1184,
+        "kind": "load",
+        "notes": "0x430-0x4a0. Mapping helper, 8 call sites (most-called function). Consumes (attrs<<48 | addr, size) pairs from map_regions."
+      },
+      {
+        "name": "map_regions",
+        "start": 3068,
+        "end": 3252,
+        "kind": "load",
+        "notes": "0xbfc-0xcb4. Memory layout via map_one calls @0xc18-0xc9c with attr 0x8111 and section bases baked as constants (identical addresses in 0751): 0x207d0000/0x580 @0xc1c, 0x2052ff40 (ITOC sec 0x02 load)/0x1403 @0xc30, 0xff800000/0x80 @0xc44, 0x2b0000/0x400 @0xc50 (dest region of the 0x40B slot copy), 0x20710000 (IRON_PREP 0x05 load)/0x800 @0xc64, 0x20740000 (sec 0x06)/0x400 @0xc78, 0x20780000 (sec 0x04)/0x800 @0xc8c. Bases == ITOC param0 (mlxfwutil, this task) - toc-derived data baked at build time, not a runtime ITOC walk. Alt path call 0x4608 @0xca4 when arg==0 (subsi @0xc08)."
+      },
+      {
+        "name": "dev_enc_init",
+        "start": 4696,
+        "end": 5172,
+        "kind": "misc",
+        "notes": "0x1258-0x1434. Copies 0xc bytes RAM 0x000f0d84 -> 0xe3afc @0x127c-0x128c; zeroes 0xe3b08..0xe3b7c @0x129c-0x12a4; flash-read 0xc bytes via flash_read_cmd @0x12c8 (r5=0xc, r7=r8=r9=r10=1); copies 0x34 bytes 0xe3b00 -> 0xe3b08 @0x12f0-0x1300; writes ASCII tags: CSR 0x6c0 <- 1 @0x1308, CSR 0x6c1 <- 0x4445562d 'DEV-' @0x130c-0x1314, CSR 0x6c2 <- 0x454e4300 'ENC\\0' @0x1318-0x1320. Second flash-read @0x1390. Same address range in 0751 (common target)."
+      },
+      {
+        "name": "error_report",
+        "start": 9412,
+        "end": 9616,
+        "kind": "misc",
+        "notes": "0x24c4-0x2590. Error/status reporter; called with negative codes (e.g. -0x64=-100 from memcmp_verify fail path @0x2f24-0x2f28) from 6 sites in 0800: 0x158c, 0x15e8, 0x16dc, 0x2f28, 0x2fb8, 0x33dc. 0751 twin @0x1dcc (5 sites)."
+      },
+      {
+        "name": "hw_cmd",
+        "start": 10144,
+        "end": 10180,
+        "kind": "dispatch",
+        "notes": "0x27a0-0x27c4. HW-engine command submit: CSR 0x220 <- (arg<<19)|0x6000 @0x27a8-0x27b0 (shl64.i 0x13 + set2 0x6000); dead poll idioms on constant 0x9a20 @0x27a0-0x27a4/0x27b4-0x27b8 (b.bset 30). 0751 twin @0x2060."
+      },
+      {
+        "name": "hw_cmd_seq",
+        "start": 10300,
+        "end": 10516,
+        "kind": "dispatch",
+        "notes": "0x283c-0x2914. Issues 0xc482-counted command series via hw_cmd (@0x2894, step r20+=2 @0x28c8), collects results into a buffer (lw.r/st.d! loop @0x28a4-0x28b4); early-exit when result matches target (mask32 r6,r5,0x10,8 @0x28bc, subs/b.t.cc0 @0x28c0-0x28c4); returns collected word or -1. Candidate interface of the HW verifier engine (boot2 itself has no SW-SHA, task-02 s4). 0751 twin @0x20fc."
+      },
+      {
+        "name": "event_report_slotcopy",
+        "start": 10516,
+        "end": 10724,
+        "kind": "verify",
+        "notes": "0x2914-0x29e4. 1) call hw_cmd_seq @0x2934; result==-1 -> fatal: 0xdeadbeaf -> CSR 0x5df @0x29bc-0x29c4 (abort path). 2) event-log loop @0x2954-0x2984 (count from mask32 field of 0xc483, entries to RAM 0x6bbe0>>3=0xd77c region, stride 0x20). 3) CSR 0x22b <- 0xd77c @0x2988-0x298c. 4) gate arg==0xa6 (subsi @0x2990) -> copy 0x40 bytes (16 words, slot-size of hashes-table, arc A task-05) [arg] -> RAM 0x2b1328 @0x2998-0x29b8 - hashes_table consumer candidate [H]. 0751 twin @0x21d4 byte-identical except inner call targets and copy dest 0x2b1324."
+      },
+      {
+        "name": "memcmp_verify",
+        "start": 11692,
+        "end": 12096,
+        "kind": "verify",
+        "notes": "0x2dac-0x2f40 (head called from 0x31e4; internal labels 0x2df4/0x2e40/0x2e8c are jump targets, 0x2e8c is NOT a function start). Read+compare verifier: entry dispatcher 0x2dac-0x2e88 (op0x36 predicate on arg class @0x2de0-0x2de4, ld.b [r23] compare @0x2e58-0x2e60); default early-exit path flash-read via flash_read_cmd @0x2e6c-0x2e80 (args r7=1,r8=0,r10=1) -> jump epilogue 0x2f2c; compare path from 0x2e8c: r5=max(arg,0x40) @0x2e8c-0x2e98, 0x40 (slot-size of hashes-table, arc A task-05) flash-read @0x2eb8, ld.b [r23] @0x2ebc; decoy compare 0xdeadbeaf vs 0x35df @0x2ec4-0x2ed8 (never equal, falls through); reference memcmp loop [r4+i*4] vs [RAM 0x000e3b00+i*4] @0x2efc-0x2f1c (count from mask32 field of 0xc483), mismatch -> r4=-0x64 -> call error_report @0x2f24-0x2f28 (abort/report path); epilogue label 0x2f2c, ret @0x2f3c. 0751 twin @0x2660 (8/8, called from 0x2a94; flash reads @0x2734/0x276c)."
+      },
+      {
+        "name": "flash_read_cmd",
+        "start": 18208,
+        "end": 18296,
+        "kind": "load",
+        "notes": "0x4720-0x4778. Flash/block read via CSR 0x6e0 command class: len>>6 -> CSR 0x6e5 @0x4720-0x4724, selector CSR 0x28 <- 0 @0x472c, args -> CSR 0x6e6/0x6e7 @0x4730-0x4734, command (r6<<16|r7<<14)|0xc0100000 -> CSR 0x6e0 @0x474c-0x475c, clear 0x6e0 @0x4770; dead poll idioms on constant 0x8ee0 @0x4740-0x4748/0x4760-0x4764. Callers: 0x12c8, 0x1390 (dev_enc_init), 0x2e80, 0x2eb8 (memcmp_verify). 0751 twin @0x405c."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [
+        11916,
+        11960,
+        10660
+      ],
+      "toc_ptr": [
+        3100,
+        3120,
+        3172,
+        3192,
+        3212,
+        15288
+      ]
+    }
+  },
+  {
+    "image": "0751",
+    "entry": 4,
+    "functions": [
+      {
+        "name": "entry_gate",
+        "start": 0,
+        "end": 120,
+        "kind": "misc",
+        "notes": "Same prologue as 0800 except stamp word0 0x00007503 and call target @0x4c (0x21d4 vs 0x2914). CRC gate over 7 words @RAM 0x000e68a0 vs 0x9a2f @0x28-0x34; status CSR 0x228 @0x54; tail jump-to-r4 (0xffffff00, slaspec ret.r = goto [RTlosrc]) @0x60-0x64. See 0800 entry_gate notes for the word-by-word structure (shared)."
+      },
+      {
+        "name": "main_halt",
+        "start": 516,
+        "end": 544,
+        "kind": "dispatch",
+        "notes": "0x204-0x21c. Structural twin of 0800 main_halt at the same address: call 0x19b8 @0x204, call 0x1960 (r4=r1) @0x20c, call 0x510 @0x214, call 0x1434 @0x218, HALT self-jump @0x21c (only self-jump in body)."
+      },
+      {
+        "name": "crc16_block",
+        "start": 544,
+        "end": 664,
+        "kind": "verify",
+        "notes": "0x220-0x298. Byte-identical to 0800 (same address; verified word-for-word). 0751-only call target 0x2464 shares the 8-word prologue but is a DIFFERENT function (diverges @0x2484: 0x20-stride walk, call 0x1eb4 @0x24a0) - not a CRC duplicate (prefix-match over-claim corrected in task-03 fix)."
+      },
+      {
+        "name": "crc16_step",
+        "start": 664,
+        "end": 712,
+        "kind": "verify",
+        "notes": "0x298-0x2c8. Byte-identical to 0800 (same address). See 0800 notes."
+      },
+      {
+        "name": "crc16_final",
+        "start": 712,
+        "end": 760,
+        "kind": "verify",
+        "notes": "0x2c8-0x2f8. Byte-identical to 0800 (same address)."
+      },
+      {
+        "name": "config_pairs_102_104",
+        "start": 760,
+        "end": 828,
+        "kind": "misc",
+        "notes": "0x2f8-0x33c. Byte-identical to 0800 (same address); see 0800 notes."
+      },
+      {
+        "name": "map_one",
+        "start": 1072,
+        "end": 1184,
+        "kind": "load",
+        "notes": "0x430-0x4a0. Same address as 0800; mapping helper."
+      },
+      {
+        "name": "map_regions",
+        "start": 3068,
+        "end": 3252,
+        "kind": "load",
+        "notes": "0xbfc-0xcb4. Same address and same section-base constants as 0800 (xref sites 0xc1c/0xc30/0xc64/0xc78/0xc8c identical); see 0800 notes."
+      },
+      {
+        "name": "dev_enc_init",
+        "start": 4696,
+        "end": 5172,
+        "kind": "misc",
+        "notes": "0x1258-0x1434. Same address as 0800; flash reads @0x12c8/0x1390; 'DEV-'/'ENC' tags -> CSR 0x6c0-0x6c2."
+      },
+      {
+        "name": "error_report",
+        "start": 7628,
+        "end": 7792,
+        "kind": "misc",
+        "notes": "0x1dcc-0x1e70. Twin of 0800 error_report @0x24c4 (prologue 7/8); 5 call sites in 0751: 0x158c, 0x15f8, 0x27dc, 0x286c, 0x2c8c."
+      },
+      {
+        "name": "hw_cmd",
+        "start": 8288,
+        "end": 8324,
+        "kind": "dispatch",
+        "notes": "0x2060-0x2084. Twin of 0800 hw_cmd @0x27a0 (8/8); CSR 0x220 <- (arg<<19)|0x6000."
+      },
+      {
+        "name": "hw_cmd_seq",
+        "start": 8444,
+        "end": 8660,
+        "kind": "dispatch",
+        "notes": "0x20fc-0x21d4. Twin of 0800 hw_cmd_seq @0x283c (8/8); 0xc482-counted command series."
+      },
+      {
+        "name": "event_report_slotcopy",
+        "start": 8660,
+        "end": 8868,
+        "kind": "verify",
+        "notes": "0x21d4-0x22a4. Byte-identical to 0800 @0x2914 except inner call targets (0x20fc/0x2060) and copy dest 0x2b1324 (vs 0x2b1328): fatal 0xdeadbeaf -> CSR 0x5df @0x227c-0x2284; CSR 0x22b <- 0xd77c @0x2248-0x224c; gate arg==0xa6 -> 0x40B copy [arg] -> 0x2b1324 @0x2258-0x2278 (hashes_table consumer candidate [H])."
+      },
+      {
+        "name": "memcmp_verify",
+        "start": 9824,
+        "end": 10228,
+        "kind": "verify",
+        "notes": "0x2660-0x27f4. Twin of 0800 memcmp_verify @0x2dac (8/8; called from 0x2a94 vs 0x31e4): default early-exit flash-read @0x2734, compare path 0x40-slot flash-read @0x276c, reference memcmp loop vs [RAM 0x000e3b00+i*4] @0x27b0-0x27d0, mismatch -> r4=-0x64 -> call error_report @0x27dc-0x27e0 (abort/report path), epilogue label 0x27e0, ret.r @0x27f0."
+      },
+      {
+        "name": "flash_read_cmd",
+        "start": 16476,
+        "end": 16564,
+        "kind": "load",
+        "notes": "0x405c-0x40b4. Twin of 0800 flash_read_cmd @0x4720 (8/8). Flash/block read via CSR 0x6e0 command class: len>>6 -> CSR 0x6e5 @0x405c-0x4060, selector CSR 0x28 <- 0 @0x4068, args -> CSR 0x6e6/0x6e7 @0x406c-0x4070, command (r6<<16|r7<<14)|0xc0100000 -> CSR 0x6e0 @0x4088-0x4098, dead poll idioms on constant 0x8ee0 @0x407c-0x4084/0x409c-0x40a0, clear 0x6e0 @0x40ac, ret.d @0x40b0. Callers: 0x12c8, 0x1390 (dev_enc_init), 0x2734, 0x276c (memcmp_verify)."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [
+        10048,
+        10092,
+        8804
+      ],
+      "toc_ptr": [
+        3100,
+        3120,
+        3172,
+        3192,
+        3212,
+        13436
+      ]
+    }
+  },
+  {
+    "image": "0800",
+    "section": "0x0f",
+    "base": 542113856,
+    "entry": 542113860,
+    "functions": [
+      {
+        "name": "entry_halt",
+        "start": 542113860,
+        "end": 542113876,
+        "kind": "dispatch",
+        "notes": "Dispatcher (040 s3 pattern): call 0x20500938 (stack_init) @0x20500044, push zero @0x20500048, call 0x205002ac (main_loader) @0x2050004c, self-jump HALT @0x20500050 (jump 0x20500050). word0 @0x20500040 = 00000000 stamp-noop, entry=load+4 = ITOC param1. Reached only if main_loader returns normally; both main exits are computed jumps to ROM."
+      },
+      {
+        "name": "delay_status",
+        "start": 542113876,
+        "end": 542113912,
+        "kind": "misc",
+        "notes": "Delay+report helper, no direct callers in body - referenced as DATA: function pointer stored to main_loader descriptor table @0x20500614 (addi 0x54 + addi.hi 0x2050). Two spin loops (ld.i 0x831c / 0x821c, subsi 0x-1 back-branch b.t.0x1), CSR 0x200 <- r7 via r4=-0x100 @0x20500060-0x20500064 (same idiom as boot2 entry_gate tail), ret.d @0x20500074. Byte-identical in 0751 @0x20500054."
+      },
+      {
+        "name": "csr_config_init",
+        "start": 542113912,
+        "end": 542113988,
+        "kind": "misc",
+        "notes": "CSR config via (0x28 selector, data) pairs: CSR 0x20c <- 0x8000 @0x2050007c-0x20500084, RAM-window arithmetic (mask 0x7ffffffc, +0xc800) @0x20500088-0x205000a4. Function pointer in main_loader table @0x205005bc (addi 0x78 + addi.hi 0x2050). ret.d @0x205000c0. Same address in 0751."
+      },
+      {
+        "name": "stream_verify",
+        "start": 542113988,
+        "end": 542114344,
+        "kind": "verify",
+        "notes": "LIVE PATH of 0800 main (gate below): streaming image verifier. CSR 0x411 <- -0x801 (stage start) @0x20500100-0x20500104; r21 = size_get @0x20500108; -1 -> fail. Loop @0x2050012c-0x20501cc: at every 0x10000 boundary poll hw engine (0x20502e08) and reset address (0x20502e50, addr=r18+len) @0x20500134-0x2050014c; chunk len min(rem,0x100) @0x20500168-0x20500174; block_read(src, len>>4, sp+0x148, 2) @0x20500184 (flash chunk); chunk_process(buf, sp+8 ctx, len, off) @0x20500198 - result != 0 -> return 1 (fail); progress CSR 0x71b @0x205001b8-0x20501c0; loop while r18 < size. Tail call 0x205054f4 (verify_final) @0x205001d8, r5=r23 arg. Called only from main_loader early block @0x20500350 (0x205000c4 is 0800-only; in 0751 this address is main_loader itself)."
+      },
+      {
+        "name": "post_verify_report",
+        "start": 542114344,
+        "end": 542114476,
+        "kind": "verify",
+        "notes": "Post-verify-success step (called @0x20500378 after CSR 0x411 <- -0x802): ptr 0x205066e0 (16B const block 0x90 before H512 header 0x20506770) built @0x20500248-0x2050024c (addi 0x66e0 + addi.hi 0x2050); call 0x2050627c (sp+0x10, 0x205066e0, 0x10) @0x2050025c - copy/compare 16 bytes; reporter 0x20502aec x2 @0x2050026c/0x20500290; hw poll @0x20500274-0x20500284. 0800-only (no 0751 twin: verifier path absent there)."
+      },
+      {
+        "name": "main_loader",
+        "start": 542114476,
+        "end": 542116152,
+        "kind": "dispatch",
+        "notes": "0800 main, 419 w. Prologue CSR 0xbc -> [sp+4], frame 0x860, r23=ld.i 0xc800 (RDlo: low half only, full imm20 render lossy). Debug gate CSR 0x6d4 @0x205002e8-0x205002fc (skipped: b.f.0x0 on constant). GATE @0x20500300-0x20500304: ld.i r4,0xc481; b.bclr 0,r4 -> 0x20500388 - bit0 of 0x?c481 is 1, branch NOT taken -> live path = early block 0x20500308-0x20500384: op0x36 recount loop, call stream_verify @0x20500350, r4==0 -> CSR 0x411 <- -0x802 + call post_verify_report @0x20500378, else -0x804; exit CSR 0x0 <- -0x100 + ret.r r4 (jump to r4 value, slaspec ret.r = goto [RTlosrc]) @0x2050037c-0x20500384. Body 0x20500388+ (taken only if bit0=0 - static-dead from this entry; byte-twin of 0751 main_loader at -0x270): stack clear, call 0x2050165c @0x205003a4 + table_check(0x20501958) @0x205003b0 (err -0x1e -> error_report), CSR 0x12a/0x12b config (skipped: b.bclr 1 on 0xaa4), call 0x2050159c @0x20500414 + table_check (err -0x1f), MTCF scan loop 0x20500434-0x20500494 (magic 0x4d544346, entry field +0x14 masked 0x7ffffffc, block_read 1 word, match -> CSR 0x244 <- addr @0x20500488), RAM descriptor table build 0x20500498-0x205006dc (ptrs 0x2b5000/0x2b5110/0x2b3d80/0x2b5900/0x2b3980, RAM 0x000e0800/0x000e0c00, fn ptrs 0x20500054/0x20500078/0x20500934, 0x20503008, 0x20501eb4, 0x20502008-class ptr for 0751), 2-pass walk 0x205007c0-0x205008ac (handlers 0x20501bd4 pass2 / 0x20501fe4 pass1, stride 0x28, CSR 0x10 <- r17+0x8001 per entry @0x205007c8-0x205007cc), final call hw_cmd_500(0x33ffff,0,1,7) @0x205008d4, exit: read ptr chain + CSR 0x0 (csr.r) then ret.r r4 @0x205008e4-0x205008e8 (jump to CSR 0x0 value); normal epilogue ret.r r3 (ROM return) @0x20500930."
+      },
+      {
+        "name": "stack_init",
+        "start": 542116152,
+        "end": 542116184,
+        "kind": "misc",
+        "notes": "r1 = 0x207d1ff8 + (CSR 0x4 field << 13): csr.r r4,csr0x4 @0x20500938, mask32 r4,r4,0x9,4, set2/set3 0x207d1ff8, shl64.i 0xd, add @0x2050093c-0x20500950. Per-CPU stack top in boot2-mapped RAM region 0x207d0000 (boot2 map_regions). ret.d @0x20500954. Twin 0751 @0x205006c4; same code in IRON_PREP @0x20710c60."
+      },
+      {
+        "name": "error_report",
+        "start": 542118896,
+        "end": 542119100,
+        "kind": "misc",
+        "notes": "Error/status reporter: CSR 0xb8 <- code @0x20501404, CSR 0x411 <- r23 @0x20501408, call 0x20500958 (delay frame) @0x2050140c, CSR 0x400/0x484 pair for codes < -0x800 @0x20501418-0x20501424, spins. Callers: 0x205003c0, 0x20500430 (main_loader), 0x20501e9c, 0x2050205c (walk_handler), 0x20502480. Twin 0751 @0x20500ad8 (callers 0x20500150, 0x205001c0, 0x20501634, ...)."
+      },
+      {
+        "name": "hw_crc16_setup",
+        "start": 542119196,
+        "end": 542119324,
+        "kind": "verify",
+        "notes": "HW CRC16 engine programmer: CSR 0x69b <- 1 (enable?) @0x20501560, CSR 0x698/0x69c config, poly write CSR 0x699. ITOC-entry CRC class = poly 0x100b (same family as boot2 crc16_step / container crc16_mlx, arc A) - BOOT3 uses the HW engine instead of SW loop. Twin 0751 @0x20501720 (poly site 0x20501724)."
+      },
+      {
+        "name": "table_check",
+        "start": 542120280,
+        "end": 542120732,
+        "kind": "verify",
+        "notes": "Entry-table validator (called 2x from main_loader @0x205003b0/0x20500420 with 0x400B buffers built by 0x2050165c/0x2050159c): arg==-1 -> -1; count = 0xc483 & 0xff (mask32-field idiom, same as boot2) @0x205019a0-0x205019a8; walks 0x20-stride entries, ITOC magic pair check 0x2342cafa/0xbacafe00 at @0x20501600/0x20501614 lives in the 0x2050165c builder - see consumes.toc_ptr. Internal labels 0x205019d0/0x20501aec are jump targets. Twin 0751 @0x20500ff4 (byte-same logic, mask sites 0x20501030/0x2050105c)."
+      },
+      {
+        "name": "itoc_parse",
+        "start": 542120916,
+        "end": 542121248,
+        "kind": "load",
+        "notes": "ITOC structure parser: ITOC_HDR magic words 0x2342cafa/0xbacafe00 built set2/set3 @0x20501c48-0x20501c54, section tags 'mDev' 0x6d446576 @0x20501c38, 'Info' 0x496e666f @0x20501c40; op0x36 predicate dispatch @0x20501bec; 0x20-stride entry walk (r4 += 0x20). The ITOC walker of the chain (0751-live; in 0800 static-dead from main entry - reached only if ROM calls it directly, offline-invisible). Twin 0751 @0x205011b4 (magic sites 0x20501218-0x20501234); 0800 also has magic pair inside crypto region @0x20504298-0x205042a4 (fn 0x20504154, called from verify path 0x20505124/0x20505184)."
+      },
+      {
+        "name": "walk_handler",
+        "start": 542121956,
+        "end": 542123148,
+        "kind": "dispatch",
+        "notes": "Walk pass-1 entry handler (called from main_loader loop @0x20500818 with r4=r23 0xc800-class, r5=entry, r6=table, r7=0): dispatches per entry type byte [r6], calls itoc_parse @0x20502030, delay/poll fn 0x205014fc @0x20502410, error -1 -> CSR 0x10 write + error_report @0x2050205c. Twin 0751 @0x205015bc (calls itoc_parse 0x205011b4 @0x20501608, error_report -0x46 @0x20501634)."
+      },
+      {
+        "name": "block_read",
+        "start": 542124076,
+        "end": 542124780,
+        "kind": "load",
+        "notes": "Block/flash read via CSR 0x28 selector + 0x120/0x128 window pair + CSR 0x110/0x111/0x113/0x114/0x118 config cluster (15/5/3/3/2 sites); 6 call sites (0x20500184 stream_verify, 0x20500478 main MTCF scan, 0x205015d0, 0x205016d8 builders, 0x20501a30, 0x20501b78). Most-called section fn. Twin 0751 @0x20501d58 (CSR 0x100/0x108/0x110 cluster; 0x1000-step address build @0x20501f74-0x20501f88)."
+      },
+      {
+        "name": "hw_cmd_500",
+        "start": 542126520,
+        "end": 542126580,
+        "kind": "dispatch",
+        "notes": "HW command via CSR 0x500: spin (ld.i 0x8d00) @0x205031b8-0x205031c0, CSR 0x51f <- r5, command (r4<<6)|(r5<<27)|(r7<<24)|0xc0000000 -> CSR 0x500 @0x205031c8-0x205031e0, clear 0x500 @0x205031ec, ret.d @0x205031f0. Called at main_loader tail (0x205008d4) with (0x33ffff,0,1,7) - load/trigger class of the walk finish. Twin 0751 @0x205021b8 (call site 0x20500660)."
+      },
+      {
+        "name": "flash_read_cmd",
+        "start": 542126580,
+        "end": 542126668,
+        "kind": "load",
+        "notes": "Flash read via CSR 0x6e5/0x6e6/0x6e7/0x6e0 command class - byte-twin of boot2 flash_read_cmd: len>>6 -> CSR 0x6e5 @0x205031f4-0x205031f8, selector CSR 0x28 <- 0 @0x20503200, args -> 0x6e7/0x6e6 @0x20503204-0x20503208, command (r7<<14)|(r6<<16)|0xc0100000 -> CSR 0x6e0 @0x20503220-0x20503230, clear @0x20503244, ret.d @0x20503248. Callers 0x20501df4/0x20501e2c. Twin 0751 @0x2050226c (callers 0x205013d0/0x20501408)."
+      },
+      {
+        "name": "chunk_process",
+        "start": 542134176,
+        "end": 542134872,
+        "kind": "verify",
+        "notes": "Per-chunk processor of stream_verify (call site 0x20500198): call 0x2050500c family -> 0x20503f08 -> sha512_init(0x205058c8) and the 0x205058f8 update driver - hashes the 0x100B flash chunk into ctx sp+8; progress counters at sp+0x7c/0x80 @0x2050506c-0x20505090; mid-entry 0x2050508c is a called label (from 0x20503074) - shared-tail entry, not a separate function. Epilogue ret.r @0x20505254. 0800-only."
+      },
+      {
+        "name": "size_get",
+        "start": 542134872,
+        "end": 542134964,
+        "kind": "verify",
+        "notes": "Size/extent getter for stream_verify (call site 0x20500108): count from 0xc483 mask32 field @0x20505258-0x20505268, idx<<5 + table reads (0x15887e0>>3-class words) @0x2050526c-0x2050528c, lw.r lookups, returns size or -1 (ret.d @0x205052a8/0x205052b0). 0800-only."
+      },
+      {
+        "name": "verify_final",
+        "start": 542135540,
+        "end": 542135736,
+        "kind": "verify",
+        "notes": "Finalize+compare of stream_verify: call 0x20503cf0(0, sp+0x190) @0x20505520 (SHA-512 final), flag byte [sp+0x1b2] gate @0x20505524-0x2050552c, optional tail flash-read (block_read 0x20505564), digest extract 0x20503d38 -> 0x205059ec @0x20505574-0x20505584, COMPARE call 0x20505424(digest, r23) @0x20505590 - the verify-op decision point; fail -> 1 @0x20505598. 0800-only."
+      },
+      {
+        "name": "sha512_core",
+        "start": 542135748,
+        "end": 542136520,
+        "kind": "verify",
+        "notes": "SW SHA-512 block compression (frame 0x2e8 = 80x8B schedule): K512 table xref @0x20505610 (addi 0x-4a20-class + addi.hi -> 0x205067b0, builder-check pin), 64-bit rolis (shl64.i 0x15/shr 0xb pairs @0x20505648-class), round loop to 80. Called from 0x20505980/0x20505998/0x20505a9c (update driver family). 0800-only (0751 has no SW SHA in the boot chain - task-02 builder-check)."
+      },
+      {
+        "name": "sha512_init",
+        "start": 542136520,
+        "end": 542136568,
+        "kind": "verify",
+        "notes": "SHA-512 context init: H512 header xref @0x205058d0 (addi+addi.hi -> 0x20506770, 8x64B state words), call site from 0x20503f48 (fn 0x20503f08, the update/final driver used by chunk_process chain). 0800-only."
+      },
+      {
+        "name": "sha512_update",
+        "start": 542136568,
+        "end": 542136812,
+        "kind": "verify",
+        "notes": "SHA-512 update wrapper: buffers bytes into ctx until 0x80 (128B block) then calls sha512_core; called from 6 sites 0x205043d8-0x2050460c (the 0x20503f08-family drivers). ret.r @0x205059e8. 0800-only."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [],
+      "toc_ptr": [
+        542119424,
+        542119584,
+        542121016,
+        542130840
+      ]
+    }
+  },
+  {
+    "image": "0751",
+    "section": "0x0f",
+    "base": 542113856,
+    "entry": 542113860,
+    "functions": [
+      {
+        "name": "entry_halt",
+        "start": 542113860,
+        "end": 542113876,
+        "kind": "dispatch",
+        "notes": "Dispatcher: call 0x205006c4 (stack_init) @0x20500044, push zero, call 0x205000c4 (main_loader) @0x2050004c, self-jump HALT @0x20500050. word0 @0x20500040 stamp-noop 00000000, entry=load+4 (ITOC param1). Structure identical to 0800 entry_halt (same addresses)."
+      },
+      {
+        "name": "delay_status",
+        "start": 542113876,
+        "end": 542113912,
+        "kind": "misc",
+        "notes": "Byte-identical to 0800 delay_status @0x20500054 (same address): spin loops 0x831c/0x821c, CSR 0x200 write, ret.d @0x20500074. Function pointer in main_loader table @0x205003a0 (addi 0x54 + addi.hi 0x2050)."
+      },
+      {
+        "name": "csr_config_init",
+        "start": 542113912,
+        "end": 542113988,
+        "kind": "misc",
+        "notes": "Same address and bytes as 0800 csr_config_init: CSR 0x28/0x20c pairs, RAM-window arithmetic (+0xc800), ret.d @0x205000c0. Function pointer in main_loader table @0x20500348."
+      },
+      {
+        "name": "main_loader",
+        "start": 542113988,
+        "end": 542115524,
+        "kind": "dispatch",
+        "notes": "0751 main, 384 w - LIVE (no 0800-style gate; 0800 early block has no twin here). Prologue CSR 0xbc, frame 0x860, r23=ld.i 0xc800, debug CSR 0x6d4 gate @0x20500104-0x20500114 (skipped). Flow: call 0x20500cfc @0x20500134 (build 0x430 buffer) + table_check(0x20500ff4) @0x20500140 (err -0x1e -> error_report 0x20500ad8), CSR 0x12a/0x12b config (skipped: b.bclr 1 on 0xaa4 @0x20500158), call 0x20500c40 @0x205001a4 (build sp+0x30 buffer) + table_check @0x205001b0 (err -0x1f), MTCF scan loop 0x205001c4-0x20500220 (magic 0x4d544346, field +0x14 masked 0x7ffffffc, block_read 0x20501d58 1-word reads @0x20500204, match -> CSR 0x244 <- addr @0x20500214), RAM descriptor table build 0x20500224-0x205004ec (same value set as 0800: 0x2b5000/0x2b5110/0x2b3d80/0x2b5900/0x2b3980, 0x000e0800/0x000e0c00, fn ptrs 0x20500054/0x20500078/0x205006c0-class, 0x20502008, 0x20501490), 2-pass walk 0x2050054c-0x20500638 (handlers: pass1 0x205015bc @0x205005a4, pass2 0x205011b4 @0x2050058c; CSR 0x10 <- r17+0x8001 per entry), final call hw_cmd_500(0x33ffff,0,1,7) @0x20500660, exit: ptr-chain read + csr.r CSR 0x0 then ret.r r4 (jump to CSR 0x0 value) @0x20500664-0x20500674; normal epilogue ret.r r3 @0x205006bc, ret.d @0x205006c0. Structural twin of 0800 main_loader body at -0x270."
+      },
+      {
+        "name": "stack_init",
+        "start": 542115524,
+        "end": 542115556,
+        "kind": "misc",
+        "notes": "r1 = 0x207d1ff8 + (CSR 0x4 field << 13), same as 0800 stack_init @0x20500938. ret.d @0x205006e0."
+      },
+      {
+        "name": "error_report",
+        "start": 542116568,
+        "end": 542116732,
+        "kind": "misc",
+        "notes": "Twin of 0800 error_report @0x205013f0: CSR 0xb8 <- code @0x20500aec, CSR 0x411 @0x20500af0, delay call 0x20500b7c, CSR 0x400/0x484 pair. Callers 0x20500150, 0x205001c0 (main), 0x20501634 (walk_handler), ..."
+      },
+      {
+        "name": "table_check",
+        "start": 542117876,
+        "end": 542118324,
+        "kind": "verify",
+        "notes": "Twin of 0800 table_check @0x20501958: arg==-1 -> -1 @0x20501028-0x2050104c; count = 0xc483 & 0xff @0x2050103c-0x20501044; 0x20-stride walk. Called 2x from main_loader @0x20500140/0x205001b0. Internal labels 0x2050106c/0x20501184 are jump targets."
+      },
+      {
+        "name": "itoc_parse",
+        "start": 542118324,
+        "end": 542118652,
+        "kind": "load",
+        "notes": "ITOC parser - LIVE here (0751): magic 0x2342cafa/0xbacafe00 built set2/set3 @0x20501228-0x20501234, tags 'mDev' 0x6d446576 @0x20501218, 'Info' 0x496e666f @0x20501220; op0x36 predicate @0x205011f8; entry stride 0x20 @0x20501208. Called from walk_handler @0x20501608 and main walk pass2 @0x2050058c. Twin 0800 @0x20501bd4 (static-dead there)."
+      },
+      {
+        "name": "walk_handler",
+        "start": 542119356,
+        "end": 542119712,
+        "kind": "dispatch",
+        "notes": "Walk pass-1 handler: entry byte [r6] dispatch, call itoc_parse 0x205011b4 @0x20501608, result -1 -> CSR 0x10 <- 0xc0100100-class + entry-type gate -> error_report(-0x46) @0x20501634, bit15 gate on [r6] @0x2050163c, mask 0x7ffffffc. Called from main walk @0x205005a4. Twin 0800 @0x20501fe4. hw_crc16_setup call site @0x20501958 sits past this range (loop-back region of the CRC fn)."
+      },
+      {
+        "name": "hw_crc16_setup",
+        "start": 542119712,
+        "end": 542120544,
+        "kind": "verify",
+        "notes": "HW CRC16 engine programmer (twin 0800 @0x2050151c): poly 0x100b -> CSR 0x699 @0x20501720-0x20501724, CSR 0x698 <- 0x40001f0f @0x20501728-0x2050172c, CSR 0x69c <- -1 (seed) @0x20501734-0x20501738; then entry walk (ld.b [r21], type-3 gate @0x2050177c, alu.0x7f, hw_crc engine regs 0x698/0x69b) with loop-back jump 0x20501720 @0x20501958 (tail restart = one function with internal loop; internal labels 0x20501920/0x205019f0/0x205019f4). ITOC-entry CRC class poly 0x100b - HW engine replaces boot2 SW crc16."
+      },
+      {
+        "name": "block_read",
+        "start": 542121304,
+        "end": 542121992,
+        "kind": "load",
+        "notes": "Twin of 0800 block_read @0x2050282c: CSR 0x28 + 0x100/0x108/0x110/0x113/0x114/0x118/0x120/0x128 window cluster; 0x1000-step address build @0x20501f74-0x20501f88 (subsi 0x1000, addi.hi 0x1). Callers: 0x20500204 (main MTCF scan), 0x20500c70, 0x20500d74, 0x205010c8, 0x2050125c, 0x20501504. ret.r @0x20502004."
+      },
+      {
+        "name": "hw_cmd_500",
+        "start": 542122424,
+        "end": 542122484,
+        "kind": "dispatch",
+        "notes": "Twin of 0800 hw_cmd_500 @0x205031b8: spin 0x8d00, CSR 0x51f <- r5, command |0xc0000000 -> CSR 0x500 @0x205021d8-0x205021e0, clear, ret.d @0x205021f0. Called at main_loader tail @0x20500660."
+      },
+      {
+        "name": "flash_read_cmd",
+        "start": 542122604,
+        "end": 542122720,
+        "kind": "load",
+        "notes": "Flash read CSR 0x6e5/0x6e6/0x6e7/0x6e0 - byte-twin of boot2 flash_read_cmd and 0800 @0x205031f4: len>>6 -> 0x6e5 @0x2050226c, selector 0x28 <- 0 @0x20502274, args 0x6e7/0x6e6 @0x2050227c-0x20502280, command |0xc0100000 -> 0x6e0 @0x20502298-0x205022a8, clear @0x205022bc, ret.d @0x205022c0. Callers 0x205013d0/0x20501408 (slot-size 0x40 read region - hashes-table slot consumer candidate [H], see journal task-04)."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [],
+      "toc_ptr": [
+        542117024,
+        542117184,
+        542118424
+      ]
+    }
+  },
+  {
+    "image": "0800",
+    "section": "0x05",
+    "base": 544276480,
+    "entry": 544301992,
+    "functions": [
+      {
+        "name": "stack_init",
+        "start": 544279648,
+        "end": 544279680,
+        "kind": "misc",
+        "notes": "r1 = 0x207d1ff8 + (CSR 0x4 field << 13) - same code as BOOT3 stack_init (0800 0x20500938 / 0751 0x205006c4), shared at the SAME address in both versions (head region 0x20710000-0x20711b50 is byte-shared IRON library). ret.d @0x20710c7c."
+      },
+      {
+        "name": "entry_halt",
+        "start": 544301992,
+        "end": 544302008,
+        "kind": "dispatch",
+        "notes": "Dispatcher (040 s3 pattern), entry = ITOC param1 = param0 + 0x63a8 (NOT load+4): call 0x20710c60 (stack_init) @0x207163a8, push zero, call 0x20716a48 (main) @0x207163b0, self-jump HALT @0x207163b4. No gate - unlike BOOT3 0800, main runs unconditionally."
+      },
+      {
+        "name": "main",
+        "start": 544303688,
+        "end": 544304172,
+        "kind": "dispatch",
+        "notes": "IRON main, 121 w: CSR 0xbc prologue, frame 0x230, debug gate CSR 0x1 <- 0x4af4 + spin on 0x1b27 bit0 (b.bclr 0) @0x20716a74-0x20716a84, CSR 0x328 @0x20716a90, call 0x20720708(0) @0x20716a98, gate 0xc00a bit16 @0x20716a9c, CSR 0x28/0xa config @0x20716ab4; tail sequence call 0x207159dc @0x20716bbc, call 0x20719a70 @0x20716bc0, call 0x20718998 @0x20716bc4 - 0x20718998 chains (via 0x20718a78 -> 0x20728590) to sha256_update 0x207281b8: SW SHA-256 IS on the main path (K256 tail consumer); debug-const gates 0x37dd/0x37f1/0x37fd/0x3809 @0x20716bc8-0x20716bf8 -> conditional 0x20729248/0x20728f7c; exit CSR 0x0 <- -0x100 + ret.r r4 (jump to r4, ROM protocol) @0x20716c00-0x20716c08; normal epilogue ret.r r3 @0x20716c1c. Structural twin 0751 @0x207169c0."
+      },
+      {
+        "name": "sha256_update",
+        "start": 544375224,
+        "end": 544375372,
+        "kind": "verify",
+        "notes": "SW SHA-256 update (byte-buffer): appends bytes to ctx buffer [r4+0x100], when full (0x40 = 64B block) calls sha256_core @0x2072820c; loop @0x207281e4-0x20728210. Called from 0x20728610 (fn 0x20728590, the update driver reached from main via 0x20718998 -> 0x20718a78). Twin 0751 @0x20727fe8 (call 0x2072807c @0x2072803c). Role: crypto step on the IRON main path (cert/key-prep class - IRON_PREP name); verify-op vs other processing = Task 5 verdict material."
+      },
+      {
+        "name": "sha256_core",
+        "start": 544375372,
+        "end": 544375920,
+        "kind": "verify",
+        "notes": "SW SHA-256 block compression: K256 table xref @0x20728314 (addi 0x-4a20 + addi.hi 0x2073 -> 0x2072b5e0, builder-check pin; table x64 runs to 0x2072b7e0), 64-bit rolis (shl64.i 0x15/shr 0xb) @0x20728354-0x2072835c. Twin 0751 @0x2072807c (K256 0x2072b420 xref @0x20728144)."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [],
+      "toc_ptr": []
+    }
+  },
+  {
+    "image": "0751",
+    "section": "0x05",
+    "base": 544276480,
+    "entry": 544301856,
+    "functions": [
+      {
+        "name": "stack_init",
+        "start": 544279648,
+        "end": 544279680,
+        "kind": "misc",
+        "notes": "Byte-identical to 0800 stack_init at the same address 0x20710c60 (shared head library region)."
+      },
+      {
+        "name": "entry_halt",
+        "start": 544301856,
+        "end": 544301872,
+        "kind": "dispatch",
+        "notes": "Dispatcher, entry = param0 + 0x6320: call 0x20710c60 (stack_init), push zero, call 0x207169c0 (main) @0x20716328, self-jump HALT @0x2071632c. Twin 0800 @0x207163a8 (+0x88 delta)."
+      },
+      {
+        "name": "main",
+        "start": 544303552,
+        "end": 544304036,
+        "kind": "dispatch",
+        "notes": "Twin of 0800 main @0x20716a48 (-0x88): CSR 0x1 <- 0x4af4, 0x1b27 spin, CSR 0x328, call 0x20720708(0), 0xc00a gate; tail calls 0x20715960-class/ 0x207199c8-class/0x20718910 @0x20716b34-0x20716b3c - 0x20718910 chains (0x207189f0 -> 0x207283c0) to sha256_update 0x20727fe8: SW SHA-256 on the main path (same structure as 0800); debug gates; exit CSR 0x0 <- -0x100 + ret.r r4 @0x20716b78-class; normal epilogue ret.r r3."
+      },
+      {
+        "name": "sha256_update",
+        "start": 544374760,
+        "end": 544374908,
+        "kind": "verify",
+        "notes": "Twin of 0800 sha256_update @0x207281b8: byte-append to ctx [r4+0x100], 0x40-block flush -> call 0x2072807c @0x2072803c. Callers: 0x20728440 (fn 0x207283c0 <- 0x20718ae4 in 0x207189f0 <- main tail chain)."
+      },
+      {
+        "name": "sha256_core",
+        "start": 544374908,
+        "end": 544375456,
+        "kind": "verify",
+        "notes": "Twin of 0800 sha256_core @0x2072824c: K256 xref @0x20728144 (addi/addi.hi -> 0x2072b420, builder-check pin), 64-bit rolis. ret.d epilogue."
+      }
+    ],
+    "consumes": {
+      "boot_record": [],
+      "hashes_table": [],
+      "toc_ptr": []
+    }
+  }
+]
