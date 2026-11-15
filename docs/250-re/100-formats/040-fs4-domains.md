@@ -62,6 +62,27 @@
   (sha256-префикс `7af41c9b`) — общий blob, не карт-специфичный.
 - MAIN_CODE — clcrc=1 (64B+4B CRC) у всех 9 (FS3 и FS4); хеш MAIN в
   подписи считается по коду **без** line-CRC (de-clcrc-вид).
+- **CX-7 28.33-класс (предрелизы, n=2, арка securefw-arc-b 2026-11-15;
+  детали/пины — 051 §10)**: бут-цепочка доказана глубже —
+  ROM → boot2 @0x1000 (вне ITOC, Carmel-контейнер; entry=body+4,
+  первая операция — CRC16-gate) → BOOT3 0x0f (entry = param0+4) →
+  IRON_PREP 0x05 → ROM. Доказанное:
+  - entry-конвенции: boot2/BOOT3 = load+4; IRON_PREP = param0+0x6320
+    (0751) / +0x63a8 (0800); MAIN 0x03 = 0x20800000, entry 0x2080ac58
+    (не load+4); PCI_CODE-правило §3 на CX-7 выполняется только для
+    boot2/BOOT3.
+  - Диспетчер BOOT3/IRON (и boot2 CX-6Dx/CX-5 — тот же скелет):
+    `call stack_init → push zero → call main → self-jump HALT`;
+    стек = 0x207d1ff8 + (CSR 0x4 << 13).
+  - Переходы между стадиями — **ROM-диспетчеризация** (CSR 0xbc-протокол;
+    0 прямых call/jump между секциями; 0 ниже-базовых вызовов): на CX-7
+    CX-6Dx-prelude-паттерн (§ п. про 0x05) инвертирован — ROM
+    многократно вызывает секции-библиотеки; секции возвращаются
+    RETURN-ом.
+  - ITOC-walk по поколениям: CX-5/CX-6Dx — в boot2, live-путь main;
+    CX-7 — в BOOT3 (0751: itoc_parse + HW CRC16 CSR 0x699; 0800:
+    лоадер мёртв от entry, live = SW SHA-512 стрим-verify); в boot2
+    CX-7 кластер есть, но ROM-only (051 §10.4).
 
 ## 4. Размеры boot-секций (flash-size / load / entry-offset)
 

@@ -442,6 +442,26 @@ lo11=0x022` (B, live-опровержение `& ~2`, маска 0x6). Прав�
   412/412, wedge=none/recovery=0; отчёт
   `docs/superpowers/reports/mlxscope-battery.md`.
 
+### Backlog-кандидат (не запланирован): cx7-isa-census-a — Gen5 transfer-check — [ ]
+
+Дата идеи: 2026-11-14 (после арки securefw-arc-a; владелец: не горит).
+Материал: провизорный профиль `scripts/irisc/profiles/cx7.json` — census
+33 unknown-опа, 14 881 слово; топ-4 = 96% массы: 0x36 (4750), 0x0d
+(4701), 0x33 (3453), 0x34 (1405) — все четыре имеют смёрженные Gen4
+семантики/формы из isa-max (0x0d `and.hi`, 0x33 `:dep`, 0x34 P-формула,
+0x36 `:cmp36.eq32` MAIN f5=4 + live-only оси parked). Метод = isa-max-a
+(корпус-статистика + merge-волна + гейты crosscheck
+decoder_bug=0/unclassified=0), но первый шаг — не стат-дожим, а
+**transfer-check**: прогон существующих Gen4-форм по cx7-сайтам, per-op
+decode-delta + конфликты. Подтверждение = 2 независимые сборки
+(0751↔0800) + Gen4-прецедент (правило 2-подтверждений); live-слой
+(isa-max-b класс) недоступен — карта на 28.36, burn предрелиза
+owner-gated (200 §Правила) → слияние только corroborated, остальное
+[H]/residual. Ожидаемый эффект: MAIN decode 0.875 → ~0.95+. Связь:
+roadmap 200 арка B2 (апгрейд читаемости Gen5-кода; не блокер —
+boot-материал уже 96–98% known-form). При старте — полный пайплайн
+(brainstorm → спека → план).
+
 ## Фаза II — On-demand исполнение (арка S0–S5, по спеке) — [~]
 
 Спека: `2026-09-22-irisc-ondemand-exec-read-design.md` (критерии C1–C4,
