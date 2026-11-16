@@ -2,6 +2,7 @@ mod dump;
 mod dumps;
 mod flowtable;
 mod fuzzvec;
+mod ramread;
 mod scan;
 mod trace;
 
@@ -45,6 +46,9 @@ enum Command {
     /// Fuzz-vector run: CR seed + sentinel, CREATE → Qcreated(40B payload)
     /// → DESTROY, dual-channel verify (echo zone + CR readback)
     Fuzzvec(fuzzvec::FuzzvecArgs),
+    /// Batched iRISC RAM single-word reads via the v5l exec channel
+    /// (one session, nonce-validated 36B read frames, value -> CR 0x2388)
+    Ramread(ramread::RamreadArgs),
 }
 
 #[derive(Parser, Debug)]
@@ -367,6 +371,7 @@ fn main() -> anyhow::Result<()> {
         Some(Command::Dump { cmd }) => return dump::run_cmd(cmd),
         Some(Command::Flowtable(args)) => return flowtable::run(&args),
         Some(Command::Fuzzvec(args)) => return fuzzvec::run(&args),
+        Some(Command::Ramread(args)) => return ramread::run(&args),
         None => {}
     }
     validate_detour_mode(args.input_hex.as_deref(), args.detour_mode)?;
