@@ -44,6 +44,23 @@
   :2192/:3767; FS5-мисматч исключён). Коммит `2e83526f` («[burn-tools] bugs
   fixes») — до него encrypted-на-unencrypted шёлся свободно; pinned уже
   содержит.
+- FW-гейт записи (live, encrypted FB; per-version 28.34/28.36, n=1 на
+  версию): plain per-component MCC burn слот-формата FW отвергает
+  детерминированно на 1% boot-компоненты — `Firmware internal error`
+  (reg-access INT_ERR, ~6 c), нулевой residue. Два класса входа, одна
+  сигнатура: ri-дамп слота 28.34.4000 (multiburn, журнал
+  `2026-11-10-cx7-multiburn-keystream`) и аутентичный same-image
+  delivery-контейнер 28.36.1010 (V1c, журнал
+  `2026-11-15-perburn-mcc-28.36`) → «booted encrypted FW не принимает
+  per-component MCC-write слот-формата» усилено [S]; same-version защита
+  не исключена (версия одна и та же в обеих пробах). Уточнение (V1a/V1b,
+  журнал `2026-11-15-fnp-tails-dynamics`): residue физически ЕСТЬ в голове
+  неактивного банка (93 892 B: plaintext-стадии == поставке, шифрозоны
+  стёрты-в-FF, маг не финализирован) — «нулевой residue» верен только для
+  окна активного слота. Per-burn на MCC-пути закрыт как неразрешимый на
+  доступном материале (владелец 2026-11-15: второго экземпляра
+  FB_0000000038 нет и не будет — источник исчерпан; не найдено ≠
+  опровергнуто).
 - `.pldm` из zip — PLDM rev 1-обёртка того же блоба (байт-в-байт, без 16 B
   мага); `dc` на зашифрованном: «Operation not supported on an encrypted
   image»; verify зашифрованного флеша запрещён (fsctrl_ops.cpp:523).
@@ -396,7 +413,8 @@ per-burn класса недостаточен в любом случае.
 > Источник: арка securefw-arc-b (roadmap 200 B; спека
 > `docs/superpowers/specs/2026-11-15-securefw-arc-b-design.md`,
 > live-спека `…-live-design.md`), журналы
-> `2026-11-15-securefw-arc-b-task-01..09.md`. Инструментарий:
+> `2026-11-15-securefw-arc-b-task-01..09.md` + V1c
+> `2026-11-15-perburn-mcc-28.36.md`. Инструментарий:
 > `scripts/probes/securefw-arc-b/` (boot_disasm.py, annotations.py,
 > sidecar-канон boot2_annotations.json — TDD), артефакты дизасма —
 > untracked `build/securefw-arc-b/`. Всё ниже — **28.33-класс
@@ -521,7 +539,7 @@ ROM-dump (`docs/850-howto/130-rom-dump.md`, ready-рецепт, owner-gated).
   IRON (H-W4); семантика HW-команд CSR 0x220/0x500/0x6e0 (офлайн
   невидима).
 
-### 10.6 Live-полигон 28.36.1010 (FNP raw-dump, read-only, task-07)
+### 10.6 Live-полигон 28.36.1010 (task-07 raw-dump; V1c boot-proof + MCC-отказ)
 
 - Дамп `refs/fw/cx-7/dumps/fb-28.36.1010/cx7-fb-fnp-raw.bin` (32 MB, md5
   `2842c737…`): layout бут-стадий = prod-класс один-в-один с
@@ -543,6 +561,36 @@ ROM-dump (`docs/850-howto/130-rom-dump.md`, ready-рецепт, owner-gated).
   ПОСЛЕ успешной активации/бута 28.36 (в инцидентном recovery-burn без
   бута не возникали) — **open-факт [H]**: scrub/staging/ключевой
   материал; вход live-спеки V1a.
+- **Boot-proof 28.36 (V1c Step 0, 2026-11-15, журнал
+  `2026-11-15-perburn-mcc-28.36`)**: первый main-FW бут после кросс-PSID
+  FNP-burn 2026-11-14 и FNP-выхода (джампер снят владельцем) — слот A
+  (as-is FNP-записанный дистрибутив) **бутится чисто**: dmesg `firmware
+  version: 28.36.1010` на обеих PF (2 PF — SKU-класс 2p single-Host
+  crypto_sb, не 4-PF multi-host 28.34-эры), E-Switch/IPSec подняты.
+  Тайминги V2-базлайна: power-on→kernel-start ≈ 78 c,
+  kernel-start→mlx5-probe ≈ 13.8 c (power-on→probe ≈ 92 c), power-on→ssh
+  ≈ 106 c.
+- **Слот A: нулевой дрифт + MCC re-burn отказ (V1c Step 1/2)**:
+  baseline-окно rb [0x0,0x57F770) байт-идентично срезу task-07 дампа;
+  same-image burn по plain MCC отвергнут FW (INT_ERR@1%, см. §2),
+  post-окно == baseline (нулевой residue) → per-burn дискриминация на
+  MCC-пути 28.36 **не разрешена** (не найдено ≠ опровергнуто): §8.2 ст. 6
+  [S] остаётся открытой, keystream-сэмпл №3 не получен; нетленный
+  same-PSID вход на этой карте закрыт фактом.
+- **V1a/V1b (2026-11-15, журнал `2026-11-15-fnp-tails-dynamics`)**:
+  random-хвосты **статичны** во всех наблюдённых состояниях (== task-07
+  дамп; main-FW сессия с бутом/рантаймом + ×3 FNP-бута, вкл. 2 IPMI
+  cold-cycle, хвосты/`NV_DATA0`/`q full` байт-идентичны 4/4 измерений,
+  ent 7.995/7.999) → recovery ROM в FNP хвосты НЕ пишет, main-FW период
+  тоже; хвосты = однократная запись окна первой активации/бута 28.36,
+  семантика (scrub/staging/ключевой материал) остаётся open;
+  «NV_DATA0 = улика main-FW работы» подтверждена (FNP-буты его не пишут).
+  Попутно-канон: физический residue отказавшего V1c burn — в голове
+  неактивного слота B (93 892 B; порядок MCC-записи: plaintext-стадии
+  (boot_record/ITOC/boot2/hashes) == поставке ДО шифрозон; enc-ITOC/
+  секции стёрты-в-FF и не записаны; маг @0x0 не финализирован) —
+  «нулевой residue» V1c верен только в окне активного слота; per-burn
+  сэмпл этим путём не достижим.
 - Live-спека B3: `docs/superpowers/specs/2026-11-15-securefw-arc-b-live-design.md`
   (V1 наблюдательные → V2 инструментированный 28.33 → V3 SB-основа;
   owner-gated, исполнение вне арки).

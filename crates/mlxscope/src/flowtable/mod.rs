@@ -1,3 +1,5 @@
+use std::fs::OpenOptions;
+use std::io::Write as _;
 use std::path::PathBuf;
 use std::time::{Duration, Instant};
 
@@ -22,6 +24,9 @@ pub const RD2_MAGIC_OFF: usize = 0x18;
 pub const RD2_MARKER_OFF: usize = 0x1a;
 pub const RD2_TRIG_LEN: usize = 0x40;
 
+pub const DUMP_STRIDE: usize = 0x28;
+pub const STALL_FLOOR: u64 = 0xFFFF_8000;
+
 #[derive(Args, Debug)]
 pub struct FlowtableArgs {
     #[arg(long, default_value = "/sys/bus/pci/devices/0000:81:00.0")]
@@ -38,6 +43,19 @@ pub struct FlowtableArgs {
     pub rd2_trig: bool,
     #[arg(long)]
     pub rd2_dump_raw: Option<PathBuf>,
+    #[arg(long, value_parser = crate::ramread::parse_addr)]
+    pub dump_addr: Option<u32>,
+    #[arg(long, value_parser = parse_len)]
+    pub dump_len: Option<usize>,
+    #[arg(long)]
+    pub dump_out: Option<PathBuf>,
+}
+
+pub fn parse_len(s: &str) -> anyhow::Result<usize> {
+    let t = s.trim().trim_start_matches("0x");
+    let v = usize::from_str_radix(t, 16)
+        .map_err(|e| anyhow::anyhow!("len {s:?}: {e}"))?;
+    Ok(v)
 }
 
 pub fn build_query(tt: u8, id: u32) -> Vec<u8> {
@@ -208,6 +226,141 @@ pub fn ensure_kb_clean(losses: usize) -> anyhow::Result<()> {
     Ok(())
 }
 
+pub fn build_dump_payload(addr: u32, i: usize) -> [u8; PAYLOAD_LEN] {
+    let mut p = kb_payload(i);
+    p[0..4].copy_from_slice(&addr.to_be_bytes());
+    p
+}
+
+pub fn dump_read_window(out: &[u8]) -> Option<&[u8]> {
+    out.get(0x10..0x38)
+}
+
+pub fn validate_dump_args(
+    dump_addr: Option<u32>,
+    dump_len: Option<usize>,
+    dump_out: bool,
+    payload: bool,
+    kb: bool,
+    rd2_trig: bool,
+) -> anyhow::Result<()> {
+    let dump = dump_addr.is_some() || dump_len.is_some() || dump_out;
+    if !dump {
+        return Ok(());
+    }
+    anyhow::ensure!(!payload, "--dump-addr and --payload-hex are mutually exclusive");
+    anyhow::ensure!(!kb, "--dump-addr and --kb-demo are mutually exclusive");
+    anyhow::ensure!(!rd2_trig, "--dump-addr and --rd2-trig are mutually exclusive");
+    anyhow::ensure!(dump_addr.is_some(), "--dump-len/--dump-out require --dump-addr");
+    anyhow::ensure!(dump_len.is_some(), "--dump-addr requires --dump-len");
+    anyhow::ensure!(dump_out, "--dump-addr requires --dump-out");
+    let len = dump_len.unwrap();
+    anyhow::ensure!(len >= 4 && len % 4 == 0, "--dump-len must be >= 4 and 4-aligned, got {len}");
+    let cmds = len.div_ceil(DUMP_STRIDE);
+    let read_end = dump_addr.unwrap() as u64 + cmds as u64 * DUMP_STRIDE as u64;
+    anyhow::ensure!(
+        read_end <= STALL_FLOOR,
+        "dump window 0x{:08x}..0x{:010x} reaches the stall aperture (>= 0x{:08x})",
+        dump_addr.unwrap(),
+        read_end,
+        STALL_FLOOR
+    );
+    Ok(())
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct DumpOutcome {
+    pub ok: usize,
+    pub cmds: usize,
+}
+
+pub fn dump_run(
+    tt: u8,
+    base_addr: u32,
+    total_len: usize,
+    created_id: u32,
+    exec: &mut dyn FnMut(&[u8], u32) -> anyhow::Result<(Vec<u8>, u8)>,
+    out_path: &std::path::Path,
+    verbose_first: usize,
+    progress_every: usize,
+) -> anyhow::Result<(DumpOutcome, Duration)> {
+    let cmds = total_len.div_ceil(DUMP_STRIDE);
+    let mut file = match OpenOptions::new()
+        .create(true)
+        .truncate(true)
+        .write(true)
+        .open(out_path)
+    {
+        Ok(f) => f,
+        Err(e) => {
+            let destroy = build_destroy(tt, created_id);
+            let _ = exec(&destroy, DESTROY_OUTLEN);
+            return Err(e.into());
+        }
+    };
+    let mut ok = 0usize;
+    let cmd_time = Instant::now();
+    for i in 0..cmds {
+        let addr = base_addr as u64 + (i * DUMP_STRIDE) as u64;
+        let payload = build_dump_payload(addr as u32, i);
+        let query = build_query_payload(tt, created_id, &payload);
+        let (out, err) = match exec(&query, QUERY_OUTLEN) {
+            Ok(r) => r,
+            Err(e) => {
+                let _ = file.flush();
+                let destroy = build_destroy(tt, created_id);
+                let _ = exec(&destroy, DESTROY_OUTLEN);
+                return Err(e);
+            }
+        };
+        let (status, _syndrome) = parse_status(&out);
+        let window = dump_read_window(&out);
+        if i < verbose_first {
+            log_command(
+                &format!("query(created,dump={})", i + 1),
+                &query,
+                &out,
+                err,
+                None,
+            );
+        }
+        if err != 0 || status != 0 || !canary_6f28(&out) || window.is_none() {
+            let _ = file.flush();
+            let destroy = build_destroy(tt, created_id);
+            let _ = exec(&destroy, DESTROY_OUTLEN);
+            anyhow::bail!(
+                "dump FAIL i={i} addr=0x{addr:08x} err={err} status=0x{status:02x} \
+                 canary={} window={} in={} out={}",
+                canary_6f28(&out),
+                window.is_some(),
+                to_hex(&query),
+                to_hex(&out[..out.len().min(0x40)])
+            );
+        }
+        let take = total_len.saturating_sub(i * DUMP_STRIDE).min(DUMP_STRIDE);
+        if let Err(e) = file.write_all(&window.unwrap()[..take]) {
+            let _ = file.flush();
+            let destroy = build_destroy(tt, created_id);
+            let _ = exec(&destroy, DESTROY_OUTLEN);
+            return Err(e.into());
+        }
+        ok += 1;
+        if progress_every > 0 && (i + 1) % progress_every == 0 {
+            println!("[dump] i={}/{} addr=0x{:08x} ok={}", i + 1, cmds, addr, ok);
+        }
+    }
+    if let Err(e) = file.flush() {
+        let destroy = build_destroy(tt, created_id);
+        let _ = exec(&destroy, DESTROY_OUTLEN);
+        return Err(e.into());
+    }
+    let elapsed = cmd_time.elapsed();
+    let destroy = build_destroy(tt, created_id);
+    let (dout, derr) = exec(&destroy, DESTROY_OUTLEN)?;
+    log_command("destroy", &destroy, &dout, derr, None);
+    Ok((DumpOutcome { ok, cmds }, elapsed))
+}
+
 pub fn validate_flowtable_args(
     payload: bool,
     kb: Option<usize>,
@@ -346,6 +499,14 @@ pub fn run(args: &FlowtableArgs) -> anyhow::Result<()> {
         args.rd2_trig,
         args.rd2_dump_raw.is_some(),
     )?;
+    validate_dump_args(
+        args.dump_addr,
+        args.dump_len,
+        args.dump_out.is_some(),
+        payload.is_some(),
+        args.kb_demo.is_some(),
+        args.rd2_trig,
+    )?;
     let kb_n = match args.kb_demo {
         Some(n) => {
             anyhow::ensure!(n >= KB_MIN, "--kb-demo must be >= {}, got {}", KB_MIN, n);
@@ -400,6 +561,31 @@ pub fn run(args: &FlowtableArgs) -> anyhow::Result<()> {
     let (out, err) = cmdif.try_exec_command(&create, CREATE_OUTLEN)?;
     let created_id = parse_table_id(&out);
     log_command("create", &create, &out, err, Some(created_id));
+
+    if let (Some(addr), Some(len), Some(dump_out)) =
+        (args.dump_addr, args.dump_len, args.dump_out.clone())
+    {
+        println!(
+            "[s2trig] dump mode: addr=0x{addr:08x} len=0x{len:x} cmds={} out={}",
+            len.div_ceil(DUMP_STRIDE),
+            dump_out.display()
+        );
+        let mut exec = |f: &[u8], outlen: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+            Ok(cmdif.try_exec_command(f, outlen)?)
+        };
+        let (oc, cmd_time) =
+            dump_run(args.tt, addr, len, created_id, &mut exec, &dump_out, 3, 512)?;
+        let secs = cmd_time.as_secs_f64().max(1e-9);
+        println!(
+            "dump: addr=0x{addr:08x} len=0x{len:x} ok={}/{} cmd/s={:.1} B/s={:.1}",
+            oc.ok,
+            oc.cmds,
+            oc.ok as f64 / secs,
+            (oc.ok * DUMP_STRIDE) as f64 / secs
+        );
+        anyhow::ensure!(oc.ok == oc.cmds, "dump incomplete: {}/{}", oc.ok, oc.cmds);
+        return Ok(());
+    }
 
     if let Some(n) = kb_n {
         let mut exec = |f: &[u8], outlen: u32| -> anyhow::Result<(Vec<u8>, u8)> {
@@ -1043,9 +1229,220 @@ mod tests {
         assert!(validate_flowtable_args(false, Some(30), false, false).is_ok());
         assert!(validate_flowtable_args(false, None, true, false).is_ok());
         assert!(validate_flowtable_args(false, None, true, true).is_ok());
-        assert!(validate_flowtable_args(true, Some(30), false, false).is_err());
         assert!(validate_flowtable_args(true, None, true, false).is_err());
         assert!(validate_flowtable_args(false, Some(30), true, false).is_err());
+        assert!(validate_flowtable_args(true, Some(30), false, false).is_err());
         assert!(validate_flowtable_args(false, None, false, true).is_err());
+    }
+
+    // ---------- dump mode (romdump rd-reader channel) ----------
+
+    fn dump_out_frame(query: &[u8]) -> Vec<u8> {
+        let addr = u32::from_be_bytes([
+            query[0x18], query[0x19], query[0x1a], query[0x1b],
+        ]);
+        let mut out = vec![0u8; 0x40];
+        for k in 0..10usize {
+            let w = addr.wrapping_add((4 * k) as u32) | 0xdead0000;
+            out[0x10 + 4 * k..0x14 + 4 * k].copy_from_slice(&w.to_be_bytes());
+        }
+        out[0x3a] = 0x6f;
+        out[0x3b] = 0x28;
+        out
+    }
+
+    fn expected_dump_bytes(base: u32, total_len: usize) -> Vec<u8> {
+        let mut want = Vec::new();
+        let cmds = total_len.div_ceil(DUMP_STRIDE);
+        for i in 0..cmds {
+            let addr = base as u64 + (i * DUMP_STRIDE) as u64;
+            for k in 0..10usize {
+                let w = (addr as u32).wrapping_add((4 * k) as u32) | 0xdead0000;
+                want.extend_from_slice(&w.to_be_bytes());
+            }
+        }
+        want.truncate(total_len);
+        want
+    }
+
+    fn dump_exec_ok(
+        query: &[u8],
+        _outlen: u32,
+    ) -> anyhow::Result<(Vec<u8>, u8)> {
+        match (query.first(), query.get(1)) {
+            (Some(&0x09), Some(&0x32)) => Ok((dump_out_frame(query), 0)),
+            (Some(&0x09), Some(&0x31)) => Ok((vec![0u8; 0x10], 0)),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn build_dump_payload_addr_first_word_and_staging() {
+        let p = build_dump_payload(0x00B97E00, 3);
+        assert_eq!(&p[0..4], &[0x00, 0xb9, 0x7e, 0x00]);
+        let kb = kb_payload(3);
+        assert_eq!(&p[4..], &kb[4..]);
+        let q = build_query_payload(1, 0x2a, &p);
+        assert_eq!(&q[0x18..0x1c], &[0x00, 0xb9, 0x7e, 0x00]);
+    }
+
+    #[test]
+    fn dump_read_window_is_out_10_38() {
+        let out = vec![0xaau8; 0x40];
+        assert_eq!(dump_read_window(&out).unwrap().len(), 0x28);
+        assert!(dump_read_window(&out[..0x30]).is_none());
+    }
+
+    #[test]
+    fn validate_dump_args_matrix() {
+        let ok = |a, l, o, p, k, r| validate_dump_args(a, l, o, p, k, r).is_ok();
+        assert!(ok(Some(0x800000), Some(0x1000), true, false, false, false));
+        assert!(!ok(Some(0x800000), None, false, true, false, false));
+        assert!(!ok(Some(0x800000), None, false, false, false, false));
+        assert!(!ok(Some(0x800000), Some(0x1000), false, false, false, false));
+        assert!(!ok(Some(0x800000), Some(0x1000), true, true, false, false));
+        assert!(!ok(Some(0x800000), Some(0x1000), true, false, true, false));
+        assert!(!ok(Some(0x800000), Some(0x1000), true, false, false, true));
+        assert!(!ok(Some(0x800000), Some(6), true, false, false, false));
+        assert!(!ok(Some(0x800000), Some(0), true, false, false, false));
+        assert!(ok(Some(0xFFFF0000), Some(0x8000 - 0x28), true, false, false, false));
+        assert!(!ok(Some(0xFFFF0000), Some(0x8000), true, false, false, false));
+        assert!(!ok(Some(0xFFFF8000), Some(0x28), true, false, false, false));
+    }
+
+    #[test]
+    fn dump_run_writes_read_windows_in_order() {
+        let dir = std::env::temp_dir()
+            .join(format!("ftdump-{}-{}", std::process::id(), 1298));
+        std::fs::create_dir_all(&dir).unwrap();
+        let p = dir.join("d1.bin");
+        let mut exec = |f: &[u8], o: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+            dump_exec_ok(f, o)
+        };
+        let (oc, _t) = dump_run(1, 0x00B97E00, 0x50 + 0x18, 0x2a, &mut exec, &p, 0, 0)
+            .unwrap();
+        assert_eq!(oc.ok, 3);
+        assert_eq!(oc.cmds, 3);
+        let data = std::fs::read(&p).unwrap();
+        assert_eq!(data, expected_dump_bytes(0x00B97E00, 0x50 + 0x18));
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn dump_run_transport_error_retains_prefix_and_destroys() {
+        let dir = std::env::temp_dir()
+            .join(format!("ftdump-{}-{}", std::process::id(), 1316));
+        std::fs::create_dir_all(&dir).unwrap();
+        let p = dir.join("d2.bin");
+        let mut destroy_calls = 0usize;
+        let mut queries = 0usize;
+        let mut exec = |f: &[u8], _o: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+            match (f.first(), f.get(1)) {
+                (Some(&0x09), Some(&0x31)) => {
+                    destroy_calls += 1;
+                    Ok((vec![0u8; 0x10], 0))
+                }
+                (Some(&0x09), Some(&0x32)) => {
+                    queries += 1;
+                    if queries == 3 {
+                        Err(anyhow::anyhow!("dump transport fail"))
+                    } else {
+                        Ok((dump_out_frame(f), 0))
+                    }
+                }
+                _ => unreachable!(),
+            }
+        };
+        let r = dump_run(0, 0x00800000, 5 * DUMP_STRIDE, 7, &mut exec, &p, 0, 0);
+        assert!(r.is_err());
+        assert_eq!(destroy_calls, 1);
+        assert_eq!(queries, 3);
+        let data = std::fs::read(&p).unwrap();
+        assert_eq!(data, expected_dump_bytes(0x00800000, 2 * DUMP_STRIDE));
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn dump_run_status_or_canary_failure_bails() {
+        let dir = std::env::temp_dir()
+            .join(format!("ftdump-{}-{}", std::process::id(), 1350));
+        std::fs::create_dir_all(&dir).unwrap();
+        for (mangle, name) in [
+            (1usize, "status"),
+            (2usize, "canary"),
+        ] {
+            let p = dir.join(format!("d3-{name}.bin"));
+            let mut destroy_calls = 0usize;
+            let mut queries = 0usize;
+            let mut exec = |f: &[u8], _o: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+                match (f.first(), f.get(1)) {
+                    (Some(&0x09), Some(&0x31)) => {
+                        destroy_calls += 1;
+                        Ok((vec![0u8; 0x10], 0))
+                    }
+                    (Some(&0x09), Some(&0x32)) => {
+                        queries += 1;
+                        let mut out = dump_out_frame(f);
+                        if queries == 2 && mangle == 1 {
+                            out[0] = 0x03;
+                        }
+                        if queries == 2 && mangle == 2 {
+                            out[0x3a] = 0x00;
+                        }
+                        Ok((out, 0))
+                    }
+                    _ => unreachable!(),
+                }
+            };
+            let r = dump_run(0, 0x00800000, 4 * DUMP_STRIDE, 7, &mut exec, &p, 0, 0);
+            assert!(r.is_err(), "{name} must bail");
+            assert_eq!(destroy_calls, 1);
+            let data = std::fs::read(&p).unwrap();
+            assert_eq!(data.len(), DUMP_STRIDE, "{name} prefix retained");
+        }
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn dump_run_write_io_error_destroys_table() {
+        let mut destroy_calls = 0usize;
+        let mut exec = |f: &[u8], _o: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+            match (f.first(), f.get(1)) {
+                (Some(&0x09), Some(&0x31)) => {
+                    destroy_calls += 1;
+                    Ok((vec![0u8; 0x10], 0))
+                }
+                (Some(&0x09), Some(&0x32)) => Ok((dump_out_frame(f), 0)),
+                _ => unreachable!(),
+            }
+        };
+        let r = dump_run(
+            0,
+            0x00800000,
+            2 * DUMP_STRIDE,
+            7,
+            &mut exec,
+            std::path::Path::new("/dev/full"),
+            0,
+            0,
+        );
+        assert!(r.is_err());
+        assert_eq!(destroy_calls, 1);
+    }
+
+    #[test]
+    fn dump_run_verbose_and_progress_do_not_break_flow() {
+        let dir = std::env::temp_dir()
+            .join(format!("ftdump-{}-{}", std::process::id(), 1391));
+        std::fs::create_dir_all(&dir).unwrap();
+        let p = dir.join("d4.bin");
+        let mut exec = |f: &[u8], o: u32| -> anyhow::Result<(Vec<u8>, u8)> {
+            dump_exec_ok(f, o)
+        };
+        let (oc, _t) =
+            dump_run(0, 0x01001000, 6 * DUMP_STRIDE, 0, &mut exec, &p, 2, 2).unwrap();
+        assert_eq!(oc.ok, 6);
+        assert_eq!(std::fs::read(&p).unwrap().len(), 6 * DUMP_STRIDE);
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }
