@@ -39,6 +39,35 @@ GUID/MAC базы — идентичность карты).
    (rc=0, никакого -E-); `rsa_sign` (:2283) делает SignForSecureBoot
    (0xA7: StoreImagePublicKey + подпись boot/critical/non-critical) +
    SignForFwUpdate. Для full-package SS-образов — только `rsa_sign`.
+   (Эрратум цикла анлока 2026-11-22, task-05: `rsa_sign` требует
+   0xA6-TOC-запись (StoreImagePublicKeyInPublicKeys3) — на CX-5-HPE-базах
+   секций 0xA5/A6/A7 нет вовсе → `rsa_sign` невозможен («TOC entry type:
+   RSA_PUBLIC_KEY (166) not found», rc=1, образ не модифицирован);
+   канон для CX-5-баз — `sign` (SignForFwUpdate; живой прецедент
+   ss-8008 / ss-8008-v3a на 41:00: FNP-accept + boot + plain-PASS);
+   питфолл «0xA7 остаётся стейл» на таких базах неприменим — секций
+   нет. `rsa_sign` — только для баз с 0xA6/A7, напр. cx6dx.)
+   Provenance-эрратум (цикла анлока, task-05): build-ID ss-8008-v3a,
+   сожжённый на 41:00, несёт токен `rsa_sign` (слово из брифа до
+   выяснения невозможности) — фактический путь был `sign`; будущие
+   `dc`-чтения 41:00 покажут вводящий в заблуждение токен (истина —
+   журнал task-05 ×3; канон 070 §8.7 Caveat-2).
+   Класс-оговорка SS-образов на CX-5-базах (канон-фикс 2026-11-23,
+   коррекция владельца): SS-класс 41:00 (ss-8008, ss-8008-v3a) =
+   собственный вольт (0xA4 slot0 uuid `6ffe10ef…2559`, вольт md5
+   `eda1bc3a…` бит-в-бит == live-proven 2026-10-29) +
+   SignForFwUpdate-подпись НАШИМ ключом в 0xA3 (live-readback
+   2026-10-29 task-08 W3-4: в 0xA3 наш uuid, вендорские
+   c55d54e8/f560c160 отсутствуют; 0xA0 = 320B нулей — SHA-512-ветка);
+   diff vs вендор-база = {0xA0, 0xA3, 0xA4, 0x30} — секции подписи
+   0xA3 и вольта 0xA4 ИЗМЕНЕНЫ, вендор-подписи замещены нашими. Именно
+   это резолвится MCC burn-гейтом (uuid по БЕГУЩЕМУ вольту, 170 §6 H1)
+   и даёт «FNP один раз → plain onwards». Прецедент-оговорка: циклы
+   2026-10-29 / 2026-11-22 на 41:00 — НЕ прецедент «вендор-подписи
+   INTACT» и в будущих сборках так не цитируются (этот термин — только
+   D0/D2-класс: вендор-база без re-sign, дельта вне подписанных
+   диапазонов); `rsa_sign` остаётся единственным путём full-package
+   own-RSA SignForSecureBoot (0xA7) — для баз с 0xA6/A7 (напр. cx6dx).
 5. **Питфолл `--key_uuid`**: значение — hex-СТРОКА (32 hex-цифры,
    extractUUIDFromString fs3_ops.cpp:3133); raw-16B-файл падает с
    маскирующим errmsg «Failed to insert secured FW signature».
