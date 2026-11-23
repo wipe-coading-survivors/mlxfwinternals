@@ -3,7 +3,7 @@
 ## 010-roadmap — карты инициатив
 - 100-irisc — iRISC-программа: ISA-RE, on-demand exec, детур CX-4 Lx, readback-каналы [done]
 - 110-breakout — breakout (fan-out): больше GUIDов/портов, чем физических — исследование [seed]
-- 120-mtusb-i2c — аналог MT-USB: out-of-band доступ через I2C (CH341/347) [seed]
+- 120-mtusb-i2c — аналог MT-USB: out-of-band доступ через I2C (CH341/347) [done]
 - 130-ncsi-smbus — NC-SI + SMBus: out-of-band канал управления BMC ↔ карта [seed]
 - 140-irisc-vm — эмулятор прошивки: VM для исполнения образа (FS2/FS3/FS4) на модели внутреннего CPU — отладка правок без живого железа [utopia]
 - 150-cx6dx-enib-root — CX-6 Dx: EN→IB + рут на non-secure Dx-карте (офлайн-задел есть) [seed]
@@ -56,6 +56,7 @@
 - 110-signing/055-cx6dx-signing — CX-6 Dx (FW 22.50): RE-якоря, burn-verify, бут-якорь вне flash
 - 110-signing/060-nvconfig-securefw — NV-config vs secure_fw: поверхность lifecycle-ключей
 - 110-signing/065-secure-fw-bit — secure-fw — бит регистра MGIR (состояние живой карты)
+- 110-signing/070-vpd-secure-state — VPD и secure-state: инструментальная поверхность mstflint (реестр I1–I9, пути × поколения, гейты G1–G22, MTUSB-бэкенд, H-V1–H-V4) + карта поколений и вердикты арки C (§7) + исполнение лестницы анлока: физика live set_vpd, delivery map, контент-классовый serving-гейт, ресериализация, content-semantic boot-гейт, слой-вердикт (§8)
 - 120-irisc/005-endian-addressing — iRISC: эндианность (BE слов), dc↔rt base по поколениям, CR↔RAM↔regspace
 - 120-irisc/010-isa — iRISC ISA: установленные семантики; аддендумы fuzz-5/isa-max (карта селекторов), errata cc2/lt32
 - 120-irisc/015-decoders — iRISC: канонические декодеры; баги/errata декодеров (branch-cc, q-form EA, align-down)
@@ -72,6 +73,7 @@
 - 130-cable-gate/015-speed-bits — eth_speeds_supported: биты скоростей в FW_MAIN_CFG
 - 130-cable-gate/020-implications — стена: следствия для фаз B–D
 - 130-cable-gate/025-ch3-results — итоги главы 3 арки «Трансиверы под IB» (гейт снят) и ретест 8008
+- 140-oob-i2c/100-protocol — out-of-band I2C: проводной протокол CR-доступа, flash-GW/ICMD поверх i2c, sec-addr 0x48/0x47, электрика/MTUSB-1, свитчи, эмпирика стаба (цикл 1 арки 120)
 
 ## 550-poc — заделы сборочного инструмента (PoC)
 - 100-mlxfwutil/010-ini-mapping — встроенный ini: секция 0x30 DBG_FW_INI, zlib/PRS-цепочка, маппинг .ini-полей
@@ -102,3 +104,4 @@
 - 170-signing-practical — подпись образа: практические ответы (3 способа)
 - 180-securefw-recipes — secure-fw карта: рецепты (self-signed, FNP-once, чтение, откат)
 - 190-irisc-build-burn — сборка и burn iRISC boot-инъекции (CX-5, 4030 CDA): clcrc-пайплайн, шаги + гейты
+- 200-oob-i2c — out-of-band I2C (CH347 → ConnectX): брингап, дамп-сессия, продукт-бэкенд mstflint ch34x (рецепты циклов mtusb-i2c-hw/mtusb-i2c-impl)

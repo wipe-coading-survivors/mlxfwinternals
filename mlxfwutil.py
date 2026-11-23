@@ -898,7 +898,8 @@ def _rewrite_section(img: Image, out: bytearray, e, new_data: bytes) -> None:
     ent = bytearray(e.raw)
     set_bits(ent, 208, 16, crc16_mlx(new_data) if e.crcf == 0 else 0x0000)
     set_bits(ent, 240, 16, crc16_mlx(bytes(ent[:28])))
-    off = img.itoc_off + 32 + e.index * 32
+    toc_off = img.itoc_off if e.toc == "ITOC" else img.dtoc_off
+    off = toc_off + 32 + e.index * 32
     out[off:off + 32] = ent
 
 
@@ -1259,13 +1260,7 @@ def patch_sections(img: Image, edits: list) -> bytes:
         if new == img.section_data(e):
             continue
         changed[t] = new
-        a = img.sec_abs(e)
-        out[a:a + e.size] = new
-        ent = bytearray(e.raw)
-        set_bits(ent, 208, 16, crc16_mlx(new) if e.crcf == 0 else 0x0000)
-        set_bits(ent, 240, 16, crc16_mlx(bytes(ent[:28])))
-        ent_off = img.itoc_off + 32 + e.index * 32
-        out[ent_off:ent_off + 32] = ent
+        _rewrite_section(img, out, e, new)
     _hashes_update(img, out, changed)
     return bytes(out)
 
@@ -1280,6 +1275,63 @@ def cmd_patch(img: Image, args) -> int:
         return 1
     Path(args.output).write_bytes(out)
     print(f"{args.output}: {len(edits)} edit(s), md5 {hashlib.md5(out).hexdigest()}")
+    return 0
+
+
+VPD_R0_TYPE = 0xE3
+
+
+def vpd_section(img: Image) -> tuple:
+    toc = "ITOC" if img.fmt == "fs3" else "DTOC"
+    try:
+        e = img.find_entry(toc, VPD_R0_TYPE)
+    except KeyError:
+        raise KeyError(f"{img.path}: no VPD_R0 (0x{VPD_R0_TYPE:02x}) section in {toc}")
+    return toc, e
+
+
+def replace_vpd(img: Image, data: bytes) -> bytes:
+    toc, e = vpd_section(img)
+    if e.size == 0:
+        raise ValueError(f"{img.path}: VPD_R0 (0x{VPD_R0_TYPE:02x}) section is empty "
+                         "(size 0): inject/grow is not supported (same-size replace only)")
+    if len(data) != e.size:
+        raise ValueError(f"{img.path}: VPD_R0 (0x{VPD_R0_TYPE:02x}) payload {len(data):#x}B "
+                         f"!= section size {e.size:#x}B (same-size replace only)")
+    out = bytearray(img.buf)
+    _rewrite_section(img, out, e, data)
+    return bytes(out)
+
+
+def cmd_vpd(args) -> int:
+    img = _image(args.image)
+    try:
+        toc, e = vpd_section(img)
+    except KeyError as ex:
+        print(f"error: {ex}", file=sys.stderr)
+        return 2
+    if args.dump is not None:
+        data = img.section_data(e)
+        Path(args.dump).write_bytes(data)
+        print(f"{args.dump}: VPD_R0 (0x{VPD_R0_TYPE:02x}) {toc} @0x{e.addr:x}+{e.size:#x}, "
+              f"{len(data)} bytes, md5 {hashlib.md5(data).hexdigest()}")
+        return 0
+    if args.output is None:
+        print("error: --set requires -o/--output", file=sys.stderr)
+        return 2
+    try:
+        out = replace_vpd(img, Path(args.set).read_bytes())
+    except ValueError as ex:
+        print(f"error: {ex}", file=sys.stderr)
+        return 2
+    errs = verify_image(Image(out, img.path, base=img.base, fmt=img.fmt))
+    if errs:
+        for x in errs:
+            print(f"self-verify FAIL: {x}", file=sys.stderr)
+        return 1
+    Path(args.output).write_bytes(out)
+    print(f"{args.output}: VPD_R0 (0x{VPD_R0_TYPE:02x}) {toc} @0x{e.addr:x}+{e.size:#x} "
+          f"replaced, md5 {hashlib.md5(out).hexdigest()}")
     return 0
 
 
@@ -2589,6 +2641,17 @@ def main(argv=None) -> int:
                    help="skip the automatic 0xA0 digest recompute after relocation "
                         "(image will not be MCC-ready)")
     p.set_defaults(func=cmd_resize)
+
+    p = sub.add_parser("vpd",
+                       help="VPD_R0 (0xE3): extract or same-size replace "
+                            "(FS3 ITOC / FS4 DTOC, +CRC, self-verify)")
+    p.add_argument("image")
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--dump", metavar="FILE", help="extract raw VPD_R0 bytes to FILE")
+    g.add_argument("--set", metavar="FILE", help="replace VPD_R0 with FILE contents (same size only)")
+    p.add_argument("-o", "--output", default=None,
+                   help="output image file (required with --set)")
+    p.set_defaults(func=cmd_vpd)
 
     args = ap.parse_args(argv)
     return args.func(args)
