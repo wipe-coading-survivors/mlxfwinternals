@@ -34,7 +34,8 @@
 | 0xE0 MFG_INFO | копия PSID (FS3) | то же |
 | 0xE1/0xE7/0xE8 DEV_INFO / FS4_DEV_INFO1/2 | служебные данные устройства | section_crc/entry_crc |
 | 0xE2/0xE4/0xE6 NV_DATA0/1/2, 0xE5 FW_NV_LOG | NV-данные | section_crc (у dev-секций часто no_crc=1 — проверять по записи) |
-| 0x01-0x07, 0x18 код (BOOT/PCI/MAIN/ROM) | не рекомендуется (MAIN_CODE ещё и per-line CRC 64+4) | section_crc + line-CRC'ы (FS4) + подпись |
+| 0x01-0x07, 0x18 код (BOOT/PCI/ROM) | не рекомендуется (доставка кода = FNP-риск-класс; live-proven путь для MAIN_CODE — отдельной строкой ниже) | section_crc + line-CRC'ы (FS4) + подпись |
+| 0x03 MAIN_CODE (ITOC, clcrc=1; FS3 cx4lx-14.32 / FS4 cx5) | слова iRISC по live-proven пайплайну (прецеденты: ch3/C12 cable_gate_patch, hf2-диспетчер — `scripts/probes/cable_gate_patch.py`, `scripts/probes/gate-specs/hf2-dispatcher-cx4lx-1912.json`): decrc/`clcrc_unwrap` → check/patch dc-байтов (слова только через strict-профиль скилла irisc-asm, decode-verify) → clcrc-рефрейм 68B-строки (64 код + 2 нуля + 2 LE16 clcrc) → `patch_sections` (section_crc + entry_crc) → `verify` (per-line clcrc: FS4 — `--deep`; FS3 — валидация внутри `clcrc_unwrap`/round-trip, deep-ветка FS4-only). Доставка — прямой байт-патч в образ, НЕ runtime-инъекция (урок 04w v2: ассерт (6,1) + CMDIF-death). Канарик-дифф: только патч-байты + clcrc-байты тронутых строк + entry-CRC | per-line clcrc тронутых строк + section_crc + entry_crc (+ 0xA0-дест: `sign` после контент-шага — канон §6 cross-flash-ops) |
 | 0xA0-0xAD подпись | **не трогать вручную** — пересчитывается при подписании | весь блок подписи (RSA, docs/250-re/110-signing/015-key-sections.md) |
 
 Правила:

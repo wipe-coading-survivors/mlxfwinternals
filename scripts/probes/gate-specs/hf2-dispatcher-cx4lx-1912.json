@@ -1,0 +1,35 @@
+{
+ "id": "HF2-DISPATCHER-CX4LX-1912",
+ "card": "cx4lx-14_32_1912-MCX4131A-GCA (refs stock)",
+ "section": 3,
+ "patches": [
+  {
+   "offset": "0x1be12c",
+   "bytes": "00 04 04 00",
+   "expected_before": "4a 04 36 86",
+   "kind": "code",
+   "note": "ib_speed_nego dispatcher (site rt 0x9be0f4, first compare word rt 0x9be124, special label rt 0x9be13c): field source ld.i r4,0x3686 (mirror RAM 0x3686 = byte 0xDA18, bits[9..11]) -> addi r4,zero,0x400 (field := 2). Patched special <=> event==0 OR event>=3, bit-equal to CX-4 0x9979cc (subsi r4,r23,0x3; b.t.0x4) for every 32-bit event. Arc F task-01 decode reference; spec 2026-11-24-serdes-arc-hf2 §3 (1)."
+  },
+  {
+   "offset": "0x1fc488",
+   "bytes": "00 04 04 00",
+   "expected_before": "4a 04 36 86",
+   "kind": "code",
+   "note": "ib_force_edr twin dispatcher (site rt 0x9fc44c, compare rt 0x9fc480): same field idiom -> field := 2; CX-4 homolog 0x9d1670 uses the constant 3 -> class-dependent, second special-path word (spec §3 'word(s)')."
+  },
+  {
+   "offset": "0x1b330c",
+   "bytes": "00 04 04 00",
+   "expected_before": "4a 04 36 86",
+   "kind": "code",
+   "note": "polling arm cmd 0x21 (arm head rt 0x9b32d0, send-hub jump-table arm 17, loop head rt 0x9b32e8, sender 0x9b33d0): loop count source -> field := 2 => exactly 2 iterations (subjects 0,1) == CX-4 0x98da04 (subsi r4,r23,0x3, counter 1..2). Spec §3 (1b) second consumer of bits[9..11]."
+  },
+  {
+   "offset": "0x1b335c",
+   "bytes": "00 04 04 00",
+   "expected_before": "4a 04 36 86",
+   "kind": "code",
+   "note": "polling arm cmd 0x20 (arm head rt 0x9b3320, arm 18, loop head rt 0x9b3338): count source -> field := 2 => 2 iterations == CX-4 0x98da40."
+  }
+ ]
+}
